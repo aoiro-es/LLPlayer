@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsPlayer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -37,17 +38,27 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Player"
+                Text="{loc:Text Key=Text_64AEE8C6CBD026D9}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Player">
+            <GroupBox Header="{loc:Text Key=Text_6B7469B0733E6055}" Margin="0 0 0 12">
+                <StackPanel>
+                    <ComboBox Width="220" HorizontalAlignment="Left" SelectedValuePath="Tag"
+                              SelectedValue="{Binding FL.Config.UiLanguage}">
+                        <ComboBoxItem Content="日本語" Tag="ja-JP" />
+                        <ComboBoxItem Content="English" Tag="en-US" />
+                    </ComboBox>
+                    <TextBlock Text="{loc:Text Key=Text_829F118DB2989104}" TextWrapping="Wrap" Margin="0 8 0 0" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="{loc:Text Key=Text_64AEE8C6CBD026D9}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Buffer Duration Min (ms)" />
+                            Text="{loc:Text Key=Text_79D9F95498818301}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.MinBufferDuration, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -57,7 +68,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Buffer Duration Max (ms)" />
+                            Text="{loc:Text Key=Text_47EFA6C8CB356B7B}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Demuxer.BufferDuration, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -67,7 +78,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Audio Frames Max" />
+                            Text="{loc:Text Key=Text_09544BE7E8A57D86}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Decoder.MaxAudioFrames}"
@@ -77,7 +88,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Video Frames Max" />
+                            Text="{loc:Text Key=Text_17CF669933DF3C17}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Decoder.MaxVideoFrames}"
@@ -87,26 +98,26 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Vertical Resolution Max" />
+                            Text="{loc:Text Key=Text_87C8F337FA56523F}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Video.MaxVerticalResolutionCustom}"
                             helpers:TextBoxHelper.OnlyNumeric="Uint"
-                            ToolTip="0 for Auto" />
+                            ToolTip="{loc:Text Key=Text_706C8B20C6E31CE0}" />
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Player UI">
+            <GroupBox Header="{loc:Text Key=Text_FB71A38D1E99E401}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Idle Timeout (ms)
+                            <Run Text="{loc:Text Key=Text_9FD5A3E24759616B}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="Specify idle time in milliseconds to hide seek bar and mouse cursor"
+                                        Text="{loc:Text Key=Text_014389638886890D}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -125,11 +136,11 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Show SeekBar only when MouseOver
+                            <Run Text="{loc:Text Key=Text_8457969D0AC8E37B}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="If this is switched on, the seek bar is only displayed on mouse-over; if it is switched off, it is displayed when the cursor is moved."
+                                        Text="{loc:Text Key=Text_898E7A569C408059}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -146,7 +157,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="SeekBar FadeIn Time (ms)" />
+                            Text="{loc:Text Key=Text_3ECF0734C0889449}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SeekBarFadeInTimeMs}"
@@ -156,7 +167,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="SeekBar FadeOut Time (ms)" />
+                            Text="{loc:Text Key=Text_AF459BC4C013A121}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SeekBarFadeOutTimeMs}"
@@ -166,7 +177,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="SeekBar Height" />
+                            Text="{loc:Text Key=Text_7618F7FCD2212369}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SeekBarHeight}"
@@ -176,7 +187,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="SeekBar Thumb Height" />
+                            Text="{loc:Text Key=Text_6EFCAB2F70DC3C47}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SeekBarThumbHeight}"
@@ -186,7 +197,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="SeekBar Track Height" />
+                            Text="{loc:Text Key=Text_B40BADEB87780401}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SeekBarTrackHeight}"
@@ -195,7 +206,7 @@
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            Text="Always On Top"
+                            Text="{loc:Text Key=Text_7E8F0B964D60B91B}"
                             Width="180">
                         </TextBlock>
                         <ToggleButton
@@ -204,12 +215,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Player Timeout (For Live Stream)">
+            <GroupBox Header="{loc:Text Key=Text_A79078D6CEB3244A}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Open Timeout (ms)" />
+                            Text="{loc:Text Key=Text_AAE11583EAC37DA8}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Demuxer.OpenTimeout, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -219,7 +230,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Read Timeout (ms)" />
+                            Text="{loc:Text Key=Text_486C9995037C1E8B}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Demuxer.ReadTimeout, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -229,7 +240,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Read Live Timeout (ms)" />
+                            Text="{loc:Text Key=Text_133890C16F762906}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Demuxer.ReadLiveTimeout, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -239,7 +250,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Timeout (ms)" />
+                            Text="{loc:Text Key=Text_86B4A54B0F5E9429}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Demuxer.SeekTimeout, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -248,12 +259,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Seek">
+            <GroupBox Header="{loc:Text Key=Text_67AE3405BCD4DF1F}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Always Seek Accurate" />
+                            Text="{loc:Text Key=Text_5933B58FE08C2CF0}" />
                         <ToggleButton
                             IsChecked="{Binding FL.PlayerConfig.Player.SeekAccurate}" />
                     </StackPanel>
@@ -261,7 +272,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Accurate Fix Margin (ms)" />
+                            Text="{loc:Text Key=Text_79F3931B5306E7B2}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SeekAccurateFixMargin, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -270,12 +281,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Logging">
+            <GroupBox Header="{loc:Text Key=Text_D3EF01B4A9C99103}">
                 <StackPanel>
                     <DockPanel>
                         <TextBlock
                             Width="180"
-                            Text="Log File" />
+                            Text="{loc:Text Key=Text_60DC97C2B0458B8E}" />
                         <TextBox
                             HorizontalContentAlignment="Left"
                             Text="{Binding FL.ConfigEngine.LogOutput}" />
@@ -284,7 +295,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Log Level" />
+                            Text="{loc:Text Key=Text_12FE4737438F3BDB}" />
                         <ComboBox
                             Width="100"
                             ItemsSource="{Binding Source={StaticResource LogLevelEnum}}"
@@ -294,7 +305,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Log Level (ffmpeg)" />
+                            Text="{loc:Text Key=Text_11017BFA786D30DD}" />
                         <ComboBox
                             Width="100"
                             ItemsSource="{Binding Source={StaticResource FFmpegLogLevelEnum}}"
@@ -304,7 +315,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Log Cached Lines" />
+                            Text="{loc:Text Key=Text_578CA20E98A7CA19}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.ConfigEngine.LogCachedLines}"
@@ -318,7 +329,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="FFmpeg Load Profile" />
+                            Text="{loc:Text Key=Text_F876D18134315776}" />
                         <ComboBox
                             Width="100"
                             ItemsSource="{Binding Source={StaticResource FFmpegLoadProfileEnum}}"

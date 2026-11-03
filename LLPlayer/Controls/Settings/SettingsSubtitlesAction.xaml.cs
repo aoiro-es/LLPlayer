@@ -79,7 +79,7 @@ public class SettingsSubtitlesActionVM : Bindable
     {
         MenuActions.Add(new SearchMenuAction
         {
-            Title = "New Search",
+            Title = UiText.Get("New Search"),
             Url = "https://example.com/?q=%w"
         });
     });

@@ -413,7 +413,7 @@ partial class Player
     public void Flush()
     {
         decoder.Flush();
-        OSDMessage = "Buffer Flushed";
+        OSDMessage = FlyleafLib.Localization.UiText.Get("Buffer Flushed");
     }
 
     /// <summary>

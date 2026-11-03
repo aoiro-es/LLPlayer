@@ -11,15 +11,32 @@ namespace WpfColorFontDialog
 
         public static string CurrentLanguage;
 
+        private static readonly Dictionary<string, ResourceDictionary> Dictionaries = new Dictionary<string, ResourceDictionary>();
+
+        internal static string GetString(string key, string fallback)
+        {
+            string language = GetLanguage();
+            if (!Dictionaries.TryGetValue(language, out ResourceDictionary dictionary))
+            {
+                dictionary = new ResourceDictionary
+                {
+                    Source = new Uri($"/WpfColorFontDialog;component/I18n/{language}.xaml", UriKind.Relative)
+                };
+                Dictionaries.Add(language, dictionary);
+            }
+            return dictionary.Contains(key) ? dictionary[key] as string ?? fallback : fallback;
+        }
+
         public static readonly Dictionary<string, string> SupportLanguage = new Dictionary<string, string>
         {
             {@"简体中文", @"zh-CN"},
             {@"English (United States)", @"en-US"},
+            {@"日本語", @"ja-JP"},
         };
 
         public static string GetCurrentLanguage()
         {
-            return System.Globalization.CultureInfo.CurrentCulture.Name;
+            return System.Globalization.CultureInfo.CurrentUICulture.Name;
         }
 
         public static string GetLanguage()

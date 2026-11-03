@@ -66,7 +66,7 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
         }
         catch (Exception ex)
         {
-            ErrorDialogHelper.ShowUnknownErrorPopup($"Cannot search subtitles from opensubtitles.org: {ex.Message}", UnknownErrorType.Network, ex);
+            ErrorDialogHelper.ShowUnknownErrorPopup(UiText.Format($"Cannot search subtitles from opensubtitles.org: {ex.Message}"), UnknownErrorType.Network, ex);
             return;
         }
 
@@ -103,7 +103,7 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
         }
         catch (Exception ex)
         {
-            ErrorDialogHelper.ShowUnknownErrorPopup($"Cannot load the subtitle from opensubtitles.org: {ex.Message}", UnknownErrorType.Network, ex);
+            ErrorDialogHelper.ShowUnknownErrorPopup(UiText.Format($"Cannot load the subtitle from opensubtitles.org: {ex.Message}"), UnknownErrorType.Network, ex);
             return;
         }
 
@@ -122,7 +122,7 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
 
         if (!Utils.ExtensionsSubtitles.Contains(ext))
         {
-            throw new InvalidOperationException($"'{ext}' extension is not supported");
+            throw new InvalidOperationException(UiText.Format($"'{ext}' extension is not supported"));
         }
 
         await File.WriteAllBytesAsync(subPath, subData);
@@ -182,10 +182,10 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
 
         SaveFileDialog dialog = new()
         {
-            Title = "Save subtitles to file",
+            Title = UiText.Get("Save subtitles to file"),
             InitialDirectory = initDir,
             FileName = fileName,
-            Filter = "All Files (*.*)|*.*",
+            Filter = UiText.Get("All Files (*.*)|*.*"),
         };
 
         if (dialog.ShowDialog() == true)
@@ -198,7 +198,7 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
             }
             catch (Exception ex)
             {
-                ErrorDialogHelper.ShowUnknownErrorPopup($"Cannot download the subtitle from opensubtitles.org: {ex.Message}", UnknownErrorType.Network, ex);
+                ErrorDialogHelper.ShowUnknownErrorPopup(UiText.Format($"Cannot download the subtitle from opensubtitles.org: {ex.Message}"), UnknownErrorType.Network, ex);
                 return;
             }
 
@@ -234,7 +234,7 @@ public class SubtitlesDownloaderDialogVM : Bindable, IDialogAware
 
     #region IDialogAware
     public string Title { get; set => Set(ref field, value); }
-        = $"Subtitles Downloader - {App.Name}";
+        = UiText.Format($"Subtitles Downloader - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 900;
     public double WindowHeight { get; set => Set(ref field, value); } = 600;
 

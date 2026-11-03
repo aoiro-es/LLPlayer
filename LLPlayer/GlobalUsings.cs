@@ -5,3 +5,4 @@ global using Prism.Commands;
 global using Prism.DryIoc;
 global using Prism.Dialogs;
 global using Prism.Ioc;
+global using FlyleafLib.Localization;

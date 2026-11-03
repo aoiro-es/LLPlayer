@@ -24,8 +24,8 @@ public class SettingsDialogVM : Bindable, IDialogAware
     });
 
     #region IDialogAware
-    public string Title { get; set => Set(ref field, value); } = $"Settings - {App.Name}";
-    public double WindowWidth { get; set => Set(ref field, value); } = 1000;
+    public string Title { get; set => Set(ref field, value); } = UiText.Format($"Settings - {App.Name}");
+    public double WindowWidth { get; set => Set(ref field, value); } = 1100;
     public double WindowHeight { get; set => Set(ref field, value); } = 700;
 
     public bool CanCloseDialog() => true;

@@ -130,8 +130,8 @@ public class SettingsSubtitlesASRVM : Bindable
 
     public OrderedDictionary<string, string> PromptPresets { get; } = new()
     {
-        ["Use Chinese (Simplified), with punctuation"] = "以下是普通话的句子。",
-        ["Use Chinese (Traditional), with punctuation"] = "以下是普通話的句子。"
+        [UiText.Get("Use Chinese (Simplified), with punctuation")] = "以下是普通话的句子。",
+        [UiText.Get("Use Chinese (Traditional), with punctuation")] = "以下是普通話的句子。"
     };
 
     public KeyValuePair<string, string>? SelectedPromptPreset
@@ -200,13 +200,13 @@ public class SettingsSubtitlesASRVM : Bindable
     #region faster-whisper
     public OrderedDictionary<string, string> ExtraArgumentsPresets { get; } = new()
     {
-        ["Use CPU device"] = "--device cpu",
-        ["Use CUDA device with >= RTX 50XX (requires less GPU memory, slow)"] = "--device cuda --compute_type float16",
-        ["Use CUDA device with >= RTX 50XX (requires more GPU memory)"] = "--device cuda --compute_type float32",
-        ["Use CUDA device"] = "--device cuda",
-        ["Use CUDA second device"] = "--device cuda:1",
-        ["Use Chinese (Simplified), with punctuation"] = "--initial_prompt \"以下是普通话的句子。\"",
-        ["Use Chinese (Traditional), with punctuation"] = "--initial_prompt \"以下是普通話的句子。\""
+        [UiText.Get("Use CPU device")] = "--device cpu",
+        [UiText.Get("Use CUDA device with >= RTX 50XX (requires less GPU memory, slow)")] = "--device cuda --compute_type float16",
+        [UiText.Get("Use CUDA device with >= RTX 50XX (requires more GPU memory)")] = "--device cuda --compute_type float32",
+        [UiText.Get("Use CUDA device")] = "--device cuda",
+        [UiText.Get("Use CUDA second device")] = "--device cuda:1",
+        [UiText.Get("Use Chinese (Simplified), with punctuation")] = "--initial_prompt \"以下是普通话的句子。\"",
+        [UiText.Get("Use Chinese (Traditional), with punctuation")] = "--initial_prompt \"以下是普通話的句子。\""
     };
 
     public KeyValuePair<string, string>? SelectedExtraArgumentsPreset

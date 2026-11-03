@@ -29,6 +29,9 @@ public class SelectLanguageDialogVM : Bindable, IDialogAware
             if (lang.TopEnglishName.Contains(query, StringComparison.OrdinalIgnoreCase))
                 return true;
 
+            if (UiText.Describe(lang).Contains(query, StringComparison.OrdinalIgnoreCase))
+                return true;
+
             return lang.TopNativeName.Contains(query, StringComparison.OrdinalIgnoreCase);
         };
     }
@@ -132,7 +135,7 @@ public class SelectLanguageDialogVM : Bindable, IDialogAware
 
     #region IDialogAware
     public string Title { get; set => Set(ref field, value); }
-        = $"Select Language - {App.Name}";
+        = UiText.Format($"Select Language - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 600;
     public double WindowHeight { get; set => Set(ref field, value); } = 360;
 

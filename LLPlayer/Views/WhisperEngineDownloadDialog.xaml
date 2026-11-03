@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.WhisperEngineDownloadDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,7 +39,7 @@
 
         <!-- Select engine -->
         <TextBlock  Grid.Row="0" Margin="0 0 0 16" FontWeight="Bold">
-        Download <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="{Binding Source={x:Static vm:WhisperEngineDownloadDialogVM.EngineURL}}" helpers:HyperlinkHelper.OpenInBrowser="True">
+        <Run Text="{loc:Text Key=Text_D6EAFE8235910042}" /> <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="{Binding Source={x:Static vm:WhisperEngineDownloadDialogVM.EngineURL}}" helpers:HyperlinkHelper.OpenInBrowser="True">
                 <TextBlock Text="{Binding Source={x:Static vm:WhisperEngineDownloadDialogVM.EngineFile}}" /></Hyperlink>
                 <LineBreak />
             <Run FontWeight="Normal" Text="-> Whisper\Faster-Whisper-XXL\faster-whisper-xxl.exe"/>
@@ -47,14 +48,14 @@
         <!-- Download & Cancel button -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
             <Button
-                Content="Download"
+                Content="{loc:Text Key=Text_D6EAFE8235910042}"
                 Command="{Binding CmdDownloadEngine}"
                 Width="150"
                 Height="30"
                 Visibility="{Binding CmdDownloadEngine.IsExecuting, Converter={StaticResource BooleanToVisibilityInvertConv}}" />
 
             <Button
-                Content="Cancel"
+                Content="{loc:Text Key=Text_19766ED6CCB2F4A3}"
                 Command="{Binding CmdCancelDownloadEngine}"
                 Width="150"
                 Height="30"
@@ -69,12 +70,12 @@
                 Margin="10 0 0 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Delete" Width="20" Height="20" VerticalAlignment="Center" />
-                    <TextBlock Text="Delete" Margin="5 0 0 0" VerticalAlignment="Center" />
+                    <TextBlock Text="{loc:Text Key=Text_E2D0A54968EAD24E}" Margin="5 0 0 0" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
 
             <Button
-                ToolTip="Open Folder"
+                ToolTip="{loc:Text Key=Text_68B3F4BFF6DE90AE}"
                 Style="{StaticResource MaterialDesignIconButton}"
                 HorizontalAlignment="Center"
                 Width="30"

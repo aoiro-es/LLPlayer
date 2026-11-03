@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsSubtitlesTrans"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -51,7 +52,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Endpoint" />
+                        Text="{loc:Text Key=Text_3DF9726C68BA76D6}" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -65,7 +66,7 @@
                         <Button
                             Grid.Column="1"
                             Margin="10 0 0 0"
-                            Content="Reset"
+                            Content="{loc:Text Key=Text_DAEE7606B339F3C3}"
                             Command="{Binding CmdSetDefaultEndpoint}"
                             Style="{StaticResource MaterialDesignOutlinedButton}" />
                     </Grid>
@@ -74,7 +75,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Timeout (ms)" />
+                        Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
                     <TextBox
                         Width="100"
                         Text="{Binding TimeoutMs}"
@@ -84,7 +85,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Source Language Region" />
+                        Text="{loc:Text Key=Text_28E29FFC97502813}" />
 
                     <ListView
                         HorizontalAlignment="Left"
@@ -93,12 +94,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Name}" Width="100" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" Width="100" VerticalAlignment="Center"/>
                                     <ComboBox
                                         ItemsSource="{Binding Regions}"
                                         SelectedItem="{Binding SelectedRegionMember, Mode=TwoWay}"
-                                        DisplayMemberPath="Name"
-                                        Width="150"/>
+                                        Width="150"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ComboBox.ItemTemplate></ComboBox>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -113,7 +113,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Endpoint" />
+                        Text="{loc:Text Key=Text_3DF9726C68BA76D6}" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -127,7 +127,7 @@
                         <Button
                             Grid.Column="1"
                             Margin="10 0 0 0"
-                            Content="Reset"
+                            Content="{loc:Text Key=Text_DAEE7606B339F3C3}"
                             Command="{Binding CmdSetDefaultEndpoint}"
                             Style="{StaticResource MaterialDesignOutlinedButton}" />
                     </Grid>
@@ -136,7 +136,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Timeout (ms)" />
+                        Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
                     <TextBox
                         Width="100"
                         Text="{Binding TimeoutMs}"
@@ -146,7 +146,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Source Language Region" />
+                        Text="{loc:Text Key=Text_28E29FFC97502813}" />
 
                     <ListView
                         HorizontalAlignment="Left"
@@ -155,12 +155,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Name}" Width="100" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" Width="100" VerticalAlignment="Center"/>
                                     <ComboBox
                                         ItemsSource="{Binding Regions}"
                                         SelectedItem="{Binding SelectedRegionMember, Mode=TwoWay}"
-                                        DisplayMemberPath="Name"
-                                        Width="150"/>
+                                        Width="150"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ComboBox.ItemTemplate></ComboBox>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -175,7 +174,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Endpoint" />
+                        Text="{loc:Text Key=Text_3DF9726C68BA76D6}" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -189,7 +188,7 @@
                         <Button
                             Grid.Column="1"
                             Margin="10 0 0 0"
-                            Content="Reset"
+                            Content="{loc:Text Key=Text_DAEE7606B339F3C3}"
                             Command="{Binding CmdSetDefaultEndpoint}"
                             Style="{StaticResource MaterialDesignOutlinedButton}" />
                     </Grid>
@@ -198,7 +197,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="API Key" />
+                        Text="{loc:Text Key=Text_23189D55F6973F2C}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding ApiKey}" />
@@ -207,7 +206,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Region (optional)" />
+                        Text="{loc:Text Key=Text_C59B0326093F63A6}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding Region}" />
@@ -216,7 +215,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Timeout (ms)" />
+                        Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
                     <TextBox
                         Width="100"
                         Text="{Binding TimeoutMs}"
@@ -226,7 +225,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Source Language Region" />
+                        Text="{loc:Text Key=Text_28E29FFC97502813}" />
 
                     <ListView
                         HorizontalAlignment="Left"
@@ -235,12 +234,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Name}" Width="100" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" Width="100" VerticalAlignment="Center"/>
                                     <ComboBox
                                         ItemsSource="{Binding Regions}"
                                         SelectedItem="{Binding SelectedRegionMember, Mode=TwoWay}"
-                                        DisplayMemberPath="Name"
-                                        Width="150"/>
+                                        Width="150"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ComboBox.ItemTemplate></ComboBox>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -255,7 +253,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="API Key" />
+                        Text="{loc:Text Key=Text_23189D55F6973F2C}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding ApiKey}" />
@@ -264,7 +262,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Timeout (ms)" />
+                        Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
                     <TextBox
                         Width="100"
                         Text="{Binding TimeoutMs}"
@@ -279,7 +277,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Endpoint" />
+                        Text="{loc:Text Key=Text_3DF9726C68BA76D6}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding Endpoint, UpdateSourceTrigger=PropertyChanged}" />
@@ -288,7 +286,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Timeout (ms)" />
+                        Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
                     <TextBox
                         Width="100"
                         Text="{Binding TimeoutMs}"
@@ -324,7 +322,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="API Key" />
+                        Text="{loc:Text Key=Text_23189D55F6973F2C}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding ApiKey}" />
@@ -340,7 +338,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="API Key (optional)" />
+                        Text="{loc:Text Key=Text_1C9ED9C40DB809DB}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding ApiKey}" />
@@ -349,14 +347,14 @@
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="Path" />
+                        Text="{loc:Text Key=Text_62FA5A5B0D3C3188}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Width="200"
                         Text="{Binding ChatPath, UpdateSourceTrigger=PropertyChanged}" />
                     <Button
                         Margin="10 0 0 0"
-                        Content="Reset"
+                        Content="{loc:Text Key=Text_DAEE7606B339F3C3}"
                         Command="{Binding CmdSetDefaultChatPath}"
                         Style="{StaticResource MaterialDesignOutlinedButton}" />
                 </StackPanel>
@@ -371,7 +369,7 @@
                 <DockPanel Margin="0 0 0 8">
                     <TextBlock
                         Width="180"
-                        Text="API Key" />
+                        Text="{loc:Text Key=Text_23189D55F6973F2C}" />
                     <TextBox
                         HorizontalContentAlignment="Left"
                         Text="{Binding ApiKey}" />
@@ -393,21 +391,21 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Subtitles > Translate"
+                Text="{loc:Text Key=Text_FBBB407099759180}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Translation Language">
+            <GroupBox Header="{loc:Text Key=Text_1E72C162A87DDC6B}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Target Language
+                            <Run Text="{loc:Text Key=Text_5714AA6C4BB2E44E}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="Set your native language. It will be translated into that language. If it is in the same language as the video, it will not be translated. Some engines do not support certain languages."
+                                        Text="{loc:Text Key=Text_88917B4BBFB7F03A}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -432,7 +430,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="No Supported Service" />
+                            Text="{loc:Text Key=Text_904F02982FDE45FE}" />
 
                         <TextBlock
                             Width="180"
@@ -441,7 +439,7 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Translation Engine">
+            <GroupBox Header="{loc:Text Key=Text_1CA478B19DC534F6}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
@@ -449,7 +447,7 @@
                             FontWeight="Medium"
                             Width="180">
                             <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="{Binding SelectedTranslateServiceType, Converter={StaticResource TranslateServiceTypeEnumToUrlConv}}" helpers:HyperlinkHelper.OpenInBrowser="True">
-                                Translation Engine
+                                <Run Text="{loc:Text Key=Text_1CA478B19DC534F6}" />
                             </Hyperlink>
                         </TextBlock>
                         <ComboBox
@@ -468,12 +466,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Translation Parameters">
+            <GroupBox Header="{loc:Text Key=Text_C64B1D7C4C7C7E28}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Max Translate Count (Backward)" />
+                            Text="{loc:Text Key=Text_25C976AAD3DF89B3}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles.TranslateCountBackward}"
@@ -483,7 +481,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Max Translate Count (Forward)" />
+                            Text="{loc:Text Key=Text_DF1EFA0B60D0F92B}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles.TranslateCountForward}"
@@ -493,7 +491,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Max Translate Concurrency" />
+                            Text="{loc:Text Key=Text_8D4BC4C36844E1BD}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles.TranslateMaxConcurrency}"
@@ -502,27 +500,25 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Translation Chat Config (for LLM API such as Ollama, OpenAI, etc...)">
+            <GroupBox Header="{loc:Text Key=Text_E375D4A76EAC54F4}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Translate Chat Method
+                            <Run Text="{loc:Text Key=Text_9F7AF69149607739}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="[KeepContext]"/>
+                                        <Run Text="{loc:Text Key=Text_548D3769E09FF8C1}"/>
                                         <LineBreak />
-                                        The previous subtitle and the translation result are sent together to the chat.
-                                        Translation accuracy is improved because context is taken into account.
-                                        Concurrent requests are not allowed.
+                                        <Run Text="{loc:Text Key=Text_995E027B8076B9E0}" />
                                         <LineBreak />
                                         <LineBreak />
-                                        <Run Text="[OneByOne]"/>
+                                        <Run Text="{loc:Text Key=Text_BA8FC41903155FA1}"/>
                                         <LineBreak />
-                                        Subtitles are sent to the chat one at a time and translated. Translation accuracy will be lower, but it will be more stable. Concurrent requests are possible.
+                                        <Run Text="{loc:Text Key=Text_54C8F01E7893EB05}" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
                                 <materialDesign:PackIcon
@@ -540,11 +536,11 @@
                     <StackPanel Orientation="Horizontal" Visibility="{Binding FL.PlayerConfig.Subtitles.TranslateChatConfig.TranslateMethod, Converter={StaticResource EnumToVisibilityConv}, ConverterParameter={x:Static flyleafTranslate:ChatTranslateMethod.KeepContext}}">
                         <TextBlock
                             Width="180">
-                            Subtitle Context Count
+                            <Run Text="{loc:Text Key=Text_A90276D1C260DF3E}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="The number of subtitles to be sent together. Increasing the number increases the accuracy of the translation, but also the load and tokens."
+                                        Text="{loc:Text Key=Text_6F05CB6FDEB72035}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -563,22 +559,20 @@
                     <StackPanel Orientation="Horizontal" Visibility="{Binding FL.PlayerConfig.Subtitles.TranslateChatConfig.TranslateMethod, Converter={StaticResource EnumToVisibilityConv}, ConverterParameter={x:Static flyleafTranslate:ChatTranslateMethod.KeepContext}}">
                         <TextBlock
                             Width="180">
-                            Context Retain Policy
+                            <Run Text="{loc:Text Key=Text_344A6BCFEF562A84}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="[Reset]"/>
+                                        <Run Text="{loc:Text Key=Text_CA63805439F880CE}"/>
                                         <LineBreak />
-                                        Reset the message count to 0 when Subtitle Context Count is reached.
-                                        Immediately after reset, context is not taken into account, but the translation result is stable.
+                                        <Run Text="{loc:Text Key=Text_464E19937424035A}" />
                                         <LineBreak />
                                         <LineBreak />
-                                        <Run Text="[KeepSize]"/>
+                                        <Run Text="{loc:Text Key=Text_5EEEC077E887A319}"/>
                                         <LineBreak />
-                                        It always adjusts the number of messages according to the Subtitle Context Count.
-                                        This increases accuracy because the translation is always context-sensitive, but once an incorrect result is generated, it tends to remain incorrect.
+                                        <Run Text="{loc:Text Key=Text_3FD8EC4AAF845A6B}" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
                                 <materialDesign:PackIcon
@@ -596,18 +590,18 @@
                     <DockPanel Margin="0 0 0 8" Visibility="{Binding FL.PlayerConfig.Subtitles.TranslateChatConfig.TranslateMethod, Converter={StaticResource EnumToVisibilityConv}, ConverterParameter={x:Static flyleafTranslate:ChatTranslateMethod.KeepContext}}">
                         <TextBlock
                             Width="180">
-                            Chat Prompt (KeepContext)
+                            <Run Text="{loc:Text Key=Text_E42452A43D2C062F}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="Prompt to send to chat. Certain strings will be replaced by the following."/>
+                                        <Run Text="{loc:Text Key=Text_1275D4971E4546CC}"/>
                                         <LineBreak />
                                         <LineBreak />
-                                        {source_lang} -> English
+                                        {source_lang} -> <Run Text="{loc:Text Key=Text_BA118BF7FC9C1AED}" />
                                         <LineBreak />
-                                        {target_lang} -> Spanish
+                                        {target_lang} -> <Run Text="{loc:Text Key=Text_3411059CB8E0660E}" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
                                 <materialDesign:PackIcon
@@ -632,7 +626,7 @@
                             <Button
                                 Command="{Binding CmdSetDefaultPromptKeepContext}"
                                 HorizontalAlignment="Left"
-                                Content="Set Default"
+                                Content="{loc:Text Key=Text_C365F1CB6D8E84E7}"
                                 Margin="10 10 0 0" />
                         </StackPanel>
                     </DockPanel>
@@ -640,20 +634,20 @@
                     <DockPanel Margin="0 0 0 8" Visibility="{Binding FL.PlayerConfig.Subtitles.TranslateChatConfig.TranslateMethod, Converter={StaticResource EnumToVisibilityConv}, ConverterParameter={x:Static flyleafTranslate:ChatTranslateMethod.OneByOne}}">
                         <TextBlock
                             Width="180">
-                            Chat Prompt (OneByOne)
+                            <Run Text="{loc:Text Key=Text_5990C56589F6D7AE}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="Prompt to send to chat. Certain strings will be replaced by the following."/>
+                                        <Run Text="{loc:Text Key=Text_1275D4971E4546CC}"/>
                                         <LineBreak />
                                         <LineBreak />
-                                        {source_lang} -> English
+                                        {source_lang} -> <Run Text="{loc:Text Key=Text_BA118BF7FC9C1AED}" />
                                         <LineBreak />
-                                        {target_lang} -> Spanish
+                                        {target_lang} -> <Run Text="{loc:Text Key=Text_3411059CB8E0660E}" />
                                         <LineBreak />
-                                        {source_text} -> Good morning.
+                                        {source_text} -> <Run Text="{loc:Text Key=Text_E3522EADCA07C950}" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
                                 <materialDesign:PackIcon
@@ -678,7 +672,7 @@
                             <Button
                                 Command="{Binding CmdSetDefaultPromptOneByOne}"
                                 HorizontalAlignment="Left"
-                                Content="Set Default"
+                                Content="{loc:Text Key=Text_C365F1CB6D8E84E7}"
                                 Margin="10 10 0 0" />
                         </StackPanel>
                     </DockPanel>
@@ -686,18 +680,18 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Include Target Language Region
+                            <Run Text="{loc:Text Key=Text_AA7CDEC21A7C5BDD}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="Whether to include regional information in the {target_lang} of the prompt as follows."/>
+                                        <Run Text="{loc:Text Key=Text_116F4840E6CCF3A9}"/>
                                         <LineBreak />
                                         <LineBreak />
-                                        When On:  {target_lang} -> English (American), Chinese (Simplified)
+                                        When On:  {target_lang} -> <Run Text="{loc:Text Key=Text_9A464984200F239F}" />
                                         <LineBreak />
-                                        When Off: {target_lang} -> English, Chinese
+                                        When Off: {target_lang} -> <Run Text="{loc:Text Key=Text_C946ABA6FFCCC0E0}" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
                                 <materialDesign:PackIcon

@@ -1,0 +1,3547 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Text_01BBDF1DED5EB1A5" xml:space="preserve">
+    <value>    Manual Engine Path</value>
+    <comment>    Manual Engine Path</comment>
+  </data>
+  <data name="Text_7866AF405AC3D69E" xml:space="preserve">
+    <value>    Manual Model Directory</value>
+    <comment>    Manual Model Directory</comment>
+  </data>
+  <data name="Text_4C300A3DE3EFCEA1" xml:space="preserve">
+    <value>    [Is English Model]</value>
+    <comment>    [Is English Model]</comment>
+  </data>
+  <data name="Text_FEC34606161EC115" xml:space="preserve">
+    <value>  Search Local Paths</value>
+    <comment>  Search Local Paths</comment>
+  </data>
+  <data name="Text_258AD9EFF7B01EF6" xml:space="preserve">
+    <value> #{0} ({1}) {2} @{3}Hz [CH: {4}] [Bits: {5}]</value>
+    <comment> #{0} ({1}) {2} @{3}Hz [CH: {4}] [Bits: {5}]</comment>
+  </data>
+  <data name="Text_1EDCEBAF6E253C2D" xml:space="preserve">
+    <value> ({0}) {1} [BitRate: {2}] [{3}]</value>
+    <comment> ({0}) {1} [BitRate: {2}] [{3}]</comment>
+  </data>
+  <data name="Text_046350B2C0C34AD6" xml:space="preserve">
+    <value> A WPF font and color dialog</value>
+    <comment> A WPF font and color dialog</comment>
+  </data>
+  <data name="Text_1CD714466E470C9E" xml:space="preserve">
+    <value>'{0}' extension is not supported</value>
+    <comment>'{0}' extension is not supported</comment>
+  </data>
+  <data name="Text_B55E12D9089986F7" xml:space="preserve">
+    <value>(Defaults to 1) An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.</value>
+    <comment>(Defaults to 1) An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.</comment>
+  </data>
+  <data name="Text_9827F64884858FCA" xml:space="preserve">
+    <value>(Defaults to 1) What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.</value>
+    <comment>(Defaults to 1) What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.</comment>
+  </data>
+  <data name="Text_4CEC3B785EC9FBAC" xml:space="preserve">
+    <value>(For Japanese-speaking learners of English)</value>
+    <comment>(For Japanese-speaking learners of English)</comment>
+  </data>
+  <data name="Text_360D3D82D8C9B3F9" xml:space="preserve">
+    <value>(maybe deprecated) The maximum number of tokens that can be generated in the chat completion. This value can be used to control costs for text generated via API. This value is now deprecated in favor of max_completion_tokens, and is not compatible with o-series models.</value>
+    <comment>(maybe deprecated) The maximum number of tokens that can be generated in the chat completion. This value can be used to control costs for text generated via API. This value is now deprecated in favor of max_completion_tokens, and is not compatible with o-series models.</comment>
+  </data>
+  <data name="Text_3BFF4D971DB77AAB" xml:space="preserve">
+    <value>- video.en.srt (language is set from the lang code)</value>
+    <comment>- video.en.srt (language is set from the lang code)</comment>
+  </data>
+  <data name="Text_8C0F929BA7130549" xml:space="preserve">
+    <value>- video.eng.srt (same as above)</value>
+    <comment>- video.eng.srt (same as above)</comment>
+  </data>
+  <data name="Text_DF40182FD1B06B52" xml:space="preserve">
+    <value>- video.foo.srt (language is auto-detected)</value>
+    <comment>- video.foo.srt (language is auto-detected)</comment>
+  </data>
+  <data name="Text_E4963C1A7322C900" xml:space="preserve">
+    <value>.NET bindings for Direct3D11, XAudio, etc.</value>
+    <comment>.NET bindings for Direct3D11, XAudio, etc.</comment>
+  </data>
+  <data name="Text_30DD12478A3E6449" xml:space="preserve">
+    <value>.NET wrapper for Tesseract OCR</value>
+    <comment>.NET wrapper for Tesseract OCR</comment>
+  </data>
+  <data name="Text_706C8B20C6E31CE0" xml:space="preserve">
+    <value>0 for Auto</value>
+    <comment>0 for Auto</comment>
+  </data>
+  <data name="Text_04A465807D33E8D3" xml:space="preserve">
+    <value>1st Visible</value>
+    <comment>1st Visible</comment>
+  </data>
+  <data name="Text_D95355B476AAE8A0" xml:space="preserve">
+    <value>2nd Visible</value>
+    <comment>2nd Visible</comment>
+  </data>
+  <data name="Text_6C5D197744FEA1C6" xml:space="preserve">
+    <value>A framework for building MVVM application</value>
+    <comment>A framework for building MVVM application</comment>
+  </data>
+  <data name="Text_C06F13ED25C0C370" xml:space="preserve">
+    <value>A restart is required for the settings to take effect. Do you want to restart?</value>
+    <comment>A restart is required for the settings to take effect. Do you want to restart?</comment>
+  </data>
+  <data name="Text_23189D55F6973F2C" xml:space="preserve">
+    <value>API Key</value>
+    <comment>API Key</comment>
+  </data>
+  <data name="Text_1C9ED9C40DB809DB" xml:space="preserve">
+    <value>API Key (optional)</value>
+    <comment>API Key (optional)</comment>
+  </data>
+  <data name="Text_BFA8070BD95ECF82" xml:space="preserve">
+    <value>ASR</value>
+    <comment>ASR</comment>
+  </data>
+  <data name="Text_A7D66D756A9272DA" xml:space="preserve">
+    <value>ASR ({0})</value>
+    <comment>ASR ({0})</comment>
+  </data>
+  <data name="Text_E2FCDB54ACE9FC58" xml:space="preserve">
+    <value>ASR settings</value>
+    <comment>ASR settings</comment>
+  </data>
+  <data name="Text_4EFCA0D10C5FEB8E" xml:space="preserve">
+    <value>About</value>
+    <comment>About</comment>
+  </data>
+  <data name="Text_45A2A9874EA9B623" xml:space="preserve">
+    <value>AboveNormal</value>
+    <comment>AboveNormal</comment>
+  </data>
+  <data name="Text_91663A8E5FA01CD7" xml:space="preserve">
+    <value>Acceleration</value>
+    <comment>Acceleration</comment>
+  </data>
+  <data name="Text_E6F9742F068A779B" xml:space="preserve">
+    <value>Accurate</value>
+    <comment>Accurate</comment>
+  </data>
+  <data name="Text_64CFF1319D2FD2CB" xml:space="preserve">
+    <value>Action</value>
+    <comment>Action</comment>
+  </data>
+  <data name="Text_ED364A7BCEE01DD9" xml:space="preserve">
+    <value>Activate Subtitles Search in Sidebar</value>
+    <comment>Activate Subtitles Search in Sidebar</comment>
+  </data>
+  <data name="Text_9FD728C66C9A256B" xml:space="preserve">
+    <value>Add</value>
+    <comment>Add</comment>
+  </data>
+  <data name="Text_7CEBB5581379DC03" xml:space="preserve">
+    <value>Add Clipboard</value>
+    <comment>Add Clipboard</comment>
+  </data>
+  <data name="Text_7B7D45224342142B" xml:space="preserve">
+    <value>Add ClipboardAll</value>
+    <comment>Add ClipboardAll</comment>
+  </data>
+  <data name="Text_F020B15CCD6E7EB5" xml:space="preserve">
+    <value>Add Search</value>
+    <comment>Add Search</comment>
+  </data>
+  <data name="Text_38FDD72B05EA186D" xml:space="preserve">
+    <value>Additional arguments to faster-whisper-xxl.exe in string format. For details, execute the --help command from the Copy Help Command below.</value>
+    <comment>Additional arguments to faster-whisper-xxl.exe in string format. For details, execute the --help command from the Copy Help Command below.</comment>
+  </data>
+  <data name="Text_3FAB27016838A2AA" xml:space="preserve">
+    <value>Adjust the delay so that this subtitle is currently playing.</value>
+    <comment>Adjust the delay so that this subtitle is currently playing.</comment>
+  </data>
+  <data name="Text_9D597870C4B3F76D" xml:space="preserve">
+    <value>Alignment</value>
+    <comment>Alignment</comment>
+  </data>
+  <data name="Text_A52ACE420F2175D0" xml:space="preserve">
+    <value>All</value>
+    <comment>All</comment>
+  </data>
+  <data name="Text_5C281A560414EB37" xml:space="preserve">
+    <value>All Files (*.*)|*.*</value>
+    <comment>All Files (*.*)|*.*</comment>
+  </data>
+  <data name="Text_7E8F0B964D60B91B" xml:space="preserve">
+    <value>Always On Top</value>
+    <comment>Always On Top</comment>
+  </data>
+  <data name="Text_5933B58FE08C2CF0" xml:space="preserve">
+    <value>Always Seek Accurate</value>
+    <comment>Always Seek Accurate</comment>
+  </data>
+  <data name="Text_1B2246608D92998D" xml:space="preserve">
+    <value>Always Seek Accurate {0}</value>
+    <comment>Always Seek Accurate {0}</comment>
+  </data>
+  <data name="Text_5221E1563574512D" xml:space="preserve">
+    <value>Always on Top {0}</value>
+    <comment>Always on Top {0}</comment>
+  </data>
+  <data name="Text_5A72737EAEBAFFE8" xml:space="preserve">
+    <value>An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens.</value>
+    <comment>An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens.</comment>
+  </data>
+  <data name="Text_0D04BFEB7D64B71C" xml:space="preserve">
+    <value>App</value>
+    <comment>App</comment>
+  </data>
+  <data name="Text_31E392D1C0378BEC" xml:space="preserve">
+    <value>Apply</value>
+    <comment>Apply</comment>
+  </data>
+  <data name="Text_556F85EFA2BEEC52" xml:space="preserve">
+    <value>Aspect Ratio</value>
+    <comment>Aspect Ratio</comment>
+  </data>
+  <data name="Text_8DCC1C287E8B6BC3" xml:space="preserve">
+    <value>Aspect Ratio {0}</value>
+    <comment>Aspect Ratio {0}</comment>
+  </data>
+  <data name="Text_BC1B88907D3B748A" xml:space="preserve">
+    <value>Audio</value>
+    <comment>Audio</comment>
+  </data>
+  <data name="Text_B17602838FF2E249" xml:space="preserve">
+    <value>Audio Chunk Seconds (sec)</value>
+    <comment>Audio Chunk Seconds (sec)</comment>
+  </data>
+  <data name="Text_9483651FDCF52BDB" xml:space="preserve">
+    <value>Audio Chunk Size (MB)</value>
+    <comment>Audio Chunk Size (MB)</comment>
+  </data>
+  <data name="Text_4EC17066B3B7C406" xml:space="preserve">
+    <value>Audio Delay {0}ms</value>
+    <comment>Audio Delay {0}ms</comment>
+  </data>
+  <data name="Text_09544BE7E8A57D86" xml:space="preserve">
+    <value>Audio Frames Max</value>
+    <comment>Audio Frames Max</comment>
+  </data>
+  <data name="Text_E4964FD4FE5021C1" xml:space="preserve">
+    <value>Audio Language</value>
+    <comment>Audio Language</comment>
+  </data>
+  <data name="Text_7C15BF119B5D9827" xml:space="preserve">
+    <value>Audio Language (Priority to the above)</value>
+    <comment>Audio Language (Priority to the above)</comment>
+  </data>
+  <data name="Text_AF47B7C85398ED04" xml:space="preserve">
+    <value>Audio Streams</value>
+    <comment>Audio Streams</comment>
+  </data>
+  <data name="Text_81F85F313A7240D2" xml:space="preserve">
+    <value>Audio language can be set manually. If automatic detection is used, it will take precedence.</value>
+    <comment>Audio language can be set manually. If automatic detection is used, it will take precedence.</comment>
+  </data>
+  <data name="Text_FEA7EC1B5440F8AA" xml:space="preserve">
+    <value>Audio {0}</value>
+    <comment>Audio {0}</comment>
+  </data>
+  <data name="Text_3B50A33D783B039E" xml:space="preserve">
+    <value>AudioContextSize</value>
+    <comment>AudioContextSize</comment>
+  </data>
+  <data name="Text_068DAB7254E3ED56" xml:space="preserve">
+    <value>AudioVideo</value>
+    <comment>AudioVideo</comment>
+  </data>
+  <data name="Text_6B69792DAABF25F7" xml:space="preserve">
+    <value>Audios via YoutubeDL are also affected.</value>
+    <comment>Audios via YoutubeDL are also affected.</comment>
+  </data>
+  <data name="Text_0286249762F7C943" xml:space="preserve">
+    <value>Auto</value>
+    <comment>Auto</comment>
+  </data>
+  <data name="Text_9FB389D1B85829F0" xml:space="preserve">
+    <value>Auto Detect</value>
+    <comment>Auto Detect</comment>
+  </data>
+  <data name="Text_FCD71439D781EB63" xml:space="preserve">
+    <value>Auto Language Detection</value>
+    <comment>Auto Language Detection</comment>
+  </data>
+  <data name="Text_FFE5A4C67213462F" xml:space="preserve">
+    <value>Auto Set</value>
+    <comment>Auto Set</comment>
+  </data>
+  <data name="Text_6563232712CAE6F1" xml:space="preserve">
+    <value>Auto Text Copy</value>
+    <comment>Auto Text Copy</comment>
+  </data>
+  <data name="Text_13558313E4CB2AB3" xml:space="preserve">
+    <value>Auto Text Copy Target</value>
+    <comment>Auto Text Copy Target</comment>
+  </data>
+  <data name="Text_0198E7359F0E6700" xml:space="preserve">
+    <value>Auto-Translate</value>
+    <comment>Auto-Translate</comment>
+  </data>
+  <data name="Text_311B9009B14313B2" xml:space="preserve">
+    <value>Automatically detects language from text subtitle. Accurate language identification allows for the translation function. Memory usage will increase slightly.</value>
+    <comment>Automatically detects language from text subtitle. Accurate language identification allows for the translation function. Memory usage will increase slightly.</comment>
+  </data>
+  <data name="Text_CFAFB772084ED0DF" xml:space="preserve">
+    <value>Available Languages</value>
+    <comment>Available Languages</comment>
+  </data>
+  <data name="Text_30DD4146B4744C2C" xml:space="preserve">
+    <value>Available Options</value>
+    <comment>Available Options</comment>
+  </data>
+  <data name="Text_B48BC969E914F8C9" xml:space="preserve">
+    <value>Background Color</value>
+    <comment>Background Color</comment>
+  </data>
+  <data name="Text_47AF11BD5E415745" xml:space="preserve">
+    <value>Background Opacity</value>
+    <comment>Background Opacity</comment>
+  </data>
+  <data name="Text_7B41C7FF336880E9" xml:space="preserve">
+    <value>Background Opacity (2nd)</value>
+    <comment>Background Opacity (2nd)</comment>
+  </data>
+  <data name="Text_8F6CB71474784FBB" xml:space="preserve">
+    <value>BelowNormal</value>
+    <comment>BelowNormal</comment>
+  </data>
+  <data name="Text_97F9FDB59F828152" xml:space="preserve">
+    <value>BitRate</value>
+    <comment>BitRate</comment>
+  </data>
+  <data name="Text_52C19F8FCD1A44BB" xml:space="preserve">
+    <value>BitRate (Audio)</value>
+    <comment>BitRate (Audio)</comment>
+  </data>
+  <data name="Text_5E364E6FD37F8138" xml:space="preserve">
+    <value>BitRate (Video)</value>
+    <comment>BitRate (Video)</comment>
+  </data>
+  <data name="Text_61EE412DA7DA77E8" xml:space="preserve">
+    <value>BitStreamFilters</value>
+    <comment>BitStreamFilters</comment>
+  </data>
+  <data name="Text_EC9E18A347A5EE5C" xml:space="preserve">
+    <value>Bitmap Position (Primary) (0-150%)</value>
+    <comment>Bitmap Position (Primary) (0-150%)</comment>
+  </data>
+  <data name="Text_06D5F40ED59448A0" xml:space="preserve">
+    <value>Bitmap Scale (Primary)</value>
+    <comment>Bitmap Scale (Primary)</comment>
+  </data>
+  <data name="Text_CC81CCFE6D387CCA" xml:space="preserve">
+    <value>Bitmap Scale (Secondary)</value>
+    <comment>Bitmap Scale (Secondary)</comment>
+  </data>
+  <data name="Text_AA797F38221E9488" xml:space="preserve">
+    <value>Bitmap Scale Offset (%)</value>
+    <comment>Bitmap Scale Offset (%)</comment>
+  </data>
+  <data name="Text_B6C1D862F9F75EC3" xml:space="preserve">
+    <value>Both</value>
+    <comment>Both</comment>
+  </data>
+  <data name="Text_479AD21AC9096236" xml:space="preserve">
+    <value>Bottom</value>
+    <comment>Bottom</comment>
+  </data>
+  <data name="Text_B58E6A68F9E75AAD" xml:space="preserve">
+    <value>BottomField</value>
+    <comment>BottomField</comment>
+  </data>
+  <data name="Text_ACC0BF8061D4D95C" xml:space="preserve">
+    <value>BottomFieldFirst</value>
+    <comment>BottomFieldFirst</comment>
+  </data>
+  <data name="Text_EC811D30A89CE96D" xml:space="preserve">
+    <value>Brightness</value>
+    <comment>Brightness</comment>
+  </data>
+  <data name="Text_E44193FD2D21722A" xml:space="preserve">
+    <value>Buffer</value>
+    <comment>Buffer</comment>
+  </data>
+  <data name="Text_47EFA6C8CB356B7B" xml:space="preserve">
+    <value>Buffer Duration Max (ms)</value>
+    <comment>Buffer Duration Max (ms)</comment>
+  </data>
+  <data name="Text_79D9F95498818301" xml:space="preserve">
+    <value>Buffer Duration Min (ms)</value>
+    <comment>Buffer Duration Min (ms)</comment>
+  </data>
+  <data name="Text_14CC52C3CEA6DD92" xml:space="preserve">
+    <value>Buffer Flushed</value>
+    <comment>Buffer Flushed</comment>
+  </data>
+  <data name="Text_C08626D0A514A53B" xml:space="preserve">
+    <value>Buffering</value>
+    <comment>Buffering</comment>
+  </data>
+  <data name="Text_B6C86815FBECA34A" xml:space="preserve">
+    <value>Can't get the download result, base64 data is not found.</value>
+    <comment>Can't get the download result, base64 data is not found.</comment>
+  </data>
+  <data name="Text_057784D54553871E" xml:space="preserve">
+    <value>Can't get the download result, data is not found.</value>
+    <comment>Can't get the download result, data is not found.</comment>
+  </data>
+  <data name="Text_3E43BE29FED3F933" xml:space="preserve">
+    <value>Can't get the download result, decompressed data is not found.</value>
+    <comment>Can't get the download result, decompressed data is not found.</comment>
+  </data>
+  <data name="Text_60F8EA78E29FE5D4" xml:space="preserve">
+    <value>Can't get the download result, status is not 200.</value>
+    <comment>Can't get the download result, status is not 200.</comment>
+  </data>
+  <data name="Text_6778B18AC41C4207" xml:space="preserve">
+    <value>Can't get the search result, data is not found.</value>
+    <comment>Can't get the search result, data is not found.</comment>
+  </data>
+  <data name="Text_414A3754E4FB1A7D" xml:space="preserve">
+    <value>Can't get the search result, status is not 200.</value>
+    <comment>Can't get the search result, status is not 200.</comment>
+  </data>
+  <data name="Text_6928BE56B0866D80" xml:space="preserve">
+    <value>Can't login because status is '{0}'</value>
+    <comment>Can't login because status is '{0}'</comment>
+  </data>
+  <data name="Text_91BEF326410E0702" xml:space="preserve">
+    <value>Can't login because token is empty</value>
+    <comment>Can't login because token is empty</comment>
+  </data>
+  <data name="Text_0D673FFC4E440F17" xml:space="preserve">
+    <value>Can't parse the download content: {0}</value>
+    <comment>Can't parse the download content: {0}</comment>
+  </data>
+  <data name="Text_8EEFBA5B52F1A886" xml:space="preserve">
+    <value>Can't parse the login content: {0}</value>
+    <comment>Can't parse the login content: {0}</comment>
+  </data>
+  <data name="Text_842CDC5D1E9E08AE" xml:space="preserve">
+    <value>Can't parse the search content: {0}</value>
+    <comment>Can't parse the search content: {0}</comment>
+  </data>
+  <data name="Text_19766ED6CCB2F4A3" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="Text_606011829979353B" xml:space="preserve">
+    <value>Cannot download the subtitle from opensubtitles.org: {0}</value>
+    <comment>Cannot download the subtitle from opensubtitles.org: {0}</comment>
+  </data>
+  <data name="Text_F3DF9EFB643D5379" xml:space="preserve">
+    <value>Cannot load AppConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</value>
+    <comment>Cannot load AppConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</comment>
+  </data>
+  <data name="Text_88DB57E28C22CB87" xml:space="preserve">
+    <value>Cannot load EngineConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</value>
+    <comment>Cannot load EngineConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</comment>
+  </data>
+  <data name="Text_78E41837DA22724F" xml:space="preserve">
+    <value>Cannot load PlayerConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</value>
+    <comment>Cannot load PlayerConfig from {0}, Please review the settings or delete the config file. Error details are recorded in {1}.</comment>
+  </data>
+  <data name="Text_2124594B1707D4F4" xml:space="preserve">
+    <value>Cannot load the subtitle from opensubtitles.org: {0}</value>
+    <comment>Cannot load the subtitle from opensubtitles.org: {0}</comment>
+  </data>
+  <data name="Text_039987BF4DB48434" xml:space="preserve">
+    <value>Cannot save because of duplicate shortcut key. Please disable or delete it or change the modifier key to make it unique.</value>
+    <comment>Cannot save because of duplicate shortcut key. Please disable or delete it or change the modifier key to make it unique.</comment>
+  </data>
+  <data name="Text_DF351A1D5A4055C7" xml:space="preserve">
+    <value>Cannot search subtitles from opensubtitles.org: {0}</value>
+    <comment>Cannot search subtitles from opensubtitles.org: {0}</comment>
+  </data>
+  <data name="Text_D946067427E930A1" xml:space="preserve">
+    <value>Center</value>
+    <comment>Center</comment>
+  </data>
+  <data name="Text_681B81B6723B4B21" xml:space="preserve">
+    <value>Change Font Size</value>
+    <comment>Change Font Size</comment>
+  </data>
+  <data name="Text_51BE0868BB007BFD" xml:space="preserve">
+    <value>Change to FullScreen</value>
+    <comment>Change to FullScreen</comment>
+  </data>
+  <data name="Text_356A1E05E49EAA36" xml:space="preserve">
+    <value>Change to NormalScreen</value>
+    <comment>Change to NormalScreen</comment>
+  </data>
+  <data name="Text_72BFC52235E71BFA" xml:space="preserve">
+    <value>Channel Layout</value>
+    <comment>Channel Layout</comment>
+  </data>
+  <data name="Text_4C8906CF76F5740A" xml:space="preserve">
+    <value>Channels</value>
+    <comment>Channels</comment>
+  </data>
+  <data name="Text_9831375BC65196D8" xml:space="preserve">
+    <value>Chapters</value>
+    <comment>Chapters</comment>
+  </data>
+  <data name="Text_4E955DB26712FAD3" xml:space="preserve">
+    <value>Character set detector build in C#</value>
+    <comment>Character set detector build in C#</comment>
+  </data>
+  <data name="Text_E42452A43D2C062F" xml:space="preserve">
+    <value>Chat Prompt (KeepContext)</value>
+    <comment>Chat Prompt (KeepContext)</comment>
+  </data>
+  <data name="Text_5990C56589F6D7AE" xml:space="preserve">
+    <value>Chat Prompt (OneByOne)</value>
+    <comment>Chat Prompt (OneByOne)</comment>
+  </data>
+  <data name="Text_17682E5DC3458A89" xml:space="preserve">
+    <value>Cheat Sheet</value>
+    <comment>Cheat Sheet</comment>
+  </data>
+  <data name="Text_362ED5B55313AC35" xml:space="preserve">
+    <value>CheatSheet - {0}</value>
+    <comment>CheatSheet - {0}</comment>
+  </data>
+  <data name="Text_9D60841E0A7891DF" xml:space="preserve">
+    <value>Check</value>
+    <comment>Check</comment>
+  </data>
+  <data name="Text_2E5F79BB94A8C40B" xml:space="preserve">
+    <value>Checking...</value>
+    <comment>Checking...</comment>
+  </data>
+  <data name="Text_4DD7D1FCD2697352" xml:space="preserve">
+    <value>Chichewa (Nyanja)</value>
+    <comment>Chichewa (Nyanja)</comment>
+  </data>
+  <data name="Text_237635FCA547A70D" xml:space="preserve">
+    <value>Chinese (Simplified)</value>
+    <comment>Chinese (Simplified)</comment>
+  </data>
+  <data name="Text_086E0A73E92409E7" xml:space="preserve">
+    <value>Chinese (Traditional)</value>
+    <comment>Chinese (Traditional)</comment>
+  </data>
+  <data name="Text_B24F8E9268EA91BD" xml:space="preserve">
+    <value>Chinese may have multiple engines for their regions. Please specify what you want to use.</value>
+    <comment>Chinese may have multiple engines for their regions. Please specify what you want to use.</comment>
+  </data>
+  <data name="Text_698651F65B6D4A83" xml:space="preserve">
+    <value>ChineseSimplified</value>
+    <comment>ChineseSimplified</comment>
+  </data>
+  <data name="Text_94702FF1E3562523" xml:space="preserve">
+    <value>ChineseTraditional</value>
+    <comment>ChineseTraditional</comment>
+  </data>
+  <data name="Text_139503899BD1DFAC" xml:space="preserve">
+    <value>Clear search (Esc)</value>
+    <comment>Clear search (Esc)</comment>
+  </data>
+  <data name="Text_285D69F0C5D1A00B" xml:space="preserve">
+    <value>Clipboard</value>
+    <comment>Clipboard</comment>
+  </data>
+  <data name="Text_94234FC8737AB464" xml:space="preserve">
+    <value>ClipboardAll</value>
+    <comment>ClipboardAll</comment>
+  </data>
+  <data name="Text_C88FE7866233410F" xml:space="preserve">
+    <value>Clone App</value>
+    <comment>Clone App</comment>
+  </data>
+  <data name="Text_7D6F5393980D2028" xml:space="preserve">
+    <value>Clone Row</value>
+    <comment>Clone Row</comment>
+  </data>
+  <data name="Text_7D9EB7ACB13E2462" xml:space="preserve">
+    <value>Close</value>
+    <comment>Close</comment>
+  </data>
+  <data name="Text_6EF9FF47B4AEA74C" xml:space="preserve">
+    <value>Close the dialog without saving to the config file. The changes are reflected until restart.</value>
+    <comment>Close the dialog without saving to the config file. The changes are reflected until restart.</comment>
+  </data>
+  <data name="Text_340F463033E0FD5D" xml:space="preserve">
+    <value>Code</value>
+    <comment>Code</comment>
+  </data>
+  <data name="Text_E184853401081B4F" xml:space="preserve">
+    <value>Codec</value>
+    <comment>Codec</comment>
+  </data>
+  <data name="Text_7151272941560B0C" xml:space="preserve">
+    <value>Color Format</value>
+    <comment>Color Format</comment>
+  </data>
+  <data name="Text_E4C21B9CB3BDB18B" xml:space="preserve">
+    <value>Commit: </value>
+    <comment>Commit: </comment>
+  </data>
+  <data name="Text_0BBBAC99E9E992F7" xml:space="preserve">
+    <value>Common: </value>
+    <comment>Common: </comment>
+  </data>
+  <data name="Text_6DEFAFA2CAA65304" xml:space="preserve">
+    <value>Configure</value>
+    <comment>Configure</comment>
+  </data>
+  <data name="Text_DF90B7BB41E271BE" xml:space="preserve">
+    <value>Confirm to restart</value>
+    <comment>Confirm to restart</comment>
+  </data>
+  <data name="Text_344A6BCFEF562A84" xml:space="preserve">
+    <value>Context Retain Policy</value>
+    <comment>Context Retain Policy</comment>
+  </data>
+  <data name="Text_08795BA031BCD121" xml:space="preserve">
+    <value>Contrast</value>
+    <comment>Contrast</comment>
+  </data>
+  <data name="Text_E21F935F11D7E966" xml:space="preserve">
+    <value>Copy</value>
+    <comment>Copy</comment>
+  </data>
+  <data name="Text_7A1861E47D92E338" xml:space="preserve">
+    <value>Copy All</value>
+    <comment>Copy All</comment>
+  </data>
+  <data name="Text_4FC655BE77D05866" xml:space="preserve">
+    <value>Copy All Subtiltes Text</value>
+    <comment>Copy All Subtiltes Text</comment>
+  </data>
+  <data name="Text_D722DBFE76E604E6" xml:space="preserve">
+    <value>Copy All Subtitle Text</value>
+    <comment>Copy All Subtitle Text</comment>
+  </data>
+  <data name="Text_FB1E18E02CC80D06" xml:space="preserve">
+    <value>Copy Current Played Item to Clipboard</value>
+    <comment>Copy Current Played Item to Clipboard</comment>
+  </data>
+  <data name="Text_B72B2C120D567438" xml:space="preserve">
+    <value>Copy Debug Command</value>
+    <comment>Copy Debug Command</comment>
+  </data>
+  <data name="Text_7800C6C654A1CB93" xml:space="preserve">
+    <value>Copy Help Command</value>
+    <comment>Copy Help Command</comment>
+  </data>
+  <data name="Text_7CA900291E2E4F26" xml:space="preserve">
+    <value>Copy Opened Item to Clipboard</value>
+    <comment>Copy Opened Item to Clipboard</comment>
+  </data>
+  <data name="Text_8031CDDD890760F9" xml:space="preserve">
+    <value>Copy Primary Subtiltes Text</value>
+    <comment>Copy Primary Subtiltes Text</comment>
+  </data>
+  <data name="Text_512529C0B742DEB6" xml:space="preserve">
+    <value>Copy Secondary Subtiltes Text</value>
+    <comment>Copy Secondary Subtiltes Text</comment>
+  </data>
+  <data name="Text_720FF4160412B943" xml:space="preserve">
+    <value>Copy path</value>
+    <comment>Copy path</comment>
+  </data>
+  <data name="Text_26F7FE1AC74546ED" xml:space="preserve">
+    <value>Copy the text subtitle to the clipboard when it changes. Note that this does not work for bitmap subtitles. In that case, please use OCR to convert them to text.</value>
+    <comment>Copy the text subtitle to the clipboard when it changes. Note that this does not work for bitmap subtitles. In that case, please use OCR to convert them to text.</comment>
+  </data>
+  <data name="Text_FA8F2B6C07FB514C" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+    <comment>Copy to Clipboard</comment>
+  </data>
+  <data name="Text_FBFE5700D8DF4246" xml:space="preserve">
+    <value>Copy version to clipboard</value>
+    <comment>Copy version to clipboard</comment>
+  </data>
+  <data name="Text_43B34ACB35F76CAD" xml:space="preserve">
+    <value>Copy words on selected</value>
+    <comment>Copy words on selected</comment>
+  </data>
+  <data name="Text_D4C4DA1DA997415B" xml:space="preserve">
+    <value>Copy {0}</value>
+    <comment>Copy {0}</comment>
+  </data>
+  <data name="Text_1F6406E3C64A8ECE" xml:space="preserve">
+    <value>Copy {0} Subtitle Text</value>
+    <comment>Copy {0} Subtitle Text</comment>
+  </data>
+  <data name="Text_427DD2969BD140BE" xml:space="preserve">
+    <value>Critical</value>
+    <comment>Critical</comment>
+  </data>
+  <data name="Text_BF2C5996736A05B5" xml:space="preserve">
+    <value>Ctrl + Left Drag</value>
+    <comment>Ctrl + Left Drag</comment>
+  </data>
+  <data name="Text_B5BA46CC38166950" xml:space="preserve">
+    <value>Ctrl + Shift + Wheel</value>
+    <comment>Ctrl + Shift + Wheel</comment>
+  </data>
+  <data name="Text_14EF469163B207EF" xml:space="preserve">
+    <value>Ctrl + Wheel</value>
+    <comment>Ctrl + Wheel</comment>
+  </data>
+  <data name="Text_6E6A0720CFE8BE1F" xml:space="preserve">
+    <value>Ctrl + Wheel Click</value>
+    <comment>Ctrl + Wheel Click</comment>
+  </data>
+  <data name="Text_440C0677B0D06CCF" xml:space="preserve">
+    <value>CurTime</value>
+    <comment>CurTime</comment>
+  </data>
+  <data name="Text_51ABC6A74011D7E3" xml:space="preserve">
+    <value>Current Color</value>
+    <comment>Current Color</comment>
+  </data>
+  <data name="Text_494CA78F7374E46F" xml:space="preserve">
+    <value>Custom</value>
+    <comment>Custom</comment>
+  </data>
+  <data name="Text_1CEDCA29E93D058B" xml:space="preserve">
+    <value>Dark Title Bar</value>
+    <comment>Dark Title Bar</comment>
+  </data>
+  <data name="Text_1A03BD2FD107C453" xml:space="preserve">
+    <value>Debug</value>
+    <comment>Debug</comment>
+  </data>
+  <data name="Text_987F13F257E1C91E" xml:space="preserve">
+    <value>Decoder Threads</value>
+    <comment>Decoder Threads</comment>
+  </data>
+  <data name="Text_F911493279B276A2" xml:space="preserve">
+    <value>Decoders</value>
+    <comment>Decoders</comment>
+  </data>
+  <data name="Text_991E5AB396C965A1" xml:space="preserve">
+    <value>Decrease</value>
+    <comment>Decrease</comment>
+  </data>
+  <data name="Text_1472492B1CC439D9" xml:space="preserve">
+    <value>Decrease Audio Delay (1)</value>
+    <comment>Decrease Audio Delay (1)</comment>
+  </data>
+  <data name="Text_B735C062E6B4CC99" xml:space="preserve">
+    <value>Decrease Audio Delay (2)</value>
+    <comment>Decrease Audio Delay (2)</comment>
+  </data>
+  <data name="Text_791419E278E3A7A6" xml:space="preserve">
+    <value>Decrease Primary Subtitles Delay (1)</value>
+    <comment>Decrease Primary Subtitles Delay (1)</comment>
+  </data>
+  <data name="Text_8FDA70611D681F95" xml:space="preserve">
+    <value>Decrease Primary Subtitles Delay (2)</value>
+    <comment>Decrease Primary Subtitles Delay (2)</comment>
+  </data>
+  <data name="Text_646D6C3299F319F6" xml:space="preserve">
+    <value>Decrease Secondary Subtitles Delay (1)</value>
+    <comment>Decrease Secondary Subtitles Delay (1)</comment>
+  </data>
+  <data name="Text_C7435E9EC8BDE7BD" xml:space="preserve">
+    <value>Decrease Secondary Subtitles Delay (2)</value>
+    <comment>Decrease Secondary Subtitles Delay (2)</comment>
+  </data>
+  <data name="Text_21B111CBFE6E8FCA" xml:space="preserve">
+    <value>Default</value>
+    <comment>Default</comment>
+  </data>
+  <data name="Text_2ACD09A86693C652" xml:space="preserve">
+    <value>Default Device</value>
+    <comment>Default Device</comment>
+  </data>
+  <data name="Text_712C9D31DFCC0152" xml:space="preserve">
+    <value>Default Volume (%)</value>
+    <comment>Default Volume (%)</comment>
+  </data>
+  <data name="Text_E604E040FEBCE268" xml:space="preserve">
+    <value>Default: Whisper\Faster-Whisper-XXL\faster-whisper-xxl.exe</value>
+    <comment>Default: Whisper\Faster-Whisper-XXL\faster-whisper-xxl.exe</comment>
+  </data>
+  <data name="Text_41031FBA0FA032CA" xml:space="preserve">
+    <value>Default: whispermodels\</value>
+    <comment>Default: whispermodels\</comment>
+  </data>
+  <data name="Text_E551B1F1B22A75D5" xml:space="preserve">
+    <value>Deinterlace</value>
+    <comment>Deinterlace</comment>
+  </data>
+  <data name="Text_FD9B6DF3CDBC3D35" xml:space="preserve">
+    <value>Delay</value>
+    <comment>Delay</comment>
+  </data>
+  <data name="Text_199702C3A0B38E34" xml:space="preserve">
+    <value>Delay (ms)</value>
+    <comment>Delay (ms)</comment>
+  </data>
+  <data name="Text_B8A53A6EAC934DB9" xml:space="preserve">
+    <value>Delay ({0})</value>
+    <comment>Delay ({0})</comment>
+  </data>
+  <data name="Text_0728AE1FF62358E3" xml:space="preserve">
+    <value>Delay 1st ({0})</value>
+    <comment>Delay 1st ({0})</comment>
+  </data>
+  <data name="Text_C2CF1545B5DD43C6" xml:space="preserve">
+    <value>Delay 2nd ({0})</value>
+    <comment>Delay 2nd ({0})</comment>
+  </data>
+  <data name="Text_E7FF3A474AF03D88" xml:space="preserve">
+    <value>Delay Offset1 (ms)</value>
+    <comment>Delay Offset1 (ms)</comment>
+  </data>
+  <data name="Text_E8128F05BA9DD6A8" xml:space="preserve">
+    <value>Delay Offset1 (ms) </value>
+    <comment>Delay Offset1 (ms) </comment>
+  </data>
+  <data name="Text_0FEDFD3E47E91300" xml:space="preserve">
+    <value>Delay Offset2 (ms)</value>
+    <comment>Delay Offset2 (ms)</comment>
+  </data>
+  <data name="Text_DB0388CEA2E9C8EC" xml:space="preserve">
+    <value>Delay Primary (ms)</value>
+    <comment>Delay Primary (ms)</comment>
+  </data>
+  <data name="Text_AAF424C55F907EB0" xml:space="preserve">
+    <value>Delay Secondary (ms)</value>
+    <comment>Delay Secondary (ms)</comment>
+  </data>
+  <data name="Text_E2D0A54968EAD24E" xml:space="preserve">
+    <value>Delete</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="Text_43654C6556C7D0FC" xml:space="preserve">
+    <value>Delete Row</value>
+    <comment>Delete Row</comment>
+  </data>
+  <data name="Text_45F31139FF0F026B" xml:space="preserve">
+    <value>Demuxers</value>
+    <comment>Demuxers</comment>
+  </data>
+  <data name="Text_526E0087CC3F254D" xml:space="preserve">
+    <value>Description</value>
+    <comment>Description</comment>
+  </data>
+  <data name="Text_45989DE49FB7F66D" xml:space="preserve">
+    <value>Details</value>
+    <comment>Details</comment>
+  </data>
+  <data name="Text_6BA0BDECCB426D7B" xml:space="preserve">
+    <value>Device</value>
+    <comment>Device</comment>
+  </data>
+  <data name="Text_4BA5121D4D1BE174" xml:space="preserve">
+    <value>Devices</value>
+    <comment>Devices</comment>
+  </data>
+  <data name="Text_75081B593D15CF6E" xml:space="preserve">
+    <value>Disabled</value>
+    <comment>Disabled</comment>
+  </data>
+  <data name="Text_74272E90B157C930" xml:space="preserve">
+    <value>Distance ({0})</value>
+    <comment>Distance ({0})</comment>
+  </data>
+  <data name="Text_4DFF8A89565B1222" xml:space="preserve">
+    <value>Distance Offset</value>
+    <comment>Distance Offset</comment>
+  </data>
+  <data name="Text_DDE20D6699350501" xml:space="preserve">
+    <value>Do Action</value>
+    <comment>Do Action</comment>
+  </data>
+  <data name="Text_04549E7105813E6C" xml:space="preserve">
+    <value>Do last search on selected</value>
+    <comment>Do last search on selected</comment>
+  </data>
+  <data name="Text_E2F3C3C62EFC9293" xml:space="preserve">
+    <value>Dotnet bindings for OpenAI Whisper (whisper.cpp)</value>
+    <comment>Dotnet bindings for OpenAI Whisper (whisper.cpp)</comment>
+  </data>
+  <data name="Text_CD17ABFA38FFFC86" xml:space="preserve">
+    <value>Double Click to FullScreen</value>
+    <comment>Double Click to FullScreen</comment>
+  </data>
+  <data name="Text_EDF6549669CF1F30" xml:space="preserve">
+    <value>Double Rate</value>
+    <comment>Double Rate</comment>
+  </data>
+  <data name="Text_B86D11AF79188E58" xml:space="preserve">
+    <value>Down</value>
+    <comment>Down</comment>
+  </data>
+  <data name="Text_D6EAFE8235910042" xml:space="preserve">
+    <value>Download</value>
+    <comment>Download</comment>
+  </data>
+  <data name="Text_4FE58A9F465DF20B" xml:space="preserve">
+    <value>Download Engine</value>
+    <comment>Download Engine</comment>
+  </data>
+  <data name="Text_26AE614BDD1CAE44" xml:space="preserve">
+    <value>Download Model</value>
+    <comment>Download Model</comment>
+  </data>
+  <data name="Text_1F39D5550585E721" xml:space="preserve">
+    <value>Download canceled</value>
+    <comment>Download canceled</comment>
+  </data>
+  <data name="Text_0542EC9BD1D26C68" xml:space="preserve">
+    <value>Download subtitles</value>
+    <comment>Download subtitles</comment>
+  </data>
+  <data name="Text_F0B0738F75B8BCD1" xml:space="preserve">
+    <value>Downloaded</value>
+    <comment>Downloaded</comment>
+  </data>
+  <data name="Text_A9088C174040CBD8" xml:space="preserve">
+    <value>Downloaded Languages</value>
+    <comment>Downloaded Languages</comment>
+  </data>
+  <data name="Text_EB02015794BD421A" xml:space="preserve">
+    <value>DownloadsCnt</value>
+    <comment>DownloadsCnt</comment>
+  </data>
+  <data name="Text_4FC52A3C4C558B51" xml:space="preserve">
+    <value>Duration</value>
+    <comment>Duration</comment>
+  </data>
+  <data name="Text_A877D89C2AFBB818" xml:space="preserve">
+    <value>Embedded</value>
+    <comment>Embedded</comment>
+  </data>
+  <data name="Text_92C1CDFDF4CB9CF6" xml:space="preserve">
+    <value>Enabled</value>
+    <comment>Enabled</comment>
+  </data>
+  <data name="Text_1E1B04AD78D942DE" xml:space="preserve">
+    <value>Enabled Cached</value>
+    <comment>Enabled Cached</comment>
+  </data>
+  <data name="Text_58B630FB855B3CB8" xml:space="preserve">
+    <value>Encoders</value>
+    <comment>Encoders</comment>
+  </data>
+  <data name="Text_7CDC804E6996997D" xml:space="preserve">
+    <value>Ended</value>
+    <comment>Ended</comment>
+  </data>
+  <data name="Text_3DF9726C68BA76D6" xml:space="preserve">
+    <value>Endpoint</value>
+    <comment>Endpoint</comment>
+  </data>
+  <data name="Text_F24B4DD8F7E13651" xml:space="preserve">
+    <value>Engine '{0}' deleting...</value>
+    <comment>Engine '{0}' deleting...</comment>
+  </data>
+  <data name="Text_2A9394EEE2B5F54C" xml:space="preserve">
+    <value>Engine '{0}' downloading..</value>
+    <comment>Engine '{0}' downloading..</comment>
+  </data>
+  <data name="Text_C258AC0B0D00B86E" xml:space="preserve">
+    <value>Engine '{0}' is deleted successfully</value>
+    <comment>Engine '{0}' is deleted successfully</comment>
+  </data>
+  <data name="Text_A5C0C4D01817C37D" xml:space="preserve">
+    <value>Engine '{0}' is downloaded successfully</value>
+    <comment>Engine '{0}' is downloaded successfully</comment>
+  </data>
+  <data name="Text_F262377F70BADA70" xml:space="preserve">
+    <value>Engine '{0}' unzipping..</value>
+    <comment>Engine '{0}' unzipping..</comment>
+  </data>
+  <data name="Text_BA118BF7FC9C1AED" xml:space="preserve">
+    <value>English</value>
+    <comment>English</comment>
+  </data>
+  <data name="Text_367233C07D98DE28" xml:space="preserve">
+    <value>English (American)</value>
+    <comment>English (American)</comment>
+  </data>
+  <data name="Text_9A464984200F239F" xml:space="preserve">
+    <value>English (American), Chinese (Simplified)</value>
+    <comment>English (American), Chinese (Simplified)</comment>
+  </data>
+  <data name="Text_0AF67DE6E66AAE9C" xml:space="preserve">
+    <value>English (British)</value>
+    <comment>English (British)</comment>
+  </data>
+  <data name="Text_C946ABA6FFCCC0E0" xml:space="preserve">
+    <value>English, Chinese</value>
+    <comment>English, Chinese</comment>
+  </data>
+  <data name="Text_0466A4D3FA5ACF4E" xml:space="preserve">
+    <value>English, Chinese, and other languages may have multiple engines for their regions. Please specify what you want to use.</value>
+    <comment>English, Chinese, and other languages may have multiple engines for their regions. Please specify what you want to use.</comment>
+  </data>
+  <data name="Text_54A0E8C17EBB21A1" xml:space="preserve">
+    <value>Error</value>
+    <comment>Error</comment>
+  </data>
+  <data name="Text_9AB2D9AFBD512F60" xml:space="preserve">
+    <value>Error Occured</value>
+    <comment>Error Occured</comment>
+  </data>
+  <data name="Text_CB702378F31507EF" xml:space="preserve">
+    <value>Errors</value>
+    <comment>Errors</comment>
+  </data>
+  <data name="Text_E764C8F07A5014FA" xml:space="preserve">
+    <value>Exception Details</value>
+    <comment>Exception Details</comment>
+  </data>
+  <data name="Text_05EB5C876C541B03" xml:space="preserve">
+    <value>Exit App</value>
+    <comment>Exit App</comment>
+  </data>
+  <data name="Text_8AFC9542AB2B4454" xml:space="preserve">
+    <value>Exit Application</value>
+    <comment>Exit Application</comment>
+  </data>
+  <data name="Text_3664895579F0A7E6" xml:space="preserve">
+    <value>Export</value>
+    <comment>Export</comment>
+  </data>
+  <data name="Text_5B7E28EFCBC9A1CE" xml:space="preserve">
+    <value>Export UTF8 with BOM</value>
+    <comment>Export UTF8 with BOM</comment>
+  </data>
+  <data name="Text_4F52BD7C7C8E3B60" xml:space="preserve">
+    <value>Export subtitles as SRT</value>
+    <comment>Export subtitles as SRT</comment>
+  </data>
+  <data name="Text_2F47115CDD87F69F" xml:space="preserve">
+    <value>Export subtitles as srt</value>
+    <comment>Export subtitles as srt</comment>
+  </data>
+  <data name="Text_68C114EA9C8C6604" xml:space="preserve">
+    <value>External</value>
+    <comment>External</comment>
+  </data>
+  <data name="Text_96599B7797D3C4D8" xml:space="preserve">
+    <value>Extra Arguments</value>
+    <comment>Extra Arguments</comment>
+  </data>
+  <data name="Text_558EEE3F6ED9A138" xml:space="preserve">
+    <value>ExtraArguments</value>
+    <comment>ExtraArguments</comment>
+  </data>
+  <data name="Text_E66CEA58A0B16E49" xml:space="preserve">
+    <value>FFmpeg Bindings for C#/.NET</value>
+    <comment>FFmpeg Bindings for C#/.NET</comment>
+  </data>
+  <data name="Text_F876D18134315776" xml:space="preserve">
+    <value>FFmpeg Load Profile</value>
+    <comment>FFmpeg Load Profile</comment>
+  </data>
+  <data name="Text_031A8F0F659DF890" xml:space="preserve">
+    <value>Failed</value>
+    <comment>Failed</comment>
+  </data>
+  <data name="Text_18820161143A4943" xml:space="preserve">
+    <value>Failed to delete engine: {0}</value>
+    <comment>Failed to delete engine: {0}</comment>
+  </data>
+  <data name="Text_2F2B44FF4FC7F36B" xml:space="preserve">
+    <value>Failed to delete model: {0}</value>
+    <comment>Failed to delete model: {0}</comment>
+  </data>
+  <data name="Text_57110A674552D2D1" xml:space="preserve">
+    <value>Failed to download: {0}</value>
+    <comment>Failed to download: {0}</comment>
+  </data>
+  <data name="Text_AE37B34B7942319A" xml:space="preserve">
+    <value>Failed to execute faster-whisper</value>
+    <comment>Failed to execute faster-whisper</comment>
+  </data>
+  <data name="Text_6E04802B42A409BA" xml:space="preserve">
+    <value>Failed to open folder: {0}</value>
+    <comment>Failed to open folder: {0}</comment>
+  </data>
+  <data name="Text_9AEED423370E6A9C" xml:space="preserve">
+    <value>Failed to remove temp model</value>
+    <comment>Failed to remove temp model</comment>
+  </data>
+  <data name="Text_37E17259764AC93B" xml:space="preserve">
+    <value>Fallback Source Language (Primary)</value>
+    <comment>Fallback Source Language (Primary)</comment>
+  </data>
+  <data name="Text_D153E8139304DE49" xml:space="preserve">
+    <value>Fallback Source Language (Secondary)</value>
+    <comment>Fallback Source Language (Secondary)</comment>
+  </data>
+  <data name="Text_60A33E6CF5151F2D" xml:space="preserve">
+    <value>False</value>
+    <comment>False</comment>
+  </data>
+  <data name="Text_A46DB9B06642FC2F" xml:space="preserve">
+    <value>Faster-Whisper standalone executables</value>
+    <comment>Faster-Whisper standalone executables</comment>
+  </data>
+  <data name="Text_D04F4ECC104DE17C" xml:space="preserve">
+    <value>Fatal</value>
+    <comment>Fatal</comment>
+  </data>
+  <data name="Text_E316D2AD49B2586A" xml:space="preserve">
+    <value>FileName</value>
+    <comment>FileName</comment>
+  </data>
+  <data name="Text_033955D469B620D6" xml:space="preserve">
+    <value>Fill</value>
+    <comment>Fill</comment>
+  </data>
+  <data name="Text_546EBB8EB993EA56" xml:space="preserve">
+    <value>Filters</value>
+    <comment>Filters</comment>
+  </data>
+  <data name="Text_4089AD397656703E" xml:space="preserve">
+    <value>Fire an action</value>
+    <comment>Fire an action</comment>
+  </data>
+  <data name="Text_6A669591B269F84D" xml:space="preserve">
+    <value>Fire an action with the menu open</value>
+    <comment>Fire an action with the menu open</comment>
+  </data>
+  <data name="Text_CFE3010F90B77D0B" xml:space="preserve">
+    <value>Fix Overflow Bottom Margin (0-100%)</value>
+    <comment>Fix Overflow Bottom Margin (0-100%)</comment>
+  </data>
+  <data name="Text_2449D137EA15FD2B" xml:space="preserve">
+    <value>Flip</value>
+    <comment>Flip</comment>
+  </data>
+  <data name="Text_FF8EF2B1C4CDD88A" xml:space="preserve">
+    <value>Flushes the buffer of the player</value>
+    <comment>Flushes the buffer of the player</comment>
+  </data>
+  <data name="Text_6517E31CB629752A" xml:space="preserve">
+    <value>Flyleaf</value>
+    <comment>Flyleaf</comment>
+  </data>
+  <data name="Text_B3567E7A38053769" xml:space="preserve">
+    <value>Font Color</value>
+    <comment>Font Color</comment>
+  </data>
+  <data name="Text_8BFCFE82B9F28E0D" xml:space="preserve">
+    <value>Font Color (2nd)</value>
+    <comment>Font Color (2nd)</comment>
+  </data>
+  <data name="Text_F71A2C787A26EA06" xml:space="preserve">
+    <value>Font Size (1st)</value>
+    <comment>Font Size (1st)</comment>
+  </data>
+  <data name="Text_C1166C3DD8EFC54E" xml:space="preserve">
+    <value>Font Size (2nd)</value>
+    <comment>Font Size (2nd)</comment>
+  </data>
+  <data name="Text_1A3BF9C9F73509FC" xml:space="preserve">
+    <value>Font Size Offset</value>
+    <comment>Font Size Offset</comment>
+  </data>
+  <data name="Text_1DA0D3F3880B6402" xml:space="preserve">
+    <value>Font size decrease</value>
+    <comment>Font size decrease</comment>
+  </data>
+  <data name="Text_7B13271371D12AAE" xml:space="preserve">
+    <value>Font size increase</value>
+    <comment>Font size increase</comment>
+  </data>
+  <data name="Text_3680FCAD01F4BFC6" xml:space="preserve">
+    <value>Fonts</value>
+    <comment>Fonts</comment>
+  </data>
+  <data name="Text_00100AD46EE19373" xml:space="preserve">
+    <value>Fonts (2nd)</value>
+    <comment>Fonts (2nd)</comment>
+  </data>
+  <data name="Text_B17103173A213BE9" xml:space="preserve">
+    <value>Fonts...</value>
+    <comment>Fonts...</comment>
+  </data>
+  <data name="Text_2F343666AAA88C44" xml:space="preserve">
+    <value>Format</value>
+    <comment>Format</comment>
+  </data>
+  <data name="Text_2DF9E7D0461D2DC9" xml:space="preserve">
+    <value>Fps</value>
+    <comment>Fps</comment>
+  </data>
+  <data name="Text_17D8FF0B717D0939" xml:space="preserve">
+    <value>Frames Displayed</value>
+    <comment>Frames Displayed</comment>
+  </data>
+  <data name="Text_0F1FE9597EE0F027" xml:space="preserve">
+    <value>Frames Dropped</value>
+    <comment>Frames Dropped</comment>
+  </data>
+  <data name="Text_4A74D637FD7EAD2E" xml:space="preserve">
+    <value>French (Canadian)</value>
+    <comment>French (Canadian)</comment>
+  </data>
+  <data name="Text_A8B11CE0C9844627" xml:space="preserve">
+    <value>From 1st</value>
+    <comment>From 1st</comment>
+  </data>
+  <data name="Text_A9858B544314E4D7" xml:space="preserve">
+    <value>From 2nd</value>
+    <comment>From 2nd</comment>
+  </data>
+  <data name="Text_008DACB6D1E85BD8" xml:space="preserve">
+    <value>Full</value>
+    <comment>Full</comment>
+  </data>
+  <data name="Text_E2108EB7FD2063AE" xml:space="preserve">
+    <value>FullScreen</value>
+    <comment>FullScreen</comment>
+  </data>
+  <data name="Text_A8AB3D5805C9214B" xml:space="preserve">
+    <value>Gamma</value>
+    <comment>Gamma</comment>
+  </data>
+  <data name="Text_FB8B8C61401F762F" xml:space="preserve">
+    <value>Ganda (Luganda)</value>
+    <comment>Ganda (Luganda)</comment>
+  </data>
+  <data name="Text_5A035C35073FB5F1" xml:space="preserve">
+    <value>Get Models</value>
+    <comment>Get Models</comment>
+  </data>
+  <data name="Text_A258B30F88C30650" xml:space="preserve">
+    <value>Global</value>
+    <comment>Global</comment>
+  </data>
+  <data name="Text_E3522EADCA07C950" xml:space="preserve">
+    <value>Good morning.</value>
+    <comment>Good morning.</comment>
+  </data>
+  <data name="Text_5B20B301D37A51FC" xml:space="preserve">
+    <value>Google's Material Design in XAML &amp; WPF</value>
+    <comment>Google's Material Design in XAML &amp; WPF</comment>
+  </data>
+  <data name="Text_ACAB770E6D4C23D3" xml:space="preserve">
+    <value>GpuDevice</value>
+    <comment>GpuDevice</comment>
+  </data>
+  <data name="Text_BB34B2761D15BB4C" xml:space="preserve">
+    <value>HDR to SDR Method</value>
+    <comment>HDR to SDR Method</comment>
+  </data>
+  <data name="Text_2AB5836DDF98C41F" xml:space="preserve">
+    <value>HW Acceleration</value>
+    <comment>HW Acceleration</comment>
+  </data>
+  <data name="Text_EC18ADFBE9887C38" xml:space="preserve">
+    <value>Haitian Creole</value>
+    <comment>Haitian Creole</comment>
+  </data>
+  <data name="Text_2A1380458583FABD" xml:space="preserve">
+    <value>Hello API</value>
+    <comment>Hello API</comment>
+  </data>
+  <data name="Text_C4EBC6D4A5832CD9" xml:space="preserve">
+    <value>High</value>
+    <comment>High</comment>
+  </data>
+  <data name="Text_37FEB1FAC989C6AA" xml:space="preserve">
+    <value>Horizontal Flip</value>
+    <comment>Horizontal Flip</comment>
+  </data>
+  <data name="Text_4D7056F0E9BEF487" xml:space="preserve">
+    <value>Hue</value>
+    <comment>Hue</comment>
+  </data>
+  <data name="Text_AB0171CA0494D441" xml:space="preserve">
+    <value>Idle</value>
+    <comment>Idle</comment>
+  </data>
+  <data name="Text_9FD5A3E24759616B" xml:space="preserve">
+    <value>Idle Timeout (ms)</value>
+    <comment>Idle Timeout (ms)</comment>
+  </data>
+  <data name="Text_19438E9CB71730DC" xml:space="preserve">
+    <value>If enabled, automatic subtitles such as those on YouTube are automatically opened. If disabled, they will be added but not auto-open.</value>
+    <comment>If enabled, automatic subtitles such as those on YouTube are automatically opened. If disabled, they will be added but not auto-open.</comment>
+  </data>
+  <data name="Text_B5B03E9D8175AE1D" xml:space="preserve">
+    <value>If enabled, internal bitmap subtitles can be displayed in the sidebar. and internal bitmap subtitles are always displayed during seek, However, memory usage will increase.</value>
+    <comment>If enabled, internal bitmap subtitles can be displayed in the sidebar. and internal bitmap subtitles are always displayed during seek, However, memory usage will increase.</comment>
+  </data>
+  <data name="Text_CC8DFFAA21B894CF" xml:space="preserve">
+    <value>If enabled, subtitle files in the same path as the media file are automatically opened. The following subtitle files will be opened.</value>
+    <comment>If enabled, subtitle files in the same path as the media file are automatically opened. The following subtitle files will be opened.</comment>
+  </data>
+  <data name="Text_898E7A569C408059" xml:space="preserve">
+    <value>If this is switched on, the seek bar is only displayed on mouse-over; if it is switched off, it is displayed when the cursor is moved.</value>
+    <comment>If this is switched on, the seek bar is only displayed on mouse-over; if it is switched off, it is displayed when the cursor is moved.</comment>
+  </data>
+  <data name="Text_9BEED6A815871428" xml:space="preserve">
+    <value>If you run it again when it is already enabled, subtitles will be regenerated from the playback position.</value>
+    <comment>If you run it again when it is already enabled, subtitles will be regenerated from the playback position.</comment>
+  </data>
+  <data name="Text_A83E9982006CC0EC" xml:space="preserve">
+    <value>Ignore Line Break</value>
+    <comment>Ignore Line Break</comment>
+  </data>
+  <data name="Text_AA7CDEC21A7C5BDD" xml:space="preserve">
+    <value>Include Target Language Region</value>
+    <comment>Include Target Language Region</comment>
+  </data>
+  <data name="Text_0C2D3B8713B00333" xml:space="preserve">
+    <value>Increase</value>
+    <comment>Increase</comment>
+  </data>
+  <data name="Text_50A0F6ADFE76E62E" xml:space="preserve">
+    <value>Increase Audio Delay (1)</value>
+    <comment>Increase Audio Delay (1)</comment>
+  </data>
+  <data name="Text_D269B92AB4F5F095" xml:space="preserve">
+    <value>Increase Audio Delay (2)</value>
+    <comment>Increase Audio Delay (2)</comment>
+  </data>
+  <data name="Text_A4269257D2605884" xml:space="preserve">
+    <value>Increase Primary Subtitles Delay (1)</value>
+    <comment>Increase Primary Subtitles Delay (1)</comment>
+  </data>
+  <data name="Text_659BBC06C551CB05" xml:space="preserve">
+    <value>Increase Primary Subtitles Delay (2)</value>
+    <comment>Increase Primary Subtitles Delay (2)</comment>
+  </data>
+  <data name="Text_5C62D56608D6E492" xml:space="preserve">
+    <value>Increase Secondary Subtitles Delay (1)</value>
+    <comment>Increase Secondary Subtitles Delay (1)</comment>
+  </data>
+  <data name="Text_44E72E13D405A878" xml:space="preserve">
+    <value>Increase Secondary Subtitles Delay (2)</value>
+    <comment>Increase Secondary Subtitles Delay (2)</comment>
+  </data>
+  <data name="Text_170322A32F3C35B2" xml:space="preserve">
+    <value>Info</value>
+    <comment>Info</comment>
+  </data>
+  <data name="Text_6A41FD4D6D162E14" xml:space="preserve">
+    <value>Input Enter</value>
+    <comment>Input Enter</comment>
+  </data>
+  <data name="Text_96C34A0719EB565C" xml:space="preserve">
+    <value>Invalid</value>
+    <comment>Invalid</comment>
+  </data>
+  <data name="Text_90BE37E9CB12DA98" xml:space="preserve">
+    <value>IsKeyUp</value>
+    <comment>IsKeyUp</comment>
+  </data>
+  <data name="Text_3FD8EC4AAF845A6B" xml:space="preserve">
+    <value>It always adjusts the number of messages according to the Subtitle Context Count.
+                                        This increases accuracy because the translation is always context-sensitive, but once an incorrect result is generated, it tends to remain incorrect.</value>
+    <comment>It always adjusts the number of messages according to the Subtitle Context Count.
+                                        This increases accuracy because the translation is always context-sensitive, but once an incorrect result is generated, it tends to remain incorrect.</comment>
+  </data>
+  <data name="Text_D268F543C37580A9" xml:space="preserve">
+    <value>It can be linked to the PDIC dictionary tool.
+                        See</value>
+    <comment>It can be linked to the PDIC dictionary tool.
+                        See</comment>
+  </data>
+  <data name="Text_0FC7EC56F6BE909D" xml:space="preserve">
+    <value>Japanese morphological analyzer on .NET</value>
+    <comment>Japanese morphological analyzer on .NET</comment>
+  </data>
+  <data name="Text_183F00F483D3844E" xml:space="preserve">
+    <value>Keep</value>
+    <comment>Keep</comment>
+  </data>
+  <data name="Text_ADB4BBAECE0BCB62" xml:space="preserve">
+    <value>KeepContext</value>
+    <comment>KeepContext</comment>
+  </data>
+  <data name="Text_A3970E1751BBA91D" xml:space="preserve">
+    <value>KeepSize</value>
+    <comment>KeepSize</comment>
+  </data>
+  <data name="Text_99A52DF3FF3D4994" xml:space="preserve">
+    <value>Key</value>
+    <comment>Key</comment>
+  </data>
+  <data name="Text_2033056CD5D4B36E" xml:space="preserve">
+    <value>Key:{0} is conflicted.
+Action:{1} already uses.</value>
+    <comment>Key:{0} is conflicted.
+Action:{1} already uses.</comment>
+  </data>
+  <data name="Text_2316810A5DE343DD" xml:space="preserve">
+    <value>Keyboard</value>
+    <comment>Keyboard</comment>
+  </data>
+  <data name="Text_F0D66A79C138E951" xml:space="preserve">
+    <value>Keys</value>
+    <comment>Keys</comment>
+  </data>
+  <data name="Text_55F1934C3B1F911E" xml:space="preserve">
+    <value>Keys &gt; Offset</value>
+    <comment>Keys &gt; Offset</comment>
+  </data>
+  <data name="Text_70998722A82B38CD" xml:space="preserve">
+    <value>Kurdish (Kurmanji)</value>
+    <comment>Kurdish (Kurmanji)</comment>
+  </data>
+  <data name="Text_7476E29F38024D55" xml:space="preserve">
+    <value>LLM Parameters</value>
+    <comment>LLM Parameters</comment>
+  </data>
+  <data name="Text_C3F7902DABA0225F" xml:space="preserve">
+    <value>LLPlayer cannot exist without the following libraries!</value>
+    <comment>LLPlayer cannot exist without the following libraries!</comment>
+  </data>
+  <data name="Text_A4FE65264EF7DBB3" xml:space="preserve">
+    <value>Language</value>
+    <comment>Language</comment>
+  </data>
+  <data name="Text_A5374A7055D4FE09" xml:space="preserve">
+    <value>Larger models increase load and accuracy. Please choose the appropriate model for your hardware. Models ending in .en are only available in English.</value>
+    <comment>Larger models increase load and accuracy. Please choose the appropriate model for your hardware. Models ending in .en are only available in English.</comment>
+  </data>
+  <data name="Text_977634C0B6FBC1BE" xml:space="preserve">
+    <value>Last Word Action (Search)</value>
+    <comment>Last Word Action (Search)</comment>
+  </data>
+  <data name="Text_CDFCBA27387180CD" xml:space="preserve">
+    <value>Launch App</value>
+    <comment>Launch App</comment>
+  </data>
+  <data name="Text_D2059FFB38716805" xml:space="preserve">
+    <value>Launch Clone Application</value>
+    <comment>Launch Clone Application</comment>
+  </data>
+  <data name="Text_20382040E26B0660" xml:space="preserve">
+    <value>Launch New Application</value>
+    <comment>Launch New Application</comment>
+  </data>
+  <data name="Text_58EB9032E3BB83F0" xml:space="preserve">
+    <value>Left</value>
+    <comment>Left</comment>
+  </data>
+  <data name="Text_352649FDCB1F6C54" xml:space="preserve">
+    <value>Left Click</value>
+    <comment>Left Click</comment>
+  </data>
+  <data name="Text_BFD96C3F901F1179" xml:space="preserve">
+    <value>Left Click with Ctrl</value>
+    <comment>Left Click with Ctrl</comment>
+  </data>
+  <data name="Text_E2C4EC498DB1E120" xml:space="preserve">
+    <value>Left Click: Open File Dialog
+Right Click: Open Context Menu</value>
+    <comment>Left Click: Open File Dialog
+Right Click: Open Context Menu</comment>
+  </data>
+  <data name="Text_5C990DA297C87A91" xml:space="preserve">
+    <value>Left DoubleClick</value>
+    <comment>Left DoubleClick</comment>
+  </data>
+  <data name="Text_FB49DAECACD093DA" xml:space="preserve">
+    <value>Left Drag</value>
+    <comment>Left Drag</comment>
+  </data>
+  <data name="Text_B64AC05F17E64D03" xml:space="preserve">
+    <value>Live</value>
+    <comment>Live</comment>
+  </data>
+  <data name="Text_8A6BDB6B18DA586F" xml:space="preserve">
+    <value>Load</value>
+    <comment>Load</comment>
+  </data>
+  <data name="Text_DC245FC548F8D0E5" xml:space="preserve">
+    <value>Loaded Option: </value>
+    <comment>Loaded Option: </comment>
+  </data>
+  <data name="Text_47D2A515EF2F05B8" xml:space="preserve">
+    <value>Loading...</value>
+    <comment>Loading...</comment>
+  </data>
+  <data name="Text_578CA20E98A7CA19" xml:space="preserve">
+    <value>Log Cached Lines</value>
+    <comment>Log Cached Lines</comment>
+  </data>
+  <data name="Text_60DC97C2B0458B8E" xml:space="preserve">
+    <value>Log File</value>
+    <comment>Log File</comment>
+  </data>
+  <data name="Text_12FE4737438F3BDB" xml:space="preserve">
+    <value>Log Level</value>
+    <comment>Log Level</comment>
+  </data>
+  <data name="Text_11017BFA786D30DD" xml:space="preserve">
+    <value>Log Level (ffmpeg)</value>
+    <comment>Log Level (ffmpeg)</comment>
+  </data>
+  <data name="Text_D3EF01B4A9C99103" xml:space="preserve">
+    <value>Logging</value>
+    <comment>Logging</comment>
+  </data>
+  <data name="Text_145368211E87DD2B" xml:space="preserve">
+    <value>Loop Playback</value>
+    <comment>Loop Playback</comment>
+  </data>
+  <data name="Text_6740CAB4E09A778A" xml:space="preserve">
+    <value>Loop Playback {0}</value>
+    <comment>Loop Playback {0}</comment>
+  </data>
+  <data name="Text_F793DE205EAD5AC3" xml:space="preserve">
+    <value>Low</value>
+    <comment>Low</comment>
+  </data>
+  <data name="Text_B0B9FE24FFA96291" xml:space="preserve">
+    <value>Manual</value>
+    <comment>Manual</comment>
+  </data>
+  <data name="Text_EECDC898F3E23B9B" xml:space="preserve">
+    <value>Mask subtitles after current (to prevent spoiler)</value>
+    <comment>Mask subtitles after current (to prevent spoiler)</comment>
+  </data>
+  <data name="Text_531B60E17C071406" xml:space="preserve">
+    <value>Max Latency (ms)</value>
+    <comment>Max Latency (ms)</comment>
+  </data>
+  <data name="Text_8D4BC4C36844E1BD" xml:space="preserve">
+    <value>Max Translate Concurrency</value>
+    <comment>Max Translate Concurrency</comment>
+  </data>
+  <data name="Text_25C976AAD3DF89B3" xml:space="preserve">
+    <value>Max Translate Count (Backward)</value>
+    <comment>Max Translate Count (Backward)</comment>
+  </data>
+  <data name="Text_DF1EFA0B60D0F92B" xml:space="preserve">
+    <value>Max Translate Count (Forward)</value>
+    <comment>Max Translate Count (Forward)</comment>
+  </data>
+  <data name="Text_F3D0E6F92695FAE5" xml:space="preserve">
+    <value>Max Volume (1-1000%)</value>
+    <comment>Max Volume (1-1000%)</comment>
+  </data>
+  <data name="Text_D142C2FFCA35005A" xml:space="preserve">
+    <value>Max Width</value>
+    <comment>Max Width</comment>
+  </data>
+  <data name="Text_C237A22EB738494B" xml:space="preserve">
+    <value>MaxSegmentLength</value>
+    <comment>MaxSegmentLength</comment>
+  </data>
+  <data name="Text_1F8E88A326F5652B" xml:space="preserve">
+    <value>MaxTokensPerSegment</value>
+    <comment>MaxTokensPerSegment</comment>
+  </data>
+  <data name="Text_3D8CD63E8D77CB0B" xml:space="preserve">
+    <value>MaxVideoHeight</value>
+    <comment>MaxVideoHeight</comment>
+  </data>
+  <data name="Text_09028925F13DAA52" xml:space="preserve">
+    <value>Media Player .NET Library for WinUI 3/WPF/WinForms (based on FFmpeg/DirectX)</value>
+    <comment>Media Player .NET Library for WinUI 3/WPF/WinForms (based on FFmpeg/DirectX)</comment>
+  </data>
+  <data name="Text_8BD0E88C36675E7D" xml:space="preserve">
+    <value>Media title on Seekbar</value>
+    <comment>Media title on Seekbar</comment>
+  </data>
+  <data name="Text_5E2C614C23F02239" xml:space="preserve">
+    <value>Model</value>
+    <comment>Model</comment>
+  </data>
+  <data name="Text_A5FC9C514836CB58" xml:space="preserve">
+    <value>Model '{0}' deleting...</value>
+    <comment>Model '{0}' deleting...</comment>
+  </data>
+  <data name="Text_9F17C6BCE7D00951" xml:space="preserve">
+    <value>Model '{0}' downloading..</value>
+    <comment>Model '{0}' downloading..</comment>
+  </data>
+  <data name="Text_C695E7AEC8C7E1CA" xml:space="preserve">
+    <value>Model '{0}' is already downloaded</value>
+    <comment>Model '{0}' is already downloaded</comment>
+  </data>
+  <data name="Text_74DE09C762E429A2" xml:space="preserve">
+    <value>Model '{0}' is deleted successfully</value>
+    <comment>Model '{0}' is deleted successfully</comment>
+  </data>
+  <data name="Text_FE2B3EBDBA3A72CC" xml:space="preserve">
+    <value>Model '{0}' is downloaded successfully</value>
+    <comment>Model '{0}' is downloaded successfully</comment>
+  </data>
+  <data name="Text_CAA6106F12068E1E" xml:space="preserve">
+    <value>Model (optional)</value>
+    <comment>Model (optional)</comment>
+  </data>
+  <data name="Text_3C09FE5BA47C0865" xml:space="preserve">
+    <value>Modifier:</value>
+    <comment>Modifier:</comment>
+  </data>
+  <data name="Text_55C1520824A84D75" xml:space="preserve">
+    <value>Mouse</value>
+    <comment>Mouse</comment>
+  </data>
+  <data name="Text_65A0CF6350C9E3BF" xml:space="preserve">
+    <value>Move Down (right selected libraries)</value>
+    <comment>Move Down (right selected libraries)</comment>
+  </data>
+  <data name="Text_4F165B969549D5EC" xml:space="preserve">
+    <value>Move Left</value>
+    <comment>Move Left</comment>
+  </data>
+  <data name="Text_338F0879BCB2333E" xml:space="preserve">
+    <value>Move Right</value>
+    <comment>Move Right</comment>
+  </data>
+  <data name="Text_453DC1BA3A148C8D" xml:space="preserve">
+    <value>Move Up (right selected libraries)</value>
+    <comment>Move Up (right selected libraries)</comment>
+  </data>
+  <data name="Text_2E8185D92314AF81" xml:space="preserve">
+    <value>Move Video Viewport</value>
+    <comment>Move Video Viewport</comment>
+  </data>
+  <data name="Text_8DD6857BAF026850" xml:space="preserve">
+    <value>Mute</value>
+    <comment>Mute</comment>
+  </data>
+  <data name="Text_276766BB4391ED62" xml:space="preserve">
+    <value>Mute / Unmute</value>
+    <comment>Mute / Unmute</comment>
+  </data>
+  <data name="Text_1BCD80754B3F49AA" xml:space="preserve">
+    <value>Myanmar (Burmese)</value>
+    <comment>Myanmar (Burmese)</comment>
+  </data>
+  <data name="Text_886834F2ABD56A84" xml:space="preserve">
+    <value>NG in {0} secs: {1}</value>
+    <comment>NG in {0} secs: {1}</comment>
+  </data>
+  <data name="Text_11F84DD777AF6036" xml:space="preserve">
+    <value>NG: {0}</value>
+    <comment>NG: {0}</comment>
+  </data>
+  <data name="Text_DCD1D5223F73B3A9" xml:space="preserve">
+    <value>Name</value>
+    <comment>Name</comment>
+  </data>
+  <data name="Text_3A8472257751833D" xml:space="preserve">
+    <value>Natural language detection library for .NET</value>
+    <comment>Natural language detection library for .NET</comment>
+  </data>
+  <data name="Text_9C3BB58A76FD1164" xml:space="preserve">
+    <value>Ndebele (South)</value>
+    <comment>Ndebele (South)</comment>
+  </data>
+  <data name="Text_1744B96470B51BF3" xml:space="preserve">
+    <value>Network</value>
+    <comment>Network</comment>
+  </data>
+  <data name="Text_1E66DBF2A375D01B" xml:space="preserve">
+    <value>New Search</value>
+    <comment>New Search</comment>
+  </data>
+  <data name="Text_B9BB16318FCFD467" xml:space="preserve">
+    <value>Next Playlist Item</value>
+    <comment>Next Playlist Item</comment>
+  </data>
+  <data name="Text_904F02982FDE45FE" xml:space="preserve">
+    <value>No Supported Service</value>
+    <comment>No Supported Service</comment>
+  </data>
+  <data name="Text_751BF84715050866" xml:space="preserve">
+    <value>No hits</value>
+    <comment>No hits</comment>
+  </data>
+  <data name="Text_3E651F592A1E82C8" xml:space="preserve">
+    <value>NoContext</value>
+    <comment>NoContext</comment>
+  </data>
+  <data name="Text_5761F43E73771615" xml:space="preserve">
+    <value>NoSpeechThreshold</value>
+    <comment>NoSpeechThreshold</comment>
+  </data>
+  <data name="Text_DC937B59892604F5" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Text_A7248EEB45EB1CE2" xml:space="preserve">
+    <value>Normal</value>
+    <comment>Normal</comment>
+  </data>
+  <data name="Text_F0B866955DCA9404" xml:space="preserve">
+    <value>Norwegian Bokmål</value>
+    <comment>Norwegian Bokmål</comment>
+  </data>
+  <data name="Text_1A81EFA8EB203C45" xml:space="preserve">
+    <value>Not Downloaded</value>
+    <comment>Not Downloaded</comment>
+  </data>
+  <data name="Text_F06DF5E7B4A0477C" xml:space="preserve">
+    <value>Not Loaded</value>
+    <comment>Not Loaded</comment>
+  </data>
+  <data name="Text_5E5BEA5354E3F22E" xml:space="preserve">
+    <value>OCR</value>
+    <comment>OCR</comment>
+  </data>
+  <data name="Text_91AF5B3EAE9610FD" xml:space="preserve">
+    <value>OCR Engine (Primary)</value>
+    <comment>OCR Engine (Primary)</comment>
+  </data>
+  <data name="Text_C63F46A4B8DEB5D6" xml:space="preserve">
+    <value>OCR Engine (Secondary)</value>
+    <comment>OCR Engine (Secondary)</comment>
+  </data>
+  <data name="Text_48A710436649E9AC" xml:space="preserve">
+    <value>OK in {0} secs</value>
+    <comment>OK in {0} secs</comment>
+  </data>
+  <data name="Text_8905CADB69C27888" xml:space="preserve">
+    <value>OS Architecture: </value>
+    <comment>OS Architecture: </comment>
+  </data>
+  <data name="Text_92F018DF01FA0ECA" xml:space="preserve">
+    <value>Odia (Oriya)</value>
+    <comment>Odia (Oriya)</comment>
+  </data>
+  <data name="Text_CA7981B46ECF2C17" xml:space="preserve">
+    <value>Off</value>
+    <comment>Off</comment>
+  </data>
+  <data name="Text_B1A1E8E3CF7C522E" xml:space="preserve">
+    <value>Offset</value>
+    <comment>Offset</comment>
+  </data>
+  <data name="Text_130011756125313C" xml:space="preserve">
+    <value>On</value>
+    <comment>On</comment>
+  </data>
+  <data name="Text_C694EFCAF9BE6DEB" xml:space="preserve">
+    <value>On Context Menu</value>
+    <comment>On Context Menu</comment>
+  </data>
+  <data name="Text_97063075BAA70105" xml:space="preserve">
+    <value>On Text Subtitles (including sidebar)</value>
+    <comment>On Text Subtitles (including sidebar)</comment>
+  </data>
+  <data name="Text_EE9193F8C5AF17FC" xml:space="preserve">
+    <value>On Video</value>
+    <comment>On Video</comment>
+  </data>
+  <data name="Text_FED28F1E9D256722" xml:space="preserve">
+    <value>OneByOne</value>
+    <comment>OneByOne</comment>
+  </data>
+  <data name="Text_5DE3AAC4D7AD6046" xml:space="preserve">
+    <value>Open Automatic Subs</value>
+    <comment>Open Automatic Subs</comment>
+  </data>
+  <data name="Text_9D3B7C2DD76BD7D1" xml:space="preserve">
+    <value>Open Cheat Sheet Window</value>
+    <comment>Open Cheat Sheet Window</comment>
+  </data>
+  <data name="Text_B293FE310FE7166C" xml:space="preserve">
+    <value>Open Context Menu</value>
+    <comment>Open Context Menu</comment>
+  </data>
+  <data name="Text_1E8D18F62F2D2A2F" xml:space="preserve">
+    <value>Open File</value>
+    <comment>Open File</comment>
+  </data>
+  <data name="Text_68B3F4BFF6DE90AE" xml:space="preserve">
+    <value>Open Folder</value>
+    <comment>Open Folder</comment>
+  </data>
+  <data name="Text_A7678F310DC8FD3A" xml:space="preserve">
+    <value>Open Folder or URL of the currently opened file</value>
+    <comment>Open Folder or URL of the currently opened file</comment>
+  </data>
+  <data name="Text_8A8F764BB6594786" xml:space="preserve">
+    <value>Open Next File</value>
+    <comment>Open Next File</comment>
+  </data>
+  <data name="Text_2CD4330FDAB6D195" xml:space="preserve">
+    <value>Open Previous File</value>
+    <comment>Open Previous File</comment>
+  </data>
+  <data name="Text_3F940108CB1ECD9C" xml:space="preserve">
+    <value>Open Settings</value>
+    <comment>Open Settings</comment>
+  </data>
+  <data name="Text_20AD1F566FE8C47D" xml:space="preserve">
+    <value>Open Settings Window</value>
+    <comment>Open Settings Window</comment>
+  </data>
+  <data name="Text_0E13C4083EDA9A0F" xml:space="preserve">
+    <value>Open Subtitles Downloader Window</value>
+    <comment>Open Subtitles Downloader Window</comment>
+  </data>
+  <data name="Text_CE07E977100BF7A3" xml:space="preserve">
+    <value>Open Subtitles Exporter Window</value>
+    <comment>Open Subtitles Exporter Window</comment>
+  </data>
+  <data name="Text_AAE11583EAC37DA8" xml:space="preserve">
+    <value>Open Timeout (ms)</value>
+    <comment>Open Timeout (ms)</comment>
+  </data>
+  <data name="Text_C7F57AC10FCB8537" xml:space="preserve">
+    <value>Open a media from clipboard</value>
+    <comment>Open a media from clipboard</comment>
+  </data>
+  <data name="Text_E77C8B5098CA0BE3" xml:space="preserve">
+    <value>Open a media from clipboard if not open</value>
+    <comment>Open a media from clipboard if not open</comment>
+  </data>
+  <data name="Text_B693C6B209DEAEC7" xml:space="preserve">
+    <value>Open a media from file dialog</value>
+    <comment>Open a media from file dialog</comment>
+  </data>
+  <data name="Text_1AF7BE82593980F1" xml:space="preserve">
+    <value>Open file dialog</value>
+    <comment>Open file dialog</comment>
+  </data>
+  <data name="Text_D352B4064A5D30D1" xml:space="preserve">
+    <value>Open next</value>
+    <comment>Open next</comment>
+  </data>
+  <data name="Text_01ECB696B8FC00BB" xml:space="preserve">
+    <value>Open path</value>
+    <comment>Open path</comment>
+  </data>
+  <data name="Text_3F84582929E44C03" xml:space="preserve">
+    <value>Open prev</value>
+    <comment>Open prev</comment>
+  </data>
+  <data name="Text_AC9C6561E9740455" xml:space="preserve">
+    <value>OpenAI Like</value>
+    <comment>OpenAI Like</comment>
+  </data>
+  <data name="Text_CA44E59B13B5E73A" xml:space="preserve">
+    <value>OpenAI Reference</value>
+    <comment>OpenAI Reference</comment>
+  </data>
+  <data name="Text_847972776D0D198D" xml:space="preserve">
+    <value>OpenNextPrevFile is failed: {0}</value>
+    <comment>OpenNextPrevFile is failed: {0}</comment>
+  </data>
+  <data name="Text_B19FB8D1B395B333" xml:space="preserve">
+    <value>Opened</value>
+    <comment>Opened</comment>
+  </data>
+  <data name="Text_F4B13E93DF077DC3" xml:space="preserve">
+    <value>Opening</value>
+    <comment>Opening</comment>
+  </data>
+  <data name="Text_6BE090825C997103" xml:space="preserve">
+    <value>Order</value>
+    <comment>Order</comment>
+  </data>
+  <data name="Text_88D759EA02CEF4B8" xml:space="preserve">
+    <value>Original</value>
+    <comment>Original</comment>
+  </data>
+  <data name="Text_F97E9DA0E3B879F0" xml:space="preserve">
+    <value>Other</value>
+    <comment>Other</comment>
+  </data>
+  <data name="Text_CB3F42C5D0C67CF4" xml:space="preserve">
+    <value>PDIC Executable Path</value>
+    <comment>PDIC Executable Path</comment>
+  </data>
+  <data name="Text_EAB46F87A417363C" xml:space="preserve">
+    <value>PDIC executable is not set correctly: {0}</value>
+    <comment>PDIC executable is not set correctly: {0}</comment>
+  </data>
+  <data name="Text_FD92D952DB92EFF5" xml:space="preserve">
+    <value>Pan</value>
+    <comment>Pan</comment>
+  </data>
+  <data name="Text_CA102D70E822B9A5" xml:space="preserve">
+    <value>Pan Offsets</value>
+    <comment>Pan Offsets</comment>
+  </data>
+  <data name="Text_9BAC926196B6AB3B" xml:space="preserve">
+    <value>Panic</value>
+    <comment>Panic</comment>
+  </data>
+  <data name="Text_F1851BE3012B5499" xml:space="preserve">
+    <value>Parameter for how many MB of audio to accumulate and pass to ASR. Increasing it increase memory usage and may cause natural breaks in sentences.</value>
+    <comment>Parameter for how many MB of audio to accumulate and pass to ASR. Increasing it increase memory usage and may cause natural breaks in sentences.</comment>
+  </data>
+  <data name="Text_5243CF722DCD32BC" xml:space="preserve">
+    <value>Parameter for how many seconds to wait to accumulate and pass to ASR. It is the real time, not the audio time. This parameter is ORed with Audio Chunk Size, and is used for when the size of the video is small, such as in the case of live video.</value>
+    <comment>Parameter for how many seconds to wait to accumulate and pass to ASR. It is the real time, not the audio time. This parameter is ORed with Audio Chunk Size, and is used for when the size of the video is small, such as in the case of live video.</comment>
+  </data>
+  <data name="Text_48B716BE6D8E01BD" xml:space="preserve">
+    <value>Paste URL</value>
+    <comment>Paste URL</comment>
+  </data>
+  <data name="Text_62FA5A5B0D3C3188" xml:space="preserve">
+    <value>Path</value>
+    <comment>Path</comment>
+  </data>
+  <data name="Text_65A4A8D871AC3943" xml:space="preserve">
+    <value>Pause playback</value>
+    <comment>Pause playback</comment>
+  </data>
+  <data name="Text_E159B06187D369A0" xml:space="preserve">
+    <value>Paused</value>
+    <comment>Paused</comment>
+  </data>
+  <data name="Text_63CAE689CA127811" xml:space="preserve">
+    <value>Phrase Lookup</value>
+    <comment>Phrase Lookup</comment>
+  </data>
+  <data name="Text_33F69A34D4EB1540" xml:space="preserve">
+    <value>Pixel Format</value>
+    <comment>Pixel Format</comment>
+  </data>
+  <data name="Text_6F97FB8C14198336" xml:space="preserve">
+    <value>Play / Pause</value>
+    <comment>Play / Pause</comment>
+  </data>
+  <data name="Text_D25A790D21B48304" xml:space="preserve">
+    <value>Play playback</value>
+    <comment>Play playback</comment>
+  </data>
+  <data name="Text_2DB1DB07062E4A01" xml:space="preserve">
+    <value>Playback</value>
+    <comment>Playback</comment>
+  </data>
+  <data name="Text_64AEE8C6CBD026D9" xml:space="preserve">
+    <value>Player</value>
+    <comment>Player</comment>
+  </data>
+  <data name="Text_A79078D6CEB3244A" xml:space="preserve">
+    <value>Player Timeout (For Live Stream)</value>
+    <comment>Player Timeout (For Live Stream)</comment>
+  </data>
+  <data name="Text_FB71A38D1E99E401" xml:space="preserve">
+    <value>Player UI</value>
+    <comment>Player UI</comment>
+  </data>
+  <data name="Text_DEAF6F9D23BC24D4" xml:space="preserve">
+    <value>Playing</value>
+    <comment>Playing</comment>
+  </data>
+  <data name="Text_4B81673029A12AB4" xml:space="preserve">
+    <value>Playlist ({0}/{1})</value>
+    <comment>Playlist ({0}/{1})</comment>
+  </data>
+  <data name="Text_951910C77882FB95" xml:space="preserve">
+    <value>Please configure the settings in advance in the Translate tab.</value>
+    <comment>Please configure the settings in advance in the Translate tab.</comment>
+  </data>
+  <data name="Text_AB1173EED1D477D9" xml:space="preserve">
+    <value>Plugin</value>
+    <comment>Plugin</comment>
+  </data>
+  <data name="Text_9514B7FF4860EAD7" xml:space="preserve">
+    <value>Plugins</value>
+    <comment>Plugins</comment>
+  </data>
+  <data name="Text_887273461BC15AF2" xml:space="preserve">
+    <value>Portuguese (Brazilian)</value>
+    <comment>Portuguese (Brazilian)</comment>
+  </data>
+  <data name="Text_2AF36D2CBA24B12F" xml:space="preserve">
+    <value>Position ({0})</value>
+    <comment>Position ({0})</comment>
+  </data>
+  <data name="Text_54DFF361FCD147DF" xml:space="preserve">
+    <value>Position / Size</value>
+    <comment>Position / Size</comment>
+  </data>
+  <data name="Text_0F82C835D0E5D0B0" xml:space="preserve">
+    <value>Position Alignment</value>
+    <comment>Position Alignment</comment>
+  </data>
+  <data name="Text_9779E63B0E5A765A" xml:space="preserve">
+    <value>Position Alignment (When Dual)</value>
+    <comment>Position Alignment (When Dual)</comment>
+  </data>
+  <data name="Text_CFB014A89F027CA6" xml:space="preserve">
+    <value>Position Offset (%)</value>
+    <comment>Position Offset (%)</comment>
+  </data>
+  <data name="Text_EFB36552A179D68B" xml:space="preserve">
+    <value>PreferVideoWithAudio</value>
+    <comment>PreferVideoWithAudio</comment>
+  </data>
+  <data name="Text_7252E7CE008587E1" xml:space="preserve">
+    <value>Preset</value>
+    <comment>Preset</comment>
+  </data>
+  <data name="Text_2CC9B1B60BB7D620" xml:space="preserve">
+    <value>Previous Playlist Item</value>
+    <comment>Previous Playlist Item</comment>
+  </data>
+  <data name="Text_EFE10C80EC8A9F38" xml:space="preserve">
+    <value>Primary</value>
+    <comment>Primary</comment>
+  </data>
+  <data name="Text_75EFAF4335FF2F58" xml:space="preserve">
+    <value>Primary Color</value>
+    <comment>Primary Color</comment>
+  </data>
+  <data name="Text_E88B029757D0A07C" xml:space="preserve">
+    <value>Primary Subtitles</value>
+    <comment>Primary Subtitles</comment>
+  </data>
+  <data name="Text_54FEF87F545EDA11" xml:space="preserve">
+    <value>Primary Subtitles Size Decrease</value>
+    <comment>Primary Subtitles Size Decrease</comment>
+  </data>
+  <data name="Text_A01626E430293EA3" xml:space="preserve">
+    <value>Primary Subtitles Size Increase</value>
+    <comment>Primary Subtitles Size Increase</comment>
+  </data>
+  <data name="Text_61859FCBC87E0812" xml:space="preserve">
+    <value>Primary/Secondary Distance</value>
+    <comment>Primary/Secondary Distance</comment>
+  </data>
+  <data name="Text_652E4A50DCBB763C" xml:space="preserve">
+    <value>Primary/Secondary Subtitles Distance Decrease</value>
+    <comment>Primary/Secondary Subtitles Distance Decrease</comment>
+  </data>
+  <data name="Text_3828182B0457FC82" xml:space="preserve">
+    <value>Primary/Secondary Subtitles Distance Increase</value>
+    <comment>Primary/Secondary Subtitles Distance Increase</comment>
+  </data>
+  <data name="Text_DD3018EFABCC1CD1" xml:space="preserve">
+    <value>Process Architecture: </value>
+    <comment>Process Architecture: </comment>
+  </data>
+  <data name="Text_BF3048100CD3E614" xml:space="preserve">
+    <value>Process Priority</value>
+    <comment>Process Priority</comment>
+  </data>
+  <data name="Text_54AAC653F06E8F29" xml:space="preserve">
+    <value>Processor</value>
+    <comment>Processor</comment>
+  </data>
+  <data name="Text_4A4A0AF7C6A0C245" xml:space="preserve">
+    <value>Profile Mismatch</value>
+    <comment>Profile Mismatch</comment>
+  </data>
+  <data name="Text_C21BEA0C6D590524" xml:space="preserve">
+    <value>Progressive</value>
+    <comment>Progressive</comment>
+  </data>
+  <data name="Text_5C39123805FFB4E2" xml:space="preserve">
+    <value>Prompt</value>
+    <comment>Prompt</comment>
+  </data>
+  <data name="Text_1275D4971E4546CC" xml:space="preserve">
+    <value>Prompt to send to chat. Certain strings will be replaced by the following.</value>
+    <comment>Prompt to send to chat. Certain strings will be replaced by the following.</comment>
+  </data>
+  <data name="Text_090940BAE1E24F54" xml:space="preserve">
+    <value>Query:</value>
+    <comment>Query:</comment>
+  </data>
+  <data name="Text_C0EBB7D6B69390C5" xml:space="preserve">
+    <value>Quiet</value>
+    <comment>Quiet</comment>
+  </data>
+  <data name="Text_45B63FFD01AF7B9C" xml:space="preserve">
+    <value>Rate</value>
+    <comment>Rate</comment>
+  </data>
+  <data name="Text_133890C16F762906" xml:space="preserve">
+    <value>Read Live Timeout (ms)</value>
+    <comment>Read Live Timeout (ms)</comment>
+  </data>
+  <data name="Text_486C9995037C1E8B" xml:space="preserve">
+    <value>Read Timeout (ms)</value>
+    <comment>Read Timeout (ms)</comment>
+  </data>
+  <data name="Text_C01C8332A05E222E" xml:space="preserve">
+    <value>RealTime</value>
+    <comment>RealTime</comment>
+  </data>
+  <data name="Text_D70604E843046137" xml:space="preserve">
+    <value>Recommended</value>
+    <comment>Recommended</comment>
+  </data>
+  <data name="Text_BFDD510698EF3CCB" xml:space="preserve">
+    <value>Record</value>
+    <comment>Record</comment>
+  </data>
+  <data name="Text_80E8DD1A5A05F707" xml:space="preserve">
+    <value>Recording</value>
+    <comment>Recording</comment>
+  </data>
+  <data name="Text_C59B0326093F63A6" xml:space="preserve">
+    <value>Region (optional)</value>
+    <comment>Region (optional)</comment>
+  </data>
+  <data name="Text_F4AB626D7DAF8E67" xml:space="preserve">
+    <value>Required to restart to apply changes</value>
+    <comment>Required to restart to apply changes</comment>
+  </data>
+  <data name="Text_DAEE7606B339F3C3" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Reset</comment>
+  </data>
+  <data name="Text_A9A14ECF07C1A1EA" xml:space="preserve">
+    <value>Reset ...</value>
+    <comment>Reset ...</comment>
+  </data>
+  <data name="Text_49B59FDB49445EAB" xml:space="preserve">
+    <value>Reset Audio / Subtitles Delay</value>
+    <comment>Reset Audio / Subtitles Delay</comment>
+  </data>
+  <data name="Text_00D360ED321E9F2A" xml:space="preserve">
+    <value>Reset Rotation</value>
+    <comment>Reset Rotation</comment>
+  </data>
+  <data name="Text_8498053DACA10E83" xml:space="preserve">
+    <value>Reset Speed</value>
+    <comment>Reset Speed</comment>
+  </data>
+  <data name="Text_3A43ACDCE0CE0A6C" xml:space="preserve">
+    <value>Reset Zoom</value>
+    <comment>Reset Zoom</comment>
+  </data>
+  <data name="Text_FB5961C42E3DCAD5" xml:space="preserve">
+    <value>Reset Zoom / Rotation / Speed / Delay</value>
+    <comment>Reset Zoom / Rotation / Speed / Delay</comment>
+  </data>
+  <data name="Text_645982C52B7C11AE" xml:space="preserve">
+    <value>Reset all</value>
+    <comment>Reset all</comment>
+  </data>
+  <data name="Text_8A9B241F1978E5F7" xml:space="preserve">
+    <value>Reset from 1st</value>
+    <comment>Reset from 1st</comment>
+  </data>
+  <data name="Text_464E19937424035A" xml:space="preserve">
+    <value>Reset the message count to 0 when Subtitle Context Count is reached.
+                                        Immediately after reset, context is not taken into account, but the translation result is stable.</value>
+    <comment>Reset the message count to 0 when Subtitle Context Count is reached.
+                                        Immediately after reset, context is not taken into account, but the translation result is stable.</comment>
+  </data>
+  <data name="Text_BC5B45AE7B60692A" xml:space="preserve">
+    <value>Reset to default</value>
+    <comment>Reset to default</comment>
+  </data>
+  <data name="Text_F37D5E2A4C635042" xml:space="preserve">
+    <value>Reset...</value>
+    <comment>Reset...</comment>
+  </data>
+  <data name="Text_07FE185C2818C5DC" xml:space="preserve">
+    <value>Restart App</value>
+    <comment>Restart App</comment>
+  </data>
+  <data name="Text_E00387AA7E64B975" xml:space="preserve">
+    <value>Restart Application</value>
+    <comment>Restart Application</comment>
+  </data>
+  <data name="Text_829F118DB2989104" xml:space="preserve">
+    <value>Restart the app to apply the language change.</value>
+    <comment>Restart the app to apply the language change.</comment>
+  </data>
+  <data name="Text_0B4D337CAAD6A9E4" xml:space="preserve">
+    <value>Reverse Playback</value>
+    <comment>Reverse Playback</comment>
+  </data>
+  <data name="Text_A966E9E627C040A3" xml:space="preserve">
+    <value>Reverse Playback {0}</value>
+    <comment>Reverse Playback {0}</comment>
+  </data>
+  <data name="Text_883361D5D682A157" xml:space="preserve">
+    <value>Right</value>
+    <comment>Right</comment>
+  </data>
+  <data name="Text_AED36B23066D40EF" xml:space="preserve">
+    <value>Right Click</value>
+    <comment>Right Click</comment>
+  </data>
+  <data name="Text_57B5E2FC1BBA18BB" xml:space="preserve">
+    <value>Rotation</value>
+    <comment>Rotation</comment>
+  </data>
+  <data name="Text_2F2B742DAFA7B1C6" xml:space="preserve">
+    <value>Rotation ({0}°)</value>
+    <comment>Rotation ({0}°)</comment>
+  </data>
+  <data name="Text_026052A2EA37DBC9" xml:space="preserve">
+    <value>Rotation {0}°</value>
+    <comment>Rotation {0}°</comment>
+  </data>
+  <data name="Text_9BA354DA5D013722" xml:space="preserve">
+    <value>SDR Display Nits</value>
+    <comment>SDR Display Nits</comment>
+  </data>
+  <data name="Text_C0C4DA9B7705E7B3" xml:space="preserve">
+    <value>SRT files (*.srt)|*.srt|All files (*.*)|*.*</value>
+    <comment>SRT files (*.srt)|*.srt|All files (*.*)|*.*</comment>
+  </data>
+  <data name="Text_64A91F874E1D1AD2" xml:space="preserve">
+    <value>Same as Primary</value>
+    <comment>Same as Primary</comment>
+  </data>
+  <data name="Text_3A4AB4F72DC5080D" xml:space="preserve">
+    <value>Sample Format</value>
+    <comment>Sample Format</comment>
+  </data>
+  <data name="Text_B4FC34F52A5E725A" xml:space="preserve">
+    <value>Sample Rate</value>
+    <comment>Sample Rate</comment>
+  </data>
+  <data name="Text_993F024B650EAF0F" xml:space="preserve">
+    <value>Saturation</value>
+    <comment>Saturation</comment>
+  </data>
+  <data name="Text_390DD9F6966D7E83" xml:space="preserve">
+    <value>Save &amp; Close</value>
+    <comment>Save &amp; Close</comment>
+  </data>
+  <data name="Text_A5455F28CFE1E411" xml:space="preserve">
+    <value>Save snapshot to {0}</value>
+    <comment>Save snapshot to {0}</comment>
+  </data>
+  <data name="Text_174F49D1C9E6D4F8" xml:space="preserve">
+    <value>Save subtitles to file</value>
+    <comment>Save subtitles to file</comment>
+  </data>
+  <data name="Text_FCDB4EEEBD99E28C" xml:space="preserve">
+    <value>Scots Gaelic</value>
+    <comment>Scots Gaelic</comment>
+  </data>
+  <data name="Text_49C266BAAAA70981" xml:space="preserve">
+    <value>Search</value>
+    <comment>Search</comment>
+  </data>
+  <data name="Text_A661BD94A60206FD" xml:space="preserve">
+    <value>Search (Ctrl+F)</value>
+    <comment>Search (Ctrl+F)</comment>
+  </data>
+  <data name="Text_D47630DDA5F8DAC9" xml:space="preserve">
+    <value>Search Action</value>
+    <comment>Search Action</comment>
+  </data>
+  <data name="Text_195420CDB62C66E3" xml:space="preserve">
+    <value>Search Google</value>
+    <comment>Search Google</comment>
+  </data>
+  <data name="Text_1C50AD2822B2DCEB" xml:space="preserve">
+    <value>Search Local</value>
+    <comment>Search Local</comment>
+  </data>
+  <data name="Text_5633B0A0E752E42A" xml:space="preserve">
+    <value>Search Longman</value>
+    <comment>Search Longman</comment>
+  </data>
+  <data name="Text_6B1F90559F6ED63D" xml:space="preserve">
+    <value>Search Wiktionary</value>
+    <comment>Search Wiktionary</comment>
+  </data>
+  <data name="Text_C88E6967FC529282" xml:space="preserve">
+    <value>Search subtitles</value>
+    <comment>Search subtitles</comment>
+  </data>
+  <data name="Text_0A6478781A02168B" xml:space="preserve">
+    <value>Search subtitles...</value>
+    <comment>Search subtitles...</comment>
+  </data>
+  <data name="Text_62F2CCFFFCC5103E" xml:space="preserve">
+    <value>Secondary</value>
+    <comment>Secondary</comment>
+  </data>
+  <data name="Text_1F4728F67F025C55" xml:space="preserve">
+    <value>Secondary Color</value>
+    <comment>Secondary Color</comment>
+  </data>
+  <data name="Text_F6D152F01E5BC30C" xml:space="preserve">
+    <value>Secondary Subtitles</value>
+    <comment>Secondary Subtitles</comment>
+  </data>
+  <data name="Text_2336C3D9320126B8" xml:space="preserve">
+    <value>Secondary Subtitles Size Decrease</value>
+    <comment>Secondary Subtitles Size Decrease</comment>
+  </data>
+  <data name="Text_ABCD2310330862DE" xml:space="preserve">
+    <value>Secondary Subtitles Size Increase</value>
+    <comment>Secondary Subtitles Size Increase</comment>
+  </data>
+  <data name="Text_67AE3405BCD4DF1F" xml:space="preserve">
+    <value>Seek</value>
+    <comment>Seek</comment>
+  </data>
+  <data name="Text_79F3931B5306E7B2" xml:space="preserve">
+    <value>Seek Accurate Fix Margin (ms)</value>
+    <comment>Seek Accurate Fix Margin (ms)</comment>
+  </data>
+  <data name="Text_78D65A2104E76098" xml:space="preserve">
+    <value>Seek Offset1 (ms)</value>
+    <comment>Seek Offset1 (ms)</comment>
+  </data>
+  <data name="Text_B2C13FCEBD5875F7" xml:space="preserve">
+    <value>Seek Offset2 (ms)</value>
+    <comment>Seek Offset2 (ms)</comment>
+  </data>
+  <data name="Text_6875A2924A7BAD3B" xml:space="preserve">
+    <value>Seek Offset3 (ms)</value>
+    <comment>Seek Offset3 (ms)</comment>
+  </data>
+  <data name="Text_F70E55EDAD2C7DBE" xml:space="preserve">
+    <value>Seek Offset4 (ms)</value>
+    <comment>Seek Offset4 (ms)</comment>
+  </data>
+  <data name="Text_86B4A54B0F5E9429" xml:space="preserve">
+    <value>Seek Timeout (ms)</value>
+    <comment>Seek Timeout (ms)</comment>
+  </data>
+  <data name="Text_47288B8C75032939" xml:space="preserve">
+    <value>Seek backwards (1)</value>
+    <comment>Seek backwards (1)</comment>
+  </data>
+  <data name="Text_566A2DE14CEC35B0" xml:space="preserve">
+    <value>Seek backwards (2)</value>
+    <comment>Seek backwards (2)</comment>
+  </data>
+  <data name="Text_FA187F45634BDE08" xml:space="preserve">
+    <value>Seek backwards (3)</value>
+    <comment>Seek backwards (3)</comment>
+  </data>
+  <data name="Text_C9D50CC2A59C0464" xml:space="preserve">
+    <value>Seek backwards (4)</value>
+    <comment>Seek backwards (4)</comment>
+  </data>
+  <data name="Text_D6E8D8ABE658D9C5" xml:space="preserve">
+    <value>Seek forwards (1)</value>
+    <comment>Seek forwards (1)</comment>
+  </data>
+  <data name="Text_46B83E2A1285E1E3" xml:space="preserve">
+    <value>Seek forwards (2)</value>
+    <comment>Seek forwards (2)</comment>
+  </data>
+  <data name="Text_8B5A12CB2E4ED212" xml:space="preserve">
+    <value>Seek forwards (3)</value>
+    <comment>Seek forwards (3)</comment>
+  </data>
+  <data name="Text_7BE1C4AAFB7A85B4" xml:space="preserve">
+    <value>Seek forwards (4)</value>
+    <comment>Seek forwards (4)</comment>
+  </data>
+  <data name="Text_53F3EE69DD8FBD92" xml:space="preserve">
+    <value>Seek to current subtitle if available</value>
+    <comment>Seek to current subtitle if available</comment>
+  </data>
+  <data name="Text_1C126D9EB3ED12FA" xml:space="preserve">
+    <value>Seek to end position</value>
+    <comment>Seek to end position</comment>
+  </data>
+  <data name="Text_AD1F51DFA039F627" xml:space="preserve">
+    <value>Seek to start position</value>
+    <comment>Seek to start position</comment>
+  </data>
+  <data name="Text_F8CA30F109E70880" xml:space="preserve">
+    <value>Seek to the current secondary subtitle</value>
+    <comment>Seek to the current secondary subtitle</comment>
+  </data>
+  <data name="Text_E775F206FBBA7080" xml:space="preserve">
+    <value>Seek to the current subtitle</value>
+    <comment>Seek to the current subtitle</comment>
+  </data>
+  <data name="Text_53BE12ABAB8D0B6D" xml:space="preserve">
+    <value>Seek to the next secondary subtitle</value>
+    <comment>Seek to the next secondary subtitle</comment>
+  </data>
+  <data name="Text_615205BD7711AA78" xml:space="preserve">
+    <value>Seek to the next secondary subtitle or seek forwards</value>
+    <comment>Seek to the next secondary subtitle or seek forwards</comment>
+  </data>
+  <data name="Text_B13A5AC16E38143E" xml:space="preserve">
+    <value>Seek to the next subtitle</value>
+    <comment>Seek to the next subtitle</comment>
+  </data>
+  <data name="Text_A877B54C52F8DA5A" xml:space="preserve">
+    <value>Seek to the next subtitle or forwards</value>
+    <comment>Seek to the next subtitle or forwards</comment>
+  </data>
+  <data name="Text_7B145111651C9B81" xml:space="preserve">
+    <value>Seek to the next subtitle or seek forwards</value>
+    <comment>Seek to the next subtitle or seek forwards</comment>
+  </data>
+  <data name="Text_398436DDB154E2D1" xml:space="preserve">
+    <value>Seek to the previous secondary subtitle</value>
+    <comment>Seek to the previous secondary subtitle</comment>
+  </data>
+  <data name="Text_20D7812A63FBE8AE" xml:space="preserve">
+    <value>Seek to the previous secondary subtitle or seek backwards</value>
+    <comment>Seek to the previous secondary subtitle or seek backwards</comment>
+  </data>
+  <data name="Text_12136EA7ABE0C99D" xml:space="preserve">
+    <value>Seek to the previous subtitle</value>
+    <comment>Seek to the previous subtitle</comment>
+  </data>
+  <data name="Text_DB4D3CB4D84C3931" xml:space="preserve">
+    <value>Seek to the previous subtitle or backwards</value>
+    <comment>Seek to the previous subtitle or backwards</comment>
+  </data>
+  <data name="Text_8B972C045A805E5F" xml:space="preserve">
+    <value>Seek to the previous subtitle or seek backwards</value>
+    <comment>Seek to the previous subtitle or seek backwards</comment>
+  </data>
+  <data name="Text_3ECF0734C0889449" xml:space="preserve">
+    <value>SeekBar FadeIn Time (ms)</value>
+    <comment>SeekBar FadeIn Time (ms)</comment>
+  </data>
+  <data name="Text_AF459BC4C013A121" xml:space="preserve">
+    <value>SeekBar FadeOut Time (ms)</value>
+    <comment>SeekBar FadeOut Time (ms)</comment>
+  </data>
+  <data name="Text_7618F7FCD2212369" xml:space="preserve">
+    <value>SeekBar Height</value>
+    <comment>SeekBar Height</comment>
+  </data>
+  <data name="Text_6EFCAB2F70DC3C47" xml:space="preserve">
+    <value>SeekBar Thumb Height</value>
+    <comment>SeekBar Thumb Height</comment>
+  </data>
+  <data name="Text_B40BADEB87780401" xml:space="preserve">
+    <value>SeekBar Track Height</value>
+    <comment>SeekBar Track Height</comment>
+  </data>
+  <data name="Text_D60B8785CDCD0BAD" xml:space="preserve">
+    <value>Seeking</value>
+    <comment>Seeking</comment>
+  </data>
+  <data name="Text_5B76CE65B3693D65" xml:space="preserve">
+    <value>Select Language - {0}</value>
+    <comment>Select Language - {0}</comment>
+  </data>
+  <data name="Text_344ECFA1BBEE9B06" xml:space="preserve">
+    <value>Select Model:</value>
+    <comment>Select Model:</comment>
+  </data>
+  <data name="Text_C78887D664E6D067" xml:space="preserve">
+    <value>Select OCR Engine</value>
+    <comment>Select OCR Engine</comment>
+  </data>
+  <data name="Text_C6178A5C9AF7E041" xml:space="preserve">
+    <value>Select a model to download.</value>
+    <comment>Select a model to download.</comment>
+  </data>
+  <data name="Text_BC8BF047C15F9EC8" xml:space="preserve">
+    <value>Select specific region</value>
+    <comment>Select specific region</comment>
+  </data>
+  <data name="Text_4D85AB4707C23CF1" xml:space="preserve">
+    <value>Selected Languages (by priority)</value>
+    <comment>Selected Languages (by priority)</comment>
+  </data>
+  <data name="Text_A29194055A54B9F9" xml:space="preserve">
+    <value>Selected Options (Priority to the above)</value>
+    <comment>Selected Options (Priority to the above)</comment>
+  </data>
+  <data name="Text_A3A5F649778E3E8A" xml:space="preserve">
+    <value>Sentence Lookup</value>
+    <comment>Sentence Lookup</comment>
+  </data>
+  <data name="Text_C9317A6CBF60A9EA" xml:space="preserve">
+    <value>Separator Max Width</value>
+    <comment>Separator Max Width</comment>
+  </data>
+  <data name="Text_3EA9DC41B9D6E372" xml:space="preserve">
+    <value>Separator Opacity</value>
+    <comment>Separator Opacity</comment>
+  </data>
+  <data name="Text_D2F65F881E4322C3" xml:space="preserve">
+    <value>Separator to be displayed when dual subtitles are used. If you do not want to display it, set it to 0.</value>
+    <comment>Separator to be displayed when dual subtitles are used. If you do not want to display it, set it to 0.</comment>
+  </data>
+  <data name="Text_5B9F274A513730C7" xml:space="preserve">
+    <value>Set Activity to Active forcibly</value>
+    <comment>Set Activity to Active forcibly</comment>
+  </data>
+  <data name="Text_27816F291C5FE1F1" xml:space="preserve">
+    <value>Set Activity to FullActive forcibly</value>
+    <comment>Set Activity to FullActive forcibly</comment>
+  </data>
+  <data name="Text_79022FD1E39478A0" xml:space="preserve">
+    <value>Set Activity to Idle forcibly</value>
+    <comment>Set Activity to Idle forcibly</comment>
+  </data>
+  <data name="Text_C365F1CB6D8E84E7" xml:space="preserve">
+    <value>Set Default</value>
+    <comment>Set Default</comment>
+  </data>
+  <data name="Text_88917B4BBFB7F03A" xml:space="preserve">
+    <value>Set your native language. It will be translated into that language. If it is in the same language as the video, it will not be translated. Some engines do not support certain languages.</value>
+    <comment>Set your native language. It will be translated into that language. If it is in the same language as the video, it will not be translated. Some engines do not support certain languages.</comment>
+  </data>
+  <data name="Text_8124ACE4EAEC358A" xml:space="preserve">
+    <value>Sets the maximum width of the subtitle; if set to 0, no limit is set.</value>
+    <comment>Sets the maximum width of the subtitle; if set to 0, no limit is set.</comment>
+  </data>
+  <data name="Text_3C97A5E028218A05" xml:space="preserve">
+    <value>Settings - {0}</value>
+    <comment>Settings - {0}</comment>
+  </data>
+  <data name="Text_81AB196FB5703CE0" xml:space="preserve">
+    <value>Several actions on a current video</value>
+    <comment>Several actions on a current video</comment>
+  </data>
+  <data name="Text_6A4C00AF2DBFD09A" xml:space="preserve">
+    <value>Sharpness</value>
+    <comment>Sharpness</comment>
+  </data>
+  <data name="Text_2C52BB1DFBD2D25D" xml:space="preserve">
+    <value>Shift + Wheel</value>
+    <comment>Shift + Wheel</comment>
+  </data>
+  <data name="Text_5753EA3780F34AD1" xml:space="preserve">
+    <value>Shortcut</value>
+    <comment>Shortcut</comment>
+  </data>
+  <data name="Text_AA1C6F5172B84E30" xml:space="preserve">
+    <value>Show Debug</value>
+    <comment>Show Debug</comment>
+  </data>
+  <data name="Text_0FF6B2DC07011636" xml:space="preserve">
+    <value>Show Next Frame</value>
+    <comment>Show Next Frame</comment>
+  </data>
+  <data name="Text_518C64821D1C3079" xml:space="preserve">
+    <value>Show Original Text when translating enabled</value>
+    <comment>Show Original Text when translating enabled</comment>
+  </data>
+  <data name="Text_3514D4EE394DCC71" xml:space="preserve">
+    <value>Show Previous Frame</value>
+    <comment>Show Previous Frame</comment>
+  </data>
+  <data name="Text_8457969D0AC8E37B" xml:space="preserve">
+    <value>Show SeekBar only when MouseOver</value>
+    <comment>Show SeekBar only when MouseOver</comment>
+  </data>
+  <data name="Text_04EFAE3FC7825D3A" xml:space="preserve">
+    <value>Show Sidebar</value>
+    <comment>Show Sidebar</comment>
+  </data>
+  <data name="Text_FD290E408C660D85" xml:space="preserve">
+    <value>Sidebar Left</value>
+    <comment>Sidebar Left</comment>
+  </data>
+  <data name="Text_65B424FD887417C3" xml:space="preserve">
+    <value>Sidebar Width</value>
+    <comment>Sidebar Width</comment>
+  </data>
+  <data name="Text_6717C3976DEA6C3B" xml:space="preserve">
+    <value>Single Click to Play/Pause</value>
+    <comment>Single Click to Play/Pause</comment>
+  </data>
+  <data name="Text_F314227F83D943F6" xml:space="preserve">
+    <value>Sinhala (Sinhalese)</value>
+    <comment>Sinhala (Sinhalese)</comment>
+  </data>
+  <data name="Text_1AF851907331C0ED" xml:space="preserve">
+    <value>Size</value>
+    <comment>Size</comment>
+  </data>
+  <data name="Text_3EDE3DDEFE56A9F7" xml:space="preserve">
+    <value>Size ({0})</value>
+    <comment>Size ({0})</comment>
+  </data>
+  <data name="Text_321886E110936677" xml:space="preserve">
+    <value>Size 1st ({0})</value>
+    <comment>Size 1st ({0})</comment>
+  </data>
+  <data name="Text_2EED06468AA960CA" xml:space="preserve">
+    <value>Size 2nd ({0})</value>
+    <comment>Size 2nd ({0})</comment>
+  </data>
+  <data name="Text_1AE4EAEF3AF4CE70" xml:space="preserve">
+    <value>Some runtimes require the installation of a toolkit or others beforehand. Please check</value>
+    <comment>Some runtimes require the installation of a toolkit or others beforehand. Please check</comment>
+  </data>
+  <data name="Text_28E29FFC97502813" xml:space="preserve">
+    <value>Source Language Region</value>
+    <comment>Source Language Region</comment>
+  </data>
+  <data name="Text_3411059CB8E0660E" xml:space="preserve">
+    <value>Spanish</value>
+    <comment>Spanish</comment>
+  </data>
+  <data name="Text_796BF36D4B1F5527" xml:space="preserve">
+    <value>Specifies the GPU device number to be used, index starting from 0. The first device is used by default.</value>
+    <comment>Specifies the GPU device number to be used, index starting from 0. The first device is used by default.</comment>
+  </data>
+  <data name="Text_8BC990ACEAC92D74" xml:space="preserve">
+    <value>Specify additional folder paths to open subtitles, separated by semicolons. If left blank, subtitles will be opened only from the current directory. Folder case is ignored. Both relative and absolute paths can be specified.</value>
+    <comment>Specify additional folder paths to open subtitles, separated by semicolons. If left blank, subtitles will be opened only from the current directory. Folder case is ignored. Both relative and absolute paths can be specified.</comment>
+  </data>
+  <data name="Text_014389638886890D" xml:space="preserve">
+    <value>Specify idle time in milliseconds to hide seek bar and mouse cursor</value>
+    <comment>Specify idle time in milliseconds to hide seek bar and mouse cursor</comment>
+  </data>
+  <data name="Text_FF0DD11300C558D0" xml:space="preserve">
+    <value>Specify the full path to faster-whisper-xxl.exe or whisper-faster.exe.</value>
+    <comment>Specify the full path to faster-whisper-xxl.exe or whisper-faster.exe.</comment>
+  </data>
+  <data name="Text_4D48A7281E0F2003" xml:space="preserve">
+    <value>Specify the number of threads. This will increase the load, but will speed up subtitle generation. Do not specify more than CPU threads.</value>
+    <comment>Specify the number of threads. This will increase the load, but will speed up subtitle generation. Do not specify more than CPU threads.</comment>
+  </data>
+  <data name="Text_C372FEE9B4566B85" xml:space="preserve">
+    <value>Speed</value>
+    <comment>Speed</comment>
+  </data>
+  <data name="Text_F06F08B403DF2423" xml:space="preserve">
+    <value>Speed (x{0})</value>
+    <comment>Speed (x{0})</comment>
+  </data>
+  <data name="Text_DA1FACEA80D116DD" xml:space="preserve">
+    <value>Speed Down (1)</value>
+    <comment>Speed Down (1)</comment>
+  </data>
+  <data name="Text_CF681AE9EA494455" xml:space="preserve">
+    <value>Speed Down (2)</value>
+    <comment>Speed Down (2)</comment>
+  </data>
+  <data name="Text_0A1EEF26CAC3058C" xml:space="preserve">
+    <value>Speed Offset1</value>
+    <comment>Speed Offset1</comment>
+  </data>
+  <data name="Text_86E3196E04CFCCFD" xml:space="preserve">
+    <value>Speed Offset2</value>
+    <comment>Speed Offset2</comment>
+  </data>
+  <data name="Text_E165D12CC659538E" xml:space="preserve">
+    <value>Speed Up (1)</value>
+    <comment>Speed Up (1)</comment>
+  </data>
+  <data name="Text_2093D62E82066560" xml:space="preserve">
+    <value>Speed Up (2)</value>
+    <comment>Speed Up (2)</comment>
+  </data>
+  <data name="Text_10E824323FBFD65B" xml:space="preserve">
+    <value>Speed x{0}</value>
+    <comment>Speed x{0}</comment>
+  </data>
+  <data name="Text_F1F7ED7E257AD150" xml:space="preserve">
+    <value>SplitOnWord</value>
+    <comment>SplitOnWord</comment>
+  </data>
+  <data name="Text_54A6E2C0D6A34149" xml:space="preserve">
+    <value>Start recording to {0}</value>
+    <comment>Start recording to {0}</comment>
+  </data>
+  <data name="Text_B4A7365740EF880B" xml:space="preserve">
+    <value>Stats</value>
+    <comment>Stats</comment>
+  </data>
+  <data name="Text_920E413C7D411B61" xml:space="preserve">
+    <value>Status</value>
+    <comment>Status</comment>
+  </data>
+  <data name="Text_19B81A94EECB0021" xml:space="preserve">
+    <value>Stop playback</value>
+    <comment>Stop playback</comment>
+  </data>
+  <data name="Text_3D591E826D545919" xml:space="preserve">
+    <value>Stop recording</value>
+    <comment>Stop recording</comment>
+  </data>
+  <data name="Text_1A4F630AC1B69FD0" xml:space="preserve">
+    <value>Stopped</value>
+    <comment>Stopped</comment>
+  </data>
+  <data name="Text_BFD297AFBF9E7430" xml:space="preserve">
+    <value>Streams</value>
+    <comment>Streams</comment>
+  </data>
+  <data name="Text_F4A56A2B10E3B873" xml:space="preserve">
+    <value>Stroke Color</value>
+    <comment>Stroke Color</comment>
+  </data>
+  <data name="Text_E4CE5735873D5D8B" xml:space="preserve">
+    <value>Stroke Thickness</value>
+    <comment>Stroke Thickness</comment>
+  </data>
+  <data name="Text_F96D0D89CB6CC4A8" xml:space="preserve">
+    <value>Subs Auto Text Copy {0}</value>
+    <comment>Subs Auto Text Copy {0}</comment>
+  </data>
+  <data name="Text_77322D9D7953BDEE" xml:space="preserve">
+    <value>Subs Downloader</value>
+    <comment>Subs Downloader</comment>
+  </data>
+  <data name="Text_A1A0E70D04AD88E9" xml:space="preserve">
+    <value>Subs Exporter</value>
+    <comment>Subs Exporter</comment>
+  </data>
+  <data name="Text_74D53A496F3E08EA" xml:space="preserve">
+    <value>Subs Text</value>
+    <comment>Subs Text</comment>
+  </data>
+  <data name="Text_549E99F3595CB0AC" xml:space="preserve">
+    <value>Subs {0}</value>
+    <comment>Subs {0}</comment>
+  </data>
+  <data name="Text_7760527704C314E6" xml:space="preserve">
+    <value>Subs {0} / {1}</value>
+    <comment>Subs {0} / {1}</comment>
+  </data>
+  <data name="Text_383CD6C0B871980D" xml:space="preserve">
+    <value>Subtitle</value>
+    <comment>Subtitle</comment>
+  </data>
+  <data name="Text_A90276D1C260DF3E" xml:space="preserve">
+    <value>Subtitle Context Count</value>
+    <comment>Subtitle Context Count</comment>
+  </data>
+  <data name="Text_A07A34BC2DA727A5" xml:space="preserve">
+    <value>Subtitle Padding</value>
+    <comment>Subtitle Padding</comment>
+  </data>
+  <data name="Text_C7DC0E3B234BAFB3" xml:space="preserve">
+    <value>SubtitleText</value>
+    <comment>SubtitleText</comment>
+  </data>
+  <data name="Text_0EE695BDEB26A296" xml:space="preserve">
+    <value>Subtitles</value>
+    <comment>Subtitles</comment>
+  </data>
+  <data name="Text_84E35237CF5ED951" xml:space="preserve">
+    <value>Subtitles (Position/Size)</value>
+    <comment>Subtitles (Position/Size)</comment>
+  </data>
+  <data name="Text_070E5C5A3C4B9700" xml:space="preserve">
+    <value>Subtitles &gt; ASR</value>
+    <comment>Subtitles &gt; ASR</comment>
+  </data>
+  <data name="Text_FF81CAD43A374194" xml:space="preserve">
+    <value>Subtitles &gt; OCR</value>
+    <comment>Subtitles &gt; OCR</comment>
+  </data>
+  <data name="Text_A637D33169589C62" xml:space="preserve">
+    <value>Subtitles &gt; Position / Size</value>
+    <comment>Subtitles &gt; Position / Size</comment>
+  </data>
+  <data name="Text_FBBB407099759180" xml:space="preserve">
+    <value>Subtitles &gt; Translate</value>
+    <comment>Subtitles &gt; Translate</comment>
+  </data>
+  <data name="Text_E31714B8DA13D1D1" xml:space="preserve">
+    <value>Subtitles &gt; Word Action</value>
+    <comment>Subtitles &gt; Word Action</comment>
+  </data>
+  <data name="Text_C74E8E2C4CE6FBE8" xml:space="preserve">
+    <value>Subtitles Auto Copy</value>
+    <comment>Subtitles Auto Copy</comment>
+  </data>
+  <data name="Text_97087076E7BB5F19" xml:space="preserve">
+    <value>Subtitles Downloader - {0}</value>
+    <comment>Subtitles Downloader - {0}</comment>
+  </data>
+  <data name="Text_A27468B90C199E1C" xml:space="preserve">
+    <value>Subtitles Exporter - {0}</value>
+    <comment>Subtitles Exporter - {0}</comment>
+  </data>
+  <data name="Text_5C5C0418D95D9DCA" xml:space="preserve">
+    <value>Subtitles Fonts</value>
+    <comment>Subtitles Fonts</comment>
+  </data>
+  <data name="Text_86D7E8AD5A692608" xml:space="preserve">
+    <value>Subtitles Language</value>
+    <comment>Subtitles Language</comment>
+  </data>
+  <data name="Text_12A0FE66935CECCB" xml:space="preserve">
+    <value>Subtitles Language Auto-Open (Priority to the above)</value>
+    <comment>Subtitles Language Auto-Open (Priority to the above)</comment>
+  </data>
+  <data name="Text_20E4E096B14107D6" xml:space="preserve">
+    <value>Subtitles Position</value>
+    <comment>Subtitles Position</comment>
+  </data>
+  <data name="Text_3A41EEE5D6AB919B" xml:space="preserve">
+    <value>Subtitles Position Down</value>
+    <comment>Subtitles Position Down</comment>
+  </data>
+  <data name="Text_1DE6F8DA54BFC33F" xml:space="preserve">
+    <value>Subtitles Position Up</value>
+    <comment>Subtitles Position Up</comment>
+  </data>
+  <data name="Text_6F567618DD16364D" xml:space="preserve">
+    <value>Subtitles Position Up/Down</value>
+    <comment>Subtitles Position Up/Down</comment>
+  </data>
+  <data name="Text_3D3D0BBC581667E2" xml:space="preserve">
+    <value>Subtitles Sidebar</value>
+    <comment>Subtitles Sidebar</comment>
+  </data>
+  <data name="Text_568123ACA59E0844" xml:space="preserve">
+    <value>Subtitles Size Decrease</value>
+    <comment>Subtitles Size Decrease</comment>
+  </data>
+  <data name="Text_6EE59DA51DF32D9B" xml:space="preserve">
+    <value>Subtitles Size Increase</value>
+    <comment>Subtitles Size Increase</comment>
+  </data>
+  <data name="Text_7C47BDD0D4CE99D1" xml:space="preserve">
+    <value>Subtitles Size Increase/Decrease</value>
+    <comment>Subtitles Size Increase/Decrease</comment>
+  </data>
+  <data name="Text_54C8F01E7893EB05" xml:space="preserve">
+    <value>Subtitles are sent to the chat one at a time and translated. Translation accuracy will be lower, but it will be more stable. Concurrent requests are possible.</value>
+    <comment>Subtitles are sent to the chat one at a time and translated. Translation accuracy will be lower, but it will be more stable. Concurrent requests are possible.</comment>
+  </data>
+  <data name="Text_8C17353F6292E746" xml:space="preserve">
+    <value>Subtitles via YoutubeDL are also affected.</value>
+    <comment>Subtitles via YoutubeDL are also affected.</comment>
+  </data>
+  <data name="Text_0111C0882ADE14F0" xml:space="preserve">
+    <value>SubtitlesPosition</value>
+    <comment>SubtitlesPosition</comment>
+  </data>
+  <data name="Text_706D3555857D1C9A" xml:space="preserve">
+    <value>Super Resolution</value>
+    <comment>Super Resolution</comment>
+  </data>
+  <data name="Text_7B73F257F5C2A581" xml:space="preserve">
+    <value>Swap sidebar position</value>
+    <comment>Swap sidebar position</comment>
+  </data>
+  <data name="Text_DA0A71D7A0C0FCF4" xml:space="preserve">
+    <value>Take a Snapshot</value>
+    <comment>Take a Snapshot</comment>
+  </data>
+  <data name="Text_2C86D50742A1FF4B" xml:space="preserve">
+    <value>Take snapshot</value>
+    <comment>Take snapshot</comment>
+  </data>
+  <data name="Text_5714AA6C4BB2E44E" xml:space="preserve">
+    <value>Target Language</value>
+    <comment>Target Language</comment>
+  </data>
+  <data name="Text_1D5DF4116F66634E" xml:space="preserve">
+    <value>Tesseract Downloader - {0}</value>
+    <comment>Tesseract Downloader - {0}</comment>
+  </data>
+  <data name="Text_908D0E0B201B5A7A" xml:space="preserve">
+    <value>The audio stream is automatically opened in the order of the languages set here.</value>
+    <comment>The audio stream is automatically opened in the order of the languages set here.</comment>
+  </data>
+  <data name="Text_0F49691292E19BBC" xml:space="preserve">
+    <value>The following placeholder will be embedded in the URL.
+
+[%w]  selected words
+[%lw] selected words (lower case)
+[%s]  current sentence</value>
+    <comment>The following placeholder will be embedded in the URL.
+
+[%w]  selected words
+[%lw] selected words (lower case)
+[%s]  current sentence</comment>
+  </data>
+  <data name="Text_0AD860735D48A585" xml:space="preserve">
+    <value>The model is automatically downloaded at the first run. Note that if the size is large, it will take longer. Models starting with distil- and ending in .en are only available in English.</value>
+    <comment>The model is automatically downloaded at the first run. Note that if the size is large, it will take longer. Models starting with distil- and ending in .en are only available in English.</comment>
+  </data>
+  <data name="Text_6F05CB6FDEB72035" xml:space="preserve">
+    <value>The number of subtitles to be sent together. Increasing the number increases the accuracy of the translation, but also the load and tokens.</value>
+    <comment>The number of subtitles to be sent together. Increasing the number increases the accuracy of the translation, but also the load and tokens.</comment>
+  </data>
+  <data name="Text_995E027B8076B9E0" xml:space="preserve">
+    <value>The previous subtitle and the translation result are sent together to the chat.
+                                        Translation accuracy is improved because context is taken into account.
+                                        Concurrent requests are not allowed.</value>
+    <comment>The previous subtitle and the translation result are sent together to the chat.
+                                        Translation accuracy is improved because context is taken into account.
+                                        Concurrent requests are not allowed.</comment>
+  </data>
+  <data name="Text_D7A8FBB307D78094" xml:space="preserve">
+    <value>The quick brown fox jumps over the lazy dog</value>
+    <comment>The quick brown fox jumps over the lazy dog</comment>
+  </data>
+  <data name="Text_C619D125A94FB895" xml:space="preserve">
+    <value>The subtitle stream is automatically opened in the order of the languages set here.</value>
+    <comment>The subtitle stream is automatically opened in the order of the languages set here.</comment>
+  </data>
+  <data name="Text_43AE3265B99F2F34" xml:space="preserve">
+    <value>Themes</value>
+    <comment>Themes</comment>
+  </data>
+  <data name="Text_ED13EA348BB8CEA5" xml:space="preserve">
+    <value>There were no subtitles to export.</value>
+    <comment>There were no subtitles to export.</comment>
+  </data>
+  <data name="Text_3E42E385075B9B56" xml:space="preserve">
+    <value>Threads</value>
+    <comment>Threads</comment>
+  </data>
+  <data name="Text_3B453BC8BD286BE4" xml:space="preserve">
+    <value>Timeout (ms)</value>
+    <comment>Timeout (ms)</comment>
+  </data>
+  <data name="Text_10B83BBC0D347F2B" xml:space="preserve">
+    <value>Timeout Health (ms)</value>
+    <comment>Timeout Health (ms)</comment>
+  </data>
+  <data name="Text_7E8CD2056DA73A7F" xml:space="preserve">
+    <value>Title</value>
+    <comment>Title</comment>
+  </data>
+  <data name="Text_C64ACC48C7D802C9" xml:space="preserve">
+    <value>ToLower</value>
+    <comment>ToLower</comment>
+  </data>
+  <data name="Text_FA985ADDB3693B41" xml:space="preserve">
+    <value>Toggle All Subtitles Visibility</value>
+    <comment>Toggle All Subtitles Visibility</comment>
+  </data>
+  <data name="Text_B5BF4C62C042BB2F" xml:space="preserve">
+    <value>Toggle Always On Top</value>
+    <comment>Toggle Always On Top</comment>
+  </data>
+  <data name="Text_2CFDEB4E172D4B69" xml:space="preserve">
+    <value>Toggle Always Seek Accurate Mode</value>
+    <comment>Toggle Always Seek Accurate Mode</comment>
+  </data>
+  <data name="Text_1B841238D3ED0431" xml:space="preserve">
+    <value>Toggle Audio Enabled</value>
+    <comment>Toggle Audio Enabled</comment>
+  </data>
+  <data name="Text_26BA3A8FB0489EDF" xml:space="preserve">
+    <value>Toggle Audio Mute/Unmute</value>
+    <comment>Toggle Audio Mute/Unmute</comment>
+  </data>
+  <data name="Text_9FBADC5302E5D8CF" xml:space="preserve">
+    <value>Toggle Auto Subtitles Text Copy</value>
+    <comment>Toggle Auto Subtitles Text Copy</comment>
+  </data>
+  <data name="Text_BF437720438D4261" xml:space="preserve">
+    <value>Toggle Debug Overlay</value>
+    <comment>Toggle Debug Overlay</comment>
+  </data>
+  <data name="Text_185CE7BC67EEF153" xml:space="preserve">
+    <value>Toggle FullScreen</value>
+    <comment>Toggle FullScreen</comment>
+  </data>
+  <data name="Text_4FDAFAD2A567E85C" xml:space="preserve">
+    <value>Toggle Fullscreen</value>
+    <comment>Toggle Fullscreen</comment>
+  </data>
+  <data name="Text_1C5FCC0DD4A0DE8D" xml:space="preserve">
+    <value>Toggle Keep Aspect Ratio</value>
+    <comment>Toggle Keep Aspect Ratio</comment>
+  </data>
+  <data name="Text_3A26A9D774579699" xml:space="preserve">
+    <value>Toggle NormalScreen / FullScreen</value>
+    <comment>Toggle NormalScreen / FullScreen</comment>
+  </data>
+  <data name="Text_66EB090217B4DF32" xml:space="preserve">
+    <value>Toggle Play/Pause</value>
+    <comment>Toggle Play/Pause</comment>
+  </data>
+  <data name="Text_49CE31ADE6B2391E" xml:space="preserve">
+    <value>Toggle Primary / Secondary</value>
+    <comment>Toggle Primary / Secondary</comment>
+  </data>
+  <data name="Text_D506A9F993379B97" xml:space="preserve">
+    <value>Toggle Primary / Secondary in Subtitles Sidebar</value>
+    <comment>Toggle Primary / Secondary in Subtitles Sidebar</comment>
+  </data>
+  <data name="Text_FE800704AA9B41C2" xml:space="preserve">
+    <value>Toggle Primary Subtitles Visibility</value>
+    <comment>Toggle Primary Subtitles Visibility</comment>
+  </data>
+  <data name="Text_D4F57FC99CAE3004" xml:space="preserve">
+    <value>Toggle Recording</value>
+    <comment>Toggle Recording</comment>
+  </data>
+  <data name="Text_33E7B13EAEFC812E" xml:space="preserve">
+    <value>Toggle Secondary Subtitles Visibility</value>
+    <comment>Toggle Secondary Subtitles Visibility</comment>
+  </data>
+  <data name="Text_F68CD1F01EED9494" xml:space="preserve">
+    <value>Toggle Sub Sidebar</value>
+    <comment>Toggle Sub Sidebar</comment>
+  </data>
+  <data name="Text_FBC193265FAAA480" xml:space="preserve">
+    <value>Toggle Subitltes Sidebar</value>
+    <comment>Toggle Subitltes Sidebar</comment>
+  </data>
+  <data name="Text_945B593D398511BB" xml:space="preserve">
+    <value>Toggle Video Acceleration</value>
+    <comment>Toggle Video Acceleration</comment>
+  </data>
+  <data name="Text_5FCA1C53571AE362" xml:space="preserve">
+    <value>Toggle Video Enabled</value>
+    <comment>Toggle Video Enabled</comment>
+  </data>
+  <data name="Text_41DBF954E84CA30F" xml:space="preserve">
+    <value>Toggle hiding after current subtitles</value>
+    <comment>Toggle hiding after current subtitles</comment>
+  </data>
+  <data name="Text_232540FE74406B60" xml:space="preserve">
+    <value>Toggle loop playback</value>
+    <comment>Toggle loop playback</comment>
+  </data>
+  <data name="Text_CC5EF0254F0F1ED6" xml:space="preserve">
+    <value>Toggle play playback</value>
+    <comment>Toggle play playback</comment>
+  </data>
+  <data name="Text_1D2D29197B2C1381" xml:space="preserve">
+    <value>Toggle reverse playback</value>
+    <comment>Toggle reverse playback</comment>
+  </data>
+  <data name="Text_5B39A0209F58C65A" xml:space="preserve">
+    <value>Toggle to show original text in Subtitles Sidebar</value>
+    <comment>Toggle to show original text in Subtitles Sidebar</comment>
+  </data>
+  <data name="Text_CB1FFAF0EB27A721" xml:space="preserve">
+    <value>Toggle to show original text when translating enabled</value>
+    <comment>Toggle to show original text when translating enabled</comment>
+  </data>
+  <data name="Text_D5CDFCF7FF75338F" xml:space="preserve">
+    <value>Top</value>
+    <comment>Top</comment>
+  </data>
+  <data name="Text_7A1FBA5B088C1D59" xml:space="preserve">
+    <value>TopField</value>
+    <comment>TopField</comment>
+  </data>
+  <data name="Text_09B11FE6F18DBAF9" xml:space="preserve">
+    <value>TopFieldFirst</value>
+    <comment>TopFieldFirst</comment>
+  </data>
+  <data name="Text_FE8C0AE45A6AC361" xml:space="preserve">
+    <value>Total Frames</value>
+    <comment>Total Frames</comment>
+  </data>
+  <data name="Text_7E14C3D7DD12BBD0" xml:space="preserve">
+    <value>Trace</value>
+    <comment>Trace</comment>
+  </data>
+  <data name="Text_8FE147696FBF47F3" xml:space="preserve">
+    <value>Translate</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="Text_9F7AF69149607739" xml:space="preserve">
+    <value>Translate Chat Method</value>
+    <comment>Translate Chat Method</comment>
+  </data>
+  <data name="Text_FB373C20806F7E8A" xml:space="preserve">
+    <value>Translate to English</value>
+    <comment>Translate to English</comment>
+  </data>
+  <data name="Text_ABBC13C13E35C899" xml:space="preserve">
+    <value>Translated</value>
+    <comment>Translated</comment>
+  </data>
+  <data name="Text_F93DD6D2F9F7649D" xml:space="preserve">
+    <value>Translated into English using Whisper's built-in translation engine. Only English is supported. If you want to translate into another language, you can use the LLPlayer's translation engine.</value>
+    <comment>Translated into English using Whisper's built-in translation engine. Only English is supported. If you want to translate into another language, you can use the LLPlayer's translation engine.</comment>
+  </data>
+  <data name="Text_E375D4A76EAC54F4" xml:space="preserve">
+    <value>Translation Chat Config (for LLM API such as Ollama, OpenAI, etc...)</value>
+    <comment>Translation Chat Config (for LLM API such as Ollama, OpenAI, etc...)</comment>
+  </data>
+  <data name="Text_1CA478B19DC534F6" xml:space="preserve">
+    <value>Translation Engine</value>
+    <comment>Translation Engine</comment>
+  </data>
+  <data name="Text_1E72C162A87DDC6B" xml:space="preserve">
+    <value>Translation Language</value>
+    <comment>Translation Language</comment>
+  </data>
+  <data name="Text_C64B1D7C4C7C7E28" xml:space="preserve">
+    <value>Translation Parameters</value>
+    <comment>Translation Parameters</comment>
+  </data>
+  <data name="Text_3CBC87C7681F34DB" xml:space="preserve">
+    <value>True</value>
+    <comment>True</comment>
+  </data>
+  <data name="Text_AFC6E2B16A5A929C" xml:space="preserve">
+    <value>True for English-only models, in which case the Audio Language setting above is ignored.</value>
+    <comment>True for English-only models, in which case the Audio Language setting above is ignored.</comment>
+  </data>
+  <data name="Text_2A4DFC463AB8F65A" xml:space="preserve">
+    <value>Twi (Akan)</value>
+    <comment>Twi (Akan)</comment>
+  </data>
+  <data name="Text_BAADDF70FB5D432B" xml:space="preserve">
+    <value>Type</value>
+    <comment>Type</comment>
+  </data>
+  <data name="Text_6B7469B0733E6055" xml:space="preserve">
+    <value>UI Language</value>
+    <comment>UI Language</comment>
+  </data>
+  <data name="Text_1DD0274B2E23D9F7" xml:space="preserve">
+    <value>Undetermined</value>
+    <comment>Undetermined</comment>
+  </data>
+  <data name="Text_6302CD57F4348586" xml:space="preserve">
+    <value>Unhandled Exception: {0}</value>
+    <comment>Unhandled Exception: {0}</comment>
+  </data>
+  <data name="Text_B764CDC0EAB71374" xml:space="preserve">
+    <value>Unknown</value>
+    <comment>Unknown</comment>
+  </data>
+  <data name="Text_55490A4BF3A8E8CB" xml:space="preserve">
+    <value>Up</value>
+    <comment>Up</comment>
+  </data>
+  <data name="Text_112BD09FBF6C0010" xml:space="preserve">
+    <value>Use CPU device</value>
+    <comment>Use CPU device</comment>
+  </data>
+  <data name="Text_249EDA13FEFD18CC" xml:space="preserve">
+    <value>Use CUDA device</value>
+    <comment>Use CUDA device</comment>
+  </data>
+  <data name="Text_EF4C7EDC5F211CD3" xml:space="preserve">
+    <value>Use CUDA device with &gt;= RTX 50XX (requires less GPU memory, slow)</value>
+    <comment>Use CUDA device with &gt;= RTX 50XX (requires less GPU memory, slow)</comment>
+  </data>
+  <data name="Text_8E07D67883768552" xml:space="preserve">
+    <value>Use CUDA device with &gt;= RTX 50XX (requires more GPU memory)</value>
+    <comment>Use CUDA device with &gt;= RTX 50XX (requires more GPU memory)</comment>
+  </data>
+  <data name="Text_181881594C08D08D" xml:space="preserve">
+    <value>Use CUDA second device</value>
+    <comment>Use CUDA second device</comment>
+  </data>
+  <data name="Text_C4681F74FCAF5763" xml:space="preserve">
+    <value>Use Chinese (Simplified), with punctuation</value>
+    <comment>Use Chinese (Simplified), with punctuation</comment>
+  </data>
+  <data name="Text_DABD1AF057D42970" xml:space="preserve">
+    <value>Use Chinese (Traditional), with punctuation</value>
+    <comment>Use Chinese (Traditional), with punctuation</comment>
+  </data>
+  <data name="Text_6F56A613C104A2D3" xml:space="preserve">
+    <value>Use Filters</value>
+    <comment>Use Filters</comment>
+  </data>
+  <data name="Text_A2B3791FEAB98BFF" xml:space="preserve">
+    <value>Use Manual Engine</value>
+    <comment>Use Manual Engine</comment>
+  </data>
+  <data name="Text_486350F11BD5E0AC" xml:space="preserve">
+    <value>Use Manual Model</value>
+    <comment>Use Manual Model</comment>
+  </data>
+  <data name="Text_5E1A9841AC53F2EF" xml:space="preserve">
+    <value>Use Separate 2nd Fonts</value>
+    <comment>Use Separate 2nd Fonts</comment>
+  </data>
+  <data name="Text_0BE0FE3E01344307" xml:space="preserve">
+    <value>Using libraries</value>
+    <comment>Using libraries</comment>
+  </data>
+  <data name="Text_B16A5A0D774208C8" xml:space="preserve">
+    <value>V.Sync</value>
+    <comment>V.Sync</comment>
+  </data>
+  <data name="Text_2CD57109145AB1CB" xml:space="preserve">
+    <value>Verbose</value>
+    <comment>Verbose</comment>
+  </data>
+  <data name="Text_74F20322A42A4AFA" xml:space="preserve">
+    <value>Version: </value>
+    <comment>Version: </comment>
+  </data>
+  <data name="Text_F6C8ADF54E3C1DEC" xml:space="preserve">
+    <value>Vertical Flip</value>
+    <comment>Vertical Flip</comment>
+  </data>
+  <data name="Text_5AC5CF5D1F24F95C" xml:space="preserve">
+    <value>Vertical Position (-25%-150%)</value>
+    <comment>Vertical Position (-25%-150%)</comment>
+  </data>
+  <data name="Text_87C8F337FA56523F" xml:space="preserve">
+    <value>Vertical Resolution Max</value>
+    <comment>Vertical Resolution Max</comment>
+  </data>
+  <data name="Text_D534BE829E32196B" xml:space="preserve">
+    <value>Video</value>
+    <comment>Video</comment>
+  </data>
+  <data name="Text_D73A4EE5445D959B" xml:space="preserve">
+    <value>Video Acceleration</value>
+    <comment>Video Acceleration</comment>
+  </data>
+  <data name="Text_6D8438CD10FE98A0" xml:space="preserve">
+    <value>Video Acceleration {0}</value>
+    <comment>Video Acceleration {0}</comment>
+  </data>
+  <data name="Text_17CF669933DF3C17" xml:space="preserve">
+    <value>Video Frames Max</value>
+    <comment>Video Frames Max</comment>
+  </data>
+  <data name="Text_2DCB215D5412B45F" xml:space="preserve">
+    <value>Video Processor</value>
+    <comment>Video Processor</comment>
+  </data>
+  <data name="Text_130A7DD4AD1FF5D2" xml:space="preserve">
+    <value>Video Streams</value>
+    <comment>Video Streams</comment>
+  </data>
+  <data name="Text_361E53D5A1E8EC1A" xml:space="preserve">
+    <value>Video {0}</value>
+    <comment>Video {0}</comment>
+  </data>
+  <data name="Text_7448611D5F93AA8A" xml:space="preserve">
+    <value>Visibility</value>
+    <comment>Visibility</comment>
+  </data>
+  <data name="Text_B10FB966D72063F5" xml:space="preserve">
+    <value>Volume</value>
+    <comment>Volume</comment>
+  </data>
+  <data name="Text_7CF626B06B2808D9" xml:space="preserve">
+    <value>Volume Down (1)</value>
+    <comment>Volume Down (1)</comment>
+  </data>
+  <data name="Text_621B9D7818D448DA" xml:space="preserve">
+    <value>Volume Offset</value>
+    <comment>Volume Offset</comment>
+  </data>
+  <data name="Text_B9E2CED182654EEA" xml:space="preserve">
+    <value>Volume Up (1)</value>
+    <comment>Volume Up (1)</comment>
+  </data>
+  <data name="Text_5640B07FD4F24918" xml:space="preserve">
+    <value>Volume Up / Down</value>
+    <comment>Volume Up / Down</comment>
+  </data>
+  <data name="Text_34BA79BA989B5E06" xml:space="preserve">
+    <value>Volume {0}%</value>
+    <comment>Volume {0}%</comment>
+  </data>
+  <data name="Text_5DD2ADEDE654FACA" xml:space="preserve">
+    <value>WARN: ASR/OCR is running, so not all are saved.</value>
+    <comment>WARN: ASR/OCR is running, so not all are saved.</comment>
+  </data>
+  <data name="Text_8A5AEF4E3A0BE2CE" xml:space="preserve">
+    <value>Waiting...</value>
+    <comment>Waiting...</comment>
+  </data>
+  <data name="Text_8448814DC5CAFF5C" xml:space="preserve">
+    <value>Warn</value>
+    <comment>Warn</comment>
+  </data>
+  <data name="Text_E981DDAE45D8F4CA" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Warning</comment>
+  </data>
+  <data name="Text_889A08322A4116F5" xml:space="preserve">
+    <value>Wheel</value>
+    <comment>Wheel</comment>
+  </data>
+  <data name="Text_DB94B48BD31E5B0E" xml:space="preserve">
+    <value>Wheel Click</value>
+    <comment>Wheel Click</comment>
+  </data>
+  <data name="Text_65376A487D3E1FBB" xml:space="preserve">
+    <value>Wheel to Volume Up/Down</value>
+    <comment>Wheel to Volume Up/Down</comment>
+  </data>
+  <data name="Text_AEDE6E1142CCCFCC" xml:space="preserve">
+    <value>When Dual</value>
+    <comment>When Dual</comment>
+  </data>
+  <data name="Text_116F4840E6CCF3A9" xml:space="preserve">
+    <value>Whether to include regional information in the {target_lang} of the prompt as follows.</value>
+    <comment>Whether to include regional information in the {target_lang} of the prompt as follows.</comment>
+  </data>
+  <data name="Text_E7A8A2027CF3674D" xml:space="preserve">
+    <value>Whisper Common</value>
+    <comment>Whisper Common</comment>
+  </data>
+  <data name="Text_A33677A561AE08DA" xml:space="preserve">
+    <value>Whisper Downloader - {0}</value>
+    <comment>Whisper Downloader - {0}</comment>
+  </data>
+  <data name="Text_D7BD4154FB72A266" xml:space="preserve">
+    <value>Whisper Engine</value>
+    <comment>Whisper Engine</comment>
+  </data>
+  <data name="Text_853016D70C6E23C9" xml:space="preserve">
+    <value>Whisper Engine Downloader - {0}</value>
+    <comment>Whisper Engine Downloader - {0}</comment>
+  </data>
+  <data name="Text_9A3885CE413421D2" xml:space="preserve">
+    <value>Whisper Model</value>
+    <comment>Whisper Model</comment>
+  </data>
+  <data name="Text_732D418A32BE3E0F" xml:space="preserve">
+    <value>Width (1-100%)</value>
+    <comment>Width (1-100%)</comment>
+  </data>
+  <data name="Text_19734A1B58CABC22" xml:space="preserve">
+    <value>Window</value>
+    <comment>Window</comment>
+  </data>
+  <data name="Text_D26D8AC94ADFD779" xml:space="preserve">
+    <value>With UTF8 BOM</value>
+    <comment>With UTF8 BOM</comment>
+  </data>
+  <data name="Text_8F9C8EE90225DB8C" xml:space="preserve">
+    <value>Word Action</value>
+    <comment>Word Action</comment>
+  </data>
+  <data name="Text_4291B626D7FF5C9F" xml:space="preserve">
+    <value>Word Actions</value>
+    <comment>Word Actions</comment>
+  </data>
+  <data name="Text_9EE6E33123ED69EB" xml:space="preserve">
+    <value>Word Actions (Search/Copy)</value>
+    <comment>Word Actions (Search/Copy)</comment>
+  </data>
+  <data name="Text_5D1BA7EB07E9873A" xml:space="preserve">
+    <value>Word Click Action:</value>
+    <comment>Word Click Action:</comment>
+  </data>
+  <data name="Text_E45475F059D7326D" xml:space="preserve">
+    <value>Word Context Menu</value>
+    <comment>Word Context Menu</comment>
+  </data>
+  <data name="Text_EF569AB94B45E2DE" xml:space="preserve">
+    <value>Word Lookup</value>
+    <comment>Word Lookup</comment>
+  </data>
+  <data name="Text_1ECF8F59518E6326" xml:space="preserve">
+    <value>Word Special Actions for Japanese</value>
+    <comment>Word Special Actions for Japanese</comment>
+  </data>
+  <data name="Text_6EB3B6E376329E09" xml:space="preserve">
+    <value>Word Translation Engine</value>
+    <comment>Word Translation Engine</comment>
+  </data>
+  <data name="Text_761839AD7B92F662" xml:space="preserve">
+    <value>Writes to the config file and closes the dialog.</value>
+    <comment>Writes to the config file and closes the dialog.</comment>
+  </data>
+  <data name="Text_6DDF8E185E22F897" xml:space="preserve">
+    <value>X1 Click</value>
+    <comment>X1 Click</comment>
+  </data>
+  <data name="Text_8B05751836E054DC" xml:space="preserve">
+    <value>X2 Click</value>
+    <comment>X2 Click</comment>
+  </data>
+  <data name="Text_89F6832560DEC0B7" xml:space="preserve">
+    <value>Year</value>
+    <comment>Year</comment>
+  </data>
+  <data name="Text_85A39AB345D672FF" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Yes</comment>
+  </data>
+  <data name="Text_A68C3596A2E2C404" xml:space="preserve">
+    <value>You can change the priority of the whisper process. If playback is affected, you can lower the priority.</value>
+    <comment>You can change the priority of the whisper process. If playback is affected, you can lower the priority.</comment>
+  </data>
+  <data name="Text_D3DD6D922233CF10" xml:space="preserve">
+    <value>You can copy debugging commands to the clipboard, which can then be executed in PowerShell by pasting.</value>
+    <comment>You can copy debugging commands to the clipboard, which can then be executed in PowerShell by pasting.</comment>
+  </data>
+  <data name="Text_4F549C5563DAB3B5" xml:space="preserve">
+    <value>You can limit the number of characters per subtitle. If the default subtitle is too long, you can adjust it by specifying the number of characters.</value>
+    <comment>You can limit the number of characters per subtitle. If the default subtitle is too long, you can adjust it by specifying the number of characters.</comment>
+  </data>
+  <data name="Text_C53AEDAF558DC711" xml:space="preserve">
+    <value>You can send subtitle text to your browser via the clipboard and work with browser extensions such as Yomitan and 10ten.
+                        See</value>
+    <comment>You can send subtitle text to your browser via the clipboard and work with browser extensions such as Yomitan and 10ten.
+                        See</comment>
+  </data>
+  <data name="Text_29B695E929AEFC0E" xml:space="preserve">
+    <value>You may be able to customize the output. For example, you can control whether the output is in Simplified or Traditional Chinese.</value>
+    <comment>You may be able to customize the output. For example, you can control whether the output is in Simplified or Traditional Chinese.</comment>
+  </data>
+  <data name="Text_D46F546156882046" xml:space="preserve">
+    <value>You will need to install a language pack on your OS or install an OCR engine using</value>
+    <comment>You will need to install a language pack on your OS or install an OCR engine using</comment>
+  </data>
+  <data name="Text_27F0618FA5D5D78B" xml:space="preserve">
+    <value>Zero Latency</value>
+    <comment>Zero Latency</comment>
+  </data>
+  <data name="Text_509C517EDE79FEF0" xml:space="preserve">
+    <value>Zoom</value>
+    <comment>Zoom</comment>
+  </data>
+  <data name="Text_AB81CDB611008F1E" xml:space="preserve">
+    <value>Zoom ({0}%)</value>
+    <comment>Zoom ({0}%)</comment>
+  </data>
+  <data name="Text_5A982CF9DC11B4EC" xml:space="preserve">
+    <value>Zoom In</value>
+    <comment>Zoom In</comment>
+  </data>
+  <data name="Text_BE0AB2842933DA6D" xml:space="preserve">
+    <value>Zoom In (1)</value>
+    <comment>Zoom In (1)</comment>
+  </data>
+  <data name="Text_E72C2582181EA420" xml:space="preserve">
+    <value>Zoom In / Out</value>
+    <comment>Zoom In / Out</comment>
+  </data>
+  <data name="Text_67F9DDAF26518946" xml:space="preserve">
+    <value>Zoom Out (1)</value>
+    <comment>Zoom Out (1)</comment>
+  </data>
+  <data name="Text_51E1B843E0D0BED6" xml:space="preserve">
+    <value>Zoom Reset</value>
+    <comment>Zoom Reset</comment>
+  </data>
+  <data name="Text_9C0319D76C288E6A" xml:space="preserve">
+    <value>Zoom Unit</value>
+    <comment>Zoom Unit</comment>
+  </data>
+  <data name="Text_FEE3D4B2A319F707" xml:space="preserve">
+    <value>Zoom Unit (%)</value>
+    <comment>Zoom Unit (%)</comment>
+  </data>
+  <data name="Text_BC7B631A689B45CA" xml:space="preserve">
+    <value>Zoom out</value>
+    <comment>Zoom out</comment>
+  </data>
+  <data name="Text_693D6C896E62C29D" xml:space="preserve">
+    <value>Zoom {0}%</value>
+    <comment>Zoom {0}%</comment>
+  </data>
+  <data name="Text_EE59D53020F74E54" xml:space="preserve">
+    <value>[All supported]</value>
+    <comment>[All supported]</comment>
+  </data>
+  <data name="Text_548D3769E09FF8C1" xml:space="preserve">
+    <value>[KeepContext]</value>
+    <comment>[KeepContext]</comment>
+  </data>
+  <data name="Text_5EEEC077E887A319" xml:space="preserve">
+    <value>[KeepSize]</value>
+    <comment>[KeepSize]</comment>
+  </data>
+  <data name="Text_BA8FC41903155FA1" xml:space="preserve">
+    <value>[OneByOne]</value>
+    <comment>[OneByOne]</comment>
+  </data>
+  <data name="Text_CA63805439F880CE" xml:space="preserve">
+    <value>[Reset]</value>
+    <comment>[Reset]</comment>
+  </data>
+  <data name="Text_D18CD0DC6494ECE7" xml:space="preserve">
+    <value>[Status]</value>
+    <comment>[Status]</comment>
+  </data>
+  <data name="Text_60DC114DB3EE887C" xml:space="preserve">
+    <value>as a reference.</value>
+    <comment>as a reference.</comment>
+  </data>
+  <data name="Text_AC79C2BEB5AA0CE0" xml:space="preserve">
+    <value>e.g. --device cpu</value>
+    <comment>e.g. --device cpu</comment>
+  </data>
+  <data name="Text_BC17DDBFAE3DA096" xml:space="preserve">
+    <value>faster-whisper (Recommended)</value>
+    <comment>faster-whisper (Recommended)</comment>
+  </data>
+  <data name="Text_BCDC66CAC35A1A55" xml:space="preserve">
+    <value>faster-whisper config</value>
+    <comment>faster-whisper config</comment>
+  </data>
+  <data name="Text_C14ED31F0BDF407B" xml:space="preserve">
+    <value>for details.</value>
+    <comment>for details.</comment>
+  </data>
+  <data name="Text_0895E3EA3D207F41" xml:space="preserve">
+    <value>for more information.</value>
+    <comment>for more information.</comment>
+  </data>
+  <data name="Text_E564B4081D7A9EA4" xml:space="preserve">
+    <value>hidden</value>
+    <comment>hidden</comment>
+  </data>
+  <data name="Text_8CD8A5162DC1D8F1" xml:space="preserve">
+    <value>source and target language are same</value>
+    <comment>source and target language are same</comment>
+  </data>
+  <data name="Text_7C5C74F861B1DC63" xml:space="preserve">
+    <value>source language are unknown</value>
+    <comment>source language are unknown</comment>
+  </data>
+  <data name="Text_8E3D1FC29EC9E839" xml:space="preserve">
+    <value>source language is not supported by {0}: {1}</value>
+    <comment>source language is not supported by {0}: {1}</comment>
+  </data>
+  <data name="Text_07FB805EA93E8214" xml:space="preserve">
+    <value>source language is not supported: {0}</value>
+    <comment>source language is not supported: {0}</comment>
+  </data>
+  <data name="Text_805D649A34B8AA03" xml:space="preserve">
+    <value>target language is not supported by {0}: {1}</value>
+    <comment>target language is not supported by {0}: {1}</comment>
+  </data>
+  <data name="Text_9A8D3E9EA15523E1" xml:space="preserve">
+    <value>target language is not supported: {0}</value>
+    <comment>target language is not supported: {0}</comment>
+  </data>
+  <data name="Text_38600672B6ED5372" xml:space="preserve">
+    <value>this link</value>
+    <comment>this link</comment>
+  </data>
+  <data name="Text_CFCDC2D0771E395E" xml:space="preserve">
+    <value>token is not initialized</value>
+    <comment>token is not initialized</comment>
+  </data>
+  <data name="Text_D42EF1497900BC6E" xml:space="preserve">
+    <value>visible</value>
+    <comment>visible</comment>
+  </data>
+  <data name="Text_4FB5E564F0CE44A7" xml:space="preserve">
+    <value>whisper.cpp config</value>
+    <comment>whisper.cpp config</comment>
+  </data>
+  <data name="Text_E50614F8DBDA4AAE" xml:space="preserve">
+    <value>whisper.cpp hardware options (Required to restart to apply changes)</value>
+    <comment>whisper.cpp hardware options (Required to restart to apply changes)</comment>
+  </data>
+  <data name="Text_B419D24DD8DDEC1C" xml:space="preserve">
+    <value>{0} Error</value>
+    <comment>{0} Error</comment>
+  </data>
+  <data name="Text_679A1D8141053CC9" xml:space="preserve">
+    <value>{0} Subs Delay {1}ms</value>
+    <comment>{0} Subs Delay {1}ms</comment>
+  </data>
+  <data name="Text_EAB1FFB1C5C8C852" xml:space="preserve">
+    <value>{0} Unknown Error</value>
+    <comment>{0} Unknown Error</comment>
+  </data>
+  <data name="Text_266738255D78D27E" xml:space="preserve">
+    <value>{0} hit</value>
+    <comment>{0} hit</comment>
+  </data>
+  <data name="Text_169F79094908108E" xml:space="preserve">
+    <value>{0} hits</value>
+    <comment>{0} hits</comment>
+  </data>
+</root>

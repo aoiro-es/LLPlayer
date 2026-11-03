@@ -316,13 +316,13 @@ public class FlyleafOverlayVM : Bindable
                     OSDMessage = player.OSDMessage;
                     break;
                 case nameof(player.ReversePlayback):
-                    OSDMessage = $"Reverse Playback {(player.ReversePlayback ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Reverse Playback {UiText.Get(player.ReversePlayback ? "On" : "Off")}");
                     break;
                 case nameof(player.LoopPlayback):
-                    OSDMessage = $"Loop Playback {(player.LoopPlayback ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Loop Playback {UiText.Get(player.LoopPlayback ? "On" : "Off")}");
                     break;
                 case nameof(player.Speed):
-                    OSDMessage = $"Speed x{player.Speed}";
+                    OSDMessage = UiText.Format($"Speed x{player.Speed}");
                     break;
                 case nameof(player.Status):
                     // Change only Play and Pause to icon
@@ -335,7 +335,7 @@ public class FlyleafOverlayVM : Bindable
                             OSDIcon = PackIconKind.Play;
                             return;
                     }
-                    OSDMessage = $"{player.Status.ToString()}";
+                    OSDMessage = UiText.Describe(player.Status);
                     break;
             }
         };
@@ -345,7 +345,7 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(player.Audio.Volume):
-                    OSDMessage = $"Volume {player.Audio.Volume}%";
+                    OSDMessage = UiText.Format($"Volume {player.Audio.Volume}%");
                     break;
                 case nameof(player.Audio.Mute):
                     OSDIcon = player.Audio.Mute ? PackIconKind.VolumeOff : PackIconKind.VolumeHigh;
@@ -358,7 +358,7 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(player.Config.Player.SeekAccurate):
-                    OSDMessage = $"Always Seek Accurate {(player.Config.Player.SeekAccurate ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Always Seek Accurate {UiText.Get(player.Config.Player.SeekAccurate ? "On" : "Off")}");
                     break;
             }
         };
@@ -368,10 +368,10 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(player.Config.Audio.Enabled):
-                    OSDMessage = $"Audio {(player.Config.Audio.Enabled ? "Enabled" : "Disabled")}";
+                    OSDMessage = UiText.Format($"Audio {UiText.Get(player.Config.Audio.Enabled ? "Enabled" : "Disabled")}");
                     break;
                 case nameof(player.Config.Audio.Delay):
-                    OSDMessage = $"Audio Delay {player.Config.Audio.Delay / 10000}ms";
+                    OSDMessage = UiText.Format($"Audio Delay {player.Config.Audio.Delay / 10000}ms");
                     break;
             }
         };
@@ -381,19 +381,19 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(player.Config.Video.Rotation):
-                    OSDMessage = $"Rotation {player.Config.Video.Rotation}°";
+                    OSDMessage = UiText.Format($"Rotation {player.Config.Video.Rotation}°");
                     break;
                 case nameof(player.Config.Video.Zoom):
-                    OSDMessage = $"Zoom {player.Config.Video.Zoom}%";
+                    OSDMessage = UiText.Format($"Zoom {player.Config.Video.Zoom}%");
                     break;
                 case nameof(player.Config.Video.Enabled):
-                    OSDMessage = $"Video {(player.Config.Video.Enabled ? "Enabled" : "Disabled")}";
+                    OSDMessage = UiText.Format($"Video {UiText.Get(player.Config.Video.Enabled ? "Enabled" : "Disabled")}");
                     break;
                 case nameof(player.Config.Video.AspectRatio):
-                    OSDMessage = $"Aspect Ratio {player.Config.Video.AspectRatio.ToString()}";
+                    OSDMessage = UiText.Format($"Aspect Ratio {player.Config.Video.AspectRatio.ToString()}");
                     break;
                 case nameof(player.Config.Video.VideoAcceleration):
-                    OSDMessage = $"Video Acceleration {(player.Config.Video.VideoAcceleration ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Video Acceleration {UiText.Get(player.Config.Video.VideoAcceleration ? "On" : "Off")}");
                     break;
             }
         };
@@ -405,19 +405,19 @@ public class FlyleafOverlayVM : Bindable
                 switch (e.PropertyName)
                 {
                     case nameof(config.Delay):
-                        OSDMessage = $"{(i == 0 ? "Primary" : "Secondary")} Subs Delay {config.Delay / 10000}ms";
+                        OSDMessage = UiText.Format($"{UiText.Get(i == 0 ? "Primary" : "Secondary")} Subs Delay {config.Delay / 10000}ms");
                         break;
                     case nameof(config.Visible):
-                        var primary = player.Config.Subtitles[0].Visible ? "visible" : "hidden";
-                        var secondary = player.Config.Subtitles[1].Visible ? "visible" : "hidden";
+                        var primary = player.Config.Subtitles[0].Visible ? UiText.Get("visible") : UiText.Get("hidden");
+                        var secondary = player.Config.Subtitles[1].Visible ? UiText.Get("visible") : UiText.Get("hidden");
 
                         if (player.Subtitles[1].Enabled)
                         {
-                            OSDMessage = $"Subs {primary} / {secondary}";
+                            OSDMessage = UiText.Format($"Subs {primary} / {secondary}");
                         }
                         else
                         {
-                            OSDMessage = $"Subs {primary}";
+                            OSDMessage = UiText.Format($"Subs {primary}");
                         }
                         break;
                 }
@@ -430,7 +430,7 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(FL.Config.AlwaysOnTop):
-                    OSDMessage = $"Always on Top {(FL.Config.AlwaysOnTop ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Always on Top {UiText.Get(FL.Config.AlwaysOnTop ? "On" : "Off")}");
                     break;
             }
         };
@@ -440,7 +440,7 @@ public class FlyleafOverlayVM : Bindable
             switch (e.PropertyName)
             {
                 case nameof(FL.Config.Subs.SubsAutoTextCopy):
-                    OSDMessage = $"Subs Auto Text Copy {(FL.Config.Subs.SubsAutoTextCopy ? "On" : "Off")}";
+                    OSDMessage = UiText.Format($"Subs Auto Text Copy {UiText.Get(FL.Config.Subs.SubsAutoTextCopy ? "On" : "Off")}");
                     break;
             }
         };

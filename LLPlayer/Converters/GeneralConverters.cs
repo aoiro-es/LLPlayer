@@ -96,7 +96,7 @@ public class EnumToStringConverter : IValueConverter
         try
         {
             str = Enum.GetName(value.GetType(), value)!;
-            return str;
+            return UiText.Get(str);
         }
         catch
         {
@@ -122,6 +122,13 @@ public class EnumToDescriptionConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         => throw new NotImplementedException();
+}
+
+public class LocalizedTextConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => UiText.Describe(value);
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => Binding.DoNothing;
 }
 
 [ValueConversion(typeof(Enum), typeof(bool))]

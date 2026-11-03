@@ -374,13 +374,13 @@ public abstract class OpenAIBaseTranslateSettings : NotifyPropertyChanged, ITran
     {
         try
         {
-            Status = "Checking...";
+            Status = FlyleafLib.Localization.UiText.Get("Checking...");
             await LoadModels();
             Status = "OK";
         }
         catch (Exception ex)
         {
-            Status = GetErrorDetails($"NG: {ex.Message}", ex);
+            Status = GetErrorDetails(FlyleafLib.Localization.UiText.Format($"NG: {ex.Message}"), ex);
         }
     });
 
@@ -389,13 +389,13 @@ public abstract class OpenAIBaseTranslateSettings : NotifyPropertyChanged, ITran
     {
         try
         {
-            Status = "Checking...";
+            Status = FlyleafLib.Localization.UiText.Get("Checking...");
             await LoadModels();
             Status = ""; // clear
         }
         catch (Exception ex)
         {
-            Status = GetErrorDetails($"NG: {ex.Message}", ex);
+            Status = GetErrorDetails(FlyleafLib.Localization.UiText.Format($"NG: {ex.Message}"), ex);
         }
     });
 
@@ -406,15 +406,15 @@ public abstract class OpenAIBaseTranslateSettings : NotifyPropertyChanged, ITran
         sw.Start();
         try
         {
-            Status = "Waiting...";
+            Status = FlyleafLib.Localization.UiText.Get("Waiting...");
 
             await OpenAIBaseTranslateService.Hello(this);
 
-            Status = $"OK in {sw.Elapsed.TotalSeconds} secs";
+            Status = FlyleafLib.Localization.UiText.Format($"OK in {sw.Elapsed.TotalSeconds} secs");
         }
         catch (Exception ex)
         {
-            Status = GetErrorDetails($"NG in {sw.Elapsed.TotalSeconds} secs: {ex.Message}", ex);
+            Status = GetErrorDetails(FlyleafLib.Localization.UiText.Format($"NG in {sw.Elapsed.TotalSeconds} secs: {ex.Message}"), ex);
         }
     });
 

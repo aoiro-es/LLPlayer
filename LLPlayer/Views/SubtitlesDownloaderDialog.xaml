@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.SubtitlesDownloaderDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -40,7 +41,7 @@
             <TextBlock
                 Grid.Column="0"
                 FontSize="18"
-                Text="Query:"
+                Text="{loc:Text Key=Text_090940BAE1E24F54}"
                 Foreground="Gray"
                 VerticalAlignment="Center"
                 Margin="0,0,5,0"/>
@@ -55,7 +56,7 @@
                 Grid.Column="2"
                 IsDefault="True"
                 Command="{Binding CmdSearch}"
-                Content="Search"
+                Content="{loc:Text Key=Text_49C266BAAAA70981}"
                 FontSize="18"
                 Margin="6 0" />
         </Grid>
@@ -70,13 +71,13 @@
                 CanUserAddRows="False"
                 Margin="10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Language" Binding="{Binding LanguageName}" Width="100" SortDirection="Ascending" />
-                    <DataGridTextColumn Header="FileName" Binding="{Binding SubFileName}" Width="*" />
-                    <DataGridTextColumn Header="Format" Binding="{Binding SubFormat}" Width="Auto" />
-                    <DataGridTextColumn Header="Duration" Binding="{Binding SubLastTS}" Width="Auto" />
-                    <DataGridTextColumn Header="Year" Binding="{Binding MovieYear}" Width="Auto" />
-                    <DataGridTextColumn Header="DownloadsCnt" Binding="{Binding SubDownloadsCnt}" Width="Auto" />
-                    <DataGridTextColumn Header="Rate" Binding="{Binding SubRating}" Width="Auto" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_A4FE65264EF7DBB3}" Binding="{Binding LanguageName}" Width="100" SortDirection="Ascending" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_E316D2AD49B2586A}" Binding="{Binding SubFileName}" Width="*" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_2F343666AAA88C44}" Binding="{Binding SubFormat}" Width="Auto" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_4FC52A3C4C558B51}" Binding="{Binding SubLastTS}" Width="Auto" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_89F6832560DEC0B7}" Binding="{Binding MovieYear}" Width="Auto" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_EB02015794BD421A}" Binding="{Binding SubDownloadsCnt}" Width="Auto" />
+                    <DataGridTextColumn Header="{loc:Text Key=Text_45B63FFD01AF7B9C}" Binding="{Binding SubRating}" Width="Auto" />
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -99,7 +100,7 @@
                             Visibility="{Binding CmdLoad.IsExecuting, Converter={StaticResource BooleanToVisibilityConv}}"
                             Style="{StaticResource Spinner}"
                             Margin="0 0 5 0" />
-                        <TextBlock Text="Load" FontSize="18" />
+                        <TextBlock Text="{loc:Text Key=Text_8A6BDB6B18DA586F}" FontSize="18" />
                     </StackPanel>
                 </Button>
 
@@ -110,7 +111,7 @@
                         <ProgressBar
                             Visibility="{Binding CmdDownload.IsExecuting, Converter={StaticResource BooleanToVisibilityConv}}"
                             Style="{StaticResource Spinner}" />
-                        <TextBlock Text="Download" FontSize="18" />
+                        <TextBlock Text="{loc:Text Key=Text_D6EAFE8235910042}" FontSize="18" />
                     </StackPanel>
                 </Button>
             </StackPanel>

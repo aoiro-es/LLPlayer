@@ -57,23 +57,23 @@ public class WhisperEngineDownloadDialogVM : Bindable, IDialogAware
 
         try
         {
-            StatusText = $"Engine '{EngineName}' downloading..";
+            StatusText = UiText.Format($"Engine '{EngineName}' downloading..");
 
             await DownloadEngineWithProgressAsync(EngineDownloadURL, tempDownloadFile, token);
 
-            StatusText = $"Engine '{EngineName}' unzipping..";
+            StatusText = UiText.Format($"Engine '{EngineName}' unzipping..");
             await UnzipEngine(tempDownloadFile);
 
-            StatusText = $"Engine '{EngineName}' is downloaded successfully";
+            StatusText = UiText.Format($"Engine '{EngineName}' is downloaded successfully");
             OnDownloadStatusChanged();
         }
         catch (OperationCanceledException)
         {
-            StatusText = "Download canceled";
+            StatusText = UiText.Get("Download canceled");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to download: {ex.Message}";
+            StatusText = UiText.Format($"Failed to download: {ex.Message}");
         }
         finally
         {
@@ -113,7 +113,7 @@ public class WhisperEngineDownloadDialogVM : Bindable, IDialogAware
     {
         try
         {
-            StatusText = $"Engine '{EngineName}' deleting...";
+            StatusText = UiText.Format($"Engine '{EngineName}' deleting...");
 
             // Delete engine if exists
             if (Directory.Exists(EnginePath))
@@ -126,11 +126,11 @@ public class WhisperEngineDownloadDialogVM : Bindable, IDialogAware
 
             OnDownloadStatusChanged();
 
-            StatusText = $"Engine '{EngineName}' is deleted successfully";
+            StatusText = UiText.Format($"Engine '{EngineName}' is deleted successfully");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to delete engine: {ex.Message}";
+            StatusText = UiText.Format($"Failed to delete engine: {ex.Message}");
         }
     }).ObservesCanExecute(() => CanDelete);
 
@@ -212,7 +212,7 @@ public class WhisperEngineDownloadDialogVM : Bindable, IDialogAware
     }
 
     #region IDialogAware
-    public string Title { get; set => Set(ref field, value); } = $"Whisper Engine Downloader - {App.Name}";
+    public string Title { get; set => Set(ref field, value); } = UiText.Format($"Whisper Engine Downloader - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 400;
     public double WindowHeight { get; set => Set(ref field, value); } = 210;
 

@@ -137,7 +137,7 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
         IEnumerable<IMenuAction> actions = FL.Config.Subs.WordMenuActions.Where(a => a.IsEnabled);
         foreach (IMenuAction action in actions)
         {
-            MenuItem menuItem = new() { Header = action.Title };
+            MenuItem menuItem = new() { Header = UiText.Get(action.Title) };
 
             // Initialize default action at the top
             // TODO: L: want to make the default action bold.

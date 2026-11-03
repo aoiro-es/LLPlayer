@@ -44,7 +44,7 @@ public class FlyleafManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Cannot load AppConfig from {Path.GetFileName(App.AppConfigPath)}, Please review the settings or delete the config file. Error details are recorded in {Path.GetFileName(App.CrashLogPath)}.");
+                MessageBox.Show(UiText.Format($"Cannot load AppConfig from {Path.GetFileName(App.AppConfigPath)}, Please review the settings or delete the config file. Error details are recorded in {Path.GetFileName(App.CrashLogPath)}."));
                 try
                 {
                     File.WriteAllText(App.CrashLogPath, "AppConfig Loading Error: " + ex);

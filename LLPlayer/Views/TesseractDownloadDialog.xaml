@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.TesseractDownloadDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,7 +39,7 @@
 
         <!-- Select model -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin=" 0 0 0 10">
-            <Label Content="Select Model:" VerticalAlignment="Center"/>
+            <Label Content="{loc:Text Key=Text_344ECFA1BBEE9B06}" VerticalAlignment="Center"/>
             <ComboBox
                 ItemsSource="{Binding Models}"
                 SelectedItem="{Binding SelectedModel, Mode=TwoWay}"
@@ -50,7 +51,7 @@
                                 Kind="Check" Width="20" Height="20"
                                 Foreground="{DynamicResource MaterialDesign.Brush.Primary}" Margin="0,0,5,0"
                                 Visibility="{Binding Downloaded, Converter={StaticResource BooleanToVisibilityHiddenConv}}" />
-                            <TextBlock Text="{Binding Lang}" VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding Lang, Converter={StaticResource LocalizedTextConv}}" VerticalAlignment="Center" />
 
                             <TextBlock Text="{Binding Size, Converter={StaticResource FileSizeHumanConv}, StringFormat=' ({0})'}" VerticalAlignment="Center"
                                        Visibility="{Binding Downloaded, Converter={StaticResource BooleanToVisibilityConv}}"/>
@@ -60,7 +61,7 @@
             </ComboBox>
 
             <Button
-                ToolTip="Open Folder"
+                ToolTip="{loc:Text Key=Text_68B3F4BFF6DE90AE}"
                 Style="{StaticResource MaterialDesignIconButton}"
                 HorizontalAlignment="Center"
                 Width="30"
@@ -73,14 +74,14 @@
         <!-- Download & Cancel button -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
             <Button
-                Content="Download Model"
+                Content="{loc:Text Key=Text_26AE614BDD1CAE44}"
                 Command="{Binding CmdDownloadModel}"
                 Width="150"
                 Height="30"
                 Visibility="{Binding CmdDownloadModel.IsExecuting, Converter={StaticResource BooleanToVisibilityInvertConv}}" />
 
             <Button
-                Content="Cancel"
+                Content="{loc:Text Key=Text_19766ED6CCB2F4A3}"
                 Command="{Binding CmdCancelDownloadModel}"
                 Width="150"
                 Height="30"
@@ -95,7 +96,7 @@
                 Margin="10 0 0 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Delete" Width="20" Height="20" VerticalAlignment="Center" />
-                    <TextBlock Text="Delete" Margin="5 0 0 0" VerticalAlignment="Center" />
+                    <TextBlock Text="{loc:Text Key=Text_E2D0A54968EAD24E}" Margin="5 0 0 0" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
         </StackPanel>

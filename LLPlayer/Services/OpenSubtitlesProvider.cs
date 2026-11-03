@@ -97,7 +97,7 @@ public class OpenSubtitlesProvider
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Can't parse the login content: {ex.Message}", ex)
+                throw new InvalidOperationException(UiText.Format($"Can't parse the login content: {ex.Message}"), ex)
                 {
                     Data =
                     {
@@ -123,10 +123,10 @@ public class OpenSubtitlesProvider
         }
 
         if (loginResponse.StatusCode != "200")
-            throw new InvalidOperationException($"Can't login because status is '{loginResponse.StatusCode}'");
+            throw new InvalidOperationException(UiText.Format($"Can't login because status is '{loginResponse.StatusCode}'"));
 
         if (string.IsNullOrWhiteSpace(loginResponse.Token))
-            throw new InvalidOperationException("Can't login because token is empty");
+            throw new InvalidOperationException(UiText.Get("Can't login because token is empty"));
 
         _token = loginResponse.Token;
     }
@@ -144,7 +144,7 @@ public class OpenSubtitlesProvider
         await Initialize();
 
         if (_token == null)
-            throw new InvalidOperationException("token is not initialized");
+            throw new InvalidOperationException(UiText.Get("token is not initialized"));
 
         var subLanguageId = "all";
         var limit = 500;
@@ -215,7 +215,7 @@ $"""
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Can't parse the search content: {ex.Message}", ex)
+                throw new InvalidOperationException(UiText.Format($"Can't parse the search content: {ex.Message}"), ex)
                 {
                     Data =
                     {
@@ -226,11 +226,11 @@ $"""
             }
 
             if (!response.Params.Param.Value.Struct.Member.Any(m => m.Name == "status" && m.Value.String == "200 OK"))
-                throw new InvalidOperationException("Can't get the search result, status is not 200.");
+                throw new InvalidOperationException(UiText.Get("Can't get the search result, status is not 200."));
 
             var resultMembers = response.Params.Param.Value.Struct.Member.FirstOrDefault(m => m.Name == "data");
             if (resultMembers == null)
-                throw new InvalidOperationException("Can't get the search result, data is not found.");
+                throw new InvalidOperationException(UiText.Get("Can't get the search result, data is not found."));
 
             foreach (var record in resultMembers.Value.Array.Data.Value)
             {
@@ -294,7 +294,7 @@ $"""
         await Initialize();
 
         if (_token == null)
-            throw new InvalidOperationException("token is not initialized");
+            throw new InvalidOperationException(UiText.Get("token is not initialized"));
 
         var idSubtitleFile = sub.IDSubtitleFile;
         var isBitmap = sub.SubFormat.ToLower() == "sub";
@@ -342,7 +342,7 @@ $"""
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Can't parse the download content: {ex.Message}", ex)
+                throw new InvalidOperationException(UiText.Format($"Can't parse the download content: {ex.Message}"), ex)
                 {
                     Data =
                     {
@@ -353,11 +353,11 @@ $"""
             }
 
             if (!response.Params.Param.Value.Struct.Member.Any(m => m.Name == "status" && m.Value.String == "200 OK"))
-                throw new InvalidOperationException("Can't get the download result, status is not 200.");
+                throw new InvalidOperationException(UiText.Get("Can't get the download result, status is not 200."));
 
             var resultMembers = response.Params.Param.Value.Struct.Member.FirstOrDefault(m => m.Name == "data");
             if (resultMembers == null)
-                throw new InvalidOperationException("Can't get the download result, data is not found.");
+                throw new InvalidOperationException(UiText.Get("Can't get the download result, data is not found."));
 
             var data = resultMembers.Value.Array.Data.Value.First();
 
@@ -377,7 +377,7 @@ $"""
         }
 
         if (string.IsNullOrEmpty(downloadResponse.Data))
-            throw new InvalidOperationException("Can't get the download result, base64 data is not found.");
+            throw new InvalidOperationException(UiText.Get("Can't get the download result, base64 data is not found."));
 
         var gzipSub = Convert.FromBase64String(downloadResponse.Data);
         byte[]? subData;
@@ -391,7 +391,7 @@ $"""
         }
 
         if (subData == null)
-            throw new InvalidOperationException("Can't get the download result, decompressed data is not found.");
+            throw new InvalidOperationException(UiText.Get("Can't get the download result, decompressed data is not found."));
 
         if (isBitmap)
         {

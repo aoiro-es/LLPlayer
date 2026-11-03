@@ -76,7 +76,7 @@ public class SettingsKeysVM : Bindable
                 {
                     Action = action,
                     Description = action.GetDescription(),
-                    DisplayName = action.ToString(),
+                    DisplayName = UiText.ActionName(action),
                     Group = action.ToGroup()
                 });
             }
@@ -89,7 +89,7 @@ public class SettingsKeysVM : Bindable
                 Action = KeyBindingAction.Custom,
                 CustomAction = action,
                 Description = action.GetDescription(),
-                DisplayName = action.ToString() + @" ©︎", // c=custom
+                DisplayName = (UiText.ActionName(action)) + @" ©︎", // c=custom
                 Group = action.ToGroup()
             });
         }
@@ -264,13 +264,13 @@ public class KeyBindingWrapper : Bindable
         if (keyBinding.Action != KeyBindingAction.Custom)
         {
             action.Description = keyBinding.Action.GetDescription();
-            action.DisplayName = keyBinding.Action.ToString();
+            action.DisplayName = UiText.ActionName(keyBinding.Action);
         }
         else if (Enum.TryParse(keyBinding.ActionName, out CustomKeyBindingAction customAction))
         {
             action.CustomAction = customAction;
             action.Description = customAction.GetDescription();
-            action.DisplayName = keyBinding.ActionName + @" ©︎";
+            action.DisplayName = (UiText.ActionName(customAction)) + @" ©︎";
         }
         else
         {
@@ -453,7 +453,7 @@ public class KeyBindingWrapper : Bindable
                         .Where(k => k != this && k.IsSameKey(this)).Select(k => k.Action.DisplayName)
                         .ToList();
 
-            DuplicatedInfo = $"Key:{Key} is conflicted.\r\nAction:{string.Join(',', duplicateActions)} already uses.";
+            DuplicatedInfo = UiText.Format($"Key:{Key} is conflicted.\r\nAction:{string.Join(',', duplicateActions)} already uses.");
         }
         else
         {

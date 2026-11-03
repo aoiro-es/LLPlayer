@@ -52,7 +52,7 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
         }
     }
 
-    public string StatusText { get; set => Set(ref field, value); } = "Select a model to download.";
+    public string StatusText { get; set => Set(ref field, value); } = UiText.Get("Select a model to download.");
 
     public long DownloadedSize { get; set => Set(ref field, value); }
 
@@ -76,18 +76,18 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
         {
             if (downloadModel.Downloaded)
             {
-                StatusText = $"Model '{SelectedModel}' is already downloaded";
+                StatusText = UiText.Format($"Model '{SelectedModel}' is already downloaded");
                 return;
             }
 
             // Delete temporary files if they exist (forces re-download)
             if (!DeleteTempModel())
             {
-                StatusText = $"Failed to remove temp model";
+                StatusText = UiText.Format($"Failed to remove temp model");
                 return;
             }
 
-            StatusText = $"Model '{downloadModel}' downloading..";
+            StatusText = UiText.Format($"Model '{downloadModel}' downloading..");
 
             long modelSize = await DownloadModelWithProgressAsync(downloadModel.Model, tempModelPath, token);
 
@@ -98,15 +98,15 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
             downloadModel.Size = modelSize;
             OnDownloadStatusChanged();
 
-            StatusText = $"Model '{SelectedModel}' is downloaded successfully";
+            StatusText = UiText.Format($"Model '{SelectedModel}' is downloaded successfully");
         }
         catch (OperationCanceledException)
         {
-            StatusText = "Download canceled";
+            StatusText = UiText.Get("Download canceled");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to download: {ex.Message}";
+            StatusText = UiText.Format($"Failed to download: {ex.Message}");
         }
         finally
         {
@@ -146,7 +146,7 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
     {
         try
         {
-            StatusText = $"Model '{SelectedModel}' deleting...";
+            StatusText = UiText.Format($"Model '{SelectedModel}' deleting...");
 
             WhisperCppModel deleteModel = SelectedModel;
 
@@ -160,11 +160,11 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
             deleteModel.Size = 0;
             OnDownloadStatusChanged();
 
-            StatusText = $"Model '{deleteModel}' is deleted successfully";
+            StatusText = UiText.Format($"Model '{deleteModel}' is deleted successfully");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to delete model: {ex.Message}";
+            StatusText = UiText.Format($"Failed to delete model: {ex.Message}");
         }
     }).ObservesCanExecute(() => CanDelete);
 
@@ -184,7 +184,7 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Failed to open folder: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(UiText.Format($"Failed to open folder: {ex.Message}"), UiText.Get("Error"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
     });
 
@@ -226,7 +226,7 @@ public class WhisperModelDownloadDialogVM : Bindable, IDialogAware
     }
 
     #region IDialogAware
-    public string Title { get; set => Set(ref field, value); } = $"Whisper Downloader - {App.Name}";
+    public string Title { get; set => Set(ref field, value); } = UiText.Format($"Whisper Downloader - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 400;
     public double WindowHeight { get; set => Set(ref field, value); } = 200;
 

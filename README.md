@@ -131,6 +131,12 @@ I will actively make breaking changes during version `0.X.X`.
 
 (Configuration files may not be backward compatible when updated.)
 
+## Interface language
+
+The interface supports Japanese and English. In **Settings → Player → UI Language**, select **日本語** or **English**, choose **Save & Close**, and restart LLPlayer. New configurations default to Japanese. UI language does not change subtitle languages, translation prompts, or saved shortcut identifiers.
+
+English strings are retained in `FlyleafLib/Localization/Strings.resx`; Japanese translations live in `Strings.ja.resx`. Font dialog resources are kept separately in `WpfColorFontDialog/I18n/`. Resource comments contain the original English text. `UiText.Get` and `UiText.Format` use that text to find the corresponding resource key.
+
 ## 🔨 Build
 
 1. **Clone the Repository**

@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.FlyleafBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -100,7 +101,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Play / Pause Button -->
-                <Button Grid.Column="0" Command="{Binding FL.Player.Commands.TogglePlayPause}" ToolTip="Play / Pause">
+                <Button Grid.Column="0" Command="{Binding FL.Player.Commands.TogglePlayPause}" ToolTip="{loc:Text Key=Text_6F97FB8C14198336}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Content" Value="{materialDesign:PackIcon Kind=Play}"/>
@@ -114,7 +115,7 @@
                 </Button>
 
                 <!-- Subtitles Primary Button -->
-                <Button Click="ButtonBase_OnClick" Grid.Column="1" Content="{materialDesign:PackIcon Kind=CcOutline}" ToolTip="Primary Subtitles">
+                <Button Click="ButtonBase_OnClick" Grid.Column="1" Content="{materialDesign:PackIcon Kind=CcOutline}" ToolTip="{loc:Text Key=Text_E88B029757D0A07C}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="ContextMenu">
@@ -140,7 +141,7 @@
                 </Button>
 
                 <!-- Subtitles Secondary Button -->
-                <Button Click="ButtonBase_OnClick" Grid.Column="2" Foreground="{DynamicResource MaterialDesignBody}" Content="{materialDesign:PackIcon Kind=CcOutline}" ToolTip="Secondary Subtitles">
+                <Button Click="ButtonBase_OnClick" Grid.Column="2" Foreground="{DynamicResource MaterialDesignBody}" Content="{materialDesign:PackIcon Kind=CcOutline}" ToolTip="{loc:Text Key=Text_F6D152F01E5BC30C}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="ContextMenu">
@@ -165,7 +166,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button Click="ButtonBase_OnClick" Grid.Column="3" Foreground="{DynamicResource MaterialDesignBody}" Content="{materialDesign:PackIcon Kind=MusicBoxOutline}" ToolTip="Audio Streams">
+                <Button Click="ButtonBase_OnClick" Grid.Column="3" Foreground="{DynamicResource MaterialDesignBody}" Content="{materialDesign:PackIcon Kind=MusicBoxOutline}" ToolTip="{loc:Text Key=Text_AF47B7C85398ED04}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="ContextMenu">
@@ -192,7 +193,7 @@
 
                 <!-- Quality + Movies Title -->
                 <StackPanel Grid.Column="4" Orientation="Horizontal">
-                    <Button Click="ButtonBase_OnClick" ToolTip="Video Streams">
+                    <Button Click="ButtonBase_OnClick" ToolTip="{loc:Text Key=Text_130A7DD4AD1FF5D2}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                                 <Setter Property="Content" Value="{materialDesign:PackIcon Kind=QualityLow}"/>
@@ -221,24 +222,23 @@
                     <materialDesign:PackIcon Kind="VideoInputAntenna" Height="20" Width="20" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}" VerticalAlignment="Center" Visibility="{Binding FL.Player.IsLive, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"/>
                     <TextBlock VerticalAlignment="Center" FontStyle="Italic" FontSize="14" Margin="5,0,0,0" Text="{Binding FL.Player.Playlist.Selected.Title}" Cursor="Hand">
                         <TextBlock.ToolTip>
-                            <ToolTip xml:space="preserve">Left Click: Open File Dialog
-Right Click: Open Context Menu</ToolTip>
+                            <ToolTip xml:space="preserve"><Run Text="{loc:Text Key=Text_E2C4EC498DB1E120}" /></ToolTip>
                         </TextBlock.ToolTip>
                         <TextBlock.InputBindings>
                             <MouseBinding Command="{Binding FL.Player.Commands.OpenFromFileDialog}" MouseAction="LeftClick" />
                         </TextBlock.InputBindings>
                         <TextBlock.ContextMenu>
                             <ContextMenu Style="{StaticResource FlyleafContextMenu}" Opened="OnContextMenuOnOpened" Closed="OnContextMenuOnClosed" MouseMove="OnContextMenuOnMouseMove">
-                                <MenuItem Header="Open next" Command="{Binding FL.Action.CmdOpenNextFile}" />
-                                <MenuItem Header="Open prev" Command="{Binding FL.Action.CmdOpenPrevFile}" />
-                                <MenuItem Header="Open path" Command="{Binding FL.Action.CmdOpenCurrentPath}" />
-                                <MenuItem Header="Copy path" Command="{Binding FL.Player.Commands.CopyToClipboard}" />
+                                <MenuItem Header="{loc:Text Key=Text_D352B4064A5D30D1}" Command="{Binding FL.Action.CmdOpenNextFile}" />
+                                <MenuItem Header="{loc:Text Key=Text_3F84582929E44C03}" Command="{Binding FL.Action.CmdOpenPrevFile}" />
+                                <MenuItem Header="{loc:Text Key=Text_01ECB696B8FC00BB}" Command="{Binding FL.Action.CmdOpenCurrentPath}" />
+                                <MenuItem Header="{loc:Text Key=Text_720FF4160412B943}" Command="{Binding FL.Player.Commands.CopyToClipboard}" />
                             </ContextMenu>
                         </TextBlock.ContextMenu>
                     </TextBlock>
                 </StackPanel>
 
-                <Button Grid.Column="5" Content="{materialDesign:PackIcon Kind=SkipPrevious}" Command="{Binding FL.Player.Commands.Reopen}" CommandParameter="{Binding FL.Player.Playlist.PrevItem}" ToolTip="Previous Playlist Item">
+                <Button Grid.Column="5" Content="{materialDesign:PackIcon Kind=SkipPrevious}" Command="{Binding FL.Player.Commands.Reopen}" CommandParameter="{Binding FL.Player.Playlist.PrevItem}" ToolTip="{loc:Text Key=Text_2CC9B1B60BB7D620}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Visibility" Value="Visible"/>
@@ -251,7 +251,7 @@ Right Click: Open Context Menu</ToolTip>
                     </Button.Style>
                 </Button>
 
-                <Button Grid.Column="6" Content="{materialDesign:PackIcon Kind=SkipNext}" Command="{Binding FL.Player.Commands.Reopen}" CommandParameter="{Binding FL.Player.Playlist.NextItem}" ToolTip="Next Playlist Item">
+                <Button Grid.Column="6" Content="{materialDesign:PackIcon Kind=SkipNext}" Command="{Binding FL.Player.Commands.Reopen}" CommandParameter="{Binding FL.Player.Playlist.NextItem}" ToolTip="{loc:Text Key=Text_B9BB16318FCFD467}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Visibility" Value="Visible"/>
@@ -265,7 +265,7 @@ Right Click: Open Context Menu</ToolTip>
                 </Button>
 
                 <!-- Volume Button (Mute/Unmute) -->
-                <Button Grid.Column="7" Foreground="{DynamicResource MaterialDesignBody}" Command="{Binding FL.Player.Commands.ToggleMute}" ToolTip="Mute / Unmute">
+                <Button Grid.Column="7" Foreground="{DynamicResource MaterialDesignBody}" Command="{Binding FL.Player.Commands.ToggleMute}" ToolTip="{loc:Text Key=Text_276766BB4391ED62}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Content" Value="{materialDesign:PackIcon Kind=VolumeHigh}"/>
@@ -291,10 +291,10 @@ Right Click: Open Context Menu</ToolTip>
                 <Slider Grid.Column="8" Style="{DynamicResource FlyleafSlider}" Cursor="Hand" Foreground="{DynamicResource MaterialDesignBody}" Focusable="False" Margin="0,0,6,0" Width="100" VerticalAlignment="Center" Minimum="0" Maximum="{Binding FL.PlayerConfig.Audio.VolumeMax, Mode=OneWay}" d:Maximum="150" d:Value="75" Value="{Binding FL.Player.Audio.Volume}"/>
 
                 <!-- Open Settings Button -->
-                <Button Grid.Column="9" Style="{StaticResource IconButton}" Content="{materialDesign:PackIcon Kind=SettingsOutline}" Command="{Binding FL.Action.CmdOpenWindowSettings}" ToolTip="Open Settings"/>
+                <Button Grid.Column="9" Style="{StaticResource IconButton}" Content="{materialDesign:PackIcon Kind=SettingsOutline}" Command="{Binding FL.Action.CmdOpenWindowSettings}" ToolTip="{loc:Text Key=Text_3F940108CB1ECD9C}"/>
 
                 <!-- Toggle Sub Sidebar -->
-                <Button Grid.Column="10" Command="{Binding FL.Action.CmdToggleSidebar}" ToolTip="Toggle Sub Sidebar">
+                <Button Grid.Column="10" Command="{Binding FL.Action.CmdToggleSidebar}" ToolTip="{loc:Text Key=Text_F68CD1F01EED9494}">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Content" Value="{materialDesign:PackIcon Kind=DockRight}"/>
@@ -308,7 +308,7 @@ Right Click: Open Context Menu</ToolTip>
                 </Button>
 
                 <!-- Toggle Fullscreen Button -->
-                <ToggleButton Grid.Column="11" Style="{StaticResource MaterialDesignActionToggleButton}" Foreground="{DynamicResource MaterialDesign.Brush.Primary}" Background="Transparent" Focusable="False" IsChecked="{Binding FL.Player.Host.IsFullScreen}" Content="{materialDesign:PackIcon Kind=Fullscreen, Size=28}" materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=FullscreenExit, Size=28}" ToolTip="Toggle Fullscreen"/>
+                <ToggleButton Grid.Column="11" Style="{StaticResource MaterialDesignActionToggleButton}" Foreground="{DynamicResource MaterialDesign.Brush.Primary}" Background="Transparent" Focusable="False" IsChecked="{Binding FL.Player.Host.IsFullScreen}" Content="{materialDesign:PackIcon Kind=Fullscreen, Size=28}" materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=FullscreenExit, Size=28}" ToolTip="{loc:Text Key=Text_4FDAFAD2A567E85C}"/>
             </Grid>
         </Grid>
     </materialDesign:Card>

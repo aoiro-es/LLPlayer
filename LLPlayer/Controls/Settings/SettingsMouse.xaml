@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsMouse"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,17 +14,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Mouse"
+                Text="{loc:Text Key=Text_55C1520824A84D75}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Mouse">
+            <GroupBox Header="{loc:Text Key=Text_55C1520824A84D75}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Single Click to Play/Pause" />
+                            Text="{loc:Text Key=Text_6717C3976DEA6C3B}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.MouseSingleClickToPlay}" />
                     </StackPanel>
@@ -31,7 +32,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Double Click to FullScreen" />
+                            Text="{loc:Text Key=Text_CD17ABFA38FFFC86}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.MouseDoubleClickToFullScreen}" />
                     </StackPanel>
@@ -39,7 +40,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Wheel to Volume Up/Down" />
+                            Text="{loc:Text Key=Text_65376A487D3E1FBB}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.MouseWheelToVolumeUpDown}" />
                     </StackPanel>

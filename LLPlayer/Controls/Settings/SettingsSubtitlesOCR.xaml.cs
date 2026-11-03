@@ -181,7 +181,7 @@ public class TessOcrLanguageGroup : Bindable
         get
         {
             var lang = Language.Get(ISO6391);
-            return lang.TopEnglishName;
+            return UiText.LanguageName(ISO6391, lang.TopEnglishName);
         }
     }
 
@@ -207,7 +207,7 @@ public class MsOcrLanguageGroup : Bindable
         get
         {
             var lang = Language.Get(ISO6391);
-            return lang.TopEnglishName;
+            return UiText.LanguageName(ISO6391, lang.TopEnglishName);
         }
     }
 

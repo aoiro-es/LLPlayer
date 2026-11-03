@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsThemes"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,17 +17,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Themes"
+                Text="{loc:Text Key=Text_43AE3265B99F2F34}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Themes">
+            <GroupBox Header="{loc:Text Key=Text_43AE3265B99F2F34}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                         <TextBlock
                             Width="180"
-                            Text="Primary Color" />
+                            Text="{loc:Text Key=Text_75EFAF4335FF2F58}" />
                         <Button
                             Background="{x:Null}"
                             Padding="0"
@@ -58,7 +59,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                         <TextBlock
                             Width="180"
-                            Text="Secondary Color" />
+                            Text="{loc:Text Key=Text_1F4728F67F025C55}" />
                         <Button
                             Background="{x:Null}"
                             Padding="0"
@@ -94,11 +95,11 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Dark Title Bar
+                            <Run Text="{loc:Text Key=Text_1CEDCA29E93D058B}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="Required to restart to apply changes"
+                                        Text="{loc:Text Key=Text_F4AB626D7DAF8E67}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>

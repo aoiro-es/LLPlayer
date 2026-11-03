@@ -74,7 +74,7 @@ internal class TargetLanguageEnumToStringConverter : IValueConverter
     {
         if (value is TargetLanguage enumValue)
         {
-            return enumValue.DisplayName();
+            return UiText.Describe(enumValue);
         }
         return value?.ToString() ?? string.Empty;
     }
@@ -119,7 +119,8 @@ internal class TranslateServiceTypeEnumToUrlConverter : IValueConverter
     {
         if (value is TranslateServiceType enumValue)
         {
-            string displayName = enumValue.GetDescription();
+            string displayName = enumValue.GetType().GetField(enumValue.ToString())?.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false)
+                .OfType<System.ComponentModel.DescriptionAttribute>().FirstOrDefault()?.Description ?? enumValue.ToString();
 
             return $"{BaseUrl}#{displayName.ToLower().Replace(' ', '-')}";
         }
@@ -150,7 +151,7 @@ internal class TargetLanguageEnumToNoSupportedTranslateServiceConverter : IValue
 
             if (notSupported.Count == 0)
             {
-                return "[All supported]";
+                return UiText.Get("[All supported]");
             }
 
             return string.Join(',', notSupported.Select(t => t.ToString()));

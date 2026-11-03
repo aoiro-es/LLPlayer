@@ -59,7 +59,7 @@ public class ErrorDialogVM : Bindable, IDialogAware
         }
     } = "";
 
-    public string ErrorTitle => IsUnknown ? $"{ErrorType} Unknown Error" : $"{ErrorType} Error";
+    public string ErrorTitle => IsUnknown ? UiText.Format($"{UiText.Get(ErrorType)} Unknown Error") : UiText.Format($"{UiText.Get(ErrorType)} Error");
 
     public DelegateCommand CmdCopyMessage => field ??= new(() =>
     {
@@ -153,7 +153,7 @@ public class ErrorDialogVM : Bindable, IDialogAware
     }
 
     #region IDialogAware
-    public string Title => "Error Occured";
+    public string Title => UiText.Get("Error Occured");
     public double WindowWidth { get; set => Set(ref field, value); } = 450;
     public double WindowHeight { get; set => Set(ref field, value); } = 250;
 

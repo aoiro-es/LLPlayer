@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.ErrorDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -91,7 +92,7 @@
                 Grid.Row="2"
                 Margin="0 12 0 0"
                 FontSize="8"
-                Header="Exception Details"
+                Header="{loc:Text Key=Text_E764C8F07A5014FA}"
                 IsExpanded="False"
                 Visibility="{Binding HasException, Converter={StaticResource BooleanToVisibilityConv}}">
                 <TextBox
@@ -114,13 +115,13 @@
 
                 <Button
                     Grid.Column="0"
-                    Content="Copy to Clipboard"
+                    Content="{loc:Text Key=Text_FA8F2B6C07FB514C}"
                     Command="{Binding CmdCopyMessage}"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
 
                 <Button
                     Grid.Column="2"
-                    Content="Close"
+                    Content="{loc:Text Key=Text_7D9EB7ACB13E2462}"
                     FontWeight="Bold"
                     Command="{Binding CmdCloseDialog}"
                     Style="{StaticResource MaterialDesignOutlinedButton}" />

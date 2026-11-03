@@ -58,7 +58,7 @@ public class PDICSender : IDisposable
 
         if (!File.Exists(exePath))
         {
-            throw new FileNotFoundException($"PDIC executable is not set correctly: {exePath}");
+            throw new FileNotFoundException(UiText.Format($"PDIC executable is not set correctly: {exePath}"));
         }
 
         _pipeClient = new PipeClient(exePath);

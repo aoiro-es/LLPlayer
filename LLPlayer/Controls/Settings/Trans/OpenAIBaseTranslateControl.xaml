@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.TransControl.OpenAIBaseTranslateControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,26 +15,26 @@
         <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
             <TextBlock
                 Width="180"
-                Text="Endpoint" />
+                Text="{loc:Text Key=Text_3DF9726C68BA76D6}" />
             <TextBox
                 HorizontalContentAlignment="Left"
                 Width="300"
                 Text="{Binding Endpoint, UpdateSourceTrigger=PropertyChanged}" />
             <Button
                 Margin="10 0 0 0"
-                Content="Reset"
+                Content="{loc:Text Key=Text_DAEE7606B339F3C3}"
                 Command="{Binding CmdSetDefaultEndpoint}"
                 Style="{StaticResource MaterialDesignOutlinedButton}" />
             <Button
                 Command="{Binding CmdCheckEndpoint}"
-                Content="Check"
+                Content="{loc:Text Key=Text_9D60841E0A7891DF}"
                 Margin="10 0 0 0" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
             <TextBlock
                 Width="180"
-                Text="Timeout (ms)" />
+                Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
             <TextBox
                 Width="100"
                 Text="{Binding TimeoutMs}"
@@ -43,7 +44,7 @@
         <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
             <TextBlock
                 Width="180"
-                Text="Timeout Health (ms)" />
+                Text="{loc:Text Key=Text_10B83BBC0D347F2B}" />
             <TextBox
                 Width="100"
                 Text="{Binding TimeoutHealthMs}"
@@ -56,10 +57,10 @@
                 Width="180">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignTextBlock}">
-                        <Setter Property="Text" Value="Model" />
+                        <Setter Property="Text" Value="{loc:Text Key=Text_5E2C614C23F02239}" />
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ModelRequired}" Value="False">
-                                <Setter Property="Text" Value="Model (optional)" />
+                                <Setter Property="Text" Value="{loc:Text Key=Text_CAA6106F12068E1E}" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -73,24 +74,24 @@
             </ComboBox>
             <Button
                 Command="{Binding CmdGetModels}"
-                Content="Get Models"
+                Content="{loc:Text Key=Text_5A035C35073FB5F1}"
                 Margin="10 0 0 0" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
             <TextBlock
                 Width="180"
-                Text="Debug" />
+                Text="{loc:Text Key=Text_1A03BD2FD107C453}" />
             <Button
                 Command="{Binding CmdHelloModel}"
-                Content="Hello API"
+                Content="{loc:Text Key=Text_2A1380458583FABD}"
                 Margin="10 0 0 0" />
         </StackPanel>
 
         <DockPanel Margin="0 0 0 8" Visibility="{Binding StatusAvailable, Converter={StaticResource BooleanToVisibilityConv}}">
             <TextBlock
                 Width="180"
-                Text="[Status]" />
+                Text="{loc:Text Key=Text_D18CD0DC6494ECE7}" />
             <TextBox
                 HorizontalContentAlignment="Left"
                 TextWrapping="Wrap"
@@ -98,7 +99,7 @@
                 Text="{Binding Status, Mode=OneWay}" />
         </DockPanel>
 
-        <Expander Header="LLM Parameters">
+        <Expander Header="{loc:Text Key=Text_7476E29F38024D55}">
             <StackPanel Margin="10">
                 <TextBlock
                     FontWeight="Medium"
@@ -106,7 +107,7 @@
                     HorizontalAlignment="Left"
                     Width="180">
                     <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://platform.openai.com/docs/api-reference/chat/create" helpers:HyperlinkHelper.OpenInBrowser="True">
-                        OpenAI Reference
+                        <Run Text="{loc:Text Key=Text_CA44E59B13B5E73A}" />
                     </Hyperlink>
                 </TextBlock>
 
@@ -118,7 +119,7 @@
                         <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                             <ToolTipService.ToolTip>
                                 <TextBlock
-                                    Text="(Defaults to 1) What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both."
+                                    Text="{loc:Text Key=Text_9827F64884858FCA}"
                                     TextWrapping="Wrap"
                                     MaxWidth="400" />
                             </ToolTipService.ToolTip>
@@ -130,7 +131,7 @@
                     </TextBlock>
 
                     <CheckBox
-                        Content="Manual"
+                        Content="{loc:Text Key=Text_B0B9FE24FFA96291}"
                         IsChecked="{Binding TemperatureManual}" />
                     <Slider
                         Minimum="0" Maximum="2" TickFrequency="0.01" IsSnapToTickEnabled="True"
@@ -156,7 +157,7 @@
                         <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                             <ToolTipService.ToolTip>
                                 <TextBlock
-                                    Text="(Defaults to 1) An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both."
+                                    Text="{loc:Text Key=Text_B55E12D9089986F7}"
                                     TextWrapping="Wrap"
                                     MaxWidth="400" />
                             </ToolTipService.ToolTip>
@@ -167,7 +168,7 @@
                         </InlineUIContainer>
                     </TextBlock>
                     <CheckBox
-                        Content="Manual"
+                        Content="{loc:Text Key=Text_B0B9FE24FFA96291}"
                         IsChecked="{Binding TopPManual}" />
                     <Slider
                         Minimum="0" Maximum="1" TickFrequency="0.01" IsSnapToTickEnabled="True"
@@ -192,7 +193,7 @@
                         <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                             <ToolTipService.ToolTip>
                                 <TextBlock
-                                    Text="(maybe deprecated) The maximum number of tokens that can be generated in the chat completion. This value can be used to control costs for text generated via API. This value is now deprecated in favor of max_completion_tokens, and is not compatible with o-series models."
+                                    Text="{loc:Text Key=Text_360D3D82D8C9B3F9}"
                                     TextWrapping="Wrap"
                                     MaxWidth="400" />
                             </ToolTipService.ToolTip>
@@ -215,7 +216,7 @@
                         <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                             <ToolTipService.ToolTip>
                                 <TextBlock
-                                    Text="An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens."
+                                    Text="{loc:Text Key=Text_5A72737EAEBAFFE8}"
                                     TextWrapping="Wrap"
                                     MaxWidth="400" />
                             </ToolTipService.ToolTip>

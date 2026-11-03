@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsSubtitlesOCR"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -23,17 +24,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Subtitles > OCR"
+                Text="{loc:Text Key=Text_FF81CAD43A374194}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Select OCR Engine">
+            <GroupBox Header="{loc:Text Key=Text_C78887D664E6D067}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="OCR Engine (Primary)" />
+                            Text="{loc:Text Key=Text_91AF5B3EAE9610FD}" />
                         <ComboBox
                             Width="120"
                             ItemsSource="{Binding Source={StaticResource SubOCREngineTypeEnum}}"
@@ -43,7 +44,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="OCR Engine (Secondary)" />
+                            Text="{loc:Text Key=Text_C63F46A4B8DEB5D6}" />
                         <ComboBox
                             Width="120"
                             ItemsSource="{Binding Source={StaticResource SubOCREngineTypeEnum}}"
@@ -69,13 +70,13 @@
                         Grid.Column="0"
                         Grid.Row="0"
                         FontSize="14" FontWeight="Bold"
-                        Text="Downloaded Languages" />
+                        Text="{loc:Text Key=Text_A9088C174040CBD8}" />
 
                     <TextBlock
                         Grid.Column="1"
                         Grid.Row="0"
                         FontSize="14" FontWeight="Bold"
-                        Text="Select specific region" />
+                        Text="{loc:Text Key=Text_BC8BF047C15F9EC8}" />
 
                     <ListView
                         Grid.Column="0"
@@ -87,12 +88,12 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
-                                    Header="Language"
+                                    Header="{loc:Text Key=Text_A4FE65264EF7DBB3}"
                                     DisplayMemberBinding="{Binding Lang}"
                                     Width="200" />
 
                                 <GridViewColumn
-                                    Header="Size"
+                                    Header="{loc:Text Key=Text_1AF851907331C0ED}"
                                     DisplayMemberBinding="{Binding Size, Converter={StaticResource FileSizeHumanConv}}"
                                     Width="120" />
                             </GridView>
@@ -129,11 +130,11 @@
                         HorizontalAlignment="Left"
                         Margin="0 15 0 0"
                         MaxWidth="150"
-                        Content="Download Model"
+                        Content="{loc:Text Key=Text_26AE614BDD1CAE44}"
                         Command="{Binding CmdDownloadTessModel}" />
 
                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="5 10 5 0">
-                        Chinese may have multiple engines for their regions. Please specify what you want to use.
+                        <Run Text="{loc:Text Key=Text_B24F8E9268EA91BD}" />
                     </TextBlock>
                 </Grid>
             </GroupBox>
@@ -154,12 +155,12 @@
                     <TextBlock
                         Grid.Row="0" Grid.Column="0"
                         FontSize="14" FontWeight="Bold"
-                        Text="Available Languages" />
+                        Text="{loc:Text Key=Text_CFAFB772084ED0DF}" />
 
                     <TextBlock
                         Grid.Row="0" Grid.Column="1"
                         FontSize="14" FontWeight="Bold"
-                        Text="Select specific region" />
+                        Text="{loc:Text Key=Text_BC8BF047C15F9EC8}" />
 
                     <ListView
                         Grid.Row="1"
@@ -172,12 +173,12 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
-                                    Header="Language"
+                                    Header="{loc:Text Key=Text_A4FE65264EF7DBB3}"
                                     DisplayMemberBinding="{Binding DisplayName}"
                                     Width="150" />
 
                                 <GridViewColumn
-                                    Header="Code"
+                                    Header="{loc:Text Key=Text_340F463033E0FD5D}"
                                     DisplayMemberBinding="{Binding LanguageTag}"
                                     Width="150"  />
                             </GridView>
@@ -206,15 +207,15 @@
                     </ListView>
 
                     <TextBlock Grid.Column="0" Grid.Row="2" Margin="5 10 5 0">
-                        You will need to install a language pack on your OS or install an OCR engine using
+                        <Run Text="{loc:Text Key=Text_D46F546156882046}" />
                         <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages" helpers:HyperlinkHelper.OpenInBrowser="True">
-                            this link
+                            <Run Text="{loc:Text Key=Text_38600672B6ED5372}" />
                         </Hyperlink>
-                        as a reference.
+                        <Run Text="{loc:Text Key=Text_60DC114DB3EE887C}" />
                     </TextBlock>
 
                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="5 10 5 0">
-                        English, Chinese, and other languages may have multiple engines for their regions. Please specify what you want to use.
+                        <Run Text="{loc:Text Key=Text_0466A4D3FA5ACF4E}" />
                     </TextBlock>
                 </Grid>
             </GroupBox>

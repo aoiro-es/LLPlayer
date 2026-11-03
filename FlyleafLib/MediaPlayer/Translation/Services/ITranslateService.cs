@@ -170,7 +170,7 @@ public static class TranslateServiceHelper
         // TODO: L: Allow the user to choose auto-detection by translation provider?
         if (src == Language.Unknown)
         {
-            throw new TranslationConfigException("source language are unknown");
+            throw new TranslationConfigException(FlyleafLib.Localization.UiText.Get("source language are unknown"));
         }
 
         if (src.ISO6391 == target.ToISO6391())
@@ -180,28 +180,28 @@ public static class TranslateServiceHelper
             // TODO: L: review this validation?
             if (target is not (TargetLanguage.ChineseSimplified or TargetLanguage.ChineseTraditional))
             {
-                throw new TranslationConfigException("source and target language are same");
+                throw new TranslationConfigException(FlyleafLib.Localization.UiText.Get("source and target language are same"));
             }
         }
 
         if (!TranslateLanguage.Langs.TryGetValue(iso6391, out TranslateLanguage srcLang))
         {
-            throw new TranslationConfigException($"source language is not supported: {src.TopEnglishName}");
+            throw new TranslationConfigException(FlyleafLib.Localization.UiText.Format($"source language is not supported: {src.TopEnglishName}"));
         }
 
         if (!srcLang.SupportedServices.HasFlag(service.ServiceType))
         {
-            throw new TranslationConfigException($"source language is not supported by {service.ServiceType}: {src.TopEnglishName}");
+            throw new TranslationConfigException(FlyleafLib.Localization.UiText.Format($"source language is not supported by {service.ServiceType}: {src.TopEnglishName}"));
         }
 
         if (!TranslateLanguage.Langs.TryGetValue(target.ToISO6391(), out TranslateLanguage targetLang))
         {
-            throw new TranslationConfigException($"target language is not supported: {target.ToString()}");
+            throw new TranslationConfigException(FlyleafLib.Localization.UiText.Format($"target language is not supported: {target.ToString()}"));
         }
 
         if (!targetLang.SupportedServices.HasFlag(service.ServiceType))
         {
-            throw new TranslationConfigException($"target language is not supported by {service.ServiceType}: {src.TopEnglishName}");
+            throw new TranslationConfigException(FlyleafLib.Localization.UiText.Format($"target language is not supported by {service.ServiceType}: {src.TopEnglishName}"));
         }
 
         return (srcLang, targetLang);

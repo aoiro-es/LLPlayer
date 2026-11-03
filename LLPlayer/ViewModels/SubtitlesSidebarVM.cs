@@ -244,7 +244,7 @@ public class SubtitlesSidebarVM : Bindable, IDisposable
         _filteredSubs[SubIndex].Refresh();
 
         int count = _filteredSubs[SubIndex].Count;
-        HitCount = count > 0 ? $"{count} hits" : "No hits";
+        HitCount = count > 0 ? UiText.Format($"{count} hits") : UiText.Get("No hits");
 
         if (SubManager.SelectedSub != null && _filteredSubs[SubIndex].MoveCurrentTo(SubManager.SelectedSub))
         {

@@ -65,6 +65,7 @@ namespace WpfColorFontDialog
         public ColorFontChooser()
         {
             InitializeComponent();
+            this.txtSampleText.Text = I18NUtil.GetString("FontSample", "The quick brown fox jumps over the lazy dog");
             this.groupBoxColorPicker.Visibility = ShowColorPicker ? Visibility.Visible : Visibility.Collapsed;
             this.tbFontSize.IsEnabled = AllowArbitraryFontSizes;
             lstFamily.ItemTemplate = PreviewFontInFontList ? (DataTemplate)Resources["fontFamilyData"] : (DataTemplate)Resources["fontFamilyDataWithoutPreview"];

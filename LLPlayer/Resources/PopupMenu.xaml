@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary x:Class="LLPlayer.Resources.PopupMenu"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -15,7 +16,7 @@
 
     <!--Popup Menu-->
     <collections:ArrayList x:Key="MenuAudioStreams">
-        <MenuItem Header="Embedded" ItemsSource="{Binding FL.Player.Audio.Streams}">
+        <MenuItem Header="{loc:Text Key=Text_A877D89C2AFBB818}" ItemsSource="{Binding FL.Player.Audio.Streams}">
             <MenuItem.ItemContainerStyle>
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
                     <Setter Property="Command" Value="{Binding DataContext.FL.Player.Commands.Open, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
@@ -28,7 +29,7 @@
                 <DataTemplate>
                     <TextBlock>
                         <TextBlock.Text>
-                            <MultiBinding StringFormat=" #{0} ({1}) {2} @{3}Hz [CH: {4}] [Bits: {5}]">
+                            <MultiBinding StringFormat="{loc:Text Key=Text_258AD9EFF7B01EF6}">
                                 <Binding Path="StreamIndex"/>
                                 <Binding Path="Language"/>
                                 <Binding Path="SampleFormatStr"/>
@@ -41,7 +42,7 @@
                 </DataTemplate>
             </MenuItem.ItemTemplate>
         </MenuItem>
-        <MenuItem Header="External" ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalAudioStreams}">
+        <MenuItem Header="{loc:Text Key=Text_68C114EA9C8C6604}" ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalAudioStreams}">
             <MenuItem.ItemContainerStyle>
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
                     <Setter Property="Command" Value="{Binding DataContext.FL.Player.Commands.Open, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
@@ -54,7 +55,7 @@
                 <DataTemplate>
                     <TextBlock>
                         <TextBlock.Text>
-                            <MultiBinding StringFormat=" ({0}) {1} [BitRate: {2}] [{3}]">
+                            <MultiBinding StringFormat="{loc:Text Key=Text_1EDCEBAF6E253C2D}">
                                 <Binding Path="Language"/>
                                 <Binding Path="Codec"/>
                                 <Binding Path="BitRate"/>
@@ -67,7 +68,7 @@
         </MenuItem>
     </collections:ArrayList>
     <collections:ArrayList x:Key="MenuVideoStreams" x:Shared="False">
-        <MenuItem Header="Embedded" ItemsSource="{Binding FL.Player.Video.Streams}">
+        <MenuItem Header="{loc:Text Key=Text_A877D89C2AFBB818}" ItemsSource="{Binding FL.Player.Video.Streams}">
             <MenuItem.ItemContainerStyle>
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
                     <Setter Property="Command" Value="{Binding DataContext.FL.Player.Commands.Open, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
@@ -92,7 +93,7 @@
                 </DataTemplate>
             </MenuItem.ItemTemplate>
         </MenuItem>
-        <MenuItem Header="External" ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalVideoStreams}">
+        <MenuItem Header="{loc:Text Key=Text_68C114EA9C8C6604}" ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalVideoStreams}">
             <MenuItem.ItemContainerStyle>
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
                     <Setter Property="Command" Value="{Binding DataContext.FL.Player.Commands.Open, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
@@ -144,7 +145,7 @@
 
         <HierarchicalDataTemplate.ItemTemplate>
             <DataTemplate DataType="{x:Type mediaStream:SelectedSubMethod}">
-                <TextBlock Text="{Binding SelectSubMethod}" />
+                <TextBlock Text="{Binding SelectSubMethod, Converter={StaticResource LocalizedTextConv}}" />
             </DataTemplate>
         </HierarchicalDataTemplate.ItemTemplate>
 
@@ -221,33 +222,33 @@ AncestorType={x:Type MenuItem}}}">
 
     <!-- Primary Subtitle -->
     <collections:ArrayList x:Key="MenuSubtitlesStreams" x:Shared="False">
-        <MenuItem Header="Embedded"
+        <MenuItem Header="{loc:Text Key=Text_A877D89C2AFBB818}"
                   Tag="0"
                   ItemsSource="{Binding FL.Player.Subtitles.Streams}"
                   ItemTemplate="{StaticResource MenuSubtitlesStreamsItemTemplate}"
                   ItemContainerStyle="{StaticResource MenuSubtitlesStreamsItemContainerStyle}" />
 
-        <MenuItem Header="External"
+        <MenuItem Header="{loc:Text Key=Text_68C114EA9C8C6604}"
                   Tag="0"
                   ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalSubtitlesStreamsAll}"
                   ItemTemplate="{StaticResource MenuSubtitlesStreamsItemTemplate}"
                   ItemContainerStyle="{StaticResource MenuSubtitlesStreamsItemContainerStyle}" />
 
-        <MenuItem Header="{Binding FL.PlayerConfig.Subtitles.WhisperConfig.LanguageName}"
-                  HeaderStringFormat="ASR ({0})"
+        <MenuItem Header="{Binding FL.PlayerConfig.Subtitles.WhisperConfig.LanguageName, Converter={StaticResource LocalizedTextConv}}"
+                  HeaderStringFormat="{loc:Text Key=Text_A7D66D756A9272DA}"
                   Command="{Binding FL.Player.Commands.OpenSubtitlesASR}"
                   CommandParameter="0"
-                  ToolTip="If you run it again when it is already enabled, subtitles will be regenerated from the playback position."
+                  ToolTip="{loc:Text Key=Text_9BEED6A815871428}"
                   IsCheckable="True"
                   IsChecked="{Binding FL.Player.Subtitles[0].EnabledASR, Mode=OneWay}" />
 
-        <MenuItem Header="Off"
+        <MenuItem Header="{loc:Text Key=Text_CA7981B46ECF2C17}"
                   Command="{Binding FL.Player.Commands.SubtitlesOff}"
                   CommandParameter="0"/>
 
         <Separator Margin="0,6" />
 
-        <MenuItem Header="Auto-Translate"
+        <MenuItem Header="{loc:Text Key=Text_0198E7359F0E6700}"
                   IsCheckable="True"
                   IsChecked="{Binding FL.PlayerConfig.Subtitles[0].EnabledTranslated}"/>
 
@@ -255,33 +256,33 @@ AncestorType={x:Type MenuItem}}}">
 
     <!-- Secondary Subtitle -->
     <collections:ArrayList x:Key="MenuSubtitlesStreams2" x:Shared="False">
-        <MenuItem Header="Embedded"
+        <MenuItem Header="{loc:Text Key=Text_A877D89C2AFBB818}"
                   Tag="1"
                   ItemsSource="{Binding FL.Player.Subtitles.Streams}"
                   ItemTemplate="{StaticResource MenuSubtitlesStreamsItemTemplate}"
                   ItemContainerStyle="{StaticResource MenuSubtitlesStreamsItemContainerStyle}" />
 
-        <MenuItem Header="External"
+        <MenuItem Header="{loc:Text Key=Text_68C114EA9C8C6604}"
                   Tag="1"
                   ItemsSource="{Binding FL.Player.Playlist.Selected.ExternalSubtitlesStreamsAll}"
                   ItemTemplate="{StaticResource MenuSubtitlesStreamsItemTemplate}"
                   ItemContainerStyle="{StaticResource MenuSubtitlesStreamsItemContainerStyle}" />
 
-        <MenuItem Header="{Binding FL.PlayerConfig.Subtitles.WhisperConfig.LanguageName}"
-                  HeaderStringFormat="ASR ({0})"
+        <MenuItem Header="{Binding FL.PlayerConfig.Subtitles.WhisperConfig.LanguageName, Converter={StaticResource LocalizedTextConv}}"
+                  HeaderStringFormat="{loc:Text Key=Text_A7D66D756A9272DA}"
                   Command="{Binding FL.Player.Commands.OpenSubtitlesASR}"
                   CommandParameter="1"
-                  ToolTip="If you run it again when it is already enabled, subtitles will be regenerated from the playback position."
+                  ToolTip="{loc:Text Key=Text_9BEED6A815871428}"
                   IsCheckable="True"
                   IsChecked="{Binding FL.Player.Subtitles[1].EnabledASR, Mode=OneWay}" />
 
-        <MenuItem Header="Off"
+        <MenuItem Header="{loc:Text Key=Text_CA7981B46ECF2C17}"
                   Command="{Binding FL.Player.Commands.SubtitlesOff}"
                   CommandParameter="1"/>
 
         <Separator Margin="0,6" />
 
-        <MenuItem Header="Auto-Translate"
+        <MenuItem Header="{loc:Text Key=Text_0198E7359F0E6700}"
                   IsCheckable="True"
                   IsChecked="{Binding FL.PlayerConfig.Subtitles[1].EnabledTranslated}"/>
     </collections:ArrayList>
@@ -310,9 +311,9 @@ AncestorType={x:Type MenuItem}}}">
     </HierarchicalDataTemplate>
 
     <ContextMenu x:Key="PopUpMenu" Style="{StaticResource FlyleafContextMenu}" Opened="PopUpMenu_OnOpened" Closed="PopUpMenu_OnClosed">
-        <MenuItem Header="Open File" Command="{Binding FL.Player.Commands.OpenFromFileDialog}" Icon="{materialDesign:PackIcon FolderOutline}" />
+        <MenuItem Header="{loc:Text Key=Text_1E8D18F62F2D2A2F}" Command="{Binding FL.Player.Commands.OpenFromFileDialog}" Icon="{materialDesign:PackIcon FolderOutline}" />
 
-        <MenuItem x:Name="MenuPasteUrl" Header="Paste URL" Command="{Binding FL.Player.Commands.OpenFromClipboard}" Icon="{materialDesign:PackIcon ContentPaste}" />
+        <MenuItem x:Name="MenuPasteUrl" Header="{loc:Text Key=Text_48B716BE6D8E01BD}" Command="{Binding FL.Player.Commands.OpenFromClipboard}" Icon="{materialDesign:PackIcon ContentPaste}" />
         <Separator Margin="0,6" />
 
         <MenuItem ItemsSource="{Binding FL.Player.Playlist.Items}" Icon="{materialDesign:PackIcon ViewList}">
@@ -336,10 +337,10 @@ AncestorType={x:Type MenuItem}}}">
 
         <Separator Margin="0,6" />
 
-        <MenuItem Header="Audio" Icon="{materialDesign:PackIcon Kind=MusicBoxOutline}">
-            <MenuItem Header="Enabled" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Audio.Enabled}"/>
-            <MenuItem Header="{Binding FL.PlayerConfig.Audio.Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="Delay ({0})">
-                <MenuItem Header="Reset..." CommandParameter="0" Command="{Binding FL.Player.Commands.AudioDelaySet}"/>
+        <MenuItem Header="{loc:Text Key=Text_BC1B88907D3B748A}" Icon="{materialDesign:PackIcon Kind=MusicBoxOutline}">
+            <MenuItem Header="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Audio.Enabled}"/>
+            <MenuItem Header="{Binding FL.PlayerConfig.Audio.Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="{loc:Text Key=Text_B8A53A6EAC934DB9}">
+                <MenuItem Header="{loc:Text Key=Text_F37D5E2A4C635042}" CommandParameter="0" Command="{Binding FL.Player.Commands.AudioDelaySet}"/>
                 <Separator Margin="0,6" />
                 <MenuItem Header="-   10"   CommandParameter="-10"      Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="-  100"   CommandParameter="-100"     Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
@@ -351,7 +352,7 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header="+  100"   CommandParameter="100"      Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="+   10"   CommandParameter="10"       Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
             </MenuItem>
-            <MenuItem Header="Devices" ItemsSource="{Binding CapDevices, Source={x:Static flyleaf:Engine.Audio}}" ItemTemplate="{StaticResource DeviceMenuHierarchyTemplate}">
+            <MenuItem Header="{loc:Text Key=Text_4BA5121D4D1BE174}" ItemsSource="{Binding CapDevices, Source={x:Static flyleaf:Engine.Audio}}" ItemTemplate="{StaticResource DeviceMenuHierarchyTemplate}">
                 <MenuItem.Style>
                     <Style TargetType="MenuItem" BasedOn="{StaticResource MaterialDesignMenuItem}">
                         <Setter Property="Visibility" Value="Visible"/>
@@ -366,15 +367,15 @@ AncestorType={x:Type MenuItem}}}">
                     </Style>
                 </MenuItem.Style>
             </MenuItem>
-            <MenuItem Header="Streams" ItemsSource="{StaticResource MenuAudioStreams}"/>
+            <MenuItem Header="{loc:Text Key=Text_BFD297AFBF9E7430}" ItemsSource="{StaticResource MenuAudioStreams}"/>
         </MenuItem>
 
-        <MenuItem Header="Subtitles" Icon="{materialDesign:PackIcon Kind=CcOutline}">
-            <MenuItem Header="Enabled" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles.Enabled}"/>
-            <MenuItem Header="Fonts..." Command="{Binding FL.Action.CmdSetSubtitlesFont}" Icon="{materialDesign:PackIcon Kind=FormatTextVariantOutline}"/>
-            <MenuItem Header="{Binding FL.PlayerConfig.Subtitles[0].Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="Delay 1st ({0})">
-                <MenuItem Header="Reset..." CommandParameter="0" Command="{Binding FL.Player.Commands.SubtitlesDelaySetPrimary}"/>
-                <MenuItem Header="From 2nd"
+        <MenuItem Header="{loc:Text Key=Text_0EE695BDEB26A296}" Icon="{materialDesign:PackIcon Kind=CcOutline}">
+            <MenuItem Header="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles.Enabled}"/>
+            <MenuItem Header="{loc:Text Key=Text_B17103173A213BE9}" Command="{Binding FL.Action.CmdSetSubtitlesFont}" Icon="{materialDesign:PackIcon Kind=FormatTextVariantOutline}"/>
+            <MenuItem Header="{Binding FL.PlayerConfig.Subtitles[0].Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="{loc:Text Key=Text_0728AE1FF62358E3}">
+                <MenuItem Header="{loc:Text Key=Text_F37D5E2A4C635042}" CommandParameter="0" Command="{Binding FL.Player.Commands.SubtitlesDelaySetPrimary}"/>
+                <MenuItem Header="{loc:Text Key=Text_A9858B544314E4D7}"
                           CommandParameter="{Binding FL.Player.Config.Subtitles[1].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
                           Command="{Binding FL.Player.Commands.SubtitlesDelaySetPrimary}"/>
                 <Separator Margin="0,6" />
@@ -388,9 +389,9 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header="+  100"   CommandParameter="100"      Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="+   10"   CommandParameter="10"       Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
             </MenuItem>
-            <MenuItem Header="{Binding FL.PlayerConfig.Subtitles[1].Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="Delay 2nd ({0})">
-                <MenuItem Header="Reset..." CommandParameter="0" Command="{Binding FL.Player.Commands.SubtitlesDelaySetSecondary}"/>
-                <MenuItem Header="From 1st"
+            <MenuItem Header="{Binding FL.PlayerConfig.Subtitles[1].Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="{loc:Text Key=Text_C2CF1545B5DD43C6}">
+                <MenuItem Header="{loc:Text Key=Text_F37D5E2A4C635042}" CommandParameter="0" Command="{Binding FL.Player.Commands.SubtitlesDelaySetSecondary}"/>
+                <MenuItem Header="{loc:Text Key=Text_A8B11CE0C9844627}"
                           CommandParameter="{Binding FL.Player.Config.Subtitles[0].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
                           Command="{Binding FL.Player.Commands.SubtitlesDelaySetSecondary}"/>
                 <Separator Margin="0,6" />
@@ -405,87 +406,87 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header="+   10"   CommandParameter="10"       Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
             </MenuItem>
 
-            <MenuItem Header="{Binding FL.Config.Subs.SubsPosition}" HeaderStringFormat="Position ({0})">
-                <MenuItem Header="Reset..." Command="{Binding FL.Action.CmdResetSubsPosition}" Icon="{materialDesign:PackIcon Kind=BackupRestore}"/>
+            <MenuItem Header="{Binding FL.Config.Subs.SubsPosition}" HeaderStringFormat="{loc:Text Key=Text_2AF36D2CBA24B12F}">
+                <MenuItem Header="{loc:Text Key=Text_F37D5E2A4C635042}" Command="{Binding FL.Action.CmdResetSubsPosition}" Icon="{materialDesign:PackIcon Kind=BackupRestore}"/>
                 <Separator Margin="0,6" />
-                <MenuItem Header="Up"   Command="{Binding FL.Action.CmdSubsPositionUp}"   Icon="{materialDesign:PackIcon Kind=ArrowUp}"/>
-                <MenuItem Header="Down" Command="{Binding FL.Action.CmdSubsPositionDown}" Icon="{materialDesign:PackIcon Kind=ArrowDown}"/>
+                <MenuItem Header="{loc:Text Key=Text_55490A4BF3A8E8CB}"   Command="{Binding FL.Action.CmdSubsPositionUp}"   Icon="{materialDesign:PackIcon Kind=ArrowUp}"/>
+                <MenuItem Header="{loc:Text Key=Text_B86D11AF79188E58}" Command="{Binding FL.Action.CmdSubsPositionDown}" Icon="{materialDesign:PackIcon Kind=ArrowDown}"/>
             </MenuItem>
 
-            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize}" HeaderStringFormat="Size ({0})">
-                <MenuItem Header="Increase" Command="{Binding FL.Action.CmdSubsSizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
-                <MenuItem Header="Decrease" Command="{Binding FL.Action.CmdSubsSizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
+            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize}" HeaderStringFormat="{loc:Text Key=Text_3EDE3DDEFE56A9F7}">
+                <MenuItem Header="{loc:Text Key=Text_0C2D3B8713B00333}" Command="{Binding FL.Action.CmdSubsSizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
+                <MenuItem Header="{loc:Text Key=Text_991E5AB396C965A1}" Command="{Binding FL.Action.CmdSubsSizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
             </MenuItem>
 
-            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize}" HeaderStringFormat="Size 1st ({0})">
-                <MenuItem Header="Increase" Command="{Binding FL.Action.CmdSubsPrimarySizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
-                <MenuItem Header="Decrease" Command="{Binding FL.Action.CmdSubsPrimarySizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
+            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize}" HeaderStringFormat="{loc:Text Key=Text_321886E110936677}">
+                <MenuItem Header="{loc:Text Key=Text_0C2D3B8713B00333}" Command="{Binding FL.Action.CmdSubsPrimarySizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
+                <MenuItem Header="{loc:Text Key=Text_991E5AB396C965A1}" Command="{Binding FL.Action.CmdSubsPrimarySizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
             </MenuItem>
 
-            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize2}" HeaderStringFormat="Size 2nd ({0})">
-                <MenuItem Header="Increase" Command="{Binding FL.Action.CmdSubsSecondarySizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
-                <MenuItem Header="Decrease" Command="{Binding FL.Action.CmdSubsSecondarySizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
+            <MenuItem Header="{Binding FL.Config.Subs.SubsFontSize2}" HeaderStringFormat="{loc:Text Key=Text_2EED06468AA960CA}">
+                <MenuItem Header="{loc:Text Key=Text_0C2D3B8713B00333}" Command="{Binding FL.Action.CmdSubsSecondarySizeIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
+                <MenuItem Header="{loc:Text Key=Text_991E5AB396C965A1}" Command="{Binding FL.Action.CmdSubsSecondarySizeDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
             </MenuItem>
 
-            <MenuItem Header="{Binding FL.Config.Subs.SubsDistance}" HeaderStringFormat="Distance ({0})">
-                <MenuItem Header="Increase" Command="{Binding FL.Action.CmdSubsDistanceIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
-                <MenuItem Header="Decrease" Command="{Binding FL.Action.CmdSubsDistanceDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
+            <MenuItem Header="{Binding FL.Config.Subs.SubsDistance}" HeaderStringFormat="{loc:Text Key=Text_74272E90B157C930}">
+                <MenuItem Header="{loc:Text Key=Text_0C2D3B8713B00333}" Command="{Binding FL.Action.CmdSubsDistanceIncrease}" Icon="{materialDesign:PackIcon Kind=Plus}"/>
+                <MenuItem Header="{loc:Text Key=Text_991E5AB396C965A1}" Command="{Binding FL.Action.CmdSubsDistanceDecrease}" Icon="{materialDesign:PackIcon Kind=Minus}"/>
             </MenuItem>
 
-            <MenuItem Header="Alignment">
-                <MenuItem Header="When Dual">
-                    <MenuItem Header="Top"
+            <MenuItem Header="{loc:Text Key=Text_9D597870C4B3F76D}">
+                <MenuItem Header="{loc:Text Key=Text_AEDE6E1142CCCFCC}">
+                    <MenuItem Header="{loc:Text Key=Text_D5CDFCF7FF75338F}"
                               IsCheckable="True"
                               IsChecked="{Binding FL.Config.Subs.SubsPositionAlignmentWhenDual, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Top}}"
                               Command="{Binding FL.Action.CmdSetSubPositionAlignmentWhenDual}"
                               CommandParameter="{x:Static services:SubPositionAlignment.Top}" />
-                    <MenuItem Header="Center"
+                    <MenuItem Header="{loc:Text Key=Text_D946067427E930A1}"
                               IsCheckable="True"
                               IsChecked="{Binding FL.Config.Subs.SubsPositionAlignmentWhenDual, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Center}}"
                               Command="{Binding FL.Action.CmdSetSubPositionAlignmentWhenDual}"
                               CommandParameter="{x:Static services:SubPositionAlignment.Center}" />
-                    <MenuItem Header="Bottom"
+                    <MenuItem Header="{loc:Text Key=Text_479AD21AC9096236}"
                               IsCheckable="True"
                               IsChecked="{Binding FL.Config.Subs.SubsPositionAlignmentWhenDual, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Bottom}}"
                               Command="{Binding FL.Action.CmdSetSubPositionAlignmentWhenDual}"
                               CommandParameter="{x:Static services:SubPositionAlignment.Bottom}" />
                 </MenuItem>
 
-                <MenuItem Header="Top"
+                <MenuItem Header="{loc:Text Key=Text_D5CDFCF7FF75338F}"
                           IsCheckable="True"
                           IsChecked="{Binding FL.Config.Subs.SubsPositionAlignment, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Top}}"
                           Command="{Binding FL.Action.CmdSetSubPositionAlignment}"
                           CommandParameter="{x:Static services:SubPositionAlignment.Top}" />
-                <MenuItem Header="Center"
+                <MenuItem Header="{loc:Text Key=Text_D946067427E930A1}"
                           IsCheckable="True"
                           IsChecked="{Binding FL.Config.Subs.SubsPositionAlignment, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Center}}"
                           Command="{Binding FL.Action.CmdSetSubPositionAlignment}"
                           CommandParameter="{x:Static services:SubPositionAlignment.Center}" />
-                <MenuItem Header="Bottom"
+                <MenuItem Header="{loc:Text Key=Text_479AD21AC9096236}"
                           IsCheckable="True"
                           IsChecked="{Binding FL.Config.Subs.SubsPositionAlignment, Converter={StaticResource EnumToBooleanConv}, ConverterParameter={x:Static services:SubPositionAlignment.Bottom}}"
                           Command="{Binding FL.Action.CmdSetSubPositionAlignment}"
                           CommandParameter="{x:Static services:SubPositionAlignment.Bottom}" />
             </MenuItem>
 
-            <MenuItem Header="Visibility">
-                <MenuItem Header="1st Visible" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles[0].Visible}"/>
-                <MenuItem Header="2nd Visible" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles[1].Visible}"/>
+            <MenuItem Header="{loc:Text Key=Text_7448611D5F93AA8A}">
+                <MenuItem Header="{loc:Text Key=Text_04A465807D33E8D3}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles[0].Visible}"/>
+                <MenuItem Header="{loc:Text Key=Text_D95355B476AAE8A0}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Subtitles[1].Visible}"/>
             </MenuItem>
 
-            <MenuItem Header="Streams" ItemsSource="{StaticResource MenuSubtitlesStreams}"/>
-            <MenuItem Header="Subs Downloader" Command="{Binding FL.Action.CmdOpenWindowSubsDownloader}" Icon="{materialDesign:PackIcon Kind=Download}"/>
-            <MenuItem Header="Subs Exporter"   Command="{Binding FL.Action.CmdOpenWindowSubsExporter}" Icon="{materialDesign:PackIcon Kind=FileExport}"/>
+            <MenuItem Header="{loc:Text Key=Text_BFD297AFBF9E7430}" ItemsSource="{StaticResource MenuSubtitlesStreams}"/>
+            <MenuItem Header="{loc:Text Key=Text_77322D9D7953BDEE}" Command="{Binding FL.Action.CmdOpenWindowSubsDownloader}" Icon="{materialDesign:PackIcon Kind=Download}"/>
+            <MenuItem Header="{loc:Text Key=Text_A1A0E70D04AD88E9}"   Command="{Binding FL.Action.CmdOpenWindowSubsExporter}" Icon="{materialDesign:PackIcon Kind=FileExport}"/>
         </MenuItem>
 
-        <MenuItem Header="Video" Icon="{materialDesign:PackIcon VideoOutline}">
-            <MenuItem Header="Enabled" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.Enabled}"/>
+        <MenuItem Header="{loc:Text Key=Text_D534BE829E32196B}" Icon="{materialDesign:PackIcon VideoOutline}">
+            <MenuItem Header="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.Enabled}"/>
 
-            <MenuItem Header="Aspect Ratio" ItemsSource="{x:Static flyleaf:AspectRatio.AspectRatios}">
+            <MenuItem Header="{loc:Text Key=Text_556F85EFA2BEEC52}" ItemsSource="{x:Static flyleaf:AspectRatio.AspectRatios}">
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem" BasedOn="{StaticResource MaterialDesignMenuItem}">
                         <!--TODO: L: Display aspect ratio when Custom-->
-                        <Setter Property="Header" Value="{Binding}" />
+                        <Setter Property="Header" Value="{Binding Converter={StaticResource LocalizedTextConv}}" />
                         <Setter Property="IsCheckable" Value="True" />
                         <Setter Property="IsChecked">
                             <Setter.Value>
@@ -503,7 +504,7 @@ AncestorType={x:Type MenuItem}}}">
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
 
-            <MenuItem Header="Chapters" ItemsSource="{Binding FL.Player.Chapters}">
+            <MenuItem Header="{loc:Text Key=Text_9831375BC65196D8}" ItemsSource="{Binding FL.Player.Chapters}">
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}">
                         <Setter Property="Command" Value="{Binding DataContext.FL.Player.Commands.SeekToChapter, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
@@ -523,7 +524,7 @@ AncestorType={x:Type MenuItem}}}">
                     </DataTemplate>
                 </MenuItem.ItemTemplate>
             </MenuItem>
-            <MenuItem Header="Devices" ItemsSource="{Binding CapDevices, Source={x:Static flyleaf:Engine.Video}}" ItemTemplate="{StaticResource DeviceMenuHierarchyTemplate}">
+            <MenuItem Header="{loc:Text Key=Text_4BA5121D4D1BE174}" ItemsSource="{Binding CapDevices, Source={x:Static flyleaf:Engine.Video}}" ItemTemplate="{StaticResource DeviceMenuHierarchyTemplate}">
                 <MenuItem.Style>
                     <Style TargetType="MenuItem" BasedOn="{StaticResource MaterialDesignMenuItem}">
                         <Setter Property="Visibility" Value="Visible"/>
@@ -538,23 +539,23 @@ AncestorType={x:Type MenuItem}}}">
                     </Style>
                 </MenuItem.Style>
             </MenuItem>
-            <MenuItem Header="HW Acceleration" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VideoAcceleration}"/>
-            <MenuItem Header="Record" IsCheckable="True" IsChecked="{Binding FL.Player.IsRecording, Mode=OneWay}" Command="{Binding FL.Player.Commands.ToggleRecording}"/>
-            <MenuItem Header="{Binding FL.PlayerConfig.Video.Rotation}" HeaderStringFormat="Rotation ({0}°)">
+            <MenuItem Header="{loc:Text Key=Text_2AB5836DDF98C41F}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VideoAcceleration}"/>
+            <MenuItem Header="{loc:Text Key=Text_BFDD510698EF3CCB}" IsCheckable="True" IsChecked="{Binding FL.Player.IsRecording, Mode=OneWay}" Command="{Binding FL.Player.Commands.ToggleRecording}"/>
+            <MenuItem Header="{Binding FL.PlayerConfig.Video.Rotation}" HeaderStringFormat="{loc:Text Key=Text_2F2B742DAFA7B1C6}">
                 <MenuItem Header="0°"       CommandParameter="0"    Command="{Binding FL.Player.Commands.RotationSet}"/>
                 <MenuItem Header="90°"      CommandParameter="90"   Command="{Binding FL.Player.Commands.RotationSet}"/>
                 <MenuItem Header="180°"     CommandParameter="180"  Command="{Binding FL.Player.Commands.RotationSet}"/>
                 <MenuItem Header="270°"     CommandParameter="270"  Command="{Binding FL.Player.Commands.RotationSet}"/>
             </MenuItem>
 
-            <MenuItem Header="Flip">
-                <MenuItem Header="Horizontal Flip" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.HFlip}"/>
-                <MenuItem Header="Vertical Flip" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VFlip}"/>
+            <MenuItem Header="{loc:Text Key=Text_2449D137EA15FD2B}">
+                <MenuItem Header="{loc:Text Key=Text_37FEB1FAC989C6AA}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.HFlip}"/>
+                <MenuItem Header="{loc:Text Key=Text_F6C8ADF54E3C1DEC}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VFlip}"/>
             </MenuItem>
 
-            <MenuItem Header="Reverse Playback" IsCheckable="True" IsChecked="{Binding FL.Player.ReversePlayback}"/>
-            <MenuItem Header="Loop Playback"    IsCheckable="True" IsChecked="{Binding FL.Player.LoopPlayback}"/>
-            <MenuItem Header="{Binding FL.Player.Speed}" HeaderStringFormat="Speed (x{0})">
+            <MenuItem Header="{loc:Text Key=Text_0B4D337CAAD6A9E4}" IsCheckable="True" IsChecked="{Binding FL.Player.ReversePlayback}"/>
+            <MenuItem Header="{loc:Text Key=Text_145368211E87DD2B}"    IsCheckable="True" IsChecked="{Binding FL.Player.LoopPlayback}"/>
+            <MenuItem Header="{Binding FL.Player.Speed}" HeaderStringFormat="{loc:Text Key=Text_F06F08B403DF2423}">
                 <MenuItem Header=" x 8"     CommandParameter="8"    Command="{Binding FL.Player.Commands.SpeedSet}"/>
                 <MenuItem Header=" x 4"     CommandParameter="4"    Command="{Binding FL.Player.Commands.SpeedSet}"/>
                 <MenuItem Header=" x 2"     CommandParameter="2"    Command="{Binding FL.Player.Commands.SpeedSet}"/>
@@ -565,29 +566,29 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header=" x 0.75"  CommandParameter="0.75" Command="{Binding FL.Player.Commands.SpeedSet}"/>
                 <MenuItem Header=" x 0.50"  CommandParameter="0.50" Command="{Binding FL.Player.Commands.SpeedSet}"/>
             </MenuItem>
-            <MenuItem Header="Streams" ItemsSource="{StaticResource MenuVideoStreams}"/>
+            <MenuItem Header="{loc:Text Key=Text_BFD297AFBF9E7430}" ItemsSource="{StaticResource MenuVideoStreams}"/>
 
-            <MenuItem Header="Take a Snapshot" Command="{Binding FL.Player.Commands.TakeSnapshot}" Icon="{materialDesign:PackIcon Kind=PhotoCamera}"/>
-            <MenuItem Header="V.Sync" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VSync}"/>
-            <MenuItem Header="{Binding FL.PlayerConfig.Video.Zoom}" HeaderStringFormat="Zoom ({0}%)">
-                <MenuItem Header="Reset ..." Command="{Binding FL.Player.Commands.ResetAll}"/>
-                <MenuItem Header="Zoom In"   Command="{Binding FL.Player.Commands.ZoomIn}" Icon="{materialDesign:PackIcon Kind=ZoomIn}"/>
-                <MenuItem Header="Zoom out"  Command="{Binding FL.Player.Commands.ZoomOut}" Icon="{materialDesign:PackIcon Kind=ZoomOut}"/>
+            <MenuItem Header="{loc:Text Key=Text_DA0A71D7A0C0FCF4}" Command="{Binding FL.Player.Commands.TakeSnapshot}" Icon="{materialDesign:PackIcon Kind=PhotoCamera}"/>
+            <MenuItem Header="{loc:Text Key=Text_B16A5A0D774208C8}" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VSync}"/>
+            <MenuItem Header="{Binding FL.PlayerConfig.Video.Zoom}" HeaderStringFormat="{loc:Text Key=Text_AB81CDB611008F1E}">
+                <MenuItem Header="{loc:Text Key=Text_A9A14ECF07C1A1EA}" Command="{Binding FL.Player.Commands.ResetAll}"/>
+                <MenuItem Header="{loc:Text Key=Text_5A982CF9DC11B4EC}"   Command="{Binding FL.Player.Commands.ZoomIn}" Icon="{materialDesign:PackIcon Kind=ZoomIn}"/>
+                <MenuItem Header="{loc:Text Key=Text_BC7B631A689B45CA}"  Command="{Binding FL.Player.Commands.ZoomOut}" Icon="{materialDesign:PackIcon Kind=ZoomOut}"/>
             </MenuItem>
         </MenuItem>
 
-        <MenuItem Header="App" Icon="{materialDesign:PackIcon ApplicationExport}">
-            <MenuItem Header="Launch App" Command="{Binding FL.Action.CmdAppNew}" Icon="{materialDesign:PackIcon Kind=Launch}"/>
-            <MenuItem Header="Clone App" Command="{Binding FL.Action.CmdAppClone}" Icon="{materialDesign:PackIcon Kind=ContentCopy}"/>
-            <MenuItem Header="Restart App" Command="{Binding FL.Action.CmdAppRestart}" Icon="{materialDesign:PackIcon Kind=Restart}"/>
-            <MenuItem Header="Exit App" Command="{Binding FL.Action.CmdAppExit}" Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
+        <MenuItem Header="{loc:Text Key=Text_0D04BFEB7D64B71C}" Icon="{materialDesign:PackIcon ApplicationExport}">
+            <MenuItem Header="{loc:Text Key=Text_CDFCBA27387180CD}" Command="{Binding FL.Action.CmdAppNew}" Icon="{materialDesign:PackIcon Kind=Launch}"/>
+            <MenuItem Header="{loc:Text Key=Text_C88FE7866233410F}" Command="{Binding FL.Action.CmdAppClone}" Icon="{materialDesign:PackIcon Kind=ContentCopy}"/>
+            <MenuItem Header="{loc:Text Key=Text_07FE185C2818C5DC}" Command="{Binding FL.Action.CmdAppRestart}" Icon="{materialDesign:PackIcon Kind=Restart}"/>
+            <MenuItem Header="{loc:Text Key=Text_05EB5C876C541B03}" Command="{Binding FL.Action.CmdAppExit}" Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
             <Separator Margin="0,6" />
-            <MenuItem Header="Always On Top" IsCheckable="True" IsChecked="{Binding FL.Config.AlwaysOnTop}"/>
+            <MenuItem Header="{loc:Text Key=Text_7E8F0B964D60B91B}" IsCheckable="True" IsChecked="{Binding FL.Config.AlwaysOnTop}"/>
         </MenuItem>
 
         <Separator Margin="0,6" />
-        <MenuItem Header="Show Debug" IsCheckable="True" IsChecked="{Binding FL.Config.ShowDebug}"/>
-        <MenuItem Header="Cheat Sheet" Command="{Binding FL.Action.CmdOpenWindowCheatSheet}" Icon="{materialDesign:PackIcon Kind=Help}" />
+        <MenuItem Header="{loc:Text Key=Text_AA1C6F5172B84E30}" IsCheckable="True" IsChecked="{Binding FL.Config.ShowDebug}"/>
+        <MenuItem Header="{loc:Text Key=Text_17682E5DC3458A89}" Command="{Binding FL.Action.CmdOpenWindowCheatSheet}" Icon="{materialDesign:PackIcon Kind=Help}" />
     </ContextMenu>
 
 </ResourceDictionary>

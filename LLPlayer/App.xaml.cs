@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Threading;
 using FlyleafLib;
@@ -30,11 +31,25 @@ public partial class App : PrismApplication
 
     static App()
     {
-        // Set thread culture to English and error messages to English
+        // Keep numeric parsing stable; only presentation text follows the UI language.
         Utils.SaveOriginalCulture();
 
         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
-        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+        string language = "ja-JP";
+        try
+        {
+            if (File.Exists(AppConfigPath))
+            {
+                using var config = JsonDocument.Parse(File.ReadAllText(AppConfigPath));
+                if (config.RootElement.TryGetProperty("UiLanguage", out var value) && value.ValueKind == JsonValueKind.String && value.GetString() is "en-US" or "ja-JP")
+                    language = value.GetString()!;
+            }
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException)
+        {
+            // The normal configuration loader reports malformed or unreadable files.
+        }
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(language);
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -93,7 +108,7 @@ public partial class App : PrismApplication
             Log.Error($"Unknown error occurred in App: {e.Exception}");
             Logger.ForceFlush();
 
-            ErrorDialogHelper.ShowUnknownErrorPopup($"Unhandled Exception: {e.Exception.Message}", "Global", e.Exception);
+            ErrorDialogHelper.ShowUnknownErrorPopup(UiText.Format($"Unhandled Exception: {e.Exception.Message}"), UiText.Get("Global"), e.Exception);
             e.Handled = true;
         }
     }

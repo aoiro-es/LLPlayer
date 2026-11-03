@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.SubtitlesSidebar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -109,7 +110,7 @@
                 Style="{StaticResource ToggleButton}"
                 materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=Numeric2BoxMultipleOutline}"
                 Content="{materialDesign:PackIcon Kind=Numeric1BoxMultipleOutline}"
-                ToolTip="Toggle Primary / Secondary"
+                ToolTip="{loc:Text Key=Text_49CE31ADE6B2391E}"
                 Command="{Binding FL.Action.CmdToggleSidebarShowSecondary}"
                 IsChecked="{Binding FL.Config.SidebarShowSecondary, Mode=OneWay}" />
 
@@ -123,7 +124,7 @@
                 BorderBrush="{DynamicResource MaterialDesignBody}"
                 StaysOpen="True"
                 Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-                ToolTip="Change Font Size"
+                ToolTip="{loc:Text Key=Text_681B81B6723B4B21}"
                 ToolTipService.Placement="Right">
                 <materialDesign:PopupBox.ToggleContent>
                     <materialDesign:PackIcon
@@ -140,14 +141,14 @@
                             Command="{Binding CmdSubFontSizeChange}"
                             CommandParameter="-1"
                             Background="{DynamicResource MaterialDesignToolBarBackground}"
-                            ToolTip="Font size decrease"
+                            ToolTip="{loc:Text Key=Text_1DA0D3F3880B6402}"
                             Content="{materialDesign:PackIcon Kind=FormatFontSizeDecrease}" />
 
                     <Button Style="{StaticResource IconButton}"
                             Command="{Binding CmdSubFontSizeChange}"
                             CommandParameter="1"
                             Background="{DynamicResource MaterialDesignToolBarBackground}"
-                            ToolTip="Font size increase"
+                            ToolTip="{loc:Text Key=Text_7B13271371D12AAE}"
                             Content="{materialDesign:PackIcon Kind=FormatFontSizeIncrease}" />
                 </StackPanel>
             </materialDesign:PopupBox>
@@ -157,7 +158,7 @@
                 Style="{StaticResource ToggleButton}"
                 materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=EyeOffOutline}"
                 Content="{materialDesign:PackIcon Kind=EyeOutline}"
-                ToolTip="Toggle hiding after current subtitles"
+                ToolTip="{loc:Text Key=Text_41DBF954E84CA30F}"
                 Command="{Binding CmdSubTextMaskToggle}"
                 IsChecked="{Binding FL.Config.SidebarTextMask, Mode=OneWay}" />
 
@@ -166,31 +167,31 @@
                 Style="{StaticResource ToggleButton}"
                 materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=TranslateOff}"
                 Content="{materialDesign:PackIcon Kind=Translate}"
-                ToolTip="Toggle to show original text when translating enabled"
+                ToolTip="{loc:Text Key=Text_CB1FFAF0EB27A721}"
                 Command="{Binding FL.Action.CmdToggleSidebarShowOriginalText}"
                 IsChecked="{Binding FL.Config.SidebarShowOriginalText, Mode=OneWay}" />
 
             <!-- Subtitles Downloader -->
             <Button Style="{StaticResource IconButton}"
                     Command="{Binding CmdShowDownloadSubsDialog}"
-                    ToolTip="Download subtitles"
+                    ToolTip="{loc:Text Key=Text_0542EC9BD1D26C68}"
                     Content="{materialDesign:PackIcon Kind=Download}" />
 
             <!-- Subtitles Exporter -->
             <Button Style="{StaticResource IconButton}"
                     Command="{Binding CmdShowExportSubsDialog}"
-                    ToolTip="Export subtitles as srt"
+                    ToolTip="{loc:Text Key=Text_2F47115CDD87F69F}"
                     Content="{materialDesign:PackIcon Kind=FileExportOutline}" />
 
             <!-- Sidebar Left Toggle -->
             <Button Style="{StaticResource IconButton}"
                     Command="{Binding CmdSwapSidebarPosition}"
-                    ToolTip="Swap sidebar position"
+                    ToolTip="{loc:Text Key=Text_7B73F257F5C2A581}"
                     Content="{materialDesign:PackIcon Kind=SwapHorizontal}" />
 
             <!-- Subtitle Search -->
             <Button Style="{StaticResource IconButton}"
-                    ToolTip="Search (Ctrl+F)"
+                    ToolTip="{loc:Text Key=Text_A661BD94A60206FD}"
                     Command="{Binding FL.Action.CmdActivateSubsSearch}"
                     Content="{materialDesign:PackIcon Kind=Magnify}" />
 
@@ -209,8 +210,8 @@
                 VerticalAlignment="Center"
                 FontSize="14"
                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                ToolTip="Search subtitles..."
-                materialDesign:HintAssist.Hint="Search subtitles"
+                ToolTip="{loc:Text Key=Text_0A6478781A02168B}"
+                materialDesign:HintAssist.Hint="{loc:Text Key=Text_C88E6967FC529282}"
                 materialDesign:HintAssist.HelperText="{Binding HitCount}"
                 helpers:FocusBehavior.IsFocused="{Binding FL.Config.SidebarSearchActive}">
                 <TextBox.InputBindings>
@@ -227,7 +228,7 @@
                 Grid.Column="1"
                 Style="{StaticResource IconButton}"
                 Margin="2 0 0 0"
-                ToolTip="Clear search (Esc)"
+                ToolTip="{loc:Text Key=Text_139503899BD1DFAC}"
                 Command="{Binding CmdClearSearch}">
                 <materialDesign:PackIcon
                     Kind="CloseCircle"
@@ -387,7 +388,7 @@
                             x:Name="SubSyncButton"
                             Grid.Column="2"
                             FlowDirection="LeftToRight"
-                            ToolTip="Adjust the delay so that this subtitle is currently playing."
+                            ToolTip="{loc:Text Key=Text_3FAB27016838A2AA}"
                             Command="{Binding DataContext.CmdSubSync, ElementName=SubtitleListBox}"
                             CommandParameter="{Binding Index}"
                             materialDesign:RippleAssist.Feedback="Transparent"
@@ -407,7 +408,7 @@
             Margin="10"
             IsIndeterminate="True"
             Style="{StaticResource MaterialDesignCircularProgressBar}"
-            ToolTip="Loading..."
+            ToolTip="{loc:Text Key=Text_47D2A515EF2F05B8}"
             Visibility="{Binding SubManager.IsLoading, Converter={StaticResource BooleanToVisibilityConv}}"
             Width="20"
             Height="20"

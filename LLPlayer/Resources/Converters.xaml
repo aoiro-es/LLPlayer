@@ -23,6 +23,7 @@
     <conv:AspectRatioIsCheckedConverter x:Key="AspectRatioIsCheckedConv"/>
 
     <!--General Converters-->
+    <conv:LocalizedTextConverter x:Key="LocalizedTextConv" />
     <conv:BooleanToVisibilityMiscConverter x:Key="BooleanToVisibilityConv"/>
     <conv:BooleanToVisibilityMiscConverter Invert="True" x:Key="BooleanToVisibilityInvertConv"/>
     <conv:BooleanToVisibilityMiscConverter FalseVisibility="Hidden" x:Key="BooleanToVisibilityHiddenConv"/>

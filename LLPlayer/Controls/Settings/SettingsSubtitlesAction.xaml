@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsSubtitlesAction"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -35,12 +36,12 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Subtitles > Word Action"
+                Text="{loc:Text Key=Text_E31714B8DA13D1D1}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Word Translation Engine">
+            <GroupBox Header="{loc:Text Key=Text_6EB3B6E376329E09}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
@@ -48,7 +49,7 @@
                             FontWeight="Medium"
                             Width="180">
                             <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="{Binding FL.PlayerConfig.Subtitles.TranslateWordServiceType, Converter={StaticResource TranslateServiceTypeEnumToUrlConv}}" helpers:HyperlinkHelper.OpenInBrowser="True">
-                                Translation Engine
+                                <Run Text="{loc:Text Key=Text_1CA478B19DC534F6}" />
                             </Hyperlink>
                         </TextBlock>
                         <ComboBox
@@ -62,23 +63,23 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                     </StackPanel>
-                    <TextBlock Text="Please configure the settings in advance in the Translate tab." />
+                    <TextBlock Text="{loc:Text Key=Text_951910C77882FB95}" />
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Word Actions">
+            <GroupBox Header="{loc:Text Key=Text_4291B626D7FF5C9F}">
                 <StackPanel>
                     <CheckBox
                         IsChecked="{Binding FL.Config.Subs.WordCopyOnSelected}"
-                        Content="Copy words on selected" />
+                        Content="{loc:Text Key=Text_43B34ACB35F76CAD}" />
 
                     <StackPanel
                         Orientation="Horizontal"
                         VerticalAlignment="Bottom">
                         <CheckBox
                             IsChecked="{Binding FL.Config.Subs.WordLastSearchOnSelected}"
-                            Content="Do last search on selected" />
-                        <TextBlock VerticalAlignment="Center" Text="Modifier:" Margin="10 0 10 0" />
+                            Content="{loc:Text Key=Text_04549E7105813E6C}" />
+                        <TextBlock VerticalAlignment="Center" Text="{loc:Text Key=Text_3C09FE5BA47C0865}" Margin="10 0 10 0" />
 
                         <ComboBox
                             ItemsSource="{Binding ModifierKeys}"
@@ -93,7 +94,7 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="Word Click Action:" Margin="0 0 10 0" />
+                        <TextBlock VerticalAlignment="Center" Text="{loc:Text Key=Text_5D1BA7EB07E9873A}" Margin="0 0 10 0" />
 
                         <ComboBox
                             Width="100"
@@ -103,18 +104,18 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Word Context Menu">
+            <GroupBox Header="{loc:Text Key=Text_E45475F059D7326D}">
                 <GroupBox.Resources>
                     <DataTemplate x:Key="SearchTemplate" DataType="{x:Type services:SearchMenuAction}">
                         <TextBox Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" />
                     </DataTemplate>
 
                     <DataTemplate x:Key="ClipboardTemplate" DataType="{x:Type services:ClipboardMenuAction}">
-                        <CheckBox IsChecked="{Binding ToLower, UpdateSourceTrigger=PropertyChanged}" Content="ToLower" />
+                        <CheckBox IsChecked="{Binding ToLower, UpdateSourceTrigger=PropertyChanged}" Content="{loc:Text Key=Text_C64ACC48C7D802C9}" />
                     </DataTemplate>
 
                     <DataTemplate x:Key="ClipboardAllTemplate" DataType="{x:Type services:ClipboardAllMenuAction}">
-                        <CheckBox IsChecked="{Binding ToLower, UpdateSourceTrigger=PropertyChanged}" Content="ToLower" />
+                        <CheckBox IsChecked="{Binding ToLower, UpdateSourceTrigger=PropertyChanged}" Content="{loc:Text Key=Text_C64ACC48C7D802C9}" />
                     </DataTemplate>
 
                     <local:MenuActionTemplateSelector
@@ -159,7 +160,7 @@
 
                         <DataGrid.Columns>
                             <!-- Order Column -->
-                            <DataGridTemplateColumn Header="Order" Width="70" IsReadOnly="True">
+                            <DataGridTemplateColumn Header="{loc:Text Key=Text_6BE090825C997103}" Width="70" IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border
@@ -181,23 +182,31 @@
                             </DataGridTemplateColumn>
 
                             <!-- Enabled Column -->
-                            <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" />
+                            <DataGridCheckBoxColumn Header="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" Binding="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" />
 
                             <!-- Type Column -->
                             <DataGridTextColumn
-                                Header="Type"
-                                Binding="{Binding Type}"
+                                Header="{loc:Text Key=Text_BAADDF70FB5D432B}"
+                                Binding="{Binding Type, Converter={StaticResource LocalizedTextConv}}"
                                 ElementStyle="{StaticResource CenterVerticalTextBlockStyle}"
                                 IsReadOnly="True"
                                 Width="80" />
 
                             <!-- Title Column -->
-                            <DataGridTextColumn
-                                Header="Title"
-                                Binding="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ElementStyle="{StaticResource CenterVerticalTextBlockStyle}"
-                                EditingElementStyle="{StaticResource CenterVerticalTextBoxStyle}"
-                                Width="140" />
+                            <DataGridTemplateColumn
+                                Header="{loc:Text Key=Text_7E8CD2056DA73A7F}"
+                                Width="140">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title, Converter={StaticResource LocalizedTextConv}}" Style="{StaticResource CenterVerticalTextBlockStyle}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource CenterVerticalTextBoxStyle}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
 
                             <!-- Detail Column -->
                             <!-- Use TemplateSelector to change display items according to Action -->
@@ -210,13 +219,9 @@
                                         Cursor="Help"
                                         Orientation="Horizontal">
                                         <StackPanel.ToolTip>
-                                            <ToolTip xml:space="preserve">The following placeholder will be embedded in the URL.
-
-[%w]  selected words
-[%lw] selected words (lower case)
-[%s]  current sentence</ToolTip>
+                                            <ToolTip xml:space="preserve"><Run Text="{loc:Text Key=Text_0F49691292E19BBC}" /></ToolTip>
                                         </StackPanel.ToolTip>
-                                        <TextBlock Text="Details" Margin="0 0 5 0" />
+                                        <TextBlock Text="{loc:Text Key=Text_45989DE49FB7F66D}" Margin="0 0 5 0" />
                                         <materialDesign:PackIcon
                                             VerticalAlignment="Center"
                                             Kind="TooltipHelp"/>
@@ -225,12 +230,12 @@
                             </DataGridTemplateColumn>
 
                             <!-- Delete Column -->
-                            <DataGridTemplateColumn Header="Delete" Width="80">
+                            <DataGridTemplateColumn Header="{loc:Text Key=Text_E2D0A54968EAD24E}" Width="80">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
 
                                         <Button
-                                            ToolTip="Delete"
+                                            ToolTip="{loc:Text Key=Text_E2D0A54968EAD24E}"
                                             Style="{StaticResource MaterialDesignIconButton}"
                                             HorizontalAlignment="Center"
                                             Width="30"
@@ -252,21 +257,21 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <Button
-                                Content="Add Search"
+                                Content="{loc:Text Key=Text_F020B15CCD6E7EB5}"
                                 Command="{Binding CmdAddSearchAction}"
                                 Margin="0 0 8 0" />
                             <Button
-                                Content="Add Clipboard"
+                                Content="{loc:Text Key=Text_7CEBB5581379DC03}"
                                 Command="{Binding CmdAddClipboardAction}"
                                 Margin="0 0 8 0" />
                             <Button
-                                Content="Add ClipboardAll"
+                                Content="{loc:Text Key=Text_7B7D45224342142B}"
                                 Command="{Binding CmdAddClipboardAllAction}" />
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <Button
-                                Content="Apply"
+                                Content="{loc:Text Key=Text_31E392D1C0378BEC}"
                                 Command="{Binding CmdApplyContextMenu}"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
                                 Margin="0 0 8 0" />
@@ -275,17 +280,16 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Header="Subtitles Auto Copy">
+            <GroupBox Header="{loc:Text Key=Text_C74E8E2C4CE6FBE8}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Auto Text Copy
+                            <Run Text="{loc:Text Key=Text_6563232712CAE6F1}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="Copy the text subtitle to the clipboard when it changes.
-Note that this does not work for bitmap subtitles. In that case, please use OCR to convert them to text."
+                                        Text="{loc:Text Key=Text_26F7FE1AC74546ED}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -302,7 +306,7 @@ Note that this does not work for bitmap subtitles. In that case, please use OCR 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Auto Text Copy Target" />
+                            Text="{loc:Text Key=Text_13558313E4CB2AB3}" />
                         <ComboBox
                             Width="100"
                             ItemsSource="{Binding Source={StaticResource SubAutoTextCopyTargetEnum}}"
@@ -310,18 +314,17 @@ Note that this does not work for bitmap subtitles. In that case, please use OCR 
                     </StackPanel>
 
                     <TextBlock Margin="5 10 5 0">
-                        You can send subtitle text to your browser via the clipboard and work with browser extensions such as Yomitan and 10ten.
-                        See <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://github.com/umlx5h/LLPlayer/wiki/Browser-Extensions-Integration" helpers:HyperlinkHelper.OpenInBrowser="True">this link</Hyperlink>
-                        for more information.
+                        <Run Text="{loc:Text Key=Text_C53AEDAF558DC711}" /> <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://github.com/umlx5h/LLPlayer/wiki/Browser-Extensions-Integration" helpers:HyperlinkHelper.OpenInBrowser="True"><Run Text="{loc:Text Key=Text_38600672B6ED5372}" /></Hyperlink>
+                        <Run Text="{loc:Text Key=Text_0895E3EA3D207F41}" />
                     </TextBlock>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Word Special Actions for Japanese" Visibility="{Binding IsTargetJapanese, Converter={StaticResource BooleanToVisibilityConv}}">
+            <GroupBox Header="{loc:Text Key=Text_1ECF8F59518E6326}" Visibility="{Binding IsTargetJapanese, Converter={StaticResource BooleanToVisibilityConv}}">
                 <StackPanel>
                     <DockPanel>
                         <TextBlock
-                            Text="PDIC Executable Path"
+                            Text="{loc:Text Key=Text_CB3F42C5D0C67CF4}"
                             Width="180" />
                         <TextBox
                             HorizontalContentAlignment="Left"
@@ -329,18 +332,17 @@ Note that this does not work for bitmap subtitles. In that case, please use OCR 
                     </DockPanel>
 
                     <Button
-                        Content="Auto Set"
+                        Content="{loc:Text Key=Text_FFE5A4C67213462F}"
                         HorizontalAlignment="Left"
                         Command="{Binding CmdSetPdicPath}"
                         Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
                         Margin="180 0 0 0" />
 
                     <TextBlock Margin="5 10 5 0">
-                        (For Japanese-speaking learners of English)
+                        <Run Text="{loc:Text Key=Text_4CEC3B785EC9FBAC}" />
                         <LineBreak />
-                        It can be linked to the PDIC dictionary tool.
-                        See <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://github.com/umlx5h/LLPlayer/wiki/PDIC-Integration-(For-Japanese-users)" helpers:HyperlinkHelper.OpenInBrowser="True">this link</Hyperlink>
-                        for more information.
+                        <Run Text="{loc:Text Key=Text_D268F543C37580A9}" /> <Hyperlink Style="{StaticResource MyHyperLink}" NavigateUri="https://github.com/umlx5h/LLPlayer/wiki/PDIC-Integration-(For-Japanese-users)" helpers:HyperlinkHelper.OpenInBrowser="True"><Run Text="{loc:Text Key=Text_38600672B6ED5372}" /></Hyperlink>
+                        <Run Text="{loc:Text Key=Text_0895E3EA3D207F41}" />
                     </TextBlock>
                 </StackPanel>
             </GroupBox>

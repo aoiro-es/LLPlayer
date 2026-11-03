@@ -32,6 +32,8 @@ public class AppConfig : Bindable
 
     public string Version { get; set; } = "";
 
+    public string UiLanguage { get; set => Set(ref field, value); } = "ja-JP";
+
     /// <summary>
     /// State to skip the setter run when reading JSON
     /// </summary>

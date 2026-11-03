@@ -31,7 +31,7 @@ public class CheatSheetDialogVM : Bindable, IDialogAware
                 KeyBindingCS key = new()
                 {
                     Action = k.Action,
-                    ActionName = k.Action.ToString(),
+                    ActionName = UiText.ActionName(k.Action),
                     Alt = k.Alt,
                     Ctrl = k.Ctrl,
                     Shift = k.Shift,
@@ -50,7 +50,7 @@ public class CheatSheetDialogVM : Bindable, IDialogAware
                         return null;
                     }
 
-                    key.ActionName = customAction.ToString();
+                    key.ActionName = UiText.ActionName(customAction);
                     key.CustomAction = customAction;
                     key.Description = customAction.GetDescription();
                     key.Group = customAction.ToGroup();
@@ -128,7 +128,7 @@ public class CheatSheetDialogVM : Bindable, IDialogAware
     });
 
     #region IDialogAware
-    public string Title { get; set => Set(ref field, value); } = $"CheatSheet - {App.Name}";
+    public string Title { get; set => Set(ref field, value); } = UiText.Format($"CheatSheet - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 1000;
     public double WindowHeight { get; set => Set(ref field, value); } = 800;
 
@@ -180,7 +180,7 @@ public class KeyBindingCSGroup
 {
     public required KeyBindingActionGroup Group { get; init; }
 
-    public string GroupName => field ??= Group.ToString();
+    public string GroupName => field ??= UiText.Get(Group.ToString());
     public required List<KeyBindingCS> KeyBindings { get; init; }
 
     public Color GroupColor =>

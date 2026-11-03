@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Views.SubtitlesExportDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,7 +30,7 @@
 
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
-                <Label Content="Subtitle" Width="80" />
+                <Label Content="{loc:Text Key=Text_383CD6C0B871980D}" Width="80" />
                 <ComboBox
                     ItemsSource="{Binding SubIndexList}"
                     SelectedItem="{Binding SelectedSubIndex}"
@@ -43,7 +44,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 0 0 8">
-                <Label Content="Translated" Width="80" />
+                <Label Content="{loc:Text Key=Text_ABBC13C13E35C899}" Width="80" />
                 <ComboBox
                     ItemsSource="{Binding Source={StaticResource TranslateExportOptionsEnum}}"
                     SelectedItem="{Binding SelectedTranslateOpts}"
@@ -56,20 +57,20 @@
                 TextWrapping="Wrap"
                 FontWeight="Bold"
                 Foreground="#ef5350"
-                Text="WARN: ASR/OCR is running, so not all are saved." />
+                Text="{loc:Text Key=Text_5DD2ADEDE654FACA}" />
 
             <CheckBox
                 Margin="0 20 0 0"
                 IsChecked="{Binding IsUtf8Bom, Mode=TwoWay}"
-                Content="With UTF8 BOM" />
+                Content="{loc:Text Key=Text_D26D8AC94ADFD779}" />
         </StackPanel>
 
         <Button
             Grid.Row="2"
-            Content="Export"
+            Content="{loc:Text Key=Text_3664895579F0A7E6}"
             HorizontalAlignment="Right"
             Width="100"
             Command="{Binding CmdExport}"
-            ToolTip="Export subtitles as SRT" />
+            ToolTip="{loc:Text Key=Text_4F52BD7C7C8E3B60}" />
     </Grid>
 </UserControl>

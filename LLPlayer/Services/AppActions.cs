@@ -155,7 +155,7 @@ public class AppActions
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"OpenNextPrevFile is failed: {ex.Message}");
+            MessageBox.Show(UiText.Format($"OpenNextPrevFile is failed: {ex.Message}"));
         }
     }
 
@@ -299,7 +299,7 @@ public class AppActions
                 WindowsClipboard.SetText(text);
                 if (!suppressOsd.HasValue || !suppressOsd.Value)
                 {
-                    _player.OSDMessage = "Copy All Subtitle Text";
+                    _player.OSDMessage = UiText.Get("Copy All Subtitle Text");
                 }
             }
             catch
@@ -335,7 +335,7 @@ public class AppActions
                 WindowsClipboard.SetText(text);
                 if (!suppressOsd.HasValue || !suppressOsd.Value)
                 {
-                    _player.OSDMessage = $"Copy {(subIndex == 0 ? "Primary" : "Secondary")} Subtitle Text";
+                    _player.OSDMessage = UiText.Format($"Copy {UiText.Get(subIndex == 0 ? "Primary" : "Secondary")} Subtitle Text");
                 }
             }
             catch
@@ -434,8 +434,8 @@ public class AppActions
                 {
                     // Show confirmation dialog
                     MessageBoxResult confirm = MessageBox.Show(
-                        "A restart is required for the settings to take effect. Do you want to restart?",
-                        "Confirm to restart",
+                        UiText.Get("A restart is required for the settings to take effect. Do you want to restart?"),
+                        UiText.Get("Confirm to restart"),
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Question
                     );
@@ -759,7 +759,7 @@ public static class KeyBindingActionExtensions
         var str = group.ToString();
         if (group == KeyBindingActionGroup.SubtitlesPosition)
         {
-            str = "Subtitles Position";
+            str = UiText.Get("Subtitles Position");
         }
 
         return str;
@@ -944,10 +944,10 @@ public static class KeyBindingActionExtensions
         {
             if (Attribute.GetCustomAttribute(member[0], typeof(DescriptionAttribute)) is DescriptionAttribute attr)
             {
-                return attr.Description;
+                return UiText.Get(attr.Description);
             }
         }
 
-        return name;
+        return UiText.Get(name);
     }
 }

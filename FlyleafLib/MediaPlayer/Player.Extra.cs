@@ -66,7 +66,7 @@ unsafe partial class Player
             return;
 
         Clipboard.SetText(url);
-        OSDMessage = $"Copy {url}";
+        OSDMessage = FlyleafLib.Localization.UiText.Format($"Copy {url}");
     }
     public void CopyItemToClipboard()
     {
@@ -76,7 +76,7 @@ unsafe partial class Player
         string url = Playlist.Selected.DirectUrl;
 
         Clipboard.SetText(url);
-        OSDMessage = $"Copy {url}";
+        OSDMessage = FlyleafLib.Localization.UiText.Format($"Copy {url}");
     }
     public void OpenFromClipboard()
     {
@@ -297,7 +297,7 @@ unsafe partial class Player
         if (!CanPlay)
             return;
 
-        OSDMessage = $"Start recording to {Path.GetFileName(filename)}";
+        OSDMessage = FlyleafLib.Localization.UiText.Format($"Start recording to {Path.GetFileName(filename)}");
         decoder.StartRecording(ref filename, useRecommendedExtension);
         IsRecording = decoder.IsRecording;
     }
@@ -309,7 +309,7 @@ unsafe partial class Player
     {
         decoder.StopRecording();
         IsRecording = decoder.IsRecording;
-        OSDMessage = "Stop recording";
+        OSDMessage = FlyleafLib.Localization.UiText.Get("Stop recording");
     }
     public void ToggleRecording()
     {
@@ -369,7 +369,7 @@ unsafe partial class Player
 
             UI(() =>
             {
-                OSDMessage = $"Save snapshot to {Path.GetFileName(filename)}";
+                OSDMessage = FlyleafLib.Localization.UiText.Format($"Save snapshot to {Path.GetFileName(filename)}");
             });
         }
         catch (Exception)

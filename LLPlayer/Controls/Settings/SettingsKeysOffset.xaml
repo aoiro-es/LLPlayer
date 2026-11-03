@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsKeysOffset"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,17 +15,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Keys > Offset"
+                Text="{loc:Text Key=Text_55F1934C3B1F911E}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Player">
+            <GroupBox Header="{loc:Text Key=Text_64AEE8C6CBD026D9}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Speed Offset1" />
+                            Text="{loc:Text Key=Text_0A1EEF26CAC3058C}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SpeedOffset}"
@@ -34,7 +35,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Speed Offset2" />
+                            Text="{loc:Text Key=Text_86E3196E04CFCCFD}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SpeedOffset2}"
@@ -43,12 +44,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Audio">
+            <GroupBox Header="{loc:Text Key=Text_BC1B88907D3B748A}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Volume Offset" />
+                            Text="{loc:Text Key=Text_621B9D7818D448DA}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.VolumeOffset}"
@@ -58,7 +59,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Offset1 (ms)" />
+                            Text="{loc:Text Key=Text_E7FF3A474AF03D88}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.DelayOffset, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -68,7 +69,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Offset2 (ms)" />
+                            Text="{loc:Text Key=Text_0FEDFD3E47E91300}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.DelayOffset2, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -77,12 +78,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Subtitles">
+            <GroupBox Header="{loc:Text Key=Text_0EE695BDEB26A296}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Offset1 (ms) " />
+                            Text="{loc:Text Key=Text_E8128F05BA9DD6A8}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles.DelayOffset, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -92,7 +93,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Offset2 (ms)" />
+                            Text="{loc:Text Key=Text_0FEDFD3E47E91300}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles.DelayOffset2, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -101,12 +102,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Subtitles (Position/Size)">
+            <GroupBox Header="{loc:Text Key=Text_84E35237CF5ED951}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Position Offset (%)" />
+                            Text="{loc:Text Key=Text_CFB014A89F027CA6}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsPositionOffset}"
@@ -116,7 +117,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Font Size Offset" />
+                            Text="{loc:Text Key=Text_1A3BF9C9F73509FC}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsFontSizeOffset}"
@@ -126,7 +127,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Bitmap Scale Offset (%)" />
+                            Text="{loc:Text Key=Text_AA797F38221E9488}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsBitmapScaleOffset}"
@@ -136,7 +137,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Distance Offset" />
+                            Text="{loc:Text Key=Text_4DFF8A89565B1222}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsDistanceOffset}"
@@ -145,12 +146,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Seek">
+            <GroupBox Header="{loc:Text Key=Text_67AE3405BCD4DF1F}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Offset1 (ms)" />
+                            Text="{loc:Text Key=Text_78D65A2104E76098}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SeekOffset, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -158,13 +159,13 @@
                         <CheckBox
                             Margin="15 0 0 0"
                             IsChecked="{Binding FL.PlayerConfig.Player.SeekOffsetAccurate}"
-                            Content="Accurate" />
+                            Content="{loc:Text Key=Text_E6F9742F068A779B}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Offset2 (ms)" />
+                            Text="{loc:Text Key=Text_B2C13FCEBD5875F7}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SeekOffset2, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -172,13 +173,13 @@
                         <CheckBox
                             Margin="15 0 0 0"
                             IsChecked="{Binding FL.PlayerConfig.Player.SeekOffsetAccurate2}"
-                            Content="Accurate" />
+                            Content="{loc:Text Key=Text_E6F9742F068A779B}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Offset3 (ms)" />
+                            Text="{loc:Text Key=Text_6875A2924A7BAD3B}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SeekOffset3, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -186,13 +187,13 @@
                         <CheckBox
                             Margin="15 0 0 0"
                             IsChecked="{Binding FL.PlayerConfig.Player.SeekOffsetAccurate3}"
-                            Content="Accurate" />
+                            Content="{loc:Text Key=Text_E6F9742F068A779B}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Seek Offset4 (ms)" />
+                            Text="{loc:Text Key=Text_F70E55EDAD2C7DBE}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Player.SeekOffset4, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -200,17 +201,17 @@
                         <CheckBox
                             Margin="15 0 0 0"
                             IsChecked="{Binding FL.PlayerConfig.Player.SeekOffsetAccurate4}"
-                            Content="Accurate" />
+                            Content="{loc:Text Key=Text_E6F9742F068A779B}" />
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Video">
+            <GroupBox Header="{loc:Text Key=Text_D534BE829E32196B}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                         Width="180"
-                        Text="Zoom Unit (%)" />
+                        Text="{loc:Text Key=Text_FEE3D4B2A319F707}" />
                         <TextBox
                         Width="100"
                         Text="{Binding FL.PlayerConfig.Video.ZoomOffset}"

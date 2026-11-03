@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsAudio"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,17 +16,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Audio"
+                Text="{loc:Text Key=Text_BC1B88907D3B748A}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Audio">
+            <GroupBox Header="{loc:Text Key=Text_BC1B88907D3B748A}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Enabled" />
+                            Text="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" />
                         <ToggleButton
                             IsChecked="{Binding FL.PlayerConfig.Audio.Enabled}" />
                     </StackPanel>
@@ -33,7 +34,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Use Filters" />
+                            Text="{loc:Text Key=Text_6F56A613C104A2D3}" />
                         <ToggleButton
                             IsChecked="{Binding FL.PlayerConfig.Audio.FiltersEnabled}" />
                     </StackPanel>
@@ -41,7 +42,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay (ms)" />
+                            Text="{loc:Text Key=Text_199702C3A0B38E34}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -51,7 +52,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Max Volume (1-1000%)" />
+                            Text="{loc:Text Key=Text_F3D0E6F92695FAE5}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.VolumeMax}"
@@ -61,7 +62,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Default Volume (%)" />
+                            Text="{loc:Text Key=Text_712C9D31DFCC0152}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Audio.VolumeDefault}"
@@ -70,34 +71,35 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Audio Language (Priority to the above)">
+            <GroupBox Header="{loc:Text Key=Text_7C15BF119B5D9827}">
                 <StackPanel>
                     <ListBox
                         ItemsSource="{Binding FL.PlayerConfig.Audio.Languages}"
-                        DisplayMemberPath="DisplayName"
                         BorderThickness="1"
-                        BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}" />
+                        BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}" >
+                        <ListBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ListBox.ItemTemplate>
+                    </ListBox>
                     <Button
                         HorizontalAlignment="Left"
                         Margin="0 15 0 0"
                         MaxWidth="150"
-                        Content="Configure"
+                        Content="{loc:Text Key=Text_6DEFAFA2CAA65304}"
                         Command="{Binding CmdConfigureLanguage}" />
 
                     <TextBlock Margin="5 10 5 0">
-                        The audio stream is automatically opened in the order of the languages set here.
+                        <Run Text="{loc:Text Key=Text_908D0E0B201B5A7A}" />
                         <LineBreak />
-                        Audios via YoutubeDL are also affected.
+                        <Run Text="{loc:Text Key=Text_6B69792DAABF25F7}" />
                     </TextBlock>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Devices">
+            <GroupBox Header="{loc:Text Key=Text_4BA5121D4D1BE174}">
                 <StackPanel>
                     <DockPanel>
                         <TextBlock
                             Width="180"
-                            Text="Default Device" />
+                            Text="{loc:Text Key=Text_2ACD09A86693C652}" />
                         <TextBlock
                             Text="{Binding FL.AudioEngine.CurrentDevice.Name}" />
                     </DockPanel>
@@ -105,7 +107,7 @@
                     <DockPanel>
                         <TextBlock
                             Width="180"
-                            Text="Device" />
+                            Text="{loc:Text Key=Text_6BA0BDECCB426D7B}" />
                         <ComboBox
                             ItemsSource="{Binding FL.AudioEngine.Devices}"
                             SelectedItem="{Binding FL.Player.Audio.Device}"/>

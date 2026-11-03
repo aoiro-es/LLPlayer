@@ -22,6 +22,6 @@ public class ColorHexRule : ValidationRule
             return new(true, null);
         }
 
-        return new(false, "Invalid");
+        return new(false, UiText.Get("Invalid"));
     }
 }

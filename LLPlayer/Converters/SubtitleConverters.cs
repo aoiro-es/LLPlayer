@@ -213,7 +213,7 @@ public class SubIndexToDisplayStringConverter : IValueConverter
     {
         if (value is int subIndex)
         {
-            return subIndex == 0 ? "Primary" : "Secondary";
+            return subIndex == 0 ? UiText.Get("Primary") : UiText.Get("Secondary");
         }
         return DependencyProperty.UnsetValue;
     }
@@ -222,7 +222,7 @@ public class SubIndexToDisplayStringConverter : IValueConverter
     {
         if (value is string str)
         {
-            return str == "Primary" ? 0 : 1;
+            return str == UiText.Get("Primary") ? 0 : 1;
         }
         return DependencyProperty.UnsetValue;
     }

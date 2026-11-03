@@ -19,6 +19,8 @@ namespace WpfColorFontDialog
 			set;
 		}
 
+		public string DisplayName => I18NUtil.GetString("Color_" + Name, Name);
+
 		public FontColor(string name, SolidColorBrush brush)
 		{
 			this.Name = name;

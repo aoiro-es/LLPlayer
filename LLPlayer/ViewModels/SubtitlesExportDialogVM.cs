@@ -72,7 +72,7 @@ public class SubtitlesExportDialogVM : Bindable, IDialogAware
 
         if (lines.Count == 0)
         {
-            ErrorDialogHelper.ShowKnownErrorPopup("There were no subtitles to export.", "Export");
+            ErrorDialogHelper.ShowKnownErrorPopup(UiText.Get("There were no subtitles to export."), UiText.Get("Export"));
             return;
         }
 
@@ -94,7 +94,7 @@ public class SubtitlesExportDialogVM : Bindable, IDialogAware
 
         SaveFileDialog saveFileDialog = new()
         {
-            Filter = "SRT files (*.srt)|*.srt|All files (*.*)|*.*",
+            Filter = UiText.Get("SRT files (*.srt)|*.srt|All files (*.*)|*.*"),
             FileName = fileName + ".srt",
             InitialDirectory = initDir
         };
@@ -115,7 +115,7 @@ public class SubtitlesExportDialogVM : Bindable, IDialogAware
 
     #region IDialogAware
     public string Title { get; set => Set(ref field, value); }
-        = $"Subtitles Exporter - {App.Name}";
+        = UiText.Format($"Subtitles Exporter - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 350;
     public double WindowHeight { get; set => Set(ref field, value); } = 240;
 

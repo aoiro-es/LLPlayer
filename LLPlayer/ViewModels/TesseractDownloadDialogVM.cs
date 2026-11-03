@@ -52,7 +52,7 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
         }
     }
 
-    public string StatusText { get; set => Set(ref field, value); } = "Select a model to download.";
+    public string StatusText { get; set => Set(ref field, value); } = UiText.Get("Select a model to download.");
 
     public long DownloadedSize { get; set => Set(ref field, value); }
 
@@ -76,18 +76,18 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
         {
             if (downloadModel.Downloaded)
             {
-                StatusText = $"Model '{SelectedModel}' is already downloaded";
+                StatusText = UiText.Format($"Model '{SelectedModel}' is already downloaded");
                 return;
             }
 
             // Delete temporary files if they exist (forces re-download)
             if (!DeleteTempModel())
             {
-                StatusText = "Failed to remove temp model";
+                StatusText = UiText.Get("Failed to remove temp model");
                 return;
             }
 
-            StatusText = $"Model '{downloadModel}' downloading..";
+            StatusText = UiText.Format($"Model '{downloadModel}' downloading..");
 
             long modelSize = await DownloadModelWithProgressAsync(downloadModel.LangCode, tempModelPath, token);
 
@@ -98,16 +98,16 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
             downloadModel.Size = modelSize;
             OnDownloadStatusChanged();
 
-            StatusText = $"Model '{SelectedModel}' is downloaded successfully";
+            StatusText = UiText.Format($"Model '{SelectedModel}' is downloaded successfully");
         }
         catch (OperationCanceledException ex)
             when (!ex.Message.StartsWith("The request was canceled due to the configured HttpClient.Timeout"))
         {
-            StatusText = "Download canceled";
+            StatusText = UiText.Get("Download canceled");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to download: {ex.Message}";
+            StatusText = UiText.Format($"Failed to download: {ex.Message}");
         }
         finally
         {
@@ -147,7 +147,7 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
     {
         try
         {
-            StatusText = $"Model '{SelectedModel}' deleting...";
+            StatusText = UiText.Format($"Model '{SelectedModel}' deleting...");
 
             TesseractModel deleteModel = SelectedModel;
 
@@ -161,11 +161,11 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
             deleteModel.Size = 0;
             OnDownloadStatusChanged();
 
-            StatusText = $"Model '{deleteModel}' is deleted successfully";
+            StatusText = UiText.Format($"Model '{deleteModel}' is deleted successfully");
         }
         catch (Exception ex)
         {
-            StatusText = $"Failed to delete model: {ex.Message}";
+            StatusText = UiText.Format($"Failed to delete model: {ex.Message}");
         }
     }).ObservesCanExecute(() => CanDelete);
 
@@ -227,7 +227,7 @@ public class TesseractDownloadDialogVM : Bindable, IDialogAware
     }
 
     #region IDialogAware
-    public string Title { get; set => Set(ref field, value); } = $"Tesseract Downloader - {App.Name}";
+    public string Title { get; set => Set(ref field, value); } = UiText.Format($"Tesseract Downloader - {App.Name}");
     public double WindowWidth { get; set => Set(ref field, value); } = 400;
     public double WindowHeight { get; set => Set(ref field, value); } = 200;
 

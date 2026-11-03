@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="LLPlayer.Controls.Settings.SettingsSubtitles"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,17 +18,17 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock
-                Text="Subtitles"
+                Text="{loc:Text Key=Text_0EE695BDEB26A296}"
                 FontSize="24"
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
-            <GroupBox Header="Subtitles">
+            <GroupBox Header="{loc:Text Key=Text_0EE695BDEB26A296}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Enabled" />
+                            Text="{loc:Text Key=Text_92C1CDFDF4CB9CF6}" />
                         <ToggleButton
                             IsChecked="{Binding FL.PlayerConfig.Subtitles.Enabled}" />
                     </StackPanel>
@@ -35,18 +36,18 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Search Local
+                            <Run Text="{loc:Text Key=Text_1C50AD2822B2DCEB}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
                                         TextWrapping="Wrap"
                                         MaxWidth="400">
-                                        <Run Text="If enabled, subtitle files in the same path as the media file are automatically opened. The following subtitle files will be opened."/>
+                                        <Run Text="{loc:Text Key=Text_CC8DFFAA21B894CF}"/>
                                         <LineBreak />
                                         <LineBreak /><Run Text="- video.srt" />
-                                        <LineBreak /><Run Text="- video.en.srt (language is set from the lang code)" />
-                                        <LineBreak /><Run Text="- video.eng.srt (same as above)" />
-                                        <LineBreak /><Run Text="- video.foo.srt (language is auto-detected)" />
+                                        <LineBreak /><Run Text="{loc:Text Key=Text_3BFF4D971DB77AAB}" />
+                                        <LineBreak /><Run Text="{loc:Text Key=Text_8C0F929BA7130549}" />
+                                        <LineBreak /><Run Text="{loc:Text Key=Text_DF40182FD1B06B52}" />
                                         <LineBreak /><Run Text="- path\video.srt" />
                                     </TextBlock>
                                 </ToolTipService.ToolTip>
@@ -63,11 +64,11 @@
                     <DockPanel Visibility="{Binding FL.PlayerConfig.Subtitles.SearchLocal, Converter={StaticResource BooleanToVisibilityConv}}">
                         <TextBlock
                             Width="180">
-                          <Run Text="  Search Local Paths" />
+                          <Run Text="{loc:Text Key=Text_FEC34606161EC115}" />
                            <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                <ToolTipService.ToolTip>
                                    <TextBlock
-                                       Text="Specify additional folder paths to open subtitles, separated by semicolons. If left blank, subtitles will be opened only from the current directory. Folder case is ignored. Both relative and absolute paths can be specified."
+                                       Text="{loc:Text Key=Text_8BC990ACEAC92D74}"
                                        TextWrapping="Wrap"
                                        MaxWidth="400" />
                                </ToolTipService.ToolTip>
@@ -89,7 +90,7 @@
                             <Button
                                 Grid.Column="1"
                                 Margin="10 0 0 0"
-                                ToolTip="Reset to default"
+                                ToolTip="{loc:Text Key=Text_BC5B45AE7B60692A}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 HorizontalAlignment="Center"
                                 Width="24"
@@ -103,11 +104,11 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Enabled Cached
+                            <Run Text="{loc:Text Key=Text_1E1B04AD78D942DE}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="If enabled, internal bitmap subtitles can be displayed in the sidebar. and internal bitmap subtitles are always displayed during seek, However, memory usage will increase."
+                                        Text="{loc:Text Key=Text_B5B03E9D8175AE1D}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -124,11 +125,11 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Open Automatic Subs
+                            <Run Text="{loc:Text Key=Text_5DE3AAC4D7AD6046}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="If enabled, automatic subtitles such as those on YouTube are automatically opened. If disabled, they will be added but not auto-open."
+                                        Text="{loc:Text Key=Text_19438E9CB71730DC}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -145,7 +146,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Export UTF8 with BOM" />
+                            Text="{loc:Text Key=Text_5B7E28EFCBC9A1CE}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.Subs.SubsExportUTF8WithBom}" />
                     </StackPanel>
@@ -153,7 +154,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Primary (ms)" />
+                            Text="{loc:Text Key=Text_DB0388CEA2E9C8EC}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles[0].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -163,7 +164,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Delay Secondary (ms)" />
+                            Text="{loc:Text Key=Text_AAF424C55F907EB0}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.PlayerConfig.Subtitles[1].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
@@ -173,12 +174,12 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Subtitles Fonts">
+            <GroupBox Header="{loc:Text Key=Text_5C5C0418D95D9DCA}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Font Size (1st)" />
+                            Text="{loc:Text Key=Text_F71A2C787A26EA06}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsFontSize}"
@@ -188,14 +189,14 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Font Size (2nd)" />
+                            Text="{loc:Text Key=Text_C1166C3DD8EFC54E}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsFontSize2}"
                             helpers:TextBoxHelper.OnlyNumeric="Uint"/>
                         <Button
                             Margin="10 0 0 0"
-                            ToolTip="Reset from 1st"
+                            ToolTip="{loc:Text Key=Text_8A9B241F1978E5F7}"
                             Style="{StaticResource MaterialDesignIconButton}"
                             HorizontalAlignment="Center"
                             Width="24"
@@ -208,7 +209,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Fonts" />
+                            Text="{loc:Text Key=Text_3680FCAD01F4BFC6}" />
                         <Button
                             Height="auto"
                             MaxHeight="100"
@@ -226,7 +227,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                         <TextBlock
                             Width="180"
-                            Text="Font Color" />
+                            Text="{loc:Text Key=Text_B3567E7A38053769}" />
                         <Button
                             Background="{x:Null}"
                             Padding="0"
@@ -258,7 +259,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Stroke Thickness" />
+                            Text="{loc:Text Key=Text_E4CE5735873D5D8B}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.Subs.SubsStrokeThickness}"
@@ -268,7 +269,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                         <TextBlock
                             Width="180"
-                            Text="Stroke Color" />
+                            Text="{loc:Text Key=Text_F4A56A2B10E3B873}" />
                         <Button
                             Background="{x:Null}"
                             Padding="0"
@@ -300,7 +301,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                         <TextBlock
                             Width="180"
-                            Text="Background Color" />
+                            Text="{loc:Text Key=Text_B48BC969E914F8C9}" />
                         <Button
                             Background="{x:Null}"
                             Padding="0"
@@ -332,7 +333,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Background Opacity" />
+                            Text="{loc:Text Key=Text_47AF11BD5E415745}" />
                         <Slider
                             Maximum="100"
                             Minimum="0"
@@ -355,7 +356,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Use Separate 2nd Fonts" />
+                            Text="{loc:Text Key=Text_5E1A9841AC53F2EF}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.Subs.SubsUseSeparateFonts}" />
                     </StackPanel>
@@ -370,7 +371,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     Width="180"
-                                    Text="Fonts (2nd)" />
+                                    Text="{loc:Text Key=Text_00100AD46EE19373}" />
                                 <Button
                                     Height="auto"
                                     MaxHeight="100"
@@ -386,7 +387,7 @@
 
                                 <Button
                                     Margin="6 0 0 0"
-                                    ToolTip="Reset from 1st"
+                                    ToolTip="{loc:Text Key=Text_8A9B241F1978E5F7}"
                                     Style="{StaticResource MaterialDesignIconButton}"
                                     HorizontalAlignment="Center"
                                     Width="24"
@@ -399,7 +400,7 @@
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                                 <TextBlock
                                     Width="180"
-                                    Text="Font Color (2nd)" />
+                                    Text="{loc:Text Key=Text_8BFCFE82B9F28E0D}" />
                                 <Button
                                     Background="{x:Null}"
                                     Padding="0"
@@ -429,7 +430,7 @@
 
                                 <Button
                                     Margin="6 0 0 0"
-                                    ToolTip="Reset from 1st"
+                                    ToolTip="{loc:Text Key=Text_8A9B241F1978E5F7}"
                                     Style="{StaticResource MaterialDesignIconButton}"
                                     HorizontalAlignment="Center"
                                     Width="24"
@@ -443,7 +444,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     Width="180"
-                                    Text="Background Opacity (2nd)" />
+                                    Text="{loc:Text Key=Text_7B41C7FF336880E9}" />
                                 <Slider
                                     Maximum="100"
                                     Minimum="0"
@@ -464,7 +465,7 @@
 
                                 <Button
                                     Margin="6 0 0 0"
-                                    ToolTip="Reset from 1st"
+                                    ToolTip="{loc:Text Key=Text_8A9B241F1978E5F7}"
                                     Style="{StaticResource MaterialDesignIconButton}"
                                     HorizontalAlignment="Center"
                                     Width="24"
@@ -478,17 +479,17 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Subtitles Language">
+            <GroupBox Header="{loc:Text Key=Text_86D7E8AD5A692608}">
                 <StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180">
-                            Auto Language Detection
+                            <Run Text="{loc:Text Key=Text_FCD71439D781EB63}" />
                             <InlineUIContainer BaselineAlignment="Center" Cursor="Help">
                                 <ToolTipService.ToolTip>
                                     <TextBlock
-                                        Text="Automatically detects language from text subtitle. Accurate language identification allows for the translation function. Memory usage will increase slightly."
+                                        Text="{loc:Text Key=Text_311B9009B14313B2}"
                                         TextWrapping="Wrap"
                                         MaxWidth="400" />
                                 </ToolTipService.ToolTip>
@@ -505,13 +506,14 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                         Width="180"
-                        Text="Fallback Source Language (Primary)" />
+                        Text="{loc:Text Key=Text_37E17259764AC93B}" />
 
                         <ComboBox
                             Width="180"
                             ItemsSource="{Binding Languages}"
-                            DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedPrimaryLanguage}" />
+                            SelectedItem="{Binding SelectedPrimaryLanguage}" >
+                        <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ComboBox.ItemTemplate>
+                    </ComboBox>
                     </StackPanel>
 
                     <!--TODO: L: Support for forced settings instead of fallback -->
@@ -519,53 +521,55 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                         Width="180"
-                        Text="Fallback Source Language (Secondary)" />
+                        Text="{loc:Text Key=Text_D153E8139304DE49}" />
 
                         <ComboBox
                             Width="180"
                             ItemsSource="{Binding Languages}"
                             IsEnabled="{Binding FL.PlayerConfig.Subtitles.LanguageFallbackSecondarySame, Converter={StaticResource InvertBooleanConv}}"
-                            DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedSecondaryLanguage}" />
+                            SelectedItem="{Binding SelectedSecondaryLanguage}" >
+                        <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ComboBox.ItemTemplate>
+                    </ComboBox>
 
                         <CheckBox
                             Margin="15 0 0 0"
                             IsChecked="{Binding FL.PlayerConfig.Subtitles.LanguageFallbackSecondarySame}"
-                            Content="Same as Primary" />
+                            Content="{loc:Text Key=Text_64A91F874E1D1AD2}" />
 
                     </StackPanel>
                 </StackPanel>
 
             </GroupBox>
 
-            <GroupBox Header="Subtitles Language Auto-Open (Priority to the above)">
+            <GroupBox Header="{loc:Text Key=Text_12A0FE66935CECCB}">
                 <StackPanel>
                     <ListBox
                         ItemsSource="{Binding FL.PlayerConfig.Subtitles.Languages}"
-                        DisplayMemberPath="DisplayName"
                         BorderThickness="1"
-                        BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}" />
+                        BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}" >
+                        <ListBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Converter={StaticResource LocalizedTextConv}}" /></DataTemplate></ListBox.ItemTemplate>
+                    </ListBox>
                     <Button
                         HorizontalAlignment="Left"
                         Margin="0 15 0 0"
                         MaxWidth="150"
-                        Content="Configure"
+                        Content="{loc:Text Key=Text_6DEFAFA2CAA65304}"
                         Command="{Binding CmdConfigureLanguage}" />
 
                     <TextBlock Margin="5 10 5 0">
-                        The subtitle stream is automatically opened in the order of the languages set here.
+                        <Run Text="{loc:Text Key=Text_C619D125A94FB895}" />
                         <LineBreak />
-                        Subtitles via YoutubeDL are also affected.
+                        <Run Text="{loc:Text Key=Text_8C17353F6292E746}" />
                     </TextBlock>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Subtitles Sidebar">
+            <GroupBox Header="{loc:Text Key=Text_3D3D0BBC581667E2}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Show Sidebar" />
+                            Text="{loc:Text Key=Text_04EFAE3FC7825D3A}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.ShowSidebar}" />
                     </StackPanel>
@@ -573,7 +577,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Sidebar Width" />
+                            Text="{loc:Text Key=Text_65B424FD887417C3}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SidebarWidth}"
@@ -583,7 +587,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Sidebar Left" />
+                            Text="{loc:Text Key=Text_FD290E408C660D85}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.SidebarLeft}" />
                     </StackPanel>
@@ -591,7 +595,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Mask subtitles after current (to prevent spoiler)" />
+                            Text="{loc:Text Key=Text_EECDC898F3E23B9B}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.SidebarTextMask}" />
                     </StackPanel>
@@ -599,7 +603,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Show Original Text when translating enabled" />
+                            Text="{loc:Text Key=Text_518C64821D1C3079}" />
                         <ToggleButton
                             IsChecked="{Binding FL.Config.SidebarShowOriginalText}" />
                     </StackPanel>
@@ -607,7 +611,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Subtitle Padding" />
+                            Text="{loc:Text Key=Text_A07A34BC2DA727A5}" />
                         <TextBox
                             Width="100"
                             Text="{Binding FL.Config.SidebarSubPadding}"
@@ -617,7 +621,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Width="180"
-                            Text="Fonts" />
+                            Text="{loc:Text Key=Text_3680FCAD01F4BFC6}" />
 
                         <Button
                             Height="auto"
