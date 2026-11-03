@@ -3,14 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:LLPlayer.Converters"
              xmlns:local="clr-namespace:LLPlayer.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:SubtitlesControl}"
              d:Foreground="White"
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <conv:SubtitleBitmapVisibilityConverter x:Key="InlineBitmapVisibility" />
+        <conv:SubtitleBitmapVisibilityConverter x:Key="AbsoluteBitmapVisibility" Absolute="True" />
+    </UserControl.Resources>
     <Grid>
-        <local:NonTopmostPopup
+        <local:NonTopmostPopup x:Name="WordPopupHost"
             Placement="Relative"
             PlacementTarget="{Binding ElementName=SubtitlePrimaryText}"
             PopupAnimation="None"
@@ -33,12 +38,17 @@
             <!-- If a second subtitle is enabled, this is only used when a vertical subtitle is detected. -->
             <Image
                 Margin="{Binding FL.Player.Subtitles[0].Data.BitmapPosition.Margin, TargetNullValue=0}"
-                Visibility="{Binding FL.Player.Subtitles[0].Data.IsAbsoluteVisible, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 RenderOptions.BitmapScalingMode="HighQuality"
                 Source="{Binding FL.Player.Subtitles[0].Data.Bitmap.Source, FallbackValue={x:Null}}"
                 Stretch="None">
+                <Image.Visibility>
+                    <MultiBinding Converter="{StaticResource AbsoluteBitmapVisibility}">
+                        <Binding Path="FL.Player.Subtitles[0].Data.IsAbsoluteVisible" />
+                        <Binding Path="FL.Config.Subs.PrimaryPlacement" />
+                    </MultiBinding>
+                </Image.Visibility>
                 <Image.LayoutTransform>
                     <ScaleTransform
                         ScaleX="{Binding FL.Player.Subtitles[0].Data.BitmapPosition.ScaleX}"
@@ -49,12 +59,17 @@
             <!-- Absolute bitmap (Secondary) -->
             <Image
                 Margin="{Binding FL.Player.Subtitles[1].Data.BitmapPosition.Margin, TargetNullValue=0}"
-                Visibility="{Binding FL.Player.Subtitles[1].Data.IsAbsoluteVisible, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 RenderOptions.BitmapScalingMode="HighQuality"
                 Source="{Binding FL.Player.Subtitles[1].Data.Bitmap.Source, FallbackValue={x:Null}}"
                 Stretch="None">
+                <Image.Visibility>
+                    <MultiBinding Converter="{StaticResource AbsoluteBitmapVisibility}">
+                        <Binding Path="FL.Player.Subtitles[1].Data.IsAbsoluteVisible" />
+                        <Binding Path="FL.Config.Subs.SecondaryPlacement" />
+                    </MultiBinding>
+                </Image.Visibility>
                 <Image.LayoutTransform>
                     <ScaleTransform
                         ScaleX="{Binding FL.Player.Subtitles[1].Data.BitmapPosition.ScaleX}"
@@ -72,7 +87,7 @@
             SizeChanged="SubtitlePanel_OnSizeChanged">
 
             <!-- Primary -->
-            <Grid
+            <Grid x:Name="PrimarySubtitleContent"
                 Visibility="{Binding FL.Player.Subtitles[0].Data.IsVisible, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}" >
                 <local:SelectableSubtitleText
                     x:Name="SubtitlePrimaryText"
@@ -98,9 +113,14 @@
                     WordClicked="SelectableSubtitleText_OnWordClicked" />
 
                 <Border
-                    Visibility="{Binding FL.Player.Subtitles[0].Data.IsAbsolute, Converter={StaticResource BooleanToVisibilityInvertConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
                     Background="#01000000"
                     HorizontalAlignment="Center">
+                    <Border.Visibility>
+                        <MultiBinding Converter="{StaticResource InlineBitmapVisibility}">
+                            <Binding Path="FL.Player.Subtitles[0].Data.IsAbsolute" />
+                            <Binding Path="FL.Config.Subs.PrimaryPlacement" />
+                        </MultiBinding>
+                    </Border.Visibility>
                     <Image
                         RenderOptions.BitmapScalingMode="HighQuality"
                         Source="{Binding FL.Player.Subtitles[0].Data.Bitmap.Source, FallbackValue={x:Null}}"
@@ -115,7 +135,7 @@
             </Grid>
 
             <!-- Show dividing line when secondary subtitles are displayed -->
-            <Separator
+            <Separator x:Name="SubtitleSeparator"
                 MaxWidth="{Binding FL.Config.Subs.SubsSeparatorMaxWidth}"
                 Visibility="{Binding FL.Player.Subtitles[1].Data.IsDisplaying, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
                 Foreground="#FFFFFF"
@@ -123,7 +143,7 @@
                 Height="{Binding FL.Config.Subs.SubsDistanceFix}" />
 
             <!-- Secondary -->
-            <Grid
+            <Grid x:Name="SecondarySubtitleContent"
                 Visibility="{Binding FL.Player.Subtitles[1].Data.IsVisible, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}" >
                 <local:SelectableSubtitleText
                     HorizontalAlignment="Center"
@@ -148,9 +168,14 @@
                     WordClicked="SelectableSubtitleText_OnWordClicked" />
 
                 <Border
-                    Visibility="{Binding FL.Player.Subtitles[1].Data.IsAbsolute, Converter={StaticResource BooleanToVisibilityInvertConv}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
                     Background="#01000000"
                     HorizontalAlignment="Center">
+                    <Border.Visibility>
+                        <MultiBinding Converter="{StaticResource InlineBitmapVisibility}">
+                            <Binding Path="FL.Player.Subtitles[1].Data.IsAbsolute" />
+                            <Binding Path="FL.Config.Subs.SecondaryPlacement" />
+                        </MultiBinding>
+                    </Border.Visibility>
                     <Image
                         RenderOptions.BitmapScalingMode="HighQuality"
                         Source="{Binding FL.Player.Subtitles[1].Data.Bitmap.Source, FallbackValue={x:Null}}"
@@ -164,5 +189,7 @@
                 </Border>
             </Grid>
         </StackPanel>
+        <StackPanel x:Name="TopSubtitlePanel" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <StackPanel x:Name="BottomSubtitlePanel" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
     </Grid>
 </UserControl>

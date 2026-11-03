@@ -12,6 +12,27 @@ public partial class SettingsDialog : UserControl
         InitializeComponent();
 
         DataContext = ((App)Application.Current).Container.Resolve<SettingsDialogVM>();
+        Loaded += (_, _) => SelectPage();
+        ((SettingsDialogVM)DataContext).PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(SettingsDialogVM.InitialPage)) SelectPage();
+        };
+    }
+
+    private void SelectPage()
+    {
+        var page = ((SettingsDialogVM)DataContext).InitialPage;
+        foreach (var item in Items(SettingsTreeView))
+            if (item.Tag as string == page) { item.IsSelected = true; item.BringIntoView(); break; }
+
+        static IEnumerable<TreeViewItem> Items(ItemsControl parent)
+        {
+            foreach (TreeViewItem child in parent.Items)
+            {
+                yield return child;
+                foreach (var descendant in Items(child)) yield return descendant;
+            }
+        }
     }
 
     private void SettingsTreeView_OnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

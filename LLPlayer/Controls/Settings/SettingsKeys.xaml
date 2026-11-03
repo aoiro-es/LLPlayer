@@ -14,11 +14,7 @@
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <prism:InvokeCommandAction Command="{Binding CmdLoad}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -27,13 +23,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="0">
         <TextBlock
-            Grid.Row="0"
             Text="{loc:Text Key=Text_F0D66A79C138E951}"
             FontSize="24"
             FontWeight="Bold"
             Margin="0 0 0 16" />
 
+            <WrapPanel Margin="0 0 0 12">
+                <TextBox Width="220" Margin="0 0 12 0" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="{loc:Text Key=Text_1ED2647CD6991770}" />
+                <Button Margin="0 0 8 0" Content="{loc:Text Key=Text_59B9257BDB05D2C7}" Command="{Binding CmdMpcPreset}" />
+                <Button Content="{loc:Text Key=Text_ABFA436784E15178}" Command="{Binding CmdOriginalPreset}" />
+            </WrapPanel>
+            <TextBlock Text="{loc:Text Key=Text_06E3E409990D2FF3}" TextWrapping="Wrap" Margin="0 0 0 10" />
+        </StackPanel>
         <Grid Grid.Row="1">
             <!-- TODO: L: Allow auto-entry of modifier keys? -->
             <!-- TODO: L: Detect default shortcuts and change color -->
@@ -41,7 +44,7 @@
                 x:Name="KeyBindingsDataGrid"
                 SelectedItem="{Binding SelectedKeyBinding, Mode=TwoWay}"
                 SelectionChanged="KeyBindingsDataGrid_OnSelectionChanged"
-                ItemsSource="{Binding KeyBindings}"
+                ItemsSource="{Binding BindingsView}"
                 Margin="0"
                 CanUserAddRows="False"
                 CanUserDeleteRows="False"

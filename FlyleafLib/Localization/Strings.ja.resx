@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -3541,5 +3541,77 @@ Right Click: Open Context Menu</comment>
   <data name="Text_169F79094908108E" xml:space="preserve">
     <value>{0}件</value>
     <comment>{0} hits</comment>
+  </data>
+  <data name="Text_D986CB447D9E9E1F" xml:space="preserve">
+    <value>前の字幕へ</value>
+    <comment>Previous subtitle</comment>
+  </data>
+  <data name="Text_E879A4FAD34FD1E4" xml:space="preserve">
+    <value>次の字幕へ</value>
+    <comment>Next subtitle</comment>
+  </data>
+  <data name="Text_30D35E9014878556" xml:space="preserve">
+    <value>字幕一覧を表示</value>
+    <comment>Show subtitle sidebar</comment>
+  </data>
+  <data name="Text_E9BEF0B0F3C25E6E" xml:space="preserve">
+    <value>ショートカットキー</value>
+    <comment>Keyboard shortcuts</comment>
+  </data>
+  <data name="Text_1ED2647CD6991770" xml:space="preserve">
+    <value>ショートカットを検索</value>
+    <comment>Search shortcuts</comment>
+  </data>
+  <data name="Text_59B9257BDB05D2C7" xml:space="preserve">
+    <value>MPC風プリセット</value>
+    <comment>MPC-style preset</comment>
+  </data>
+  <data name="Text_ABFA436784E15178" xml:space="preserve">
+    <value>LLPlayerプリセット</value>
+    <comment>LLPlayer preset</comment>
+  </data>
+  <data name="Text_06E3E409990D2FF3" xml:space="preserve">
+    <value>セルをダブルクリックして編集し、「適用」で一括反映します。MPC風：Ctrl+左右で字幕移動、Ctrl+Alt+左右でコマ送り。</value>
+    <comment>Double-click a cell to edit. Apply updates all shortcuts together. MPC: Ctrl+Left/Right jumps subtitles; Ctrl+Alt+Left/Right steps frames.</comment>
+  </data>
+  <data name="Text_91F6A26DF1C210E7" xml:space="preserve">
+    <value>字幕ごとの表示位置</value>
+    <comment>Individual subtitle positions</comment>
+  </data>
+  <data name="Text_2186B78270DF5F26" xml:space="preserve">
+    <value>1つ目の字幕（CC）</value>
+    <comment>First subtitle (CC)</comment>
+  </data>
+  <data name="Text_7D0D39D49E593B94" xml:space="preserve">
+    <value>1つ目の字幕はマウスが画面端にあるときだけ表示</value>
+    <comment>Show first subtitle only near its screen edge</comment>
+  </data>
+  <data name="Text_BFC2574C93A17224" xml:space="preserve">
+    <value>2つ目の字幕</value>
+    <comment>Second subtitle</comment>
+  </data>
+  <data name="Text_6CD16D9CDC6CAD68" xml:space="preserve">
+    <value>2つ目の字幕はマウスが画面端にあるときだけ表示</value>
+    <comment>Show second subtitle only near its screen edge</comment>
+  </data>
+  <data name="Text_46DDA7AFF7D8C722" xml:space="preserve">
+    <value>上部の字幕はマウスを上端へ、下部の字幕は下端へ近づけると表示されます。「既存の位置設定」は下端で表示します。</value>
+    <comment>Top subtitles appear when the pointer approaches the top; bottom subtitles appear near the bottom. Existing position settings use the bottom edge.</comment>
+  </data>
+  <data name="Text_32CCE21DEBA21D03" xml:space="preserve">
+    <value>画面端からの余白（px）</value>
+    <comment>Distance from edge (px)</comment>
+  </data>
+  <data name="Text_8CA11C821DF59344" xml:space="preserve">
+    <value>マウス反応領域の高さ（px）</value>
+    <comment>Hover area height (px)</comment>
+  </data>
+  <data name="Text_A8560861F1BAC251" xml:space="preserve">
+    <value>既存の位置設定</value>
+    <comment>Existing position settings</comment>
+  </data>
+  <data name="Text_96E4FE0B7F757BF6" xml:space="preserve">
+    <value>全ショートカットをこのプリセットに置き換えますか？「適用」を押すと反映されます。</value>
+    <comment>Replace all shortcut assignments with this preset? Changes take effect after Apply.</comment>
   </data>
 </root>

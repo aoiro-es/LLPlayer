@@ -34,8 +34,11 @@ public class SettingsDialogVM : Bindable, IDialogAware
     {
     }
 
+    public string? InitialPage { get; set => Set(ref field, value); }
+
     public void OnDialogOpened(IDialogParameters parameters)
     {
+        if (parameters.TryGetValue<string>("Page", out var page)) InitialPage = page;
     }
 
     public DialogCloseListener RequestClose { get; }

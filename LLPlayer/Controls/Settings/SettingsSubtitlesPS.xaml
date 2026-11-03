@@ -16,6 +16,9 @@
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <ObjectDataProvider x:Key="TrackPlacementEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters><x:Type TypeName="services:SubtitleTrackPlacement" /></ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <ObjectDataProvider x:Key="SubPositionAlignmentEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="services:SubPositionAlignment"/>
@@ -31,6 +34,29 @@
                 FontWeight="Bold"
                 Margin="0 0 0 16" />
 
+            <GroupBox Header="{loc:Text Key=Text_91F6A26DF1C210E7}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="180" Text="{loc:Text Key=Text_2186B78270DF5F26}" />
+                        <ComboBox Width="200" ItemsSource="{Binding Source={StaticResource TrackPlacementEnum}}" SelectedItem="{Binding FL.Config.Subs.PrimaryPlacement}" />
+                    </StackPanel>
+                    <CheckBox Content="{loc:Text Key=Text_7D0D39D49E593B94}" IsChecked="{Binding FL.Config.Subs.PrimaryOnlyOnEdgeHover}" Margin="0 8" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="180" Text="{loc:Text Key=Text_BFC2574C93A17224}" />
+                        <ComboBox Width="200" ItemsSource="{Binding Source={StaticResource TrackPlacementEnum}}" SelectedItem="{Binding FL.Config.Subs.SecondaryPlacement}" />
+                    </StackPanel>
+                    <CheckBox Content="{loc:Text Key=Text_6CD16D9CDC6CAD68}" IsChecked="{Binding FL.Config.Subs.SecondaryOnlyOnEdgeHover}" Margin="0 8" />
+                    <TextBlock Text="{loc:Text Key=Text_46DDA7AFF7D8C722}" TextWrapping="Wrap" Margin="0 0 0 8" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="180" Text="{loc:Text Key=Text_32CCE21DEBA21D03}" />
+                        <TextBox Width="100" Text="{Binding FL.Config.Subs.EdgeMargin}" helpers:TextBoxHelper.OnlyNumeric="Uint" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="180" Text="{loc:Text Key=Text_8CA11C821DF59344}" />
+                        <TextBox Width="100" Text="{Binding FL.Config.Subs.HoverRegionHeight}" helpers:TextBoxHelper.OnlyNumeric="Uint" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
             <GroupBox Header="{loc:Text Key=Text_54DFF361FCD147DF}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">

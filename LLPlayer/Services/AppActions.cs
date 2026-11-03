@@ -31,6 +31,12 @@ public class AppActions
 
         CustomActions = GetCustomActions();
 
+        if (_config.ControlsVersion < 1)
+        {
+            KeyboardProfiles.AddNewShortcuts(_player.Config.Player.KeyBindings);
+            _config.MouseDoubleClickToFullScreen = true;
+            _config.ControlsVersion = 1;
+        }
         RegisterCustomKeyBindingsAction();
     }
 #pragma warning restore CS9264
@@ -79,6 +85,9 @@ public class AppActions
             [CustomKeyBindingAction.ToggleSidebarShowOriginalText] = CmdToggleSidebarShowOriginalText.Execute,
             [CustomKeyBindingAction.ActivateSubsSearch] = CmdActivateSubsSearch.Execute,
 
+            [CustomKeyBindingAction.PreviousSubtitle] = CmdPreviousSubtitle.Execute,
+            [CustomKeyBindingAction.NextSubtitle] = CmdNextSubtitle.Execute,
+            [CustomKeyBindingAction.OpenShortcuts] = CmdOpenShortcuts.Execute,
             [CustomKeyBindingAction.ToggleSidebar] = CmdToggleSidebar.Execute,
             [CustomKeyBindingAction.ToggleDebugOverlay] = CmdToggleDebugOverlay.Execute,
             [CustomKeyBindingAction.ToggleAlwaysOnTop] = CmdToggleAlwaysOnTop.Execute,
@@ -374,6 +383,20 @@ public class AppActions
         _config.SidebarShowOriginalText = !_config.SidebarShowOriginalText;
     });
 
+    public DelegateCommand CmdPreviousSubtitle => field ??= new(() =>
+    {
+        if (_player.Subtitles[0].Enabled) _player.Subtitles.PrevSeek();
+        else if (_player.Subtitles[1].Enabled) _player.Subtitles.PrevSeek2();
+    });
+
+    public DelegateCommand CmdNextSubtitle => field ??= new(() =>
+    {
+        if (_player.Subtitles[0].Enabled) _player.Subtitles.NextSeek();
+        else if (_player.Subtitles[1].Enabled) _player.Subtitles.NextSeek2();
+    });
+
+    public DelegateCommand CmdOpenShortcuts => field ??= new(() => OpenSettings("SettingsKeys"));
+
     public DelegateCommand CmdToggleSidebar => field ??= new(() =>
     {
         _config.ShowSidebar = !_config.ShowSidebar;
@@ -389,7 +412,9 @@ public class AppActions
         _config.AlwaysOnTop = !_config.AlwaysOnTop;
     });
 
-    public DelegateCommand CmdOpenWindowSettings => field ??= new(() =>
+    public DelegateCommand CmdOpenWindowSettings => field ??= new(() => OpenSettings(null));
+
+    private void OpenSettings(string? page)
     {
         if (_player.IsPlaying)
         {
@@ -424,7 +449,7 @@ public class AppActions
             }
 
             _config.PropertyChanged -= ConfigOnPropertyChanged;
-            _player.Config.Subtitles.WhisperCppConfig.PropertyChanged += ConfigOnPropertyChanged;
+            _player.Config.Subtitles.WhisperCppConfig.PropertyChanged -= ConfigOnPropertyChanged;
 
             if (result.Result == ButtonResult.OK)
             {
@@ -446,8 +471,8 @@ public class AppActions
                     }
                 }
             }
-        }, false);
-    });
+        }, false, new DialogParameters { { "Page", page ?? "" } });
+    }
 
     public DelegateCommand CmdOpenWindowSubsDownloader => field ??= new(() =>
     {
@@ -670,6 +695,12 @@ public class AppActions
 // List of key actions to be added from the app side
 public enum CustomKeyBindingAction
 {
+    [Description("Previous subtitle")]
+    PreviousSubtitle,
+    [Description("Next subtitle")]
+    NextSubtitle,
+    [Description("Keyboard shortcuts")]
+    OpenShortcuts,
     [Description("Open Next File")]
     OpenNextFile,
     [Description("Open Previous File")]
@@ -786,6 +817,8 @@ public static class KeyBindingActionExtensions
             case CustomKeyBindingAction.SubsDistanceDecrease:
                 return KeyBindingActionGroup.SubtitlesPosition;
 
+            case CustomKeyBindingAction.PreviousSubtitle:
+            case CustomKeyBindingAction.NextSubtitle:
             case CustomKeyBindingAction.SubsTextCopy:
             case CustomKeyBindingAction.SubsPrimaryTextCopy:
             case CustomKeyBindingAction.SubsSecondaryTextCopy:
@@ -795,6 +828,7 @@ public static class KeyBindingActionExtensions
             case CustomKeyBindingAction.ActivateSubsSearch:
                 return KeyBindingActionGroup.Subtitles;
 
+            case CustomKeyBindingAction.OpenShortcuts:
             case CustomKeyBindingAction.ToggleSidebar:
             case CustomKeyBindingAction.ToggleDebugOverlay:
             case CustomKeyBindingAction.ToggleAlwaysOnTop:

@@ -193,6 +193,8 @@
 
                 <!-- Quality + Movies Title -->
                 <StackPanel Grid.Column="4" Orientation="Horizontal">
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdPreviousSubtitle}" ToolTip="{loc:Text Key=Text_D986CB447D9E9E1F}" Content="{materialDesign:PackIcon Kind=SkipPrevious}" />
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdNextSubtitle}" ToolTip="{loc:Text Key=Text_E879A4FAD34FD1E4}" Content="{materialDesign:PackIcon Kind=SkipNext}" />
                     <Button Click="ButtonBase_OnClick" ToolTip="{loc:Text Key=Text_130A7DD4AD1FF5D2}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource IconButton}">

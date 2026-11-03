@@ -23,6 +23,7 @@ public partial class SettingsKeys : UserControl
         InitializeComponent();
 
         DataContext = ((App)Application.Current).Container.Resolve<SettingsKeysVM>();
+        Loaded += (_, _) => ((ICommand)VM.CmdLoad).Execute(null);
     }
 
     // Enable ComboBox to open when double-clicking a cell in Action
@@ -97,6 +98,9 @@ public class SettingsKeysVM : Bindable
         mergeActions.Sort();
 
         Actions = mergeActions;
+        BindingsView = CollectionViewSource.GetDefaultView(KeyBindings);
+        BindingsView.Filter = value => value is KeyBindingWrapper b &&
+            (string.IsNullOrWhiteSpace(Search) || (b.Action.DisplayName + " " + b.Action.Description + " " + b.Key).Contains(Search, StringComparison.CurrentCultureIgnoreCase));
 
         // Grouping when displaying actions in ComboBox
         _actionsView = (ListCollectionView)CollectionViewSource.GetDefaultView(Actions);
@@ -104,6 +108,25 @@ public class SettingsKeysVM : Bindable
         _actionsView.SortDescriptions.Add(new SortDescription(nameof(ActionData.DisplayName), ListSortDirection.Ascending));
 
         _actionsView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(ActionData.Group)));
+    }
+
+    public ICollectionView BindingsView { get; }
+    public string Search
+    {
+        get;
+        set { if (Set(ref field, value)) BindingsView.Refresh(); }
+    } = "";
+
+    public DelegateCommand CmdMpcPreset => field ??= new(() => LoadPreset(true));
+    public DelegateCommand CmdOriginalPreset => field ??= new(() => LoadPreset(false));
+    private void LoadPreset(bool mpc)
+    {
+        if (MessageBox.Show(UiText.Get("Replace all shortcut assignments with this preset? Changes take effect after Apply."),
+            UiText.Get("Keyboard shortcuts"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        KeyBindings.Clear();
+        DuplicationCount = 0;
+        Search = "";
+        foreach (var key in KeyboardProfiles.Create(mpc)) KeyBindings.Add(new KeyBindingWrapper(key, this));
     }
 
     public List<ActionData> Actions { get; }

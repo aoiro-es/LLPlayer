@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Threading;
+using FlyleafLib;
 using System.Windows.Controls;
 using FlyleafLib.MediaPlayer;
 using LLPlayer.Services;
@@ -16,6 +19,77 @@ public partial class SubtitlesControl : UserControl
         FL = ((App)Application.Current).Container.Resolve<FlyleafManager>();
 
         DataContext = this;
+        _hoverTimer = new DispatcherTimer(TimeSpan.FromMilliseconds(60), DispatcherPriority.Input,
+            (_, _) => UpdateHover(), Dispatcher);
+        _hoverTimer.Stop();
+        Loaded += OnLoaded;
+        Unloaded += OnUnloaded;
+    }
+
+    private readonly DispatcherTimer _hoverTimer;
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        FL.Config.Subs.PropertyChanged += OnLayoutChanged;
+        UpdateLayoutPanels();
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        FL.Config.Subs.PropertyChanged -= OnLayoutChanged;
+        _hoverTimer.Stop();
+    }
+
+    private void OnLayoutChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName is nameof(AppConfigSubs.PrimaryPlacement) or nameof(AppConfigSubs.SecondaryPlacement)
+            or nameof(AppConfigSubs.PrimaryOnlyOnEdgeHover) or nameof(AppConfigSubs.SecondaryOnlyOnEdgeHover)
+            or nameof(AppConfigSubs.EdgeMargin) or nameof(AppConfigSubs.HoverRegionHeight)) UpdateLayoutPanels();
+    }
+
+    private void UpdateLayoutPanels()
+    {
+        var config = FL.Config.Subs;
+        foreach (var panel in new[] { SubtitlePanel, TopSubtitlePanel, BottomSubtitlePanel }) panel.Children.Clear();
+        var primaryPanel = PanelFor(config.PrimaryPlacement);
+        var secondaryPanel = PanelFor(config.SecondaryPlacement);
+        primaryPanel.Children.Add(PrimarySubtitleContent);
+        if (primaryPanel == secondaryPanel) primaryPanel.Children.Add(SubtitleSeparator);
+        secondaryPanel.Children.Add(SecondarySubtitleContent);
+        TopSubtitlePanel.Margin = new Thickness(0, config.EdgeMargin, 0, 0);
+        BottomSubtitlePanel.Margin = new Thickness(0, 0, 0, config.EdgeMargin);
+        if (config.PrimaryOnlyOnEdgeHover || config.SecondaryOnlyOnEdgeHover) _hoverTimer.Start();
+        else _hoverTimer.Stop();
+        UpdateHover();
+    }
+
+    private StackPanel PanelFor(SubtitleTrackPlacement placement) => placement switch
+    {
+        SubtitleTrackPlacement.Top => TopSubtitlePanel,
+        SubtitleTrackPlacement.Bottom => BottomSubtitlePanel,
+        _ => SubtitlePanel
+    };
+
+    private void UpdateHover()
+    {
+        if (!IsLoaded) return;
+        Utils.NativeMethods.GetCursorPos(out var cursor);
+        var point = PointFromScreen(new Point(cursor.X, cursor.Y));
+        var config = FL.Config.Subs;
+        SetReveal(PrimarySubtitleContent, 0, config.PrimaryPlacement, config.PrimaryOnlyOnEdgeHover);
+        SetReveal(SecondarySubtitleContent, 1, config.SecondaryPlacement, config.SecondaryOnlyOnEdgeHover);
+        SubtitleSeparator.SetCurrentValue(OpacityProperty,
+            PrimarySubtitleContent.Opacity > 0 && SecondarySubtitleContent.Opacity > 0 ? config.SubsSeparatorOpacity : 0);
+
+        void SetReveal(Grid content, int index, SubtitleTrackPlacement placement, bool hover)
+        {
+            bool visible = SubtitleLayoutPolicy.Reveal(placement, hover, point.X, point.Y, ActualWidth, ActualHeight, config.HoverRegionHeight)
+                || (hover && content.IsMouseOver) || (WordPopupHost.IsOpen && WordPopupHost.PlacementTarget ==
+                    content.Children.OfType<SelectableSubtitleText>().FirstOrDefault());
+            content.Opacity = visible ? 1 : 0;
+            content.IsHitTestVisible = visible;
+            ((UIElement)SubtitleAbsoluteBitmap.Children[index]).Opacity = visible ? 1 : 0;
+        }
     }
 
     private void SubtitlePanel_OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -34,6 +108,11 @@ public partial class SubtitlesControl : UserControl
 
     private async void SelectableSubtitleText_OnWordClicked(object sender, WordClickedEventArgs e)
     {
+        if (e.Sender is SelectableSubtitleText text)
+        {
+            WordPopupHost.PlacementTarget = text;
+            WordPopupControl.PopupBelow = (text.SubIndex == 0 ? FL.Config.Subs.PrimaryPlacement : FL.Config.Subs.SecondaryPlacement) == SubtitleTrackPlacement.Top;
+        }
         await WordPopupControl.OnWordClicked(e);
     }
 

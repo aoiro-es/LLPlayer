@@ -55,9 +55,9 @@ public static class ExtendedDialogServiceExtensions
     /// <param name="name">The name of the dialog to show.</param>
     /// <param name="callback">The action to perform when the dialog is closed.</param>
     /// <param name="orphan">Whether to set owner to window</param>
-    public static void ShowSingleton(this IDialogService dialogService, string name, Action<IDialogResult> callback, bool orphan)
+    public static void ShowSingleton(this IDialogService dialogService, string name, Action<IDialogResult> callback, bool orphan, IDialogParameters? initialParameters = null)
     {
-        var parameters = EnsureShowNonModalParameter(null);
+        var parameters = EnsureShowNonModalParameter(initialParameters);
 
         var windows = Application.Current.Windows.OfType<IDialogWindow>();
         if (windows.Any())
@@ -70,7 +70,9 @@ public static class ExtendedDialogServiceExtensions
                 {
                     win.WindowState = WindowState.Normal;
                 }
-                // TODO: L: Notify to ViewModel to update query
+                if (initialParameters != null && win.Content is FrameworkElement { DataContext: IDialogAware aware })
+                    aware.OnDialogOpened(initialParameters);
+                // Activate the existing settings window.
                 win.Activate();
                 return;
             }

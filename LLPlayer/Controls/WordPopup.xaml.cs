@@ -57,6 +57,8 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
 
     public double PopupHorizontalOffset { get; set => Set(ref field, value); }
 
+    public bool PopupBelow { get; set; }
+
     public double PopupVerticalOffset { get; set => Set(ref field, value); }
 
     public ContextMenu? PopupContextMenu { get; set => Set(ref field, value); }
@@ -364,7 +366,7 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
                 {
                     // for subtitle
                     PopupHorizontalOffset = e.WordsX + ((e.WordsWidth - ActualWidth) / 2);
-                    PopupVerticalOffset = -ActualHeight;
+                    PopupVerticalOffset = PopupBelow && e.Sender is FrameworkElement source ? source.ActualHeight : -ActualHeight;
                 }
 
             }, DispatcherPriority.Background);

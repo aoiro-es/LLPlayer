@@ -32,6 +32,8 @@ public class AppConfig : Bindable
 
     public string Version { get; set; } = "";
 
+    public int ControlsVersion { get; set; }
+
     public string UiLanguage { get; set => Set(ref field, value); } = "ja-JP";
 
     /// <summary>
@@ -134,7 +136,7 @@ public class AppConfig : Bindable
 
     #region Mouse
     public bool MouseSingleClickToPlay { get; set => Set(ref field, value); } = true;
-    public bool MouseDoubleClickToFullScreen { get; set => Set(ref field, value); }
+    public bool MouseDoubleClickToFullScreen { get; set => Set(ref field, value); } = true;
     public bool MouseWheelToVolumeUpDown { get; set => Set(ref field, value); } = true;
     #endregion
 
@@ -217,8 +219,25 @@ public class AppConfig : Bindable
     }
 }
 
+public enum SubtitleTrackPlacement
+{
+    [Description("Existing position settings")]
+    Legacy,
+    [Description("Top")]
+    Top,
+    [Description("Bottom")]
+    Bottom
+}
+
 public class AppConfigSubs : Bindable
 {
+    public SubtitleTrackPlacement PrimaryPlacement { get; set => Set(ref field, value); }
+    public SubtitleTrackPlacement SecondaryPlacement { get; set => Set(ref field, value); }
+    public bool PrimaryOnlyOnEdgeHover { get; set => Set(ref field, value); }
+    public bool SecondaryOnlyOnEdgeHover { get; set => Set(ref field, value); }
+    public double EdgeMargin { get; set => Set(ref field, double.IsFinite(value) ? Math.Clamp(value, 0, 500) : 24); } = 24;
+    public double HoverRegionHeight { get; set => Set(ref field, double.IsFinite(value) ? Math.Clamp(value, 20, 500) : 96); } = 96;
+
     private AppConfig _rootConfig = null!;
     private FlyleafManager FL = null!;
 

@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FlyleafLib\FlyleafLib.csproj" />
+    <ProjectReference Include="..\LLPlayer\LLPlayer.csproj" />
   </ItemGroup>
 
 </Project>

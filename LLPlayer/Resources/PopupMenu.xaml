@@ -588,6 +588,8 @@ AncestorType={x:Type MenuItem}}}">
 
         <Separator Margin="0,6" />
         <MenuItem Header="{loc:Text Key=Text_AA1C6F5172B84E30}" IsCheckable="True" IsChecked="{Binding FL.Config.ShowDebug}"/>
+        <MenuItem Header="{loc:Text Key=Text_30D35E9014878556}" IsCheckable="True" IsChecked="{Binding FL.Config.ShowSidebar, Mode=TwoWay}" InputGestureText="Ctrl+B" />
+        <MenuItem Header="{loc:Text Key=Text_E9BEF0B0F3C25E6E}" Command="{Binding FL.Action.CmdOpenShortcuts}" InputGestureText="Ctrl+K" Icon="{materialDesign:PackIcon Kind=Keyboard}" />
         <MenuItem Header="{loc:Text Key=Text_17682E5DC3458A89}" Command="{Binding FL.Action.CmdOpenWindowCheatSheet}" Icon="{materialDesign:PackIcon Kind=Help}" />
     </ContextMenu>
 

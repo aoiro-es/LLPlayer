@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
+using System.Runtime.InteropServices;
 using FlyleafLib;
 using FlyleafLib.MediaPlayer;
 using LLPlayer.Extensions;
@@ -103,10 +105,9 @@ public class FlyleafOverlayVM : Bindable
         {
             FL.Player.ToggleFullScreen();
 
-            // Double and single clicks are not currently distinguished, so need to be re-fired
-            // Timers need to be added to distinguish between the two,
-            // but this is controversial because it delays a single click action
-            SingleClickAction();
+            _singleClickTimer?.Stop();
+            _suppressClickUntil = Environment.TickCount64 + GetDoubleClickTime();
+            _isLeftDragging = false;
 
             e.Handled = true;
         }
@@ -214,8 +215,29 @@ public class FlyleafOverlayVM : Bindable
             &&                   // if click within 200ms and not so much moved
             Math.Abs(upPoint.X - downPoint.X) < 60 && Math.Abs(upPoint.Y - downPoint.Y) < 60)
         {
-            SingleClickAction();
+            if (Environment.TickCount64 < _suppressClickUntil) return;
+            if (!FL.Config.MouseDoubleClickToFullScreen) SingleClickAction();
+            else
+            {
+                _singleClickTimer ??= new DispatcherTimer();
+                _singleClickTimer.Stop();
+                _singleClickTimer.Interval = TimeSpan.FromMilliseconds(GetDoubleClickTime());
+                _singleClickTimer.Tick -= OnSingleClick;
+                _singleClickTimer.Tick += OnSingleClick;
+                _singleClickTimer.Start();
+            }
         }
+    }
+
+    private DispatcherTimer? _singleClickTimer;
+    private long _suppressClickUntil;
+    [DllImport("user32.dll")]
+    private static extern uint GetDoubleClickTime();
+
+    private void OnSingleClick(object? sender, EventArgs e)
+    {
+        _singleClickTimer!.Stop();
+        SingleClickAction();
     }
 
     private void SingleClickAction()
