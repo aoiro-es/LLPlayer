@@ -11,6 +11,7 @@ using FlyleafLib.MediaFramework.MediaDemuxer;
 using FlyleafLib.MediaFramework.MediaFrame;
 using FlyleafLib.MediaFramework.MediaStream;
 using FlyleafLib.MediaPlayer.Translation;
+using FlyleafLib.MediaPlayer.Translation.Services;
 
 namespace FlyleafLib.MediaPlayer;
 
@@ -126,12 +127,18 @@ public class SubManager : INotifyPropertyChanged
     private readonly SubTranslator _subTranslator;
     private readonly LogHandler Log;
 
-    public SubManager(Config config, int subIndex)
+    public SubManager(Config config, int subIndex) : this(config, subIndex, null)
+    {
+    }
+
+    internal SubManager(Config config, int subIndex, Func<ITranslateService>? createTranslationService)
     {
         _config = config;
         _subIndex = subIndex;
         // TODO: L: Review whether to initialize it here.
-        _subTranslator = new SubTranslator(this, config.Subtitles, subIndex);
+        _subTranslator = createTranslationService == null
+            ? new SubTranslator(this, config.Subtitles, subIndex)
+            : new SubTranslator(this, config.Subtitles, subIndex, createTranslationService);
         Log = new LogHandler(("[#1]").PadRight(8, ' ') + $" [SubManager{subIndex + 1}   ] ");
 
         // Enable binding to ItemsControl
@@ -203,6 +210,24 @@ public class SubManager : INotifyPropertyChanged
         {
             Subs.AddRange(items);
         }
+    }
+
+    internal SubtitleData[] GetSnapshot()
+    {
+        lock (_subsLocker)
+            return Subs.ToArray();
+    }
+
+    internal void RefreshTranslatedSubtitle(SubtitleData sub)
+    {
+        var player = _config.Subtitles.player;
+        if (player == null || !sub.IsText) return;
+
+        UI(() =>
+        {
+            if (ReferenceEquals(GetCurrent(), sub))
+                player.SubtitleDisplay(sub.DisplayText ?? string.Empty, _subIndex, sub.UseTranslated);
+        });
     }
 
     public SubtitleData? GetCurrent()

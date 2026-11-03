@@ -137,6 +137,12 @@ The interface supports Japanese and English. In **Settings → Player → UI Lan
 
 English strings are retained in `FlyleafLib/Localization/Strings.resx`; Japanese translations live in `Strings.ja.resx`. Font dialog resources are kept separately in `WpfColorFontDialog/I18n/`. Resource comments contain the original English text. `UiText.Get` and `UiText.Format` use that text to find the corresponding resource key.
 
+## Subtitle translation
+
+Existing SRT, ASS and VTT subtitles can be translated without speech recognition. Load the subtitle file, select its track, and enable **Auto-Translate** in the subtitle/CC menu. Translation starts for the current subtitle and nearby entries even while paused or before the first subtitle begins. Original text and timestamps are preserved.
+
+Explicit filename tags such as `lesson.en.srt`, `lesson.eng.ass` and `lesson.pt-BR.forced.ass` identify the source language. For files without a language tag, enable automatic language detection or choose a fallback source language in **Settings → Subtitles**. Select the destination language and translation engine in **Settings → Subtitles → Translate**.
+
 ## 🔨 Build
 
 1. **Clone the Repository**

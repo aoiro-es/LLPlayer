@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using FlyleafLib.MediaPlayer.Translation.Services;
@@ -12,322 +13,259 @@ public class SubTranslator
     private readonly SubManager _subManager;
     private readonly Config.SubtitlesConfig _config;
     private readonly int _subIndex;
+    private readonly Func<ITranslateService> _createTranslationService;
+    private readonly LogHandler Log;
 
+    private readonly object _scheduleLock = new();
     private ITranslateService? _translateService;
-    private CancellationTokenSource? _translationCancellation;
-    private readonly TranslateServiceFactory _translateServiceFactory;
-    private Task? _translateTask;
-    private bool _isReset;
-    private Language? _srcLang;
+    private Task? _worker;
+    private CancellationTokenSource? _activeCancellation;
+    private bool _pending;
+    private bool _resetService;
+    private bool _clearTranslations;
+    private int _generation;
+    private int _activeIndex = -1;
 
     private bool IsEnabled => _config[_subIndex].EnabledTranslated;
 
-    private readonly LogHandler Log;
-
     public SubTranslator(SubManager subManager, Config.SubtitlesConfig config, int subIndex)
+        : this(subManager, config, subIndex, () => new TranslateServiceFactory(config).GetService(config.TranslateServiceType, false))
+    {
+    }
+
+    internal SubTranslator(SubManager subManager, Config.SubtitlesConfig config, int subIndex, Func<ITranslateService> createTranslationService)
     {
         _subManager = subManager;
         _config = config;
         _subIndex = subIndex;
+        _createTranslationService = createTranslationService;
+        Log = new LogHandler(("[#1]").PadRight(8, ' ') + $" [Translator{subIndex + 1}   ] ");
 
         _subManager.PropertyChanged += SubManager_OnPropertyChanged;
-
-        // apply config changes
+        _subManager.Subs.CollectionChanged += Subtitles_OnCollectionChanged;
         _config.PropertyChanged += SubtitlesConfig_OnPropertyChanged;
         _config.SubConfigs[subIndex].PropertyChanged += SubConfig_OnPropertyChanged;
         _config.TranslateChatConfig.PropertyChanged += TranslateChatConfig_OnPropertyChanged;
-
-        _translateServiceFactory = new TranslateServiceFactory(config);
-
-        Log = new LogHandler(("[#1]").PadRight(8, ' ') + $" [Translator{subIndex + 1}   ] ");
     }
-
-    private int _oldIndex = -1;
-    private CancellationTokenSource? _translationStartCancellation;
 
     private void SubManager_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         switch (e.PropertyName)
         {
             case nameof(SubManager.CurrentIndex):
-                if (!IsEnabled || _subManager.Subs.Count == 0 || _subManager.Language == null)
-                    return;
-
-                if (_translateService == null)
-                {
-                    // capture for later initialization
-                    _srcLang = _subManager.Language;
-                }
-
-                if (_translationStartCancellation != null)
-                {
-                    _translationStartCancellation.Cancel();
-                    _translationStartCancellation.Dispose();
-                    _translationStartCancellation = null;
-                }
-                _translationStartCancellation = new CancellationTokenSource();
-                _ = UpdateCurrentIndexAsync(_subManager.CurrentIndex, _translationStartCancellation.Token);
+                QueueTranslation();
                 break;
             case nameof(SubManager.Language):
-                _ = Reset();
+                QueueTranslation(resetService: true, clearTranslations: true);
+                break;
+            case nameof(SubManager.IsLoading) when !_subManager.IsLoading:
+                QueueTranslation();
                 break;
         }
+    }
+
+    private void Subtitles_OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        // AddRange uses Reset too. Only an empty collection means the old stream was cleared.
+        QueueTranslation(resetService: _subManager.Subs.Count == 0);
     }
 
     private void SubtitlesConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        string languageFallbackPropName = _subIndex == 0 ?
-            nameof(Config.SubtitlesConfig.LanguageFallbackPrimary) :
-            nameof(Config.SubtitlesConfig.LanguageFallbackSecondary);
+        bool fallbackChanged = _subIndex == 0
+            ? e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackPrimary)
+            : e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackSecondary)
+                || e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackSecondarySame)
+                || (_config.LanguageFallbackSecondarySame && e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackPrimary));
 
-        if (e.PropertyName is
-            nameof(Config.SubtitlesConfig.TranslateServiceType) or
-            nameof(Config.SubtitlesConfig.TranslateTargetLanguage)
-            ||
-            e.PropertyName == languageFallbackPropName)
-        {
-            // Apply translating config changes
-            _ = Reset();
-        }
+        if (fallbackChanged || e.PropertyName is nameof(Config.SubtitlesConfig.TranslateServiceType)
+                or nameof(Config.SubtitlesConfig.TranslateTargetLanguage))
+            QueueTranslation(resetService: true, clearTranslations: true);
     }
 
     private void SubConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        // Reset when translation is off
-        if (e.PropertyName is nameof(Config.SubConfig.EnabledTranslated))
-        {
-            if (!IsEnabled)
-            {
-                _ = Reset();
-            }
-        }
+        if (e.PropertyName != nameof(Config.SubConfig.EnabledTranslated)) return;
+
+        foreach (var sub in _subManager.GetSnapshot())
+            sub.EnabledTranslated = IsEnabled;
+        if (_subManager.GetCurrent() is { } current)
+            _subManager.RefreshTranslatedSubtitle(current);
+
+        // Enabling translation must work at a fixed playback position as well.
+        QueueTranslation(resetService: !IsEnabled);
     }
 
     private void TranslateChatConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        => QueueTranslation(resetService: true, clearTranslations: true);
+
+    private void QueueTranslation(bool resetService = false, bool clearTranslations = false)
     {
-        _ = Reset();
-    }
-
-    private async Task Reset()
-    {
-        if (_translateService == null)
-            return;
-
-        try
+        CancellationTokenSource? cancel = null;
+        lock (_scheduleLock)
         {
-            _isReset = true;
-            await Cancel();
+            int index = Math.Max(0, _subManager.CurrentIndex);
+            bool largeSeek = _activeIndex >= 0 && (index - _activeIndex > _config.TranslateCountForward
+                || _activeIndex - index > _config.TranslateCountBackward);
 
-            _translateService?.Dispose();
-            _translateService = null;
-            _srcLang = null;
-        }
-        finally
-        {
-            _isReset = false;
-        }
-    }
-
-    private async Task Cancel()
-    {
-        _translationCancellation?.Cancel();
-        Task? pendingTask = _translateTask;
-        if (pendingTask != null)
-        {
-            await pendingTask;
-        }
-        _translateTask = null;
-    }
-
-    private async Task UpdateCurrentIndexAsync(int newIndex, CancellationToken token)
-    {
-        if (newIndex != -1 && _subManager.Subs.Any())
-        {
-            int indexDiff = Math.Abs(_oldIndex - newIndex);
-            bool isForward = newIndex > _oldIndex;
-            _oldIndex = newIndex;
-
-            if ((isForward && indexDiff > _config.TranslateCountForward) ||
-                (!isForward && indexDiff > _config.TranslateCountBackward))
+            if (resetService || largeSeek)
             {
-                // Cancel a running translation request when a large seek is performed
-                await Cancel();
+                _generation++;
+                cancel = _activeCancellation;
             }
-            else if (_translateTask != null)
-            {
-                // for performance
-                return;
-            }
+            _resetService |= resetService;
+            _clearTranslations |= clearTranslations;
+            _pending = true;
 
-            // Prevent continuous firing when continuously switching subtitles with sub seek
-            if (indexDiff == 1)
+            // The worker takes the same lock before running, so a synchronous provider cannot
+            // finish before this assignment and leave a completed task blocking future requests.
+            _worker ??= Task.Run(ProcessRequestsAsync);
+        }
+
+        try { cancel?.Cancel(); }
+        catch (ObjectDisposedException) { } // The previous batch finished before cancellation.
+    }
+
+    private async Task ProcessRequestsAsync()
+    {
+        while (true)
+        {
+            bool resetService;
+            bool clearTranslations;
+            int generation;
+            CancellationTokenSource cancellation;
+            lock (_scheduleLock)
             {
-                if (_subManager.Subs[newIndex].Duration.TotalMilliseconds > 320)
+                if (!_pending)
                 {
-                    await Task.Delay(300, token);
+                    _worker = null;
+                    return;
                 }
+                _pending = false;
+                resetService = _resetService;
+                clearTranslations = _clearTranslations;
+                _resetService = false;
+                _clearTranslations = false;
+                generation = _generation;
+                cancellation = new CancellationTokenSource();
+                _activeCancellation = cancellation;
+                _activeIndex = Math.Max(0, _subManager.CurrentIndex);
             }
-            token.ThrowIfCancellationRequested();
 
-            if (_translateTask == null && !_isReset)
+            var token = cancellation.Token;
+            try
             {
-                // singleton task
-                // Ensure that it is not executed in the main thread because it scans all subtitles
-                Task task = Task.Run(async () =>
+                if (resetService)
                 {
-                    try
-                    {
-                        await TranslateAheadAsync(newIndex, _config.TranslateCountBackward, _config.TranslateCountForward);
-                    }
-                    finally
-                    {
-                        _translateTask = null;
-                    }
-                });
-                _translateTask = task;
-            }
-        }
-    }
-
-    private readonly Lock _initLock = new();
-    // initialize TranslateService lazily
-    private void EnsureTranslationService()
-    {
-        if (_translateService != null)
-        {
-            return;
-        }
-
-        // double-check lock pattern
-        lock (_initLock)
-        {
-            if (_translateService == null)
-            {
-                var service = _translateServiceFactory.GetService(_config.TranslateServiceType, false);
-                service.Initialize(_srcLang!, _config.TranslateTargetLanguage);
-
-                Volatile.Write(ref _translateService, service);
-            }
-        }
-    }
-
-    private async Task TranslateAheadAsync(int currentIndex, int countBackward, int countForward)
-    {
-        try
-        {
-            // Token for canceling translation, releasing previous one to prevent leakage
-            _translationCancellation?.Dispose();
-            _translationCancellation = new CancellationTokenSource();
-
-            var token = _translationCancellation.Token;
-            int start = Math.Max(0, currentIndex - countBackward);
-            int end = Math.Min(start + countForward - 1, _subManager.Subs.Count - 1);
-
-            List<SubtitleData> translateSubs = new();
-            for (int i = start; i <= end; i++)
-            {
-                if (token.IsCancellationRequested)
-                    break;
-                if (i >= _subManager.Subs.Count)
-                    break;
-
-                var sub = _subManager.Subs[i];
-                if (!sub.IsTranslated && !string.IsNullOrEmpty(sub.Text))
-                {
-                    translateSubs.Add(sub);
+                    _translateService?.Dispose();
+                    _translateService = null;
                 }
-            }
 
-            if (translateSubs.Count == 0)
-                return;
-
-            int concurrency = _config.TranslateMaxConcurrency;
-
-            if (concurrency > 1 && _config.TranslateServiceType.IsLLM() &&
-                _config.TranslateChatConfig.TranslateMethod == ChatTranslateMethod.KeepContext)
-            {
-                // fixed to 1
-                // it must be sequential because of maintaining context
-                concurrency = 1;
-            }
-
-            if (concurrency <= 1)
-            {
-                // sequentially (important to maintain execution order for LLM)
-                foreach (var sub in translateSubs)
+                var subtitles = _subManager.GetSnapshot();
+                foreach (var sub in subtitles)
                 {
-                    await TranslateSubAsync(sub, token);
+                    sub.EnabledTranslated = IsEnabled;
+                    if (clearTranslations) sub.TranslatedText = null;
                 }
-            }
-            else
-            {
-                // concurrently
-                ParallelOptions parallelOptions = new()
+                if (clearTranslations && _subManager.GetCurrent() is { } current)
+                    _subManager.RefreshTranslatedSubtitle(current);
+
+                if (!IsEnabled || subtitles.Length == 0 || _subManager.Language is not { } sourceLanguage
+                    || sourceLanguage == Language.Unknown)
+                    continue;
+
+                // Coalesce subtitle loading and rapid seeks, including while playback is paused.
+                await Task.Delay(300, token).ConfigureAwait(false);
+                token.ThrowIfCancellationRequested();
+                subtitles = _subManager.GetSnapshot();
+                if (subtitles.Length == 0) continue;
+
+                int index = Math.Clamp(_subManager.CurrentIndex, 0, subtitles.Length - 1);
+                lock (_scheduleLock)
                 {
-                    CancellationToken = token,
-                    MaxDegreeOfParallelism = concurrency
-                };
+                    if (generation != _generation) continue;
+                    _activeIndex = index;
+                }
+                int start = Math.Max(0, index - Math.Max(0, _config.TranslateCountBackward));
+                int end = (int)Math.Min((long)index + Math.Max(0, _config.TranslateCountForward), subtitles.Length - 1);
+                var pending = subtitles[start..(end + 1)].Where(s => !s.IsTranslated && !string.IsNullOrWhiteSpace(s.Text)).ToArray();
+                if (pending.Length == 0) continue;
 
-                await Parallel.ForEachAsync(
-                    translateSubs,
-                    parallelOptions,
-                    async (sub, ct) =>
-                    {
-                        await TranslateSubAsync(sub, ct);
-                    });
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            // ignore
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"Translation failed: {ex.Message}");
-
-            bool isConfigError = ex is TranslationConfigException;
-
-            // Unable to translate, so turn off the translation and notify
-            _config[_subIndex].EnabledTranslated = false;
-            _ = Reset().ContinueWith((_) =>
-            {
-                if (isConfigError)
+                if (_translateService == null)
                 {
-                    _config.player.RaiseKnownErrorOccurred($"Translation Failed: {ex.Message}", KnownErrorType.Configuration);
+                    var service = _createTranslationService();
+                    try { service.Initialize(sourceLanguage, _config.TranslateTargetLanguage); }
+                    catch { service.Dispose(); throw; }
+                    _translateService = service;
+                }
+
+                int concurrency = _config.TranslateMaxConcurrency;
+                if (_config.TranslateServiceType.IsLLM() && _config.TranslateChatConfig.TranslateMethod == ChatTranslateMethod.KeepContext)
+                    concurrency = 1;
+
+                if (concurrency <= 1)
+                {
+                    foreach (var sub in pending)
+                        await TranslateSubAsync(sub, generation, token).ConfigureAwait(false);
                 }
                 else
                 {
-                    _config.player.RaiseUnknownErrorOccurred($"Translation Failed: {ex.Message}", UnknownErrorType.Translation, ex);
+                    await Parallel.ForEachAsync(pending, new ParallelOptions
+                    {
+                        CancellationToken = token,
+                        MaxDegreeOfParallelism = concurrency
+                    }, async (sub, ct) => await TranslateSubAsync(sub, generation, ct).ConfigureAwait(false)).ConfigureAwait(false);
                 }
-            });
+            }
+            catch (OperationCanceledException) when (token.IsCancellationRequested)
+            {
+                // Disabled translation, changed settings/stream, or sought outside the current batch.
+            }
+            catch (Exception ex)
+            {
+                bool isCurrent;
+                lock (_scheduleLock)
+                    isCurrent = generation == _generation && !token.IsCancellationRequested;
+                if (isCurrent)
+                {
+                    if (Engine.Config != null) Log.Error($"Translation failed: {ex.Message}");
+                    _config[_subIndex].EnabledTranslated = false;
+                    if (ex is TranslationConfigException)
+                        _config.player?.RaiseKnownErrorOccurred($"Translation Failed: {ex.Message}", KnownErrorType.Configuration);
+                    else
+                        _config.player?.RaiseUnknownErrorOccurred($"Translation Failed: {ex.Message}", UnknownErrorType.Translation, ex);
+                }
+            }
+            finally
+            {
+                lock (_scheduleLock)
+                {
+                    if (ReferenceEquals(_activeCancellation, cancellation))
+                        _activeCancellation = null;
+                }
+                cancellation.Dispose();
+            }
         }
     }
 
-    private async Task TranslateSubAsync(SubtitleData sub, CancellationToken token)
+    private async Task TranslateSubAsync(SubtitleData sub, int generation, CancellationToken token)
     {
-        string? text = sub.Text;
-        if (string.IsNullOrEmpty(text))
-            return;
+        token.ThrowIfCancellationRequested();
+        long start = Stopwatch.GetTimestamp();
+        string text = SubtitleTextUtil.FlattenText(sub.Text!);
+        string translated = await _translateService!.TranslateAsync(text, token).ConfigureAwait(false);
 
-        try
+        lock (_scheduleLock)
         {
-            long start = Stopwatch.GetTimestamp();
-            string translateText = SubtitleTextUtil.FlattenText(text);
-            if (CanDebug) Log.Debug($"Translation Start {sub.Index} - {translateText}");
-            EnsureTranslationService();
-            string translated = await _translateService!.TranslateAsync(translateText, token);
+            // Some providers finish even after cancellation. Never publish results for an old
+            // subtitle file, source/target language, or a translation that has been disabled.
+            if (generation != _generation || !IsEnabled || token.IsCancellationRequested) return;
+            sub.EnabledTranslated = true;
             sub.TranslatedText = translated;
+        }
+        _subManager.RefreshTranslatedSubtitle(sub);
 
-            if (CanDebug)
-            {
-                TimeSpan elapsed = Stopwatch.GetElapsedTime(start);
-                Log.Debug($"Translation End {sub.Index} in {elapsed.TotalMilliseconds} - {translated}");
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            if (CanDebug) Log.Debug($"Translation Cancel {sub.Index}");
-            throw;
-        }
+        if (Engine.Config != null && CanDebug)
+            Log.Debug($"Translation End {sub.Index} in {Stopwatch.GetElapsedTime(start).TotalMilliseconds} ms");
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using FlyleafLib.MediaFramework.MediaStream;
 using FlyleafLib.MediaFramework.MediaPlaylist;
+using FlyleafLib.MediaPlayer.Translation;
 using Lingua;
 
 namespace FlyleafLib.Plugins;
@@ -57,9 +58,10 @@ public class OpenSubtitles : PluginBase, IOpenSubtitles, ISearchLocalSubtitles
             Title       = title,
             Downloaded  = true,
             IsBitmap    = IsSubtitleBitmap(url),
+            Language    = GetLanguageFromFileName(title),
         };
 
-        if (Config.Subtitles.LanguageAutoDetect && !newExtStream.IsBitmap)
+        if (Config.Subtitles.LanguageAutoDetect && !newExtStream.IsBitmap && newExtStream.Language == Language.Unknown)
         {
             newExtStream.Language = DetectLanguage(url);
             newExtStream.LanguageDetected = true;
@@ -232,6 +234,28 @@ public class OpenSubtitles : PluginBase, IOpenSubtitles, ISearchLocalSubtitles
                 result.TryAdd(x.FullPath, lang);
             }
         }
+    }
+
+    internal static Language GetLanguageFromFileName(string filename)
+    {
+        // Honour explicit tags such as lesson.en.srt and lesson.pt-BR.forced.ass,
+        // even when automatic language detection is disabled.
+        var parts = Path.GetFileNameWithoutExtension(filename).Split('.');
+        for (int i = parts.Length - 1; i > 0; i--)
+        {
+            string part = parts[i];
+            if (part.Equals("forced", StringComparison.OrdinalIgnoreCase)
+                || part.Equals("sdh", StringComparison.OrdinalIgnoreCase)
+                || part.Equals("cc", StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            string code = part.Split('-')[0];
+            if (code.Length is not (2 or 3)) return Language.Unknown;
+            var language = Language.Get(part);
+            return language.ISO6391 != null && TranslateLanguage.Langs.ContainsKey(language.ISO6391)
+                ? language : Language.Unknown;
+        }
+        return Language.Unknown;
     }
 
     // TODO: L: To check the contents of a file by determining the bitmap.

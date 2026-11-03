@@ -149,8 +149,8 @@ public class GoogleV1TranslateService : ITranslateService
             return string.Join(Environment.NewLine, resultTexts);
         }
         // Distinguish between timeout and cancel errors
-        catch (OperationCanceledException ex)
-            when (!ex.Message.StartsWith("The request was canceled due to the configured HttpClient.Timeout"))
+        catch (OperationCanceledException)
+            when (token.IsCancellationRequested)
         {
             // cancel
             throw;
