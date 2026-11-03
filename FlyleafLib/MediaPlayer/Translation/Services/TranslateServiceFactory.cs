@@ -21,6 +21,9 @@ public class TranslateServiceFactory
     {
         switch (serviceType)
         {
+            case TranslateServiceType.Codex:
+                return new CodexTranslateService((CodexTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new CodexTranslateSettings()), _config.TranslateChatConfig, wordMode);
+
             case TranslateServiceType.GoogleV1:
                 return new GoogleV1TranslateService((GoogleV1TranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new GoogleV1TranslateSettings()));
 

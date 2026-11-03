@@ -119,6 +119,7 @@ internal class TranslateServiceTypeEnumToUrlConverter : IValueConverter
     {
         if (value is TranslateServiceType enumValue)
         {
+            if (enumValue == TranslateServiceType.Codex) return "https://developers.openai.com/codex/app-server/";
             string displayName = enumValue.GetType().GetField(enumValue.ToString())?.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false)
                 .OfType<System.ComponentModel.DescriptionAttribute>().FirstOrDefault()?.Description ?? enumValue.ToString();
 

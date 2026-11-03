@@ -1,5 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using FlyleafLib.MediaPlayer;
 using System.Windows.Input;
 using System.Windows.Interop;
 using FlyleafLib.Controls.WPF;
@@ -17,6 +20,16 @@ public partial class MainWindow : Window
         DataContext = ((App)Application.Current).Container.Resolve<MainWindowVM>();
 
         InitializeComponent();
+        // The video surface and overlay are separate windows. Also route shortcuts
+        // when focus is in the owner/sidebar, while leaving text entry to editors.
+        KeyDown += (_, e) =>
+        {
+            if (!e.Handled && CanRouteShortcut()) Player.KeyDown(((MainWindowVM)DataContext).FL.Player, e);
+        };
+        KeyUp += (_, e) =>
+        {
+            if (!e.Handled && CanRouteShortcut()) Player.KeyUp(((MainWindowVM)DataContext).FL.Player, e);
+        };
 
         SetWindowSize();
         SetTitleBarDarkMode(this);
@@ -80,6 +93,8 @@ public partial class MainWindow : Window
         DwmSetWindowAttribute(hWnd, DWMWA_USE_IMMERSIVE_DARK_MODE, [darkMode ? 1 : 0], 4);
     }
     #endregion
+
+    private static bool CanRouteShortcut() => Keyboard.FocusedElement is not (TextBoxBase or PasswordBox or ComboBox);
 
     #region Disable IME
     private void FlyleafHost_SurfaceCreated(object sender, EventArgs e)

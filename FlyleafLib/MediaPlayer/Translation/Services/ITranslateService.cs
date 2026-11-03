@@ -101,6 +101,9 @@ public enum TranslateServiceType
     /// </summary>
     [Description(nameof(LiteLLM))]
     LiteLLM = 1 << 11,
+
+    [Description("Codex (ChatGPT account)")]
+    Codex = 1 << 12,
 }
 
 public static class TranslateServiceTypeExtensions
@@ -112,7 +115,8 @@ public static class TranslateServiceTypeExtensions
         TranslateServiceType.OpenAI |
         TranslateServiceType.OpenAILike |
         TranslateServiceType.Claude |
-        TranslateServiceType.LiteLLM;
+        TranslateServiceType.LiteLLM |
+        TranslateServiceType.Codex;
 
     public static bool IsLLM(this TranslateServiceType serviceType)
     {
@@ -145,6 +149,8 @@ public static class TranslateServiceTypeExtensions
                 return new OpenAILikeTranslateSettings();
             case TranslateServiceType.Claude:
                 return new ClaudeTranslateSettings();
+            case TranslateServiceType.Codex:
+                return new CodexTranslateSettings();
             case TranslateServiceType.LiteLLM:
                 return new LiteLLMTranslateSettings();
         }

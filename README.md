@@ -41,6 +41,10 @@ LLPlayer has many features for language learning that are not available in norma
 - **Built-in Cheat Sheet:** You can find out how to use the application in the application itself.
 - **Free, Open Source, Written in C#:** Written in C#/WPF, not C, so customization is super easy!
 
+## Controls and ChatGPT-account translation
+
+See [操作とCodex翻訳 / Controls and Codex translation](docs/controls-and-codex.md) for MPC-style controls, independent subtitle positions, the shortcut editor, sidebar visibility, and Codex setup.
+
 ## 🖼️ Screenshot
 
 ![LLPlayer Screenshot](LLPlayer-screenshot.jpg)

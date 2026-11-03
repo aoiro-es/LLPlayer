@@ -3616,4 +3616,156 @@ Right Click: Open Context Menu</comment>
     <value>Replace all shortcut assignments with this preset? Changes take effect after Apply.</value>
     <comment>Replace all shortcut assignments with this preset? Changes take effect after Apply.</comment>
   </data>
+  <data name="Text_60BC06472326CEB1" xml:space="preserve">
+    <value>Use Codex with your ChatGPT account. Translations use your Codex usage allowance. Codex manages authentication; no API key is required.</value>
+    <comment>Use Codex with your ChatGPT account. Translations use your Codex usage allowance. Codex manages authentication; no API key is required.</comment>
+  </data>
+  <data name="Text_FAE0C1FCE7118192" xml:space="preserve">
+    <value>Codex executable (optional)</value>
+    <comment>Codex executable (optional)</comment>
+  </data>
+  <data name="Text_3227AA9666253F7A" xml:space="preserve">
+    <value>Browse</value>
+    <comment>Browse</comment>
+  </data>
+  <data name="Text_A342F3001C62EBDB" xml:space="preserve">
+    <value>Leave empty to detect Codex CLI automatically. Select the native codex.exe if using a custom installation.</value>
+    <comment>Leave empty to detect Codex CLI automatically. Select the native codex.exe if using a custom installation.</comment>
+  </data>
+  <data name="Text_F6DE648021FDA93B" xml:space="preserve">
+    <value>Sign in with ChatGPT</value>
+    <comment>Sign in with ChatGPT</comment>
+  </data>
+  <data name="Text_98D2E8192124AA78" xml:space="preserve">
+    <value>Refresh models / connection</value>
+    <comment>Refresh models / connection</comment>
+  </data>
+  <data name="Text_3236AEEC43E563CA" xml:space="preserve">
+    <value>Reasoning effort</value>
+    <comment>Reasoning effort</comment>
+  </data>
+  <data name="Text_98C06F3B0AB36EFD" xml:space="preserve">
+    <value>Models and reasoning options are loaded from Codex. Codex default follows the current default model; LLPlayer does not hard-code model names.</value>
+    <comment>Models and reasoning options are loaded from Codex. Codex default follows the current default model; LLPlayer does not hard-code model names.</comment>
+  </data>
+  <data name="Text_8A6B43D9608D5553" xml:space="preserve">
+    <value>Codex (ChatGPT account)</value>
+    <comment>Codex (ChatGPT account)</comment>
+  </data>
+  <data name="Text_C91FA333CEEA3464" xml:space="preserve">
+    <value>Codex default</value>
+    <comment>Codex default</comment>
+  </data>
+  <data name="Text_D0B5EE57030CCC6F" xml:space="preserve">
+    <value>Refresh to check Codex sign-in and available models.</value>
+    <comment>Refresh to check Codex sign-in and available models.</comment>
+  </data>
+  <data name="Text_84E8C9528F819EB5" xml:space="preserve">
+    <value>Complete sign-in in your browser. Waiting for Codex...</value>
+    <comment>Complete sign-in in your browser. Waiting for Codex...</comment>
+  </data>
+  <data name="Text_D088F037235F3558" xml:space="preserve">
+    <value>Unavailable model: {0}</value>
+    <comment>Unavailable model: {0}</comment>
+  </data>
+  <data name="Text_A7C06065DB6E3E8E" xml:space="preserve">
+    <value>Signed in with ChatGPT. {0} models available.</value>
+    <comment>Signed in with ChatGPT. {0} models available.</comment>
+  </data>
+  <data name="Text_EDDE7611B59C3C54" xml:space="preserve">
+    <value>Connecting to Codex...</value>
+    <comment>Connecting to Codex...</comment>
+  </data>
+  <data name="Text_271E3ABBBF8B54E0" xml:space="preserve">
+    <value>Codex operation canceled or timed out.</value>
+    <comment>Codex operation canceled or timed out.</comment>
+  </data>
+  <data name="Text_0E622E36C566B988" xml:space="preserve">
+    <value>Could not connect to Codex. Check codex.exe and sign-in status.</value>
+    <comment>Could not connect to Codex. Check codex.exe and sign-in status.</comment>
+  </data>
+  <data name="Text_6124610C6724D529" xml:space="preserve">
+    <value>Codex request failed (code {0}). Check Codex login, model availability and usage limits.</value>
+    <comment>Codex request failed (code {0}). Check Codex login, model availability and usage limits.</comment>
+  </data>
+  <data name="Text_9E940429B1A47068" xml:space="preserve">
+    <value>Codex disconnected. Check the executable and sign in again.</value>
+    <comment>Codex disconnected. Check the executable and sign in again.</comment>
+  </data>
+  <data name="Text_1E23DC8EC371EF0D" xml:space="preserve">
+    <value>Select a valid Codex executable (.exe).</value>
+    <comment>Select a valid Codex executable (.exe).</comment>
+  </data>
+  <data name="Text_C0DBBBB396DB66A9" xml:space="preserve">
+    <value>Codex CLI was not found. Install Codex CLI or select codex.exe in translation settings.</value>
+    <comment>Codex CLI was not found. Install Codex CLI or select codex.exe in translation settings.</comment>
+  </data>
+  <data name="Text_6C1E3910D280CB84" xml:space="preserve">
+    <value>Sign in to Codex with your ChatGPT account in translation settings. API key login cannot be used here.</value>
+    <comment>Sign in to Codex with your ChatGPT account in translation settings. API key login cannot be used here.</comment>
+  </data>
+  <data name="Text_B2E2D3C7232F8EF5" xml:space="preserve">
+    <value>Codex returned an invalid login URL.</value>
+    <comment>Codex returned an invalid login URL.</comment>
+  </data>
+  <data name="Text_884D3ECAFB2DBEE4" xml:space="preserve">
+    <value>Codex sign-in was not completed. Please try again.</value>
+    <comment>Codex sign-in was not completed. Please try again.</comment>
+  </data>
+  <data name="Text_4A55DBE285BF42F8" xml:space="preserve">
+    <value>Codex attempted to use a tool. Subtitle translation was stopped.</value>
+    <comment>Codex attempted to use a tool. Subtitle translation was stopped.</comment>
+  </data>
+  <data name="Text_6DE1EEE7E497EA0E" xml:space="preserve">
+    <value>Codex translation failed. Check the selected model, sign-in status and usage limits.</value>
+    <comment>Codex translation failed. Check the selected model, sign-in status and usage limits.</comment>
+  </data>
+  <data name="Text_817A1EF10106F2CC" xml:space="preserve">
+    <value>Codex returned an invalid translation response.</value>
+    <comment>Codex returned an invalid translation response.</comment>
+  </data>
+  <data name="Text_663EFB2A28A917D1" xml:space="preserve">
+    <value>The selected Codex model is unavailable. Refresh the model list in translation settings.</value>
+    <comment>The selected Codex model is unavailable. Refresh the model list in translation settings.</comment>
+  </data>
+  <data name="Text_53EF646CE36B5F8D" xml:space="preserve">
+    <value>The selected reasoning effort is unavailable for this Codex model. Refresh translation settings.</value>
+    <comment>The selected reasoning effort is unavailable for this Codex model. Refresh translation settings.</comment>
+  </data>
+  <data name="Text_23ABA3508ABC39C4" xml:space="preserve">
+    <value>Codex translation timed out. Increase the timeout or select a faster model or reasoning effort.</value>
+    <comment>Codex translation timed out. Increase the timeout or select a faster model or reasoning effort.</comment>
+  </data>
+  <data name="Text_140BEDBF9C3F6D56" xml:space="preserve">
+    <value>none</value>
+    <comment>none</comment>
+  </data>
+  <data name="Text_A703788F83205662" xml:space="preserve">
+    <value>minimal</value>
+    <comment>minimal</comment>
+  </data>
+  <data name="Text_6C1FF09DB3A73DC4" xml:space="preserve">
+    <value>low</value>
+    <comment>low</comment>
+  </data>
+  <data name="Text_C082456A7766E23A" xml:space="preserve">
+    <value>medium</value>
+    <comment>medium</comment>
+  </data>
+  <data name="Text_6EF7C9B15ECDD690" xml:space="preserve">
+    <value>high</value>
+    <comment>high</comment>
+  </data>
+  <data name="Text_B5255978BE8E9DDE" xml:space="preserve">
+    <value>xhigh</value>
+    <comment>xhigh</comment>
+  </data>
+  <data name="Text_9BAF3A40312F3984" xml:space="preserve">
+    <value>max</value>
+    <comment>max</comment>
+  </data>
+  <data name="Text_425ED264C86619B9" xml:space="preserve">
+    <value>ultra</value>
+    <comment>ultra</comment>
+  </data>
 </root>

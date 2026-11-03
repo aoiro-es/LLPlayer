@@ -17,6 +17,9 @@
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <DataTemplate DataType="{x:Type flyleafServices:CodexTranslateSettings}">
+            <transControl:CodexTranslateControl />
+        </DataTemplate>
         <ObjectDataProvider x:Key="TranslateServiceTypeEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="flyleafServices:TranslateServiceType"/>
@@ -451,7 +454,7 @@
                             </Hyperlink>
                         </TextBlock>
                         <ComboBox
-                            Width="180"
+                            Width="320"
                             ItemsSource="{Binding Source={StaticResource TranslateServiceTypeEnum}}"
                             SelectedItem="{Binding SelectedTranslateServiceType}">
                             <ComboBox.ItemTemplate>
