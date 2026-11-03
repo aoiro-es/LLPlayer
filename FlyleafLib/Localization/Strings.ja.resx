@@ -1660,7 +1660,7 @@ Right Click: Open Context Menu</comment>
     <comment>Next Playlist Item</comment>
   </data>
   <data name="Text_904F02982FDE45FE" xml:space="preserve">
-    <value>対応するサービスがありません</value>
+    <value>非対応の翻訳サービス</value>
     <comment>No Supported Service</comment>
   </data>
   <data name="Text_751BF84715050866" xml:space="preserve">
@@ -3427,7 +3427,7 @@ Right Click: Open Context Menu</comment>
     <comment>Zoom {0}%</comment>
   </data>
   <data name="Text_EE59D53020F74E54" xml:space="preserve">
-    <value>［すべて対応］</value>
+    <value>［なし：すべて対応］</value>
     <comment>[All supported]</comment>
   </data>
   <data name="Text_548D3769E09FF8C1" xml:space="preserve">
