@@ -3855,4 +3855,17 @@ Right Click: Open Context Menu</comment>
   <data name="Text_80DBC65F7880E666" xml:space="preserve"><value>Codex returned incomplete or mismatched subtitle IDs.</value><comment>Codex returned incomplete or mismatched subtitle IDs.</comment></data>
   <data name="Text_22183520FEF3A413" xml:space="preserve"><value>Explanation unavailable. Check Codex sign-in and translation settings.</value><comment>Explanation unavailable. Check Codex sign-in and translation settings.</comment></data>
   <data name="Text_10D3AFCACD008FC9" xml:space="preserve"><value>Context-aware translation sends batches with surrounding subtitles and a bounded continuity summary. Only caption text is sent; timings stay unchanged.</value><comment>Context-aware translation sends batches with surrounding subtitles and a bounded continuity summary. Only caption text is sent; timings stay unchanged.</comment></data>
+  <data name="Text_E3E17CBE017FC34E" xml:space="preserve"><value>First subtitle</value><comment>First subtitle</comment></data>
+  <data name="Text_C74B67095C5A1F45" xml:space="preserve"><value>Translation {0}/{1} ({2:0}%)</value><comment>Translation {0}/{1} ({2:0}%)</comment></data>
+  <data name="Text_A7A5AC0C49EE5BD4" xml:space="preserve"><value>AI explanations {0}/{1} ({2:0}%)</value><comment>AI explanations {0}/{1} ({2:0}%)</comment></data>
+  <data name="Text_075E5977CF411827" xml:space="preserve"><value>Preparation failed</value><comment>Preparation failed</comment></data>
+  <data name="Text_5626DD8BAE30CE8D" xml:space="preserve"><value>Reading subtitles...</value><comment>Reading subtitles...</comment></data>
+  <data name="Text_6FAC9AC9A3814E86" xml:space="preserve"><value>Preparation complete</value><comment>Preparation complete</comment></data>
+  <data name="Text_617732096B36C368" xml:space="preserve"><value>Pre-generating subtitles...</value><comment>Pre-generating subtitles...</comment></data>
+  <data name="Text_687715679E1D5ED0" xml:space="preserve"><value>Translating nearby subtitles...</value><comment>Translating nearby subtitles...</comment></data>
+  <data name="Text_857173995EC06FC1" xml:space="preserve"><value>Automatic preparation stopped</value><comment>Automatic preparation stopped</comment></data>
+  <data name="Text_26F294A5CE152C17" xml:space="preserve"><value>Waiting for OCR text...</value><comment>Waiting for OCR text...</comment></data>
+  <data name="Text_0D8C4C6F8AE0464F" xml:space="preserve"><value>Nearby subtitles ready</value><comment>Nearby subtitles ready</comment></data>
+  <data name="Text_751094C1AF0A20B1" xml:space="preserve"><value>Waiting for preparation...</value><comment>Waiting for preparation...</comment></data>
+  <data name="Text_0A53B518F8D8E5DF" xml:space="preserve"><value>Waiting for OCR: {0} subtitles</value><comment>Waiting for OCR: {0} subtitles</comment></data>
 </root>

@@ -402,11 +402,11 @@
             <GroupBox Header="{loc:Text Key=Text_A1265FB0E4FEF2E7}">
                 <StackPanel>
                     <CheckBox Content="{loc:Text Key=Text_C87139466A105E8F}" IsChecked="{Binding FL.PlayerConfig.Subtitles[0].EnabledTranslated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0 4" />
-                    <TextBlock Text="{Binding FL.Player.SubtitlesManager[0].TranslationStatus}" TextWrapping="Wrap" Margin="24 2 0 2" />
-                    <TextBlock Text="{Binding FL.Player.SubtitlesManager[0].TranslationError}" TextWrapping="Wrap" Margin="24 0 0 4" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}" />
+                    <TextBlock Text="{Binding FL.SubtitlesManager[0].TranslationStatus}" TextWrapping="Wrap" Margin="24 2 0 2" />
+                    <TextBlock Text="{Binding FL.SubtitlesManager[0].TranslationError}" TextWrapping="Wrap" Margin="24 0 0 4" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}" />
                     <CheckBox Content="{loc:Text Key=Text_FFF5A480D7AA7E2C}" IsChecked="{Binding FL.PlayerConfig.Subtitles[1].EnabledTranslated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0 4" />
-                    <TextBlock Text="{Binding FL.Player.SubtitlesManager[1].TranslationStatus}" TextWrapping="Wrap" Margin="24 2 0 2" />
-                    <TextBlock Text="{Binding FL.Player.SubtitlesManager[1].TranslationError}" TextWrapping="Wrap" Margin="24 0 0 4" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}" />
+                    <TextBlock Text="{Binding FL.SubtitlesManager[1].TranslationStatus}" TextWrapping="Wrap" Margin="24 2 0 2" />
+                    <TextBlock Text="{Binding FL.SubtitlesManager[1].TranslationError}" TextWrapping="Wrap" Margin="24 0 0 4" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}" />
                     <TextBlock Text="{loc:Text Key=Text_01EA1E188869EF4C}" TextWrapping="Wrap" Margin="0 8 0 0" />
                 </StackPanel>
             </GroupBox>

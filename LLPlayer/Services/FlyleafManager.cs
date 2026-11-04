@@ -10,6 +10,8 @@ public class FlyleafManager
 {
     public Player Player { get; }
     public Config PlayerConfig => Player.Config;
+    // Player exposes this as a field; WPF paths require a property.
+    public SubtitlesManager SubtitlesManager => Player.SubtitlesManager;
     public FlyleafHost? FlyleafHost => Player.Host as FlyleafHost;
     public AppConfig Config { get; }
     public AppActions Action { get; }

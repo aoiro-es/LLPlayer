@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="LLPlayer.Controls.SubtitlePreparationStatus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             IsHitTestVisible="False"
+             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConv}, FallbackValue=Collapsed}">
+    <UserControl.Resources>
+        <Style x:Key="PreparationBar" TargetType="ProgressBar">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="PART_Track" Background="#555555" ClipToBounds="True">
+                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsIndeterminate" Value="True">
+                                <Setter TargetName="PART_Indicator" Property="Opacity" Value="0.45"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border Background="#DD292929" CornerRadius="4" Padding="9,5" Margin="0,0,8,5" MaxWidth="540">
+        <StackPanel>
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Text="{Binding TrackText}" Foreground="White" FontWeight="SemiBold" Margin="0,0,12,0" FontSize="12"/>
+                <TextBlock Text="{Binding StateText}" Foreground="White" FontSize="12" TextWrapping="Wrap"/>
+            </DockPanel>
+            <Grid Margin="0,3,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel MinWidth="190" Margin="0,0,12,0" Visibility="{Binding ShowTranslation, Converter={StaticResource BooleanToVisibilityConv}}">
+                    <TextBlock Text="{Binding TranslationText}" Foreground="White" FontSize="12"/>
+                    <ProgressBar Style="{StaticResource PreparationBar}" Minimum="0" Maximum="100" Value="{Binding TranslationPercent, Mode=OneWay}" IsIndeterminate="{Binding IsIndeterminate}" Height="3" Margin="0,3,0,0" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" MinWidth="190" Visibility="{Binding ShowExplanation, Converter={StaticResource BooleanToVisibilityConv}}">
+                    <TextBlock Text="{Binding ExplanationText}" Foreground="White" FontSize="12"/>
+                    <ProgressBar Style="{StaticResource PreparationBar}" Minimum="0" Maximum="100" Value="{Binding ExplanationPercent, Mode=OneWay}" IsIndeterminate="{Binding IsIndeterminate}" Height="3" Margin="0,3,0,0" Foreground="{DynamicResource MaterialDesign.Brush.Secondary}"/>
+                </StackPanel>
+            </Grid>
+            <TextBlock Text="{Binding DetailText}" Foreground="{DynamicResource MaterialDesign.Brush.Secondary.Light}" FontSize="12" TextWrapping="Wrap" Margin="0,3,0,0" Visibility="{Binding ShowDetail, Converter={StaticResource BooleanToVisibilityConv}}"/>
+        </StackPanel>
+    </Border>
+</UserControl>

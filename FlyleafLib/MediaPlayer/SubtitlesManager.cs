@@ -80,13 +80,41 @@ public class SubManager : INotifyPropertyChanged
     public bool IsDisplaying => State == PositionState.Showing;
 
     public string TranslationStatus { get; internal set => Set(ref field, value); } = FlyleafLib.Localization.UiText.Get("Translation off");
-    public string? TranslationError { get; internal set => Set(ref field, value); }
-    public bool IsTranslating { get; internal set => Set(ref field, value); }
+    public string? TranslationError { get; internal set { if (Set(ref field, value)) UpdatePreparationProgress(); } }
+    public bool IsTranslating { get; internal set { if (Set(ref field, value)) UpdatePreparationProgress(); } }
+
+    public SubtitlePreparationProgress PreparationProgress { get; private set => Set(ref field, value); } = SubtitlePreparationProgress.Empty(0);
+
+    public void UpdatePreparationProgress()
+    {
+        lock (_subsLocker)
+        {
+            int total = 0, translated = 0, explained = 0, awaitingText = 0;
+            foreach (var cue in Subs)
+            {
+                bool hasText = !string.IsNullOrWhiteSpace(cue.Text);
+                if (!hasText && !cue.IsBitmap) continue;
+                total++;
+                if (!hasText) awaitingText++;
+                if (hasText && !string.IsNullOrWhiteSpace(cue.TranslatedText)) translated++;
+                if (hasText && !string.IsNullOrWhiteSpace(cue.Explanation)) explained++;
+            }
+            var config = _config.Subtitles;
+            bool codex = config.TranslateServiceType == TranslateServiceType.Codex;
+            bool explain = codex && (config.TranslateServiceSettings.GetValueOrDefault(TranslateServiceType.Codex) as CodexTranslateSettings)?.PreGenerateExplanations == true;
+            bool translate = config[_subIndex].EnabledTranslated || explain;
+            string waiting = Language == null || Language == Language.Unknown
+                ? FlyleafLib.Localization.UiText.Get("Select the source subtitle language in subtitle settings.") : "";
+            PreparationProgress = new(_subIndex, total, translated, explained, awaitingText, translate, explain,
+                codex && (config.CodexTranslateAllOnLoad || explain), IsTranslating, IsLoading, waiting, TranslationError);
+        }
+    }
 
     internal void SetTranslationStatus(string status, bool busy = false)
     {
         TranslationStatus = status;
         IsTranslating = busy;
+        UpdatePreparationProgress();
     }
 
     /// <summary>
@@ -98,7 +126,7 @@ public class SubManager : INotifyPropertyChanged
     /// <summary>
     /// True when addition to Subs is running... (Reading all subtitles, OCR, ASR)
     /// </summary>
-    public bool IsLoading { get; private set => Set(ref field, value); }
+    public bool IsLoading { get; private set { if (Set(ref field, value)) UpdatePreparationProgress(); } }
 
     // LanguageSource with fallback
     public Language? Language
@@ -145,6 +173,7 @@ public class SubManager : INotifyPropertyChanged
     {
         _config = config;
         _subIndex = subIndex;
+        PreparationProgress = SubtitlePreparationProgress.Empty(subIndex);
         // TODO: L: Review whether to initialize it here.
         _subTranslator = createTranslationService == null
             ? new SubTranslator(this, config.Subtitles, subIndex)

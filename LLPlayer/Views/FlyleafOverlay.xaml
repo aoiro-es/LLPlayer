@@ -23,7 +23,7 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <controls:SubtitlesControl PlaybackBarHeight="{Binding ActualHeight, ElementName=PlaybackBar}" />
+        <controls:SubtitlesControl PlaybackBarHeight="{Binding ActualHeight, ElementName=PlaybackDock}" />
 
         <Grid Margin="6 4 6 4">
             <!-- Debug Info -->
@@ -126,7 +126,13 @@
             </TextBox>
 
             <!--Flyleaf Bar-->
-            <controls:FlyleafBar x:Name="PlaybackBar" VerticalAlignment="Bottom" />
+            <StackPanel x:Name="PlaybackDock" VerticalAlignment="Bottom">
+                <StackPanel HorizontalAlignment="Right">
+                    <controls:SubtitlePreparationStatus DataContext="{Binding FL.SubtitlesManager[0].PreparationProgress}" />
+                    <controls:SubtitlePreparationStatus DataContext="{Binding FL.SubtitlesManager[1].PreparationProgress}" />
+                </StackPanel>
+                <controls:FlyleafBar x:Name="PlaybackBar" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

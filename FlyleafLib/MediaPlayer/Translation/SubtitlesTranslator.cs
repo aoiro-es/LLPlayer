@@ -86,13 +86,22 @@ public class SubTranslator
         foreach (var added in captions)
             if (_observedCaptions.Add(added)) added.PropertyChanged += Caption_OnPropertyChanged;
         // AddRange uses Reset too. Only an empty collection means the old stream was cleared.
-        if (captions.Count == 0) _backgroundFailed = false;
+        if (captions.Count == 0)
+        {
+            _backgroundFailed = false;
+            _subManager.TranslationError = null;
+        }
         QueueTranslation(resetService: captions.Count == 0);
+        _subManager.UpdatePreparationProgress();
     }
 
     private void Caption_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (PretranslateAll && IsActive && e.PropertyName == nameof(SubtitleData.Text)) QueueTranslation();
+        if (e.PropertyName == nameof(SubtitleData.Text))
+        {
+            if (PretranslateAll && IsActive) QueueTranslation();
+            _subManager.UpdatePreparationProgress();
+        }
     }
 
     private void SubtitlesConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -179,6 +188,7 @@ public class SubTranslator
             _worker ??= Task.Run(ProcessRequestsAsync);
         }
 
+        _subManager.UpdatePreparationProgress();
         try { cancel?.Cancel(); }
         catch (ObjectDisposedException) { } // The previous batch finished before cancellation.
     }
@@ -396,6 +406,7 @@ public class SubTranslator
                 cue.Explanation = result.Explanation;
             }
         }
+        _subManager.UpdatePreparationProgress();
         foreach (var cue in batch) _subManager.RefreshTranslatedSubtitle(cue);
     }
 
@@ -414,6 +425,7 @@ public class SubTranslator
             sub.EnabledTranslated = true;
             sub.TranslatedText = translated;
         }
+        _subManager.UpdatePreparationProgress();
         _subManager.RefreshTranslatedSubtitle(sub);
 
         if (Engine.Config != null && CanDebug)

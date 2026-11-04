@@ -166,6 +166,7 @@ public partial class SubtitlesControl : UserControl
             if (!token.IsCancellationRequested && ReferenceEquals(manager.GetCurrent(), caption))
             {
                 caption.Explanation = result[0].Explanation;
+                manager.UpdatePreparationProgress();
                 ExplanationText.Text = caption.Text + "\n\n" + caption.Explanation;
             }
         }

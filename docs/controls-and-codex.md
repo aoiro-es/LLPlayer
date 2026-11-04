@@ -20,7 +20,7 @@
 4. モデルと推論の強さを選択します。選択肢は[Codex App Server](https://developers.openai.com/codex/app-server/)から取得します。「Codexの既定値」は取得した既定モデルを利用します。モデル名・利用可能な推論強度はコードに固定していません。
 5. 翻訳先の言語を選び、画面上部「訳文の表示」の「第1字幕を翻訳して表示」または「第2字幕を翻訳して表示」を有効にして保存します。表示のオン・オフは次回起動時も保持します。翻訳中、元言語が不明、エラーなどの状態を各チェック欄の下で確認できます。既存の内蔵・外部テキスト字幕を利用でき、Whisperモデルは不要です。画像字幕の翻訳にはOCRが必要です。
 
-Codexでは「動画を開いたら字幕全体を先行翻訳する」と「AIによる文章解説をあらかじめ生成する」が既定で有効です。字幕を読み込み次第、再生・シークを待たずバックグラウンドで準備します。訳文の表示をオンにしたトラックは、訳文が届くまで原文を表示しません。翻訳設定で進捗やエラーを確認できます。画像字幕はOCRで文章を取得できた部分から処理します。
+Codexでは「動画を開いたら字幕全体を先行翻訳する」と「AIによる文章解説をあらかじめ生成する」が既定で有効です。字幕を読み込み次第、再生・シークを待たずバックグラウンドで準備します。訳文の表示をオンにしたトラックは、訳文が届くまで原文を表示しません。再生画面の再生バー上に、第1・第2字幕それぞれの翻訳とAI解説の件数・百分率・進捗バーを常時表示します。読み込み中・OCR待ち・完了・停止・エラーも表示し、全画面や再生バーが隠れている間も確認できます。進捗表示の高さを避けて字幕を配置します。翻訳設定でも状態を確認できます。画像字幕はOCRで文章を取得できた部分から処理します。
 
 翻訳は既定で**12字幕ずつ、前後4字幕と直前までの文脈メモを添えて**依頼します。設定で件数を変更できます。入力が長い場合は小さく分割します。返された字幕ID・件数・空の訳文を検証し、不正な応答は小さい単位に分割して再試行します。字幕の順序やタイミングは変更しません。語調・指示語・固有名詞・用語のつながりを文脈として扱います。
 
@@ -46,7 +46,7 @@ For Codex translation, install a Codex CLI version supporting app-server (tested
 
 Translation uses your Codex allowance. Codex manages credentials; LLPlayer does not store account tokens or email addresses. Only caption text, surrounding captions and a bounded continuity memo are sent for translation and explanations; video files and filenames are not sent. Temporary translation threads disable shell, integrations and file writes. Embedded and external text subtitles work without Whisper; bitmap translation requires OCR. Refresh model selection if a model becomes unavailable, or adjust reasoning/timeout if translation is slow.
 
-Codex whole-track translation and AI explanation pre-generation are enabled by default. Preparation starts when a track is loaded, without waiting for playback. While translated display is enabled, pending translations stay hidden instead of flashing the source. Requests contain up to 12 cues with four context cues before/after and a bounded continuity memo. Counts are configurable; character limits split long input. Returned IDs and nonempty translations are validated, and invalid batches are retried in smaller groups without changing cue timing/order.
+Codex whole-track translation and AI explanation pre-generation are enabled by default. Preparation starts when a track is loaded, without waiting for playback. A status panel above the playback bar shows separate translation and AI explanation counts, percentages and progress bars for each track, including loading, OCR waits, completion, stopping and errors. It remains visible in fullscreen and while the playback controls fade. Bottom captions reserve space for the panel. While translated display is enabled, pending translations stay hidden instead of flashing the source. Requests contain up to 12 cues with four context cues before/after and a bounded continuity memo. Counts are configurable; character limits split long input. Returned IDs and nonempty translations are validated, and invalid batches are retried in smaller groups without changing cue timing/order.
 
 Hover over spaces between words or the padded area around a caption for about 0.45 seconds to outline the sentence and see its meaning, nuance, grammar, key phrases, alternatives and an example. Word click/drag lookup remains available. Explanations use the UI language and original cue, including tracks displaying their original text or matching the target language. Results are cached in memory for the open video. Disable pre-generation for on-demand explanations; use × to close the popup.
 
