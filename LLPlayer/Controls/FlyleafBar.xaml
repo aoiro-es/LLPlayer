@@ -193,8 +193,10 @@
 
                 <!-- Quality + Movies Title -->
                 <StackPanel Grid.Column="4" Orientation="Horizontal">
-                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdPreviousSubtitle}" ToolTip="{loc:Text Key=Text_D986CB447D9E9E1F}" Content="{materialDesign:PackIcon Kind=SkipPrevious}" />
-                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdNextSubtitle}" ToolTip="{loc:Text Key=Text_E879A4FAD34FD1E4}" Content="{materialDesign:PackIcon Kind=SkipNext}" />
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdPreviousChapter}" ToolTip="{loc:Text Key=Text_2BEBDCA31F072FC7}" Content="{materialDesign:PackIcon Kind=SkipPrevious}" />
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdNextChapter}" ToolTip="{loc:Text Key=Text_4344DDE797B69C1D}" Content="{materialDesign:PackIcon Kind=SkipNext}" />
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdPreviousSubtitle}" ToolTip="{loc:Text Key=Text_D986CB447D9E9E1F}"><StackPanel Orientation="Horizontal"><materialDesign:PackIcon Kind="ChevronLeft" Width="12"/><materialDesign:PackIcon Kind="ClosedCaptionOutline"/></StackPanel></Button>
+                    <Button Style="{StaticResource IconButton}" Command="{Binding FL.Action.CmdNextSubtitle}" ToolTip="{loc:Text Key=Text_E879A4FAD34FD1E4}"><StackPanel Orientation="Horizontal"><materialDesign:PackIcon Kind="ClosedCaptionOutline"/><materialDesign:PackIcon Kind="ChevronRight" Width="12"/></StackPanel></Button>
                     <Button Click="ButtonBase_OnClick" ToolTip="{loc:Text Key=Text_130A7DD4AD1FF5D2}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource IconButton}">

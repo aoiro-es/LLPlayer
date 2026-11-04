@@ -85,6 +85,8 @@ public class AppActions
             [CustomKeyBindingAction.ToggleSidebarShowOriginalText] = CmdToggleSidebarShowOriginalText.Execute,
             [CustomKeyBindingAction.ActivateSubsSearch] = CmdActivateSubsSearch.Execute,
 
+            [CustomKeyBindingAction.PreviousChapter] = CmdPreviousChapter.Execute,
+            [CustomKeyBindingAction.NextChapter] = CmdNextChapter.Execute,
             [CustomKeyBindingAction.PreviousSubtitle] = CmdPreviousSubtitle.Execute,
             [CustomKeyBindingAction.NextSubtitle] = CmdNextSubtitle.Execute,
             [CustomKeyBindingAction.OpenShortcuts] = CmdOpenShortcuts.Execute,
@@ -382,6 +384,15 @@ public class AppActions
     {
         _config.SidebarShowOriginalText = !_config.SidebarShowOriginalText;
     });
+
+    public DelegateCommand CmdPreviousChapter => field ??= new(() => SeekChapter(false));
+    public DelegateCommand CmdNextChapter => field ??= new(() => SeekChapter(true));
+
+    private void SeekChapter(bool next)
+    {
+        var chapter = ChapterNavigation.Find(_player.Chapters, _player.CurTime, next);
+        if (chapter != null) _player.SeekAccurate((int)(chapter.StartTime / TimeSpan.TicksPerMillisecond));
+    }
 
     public DelegateCommand CmdPreviousSubtitle => field ??= new(() =>
     {
@@ -695,6 +706,10 @@ public class AppActions
 // List of key actions to be added from the app side
 public enum CustomKeyBindingAction
 {
+    [Description("Previous chapter")]
+    PreviousChapter,
+    [Description("Next chapter")]
+    NextChapter,
     [Description("Previous subtitle")]
     PreviousSubtitle,
     [Description("Next subtitle")]

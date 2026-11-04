@@ -232,8 +232,8 @@ public enum SubtitleTrackPlacement
 
 public class AppConfigSubs : Bindable
 {
-    public SubtitleTrackPlacement PrimaryPlacement { get; set => Set(ref field, value); }
-    public SubtitleTrackPlacement SecondaryPlacement { get; set => Set(ref field, value); }
+    public SubtitleTrackPlacement PrimaryPlacement { get; set => Set(ref field, value); } = SubtitleTrackPlacement.Bottom;
+    public SubtitleTrackPlacement SecondaryPlacement { get; set => Set(ref field, value); } = SubtitleTrackPlacement.Bottom;
     public bool PrimaryOnlyOnEdgeHover { get; set => Set(ref field, value); }
     public bool SecondaryOnlyOnEdgeHover { get; set => Set(ref field, value); }
     public double EdgeMargin { get; set => Set(ref field, double.IsFinite(value) ? Math.Clamp(value, 0, 500) : 24); } = 24;

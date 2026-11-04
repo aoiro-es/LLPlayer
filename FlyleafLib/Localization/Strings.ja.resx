@@ -3842,4 +3842,15 @@ Right Click: Open Context Menu</comment>
     <value>字幕全体の先行翻訳が完了しました（{0}/{1}）</value>
     <comment>Subtitle pretranslation complete ({0}/{1})</comment>
   </data>
+  <data name="Text_2BEBDCA31F072FC7" xml:space="preserve"><value>前のチャプター</value><comment>Previous chapter</comment></data>
+  <data name="Text_4344DDE797B69C1D" xml:space="preserve"><value>次のチャプター</value><comment>Next chapter</comment></data>
+  <data name="Text_2B7C02D674D13D84" xml:space="preserve"><value>一括翻訳する字幕数</value><comment>Subtitles per batch</comment></data>
+  <data name="Text_DC0DFE8999607203" xml:space="preserve"><value>前後の文脈として添える字幕数</value><comment>Context cues before / after</comment></data>
+  <data name="Text_1228CCB005415C82" xml:space="preserve"><value>AIによる文章解説をあらかじめ生成する</value><comment>Pre-generate AI sentence explanations</comment></data>
+  <data name="Text_029D680D7F7CFF2A" xml:space="preserve"><value>字幕の単語の間や周囲にマウスを合わせるとAI解説を表示します。Codexが意味・ニュアンス・文法・重要表現・言い換えをUIの言語で解説します。</value><comment>Hover between words or around a subtitle to see its AI explanation. Codex generates meaning, nuance, grammar, key phrases and alternatives in your UI language.</comment></data>
+  <data name="Text_A5BA0D307D8151A6" xml:space="preserve"><value>AIによる文章解説</value><comment>AI explanation</comment></data>
+  <data name="Text_C903EB199940DDDA" xml:space="preserve"><value>解説を生成しています…</value><comment>Generating explanation...</comment></data>
+  <data name="Text_80DBC65F7880E666" xml:space="preserve"><value>Codexの応答に字幕IDの不足または不一致があります。</value><comment>Codex returned incomplete or mismatched subtitle IDs.</comment></data>
+  <data name="Text_22183520FEF3A413" xml:space="preserve"><value>解説を取得できません。Codexへのログインと翻訳設定を確認してください。</value><comment>Explanation unavailable. Check Codex sign-in and translation settings.</comment></data>
+  <data name="Text_10D3AFCACD008FC9" xml:space="preserve"><value>前後の字幕と長さを制限した文脈メモを添えて一括翻訳します。字幕の文章だけを送り、タイミングは変更しません。</value><comment>Context-aware translation sends batches with surrounding subtitles and a bounded continuity summary. Only caption text is sent; timings stay unchanged.</comment></data>
 </root>

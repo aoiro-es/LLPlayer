@@ -9,16 +9,18 @@
              d:Foreground="White"
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
-    <local:AlignableWrapPanel
-        x:Name="wrapPanel"
-        HorizontalContentAlignment="Center"
-        DataContext="{Binding ElementName=Root}">
-        <local:AlignableWrapPanel.MaxWidth>
-            <MultiBinding Converter="{StaticResource WidthPercentageMultiConv}">
-                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Window}"/>
-                <Binding Path="MaxFixedWidth" Mode="OneWay"/>
-                <Binding Path="WidthPercentageFix" Mode="OneWay"/>
-            </MultiBinding>
-        </local:AlignableWrapPanel.MaxWidth>
-    </local:AlignableWrapPanel>
+    <Border x:Name="SentenceBorder" Padding="8,5" BorderThickness="1" CornerRadius="4" Background="#01000000">
+        <local:AlignableWrapPanel
+            x:Name="wrapPanel"
+            HorizontalContentAlignment="Center"
+            DataContext="{Binding ElementName=Root}">
+            <local:AlignableWrapPanel.MaxWidth>
+                <MultiBinding Converter="{StaticResource WidthPercentageMultiConv}">
+                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Window}"/>
+                    <Binding Path="MaxFixedWidth" Mode="OneWay"/>
+                    <Binding Path="WidthPercentageFix" Mode="OneWay"/>
+                </MultiBinding>
+            </local:AlignableWrapPanel.MaxWidth>
+        </local:AlignableWrapPanel>
+    </Border>
 </UserControl>

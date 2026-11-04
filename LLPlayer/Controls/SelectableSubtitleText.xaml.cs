@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using FlyleafLib;
 using LLPlayer.Extensions;
 using NMeCab.Specialized;
@@ -26,6 +27,20 @@ public partial class SelectableSubtitleText : UserControl
     public SelectableSubtitleText()
     {
         InitializeComponent();
+        _sentenceHover = new DispatcherTimer(TimeSpan.FromMilliseconds(450), DispatcherPriority.Input,
+            (_, _) => { _sentenceHover!.Stop(); if (IsSentenceHovered) SentenceHovered?.Invoke(this, EventArgs.Empty); }, Dispatcher);
+        _sentenceHover.Stop();
+        PreviewMouseMove += OnSentenceMouseMove;
+        MouseLeave += (_, _) => SetSentenceHover(false);
+        Unloaded += (_, _) => _sentenceHover.Stop();
+        SentenceBorder.MouseLeftButtonDown += (_, e) =>
+        {
+            if (IsSentenceHovered) { WordClickedDown?.Invoke(this, EventArgs.Empty); e.Handled = true; }
+        };
+        SentenceBorder.MouseLeftButtonUp += (_, e) =>
+        {
+            if (IsSentenceHovered) { SentenceHovered?.Invoke(this, EventArgs.Empty); e.Handled = true; }
+        };
 
         // DataContext is set in WrapPanel, so there is no need to use ElementName.
         //_bindFontSize = new Binding(nameof(FontSize))
@@ -40,6 +55,39 @@ public partial class SelectableSubtitleText : UserControl
         _bindFill = new Binding(nameof(Fill));
         _bindStroke = new Binding(nameof(Stroke));
         _bindStrokeThicknessInitial = new Binding(nameof(StrokeThicknessInitial));
+    }
+
+    private readonly DispatcherTimer _sentenceHover;
+    public event EventHandler? SentenceHovered;
+    public event EventHandler? SentenceChanged;
+    public bool IsSentenceHovered { get; private set; }
+    private bool _holdSentenceHighlight;
+    public void HoldSentenceHighlight(bool hold)
+    {
+        _holdSentenceHighlight = hold;
+        SentenceBorder.BorderBrush = hold || IsSentenceHovered ? WordHoverBorderBrush : null;
+    }
+
+    private void OnSentenceMouseMove(object sender, MouseEventArgs e)
+    {
+        // Words retain their original click/drag selection. Spaces and the padded outline select the sentence.
+        DependencyObject? node = e.OriginalSource as DependencyObject;
+        bool onWord = false;
+        while (node != null && node != this)
+        {
+            if (node is Border { Child: OutlinedTextBlock }) { onWord = true; break; }
+            node = VisualTreeHelper.GetParent(node);
+        }
+        SetSentenceHover(!onWord && !string.IsNullOrWhiteSpace(Text) && e.LeftButton == MouseButtonState.Released);
+    }
+
+    private void SetSentenceHover(bool active)
+    {
+        if (active == IsSentenceHovered) return;
+        IsSentenceHovered = active;
+        SentenceBorder.BorderBrush = active || _holdSentenceHighlight ? WordHoverBorderBrush : null;
+        if (active) _sentenceHover.Start();
+        else _sentenceHover.Stop();
     }
 
     public static readonly RoutedEvent WordClickedEvent =
@@ -214,6 +262,8 @@ public partial class SelectableSubtitleText : UserControl
             text = SubtitleTextUtil.FlattenText(text);
         }
 
+        SetSentenceHover(false);
+        SentenceChanged?.Invoke(this, EventArgs.Empty);
         _textFix = text;
 
         bool containLineBreak = text.AsSpan().ContainsAny('\r', '\n');
@@ -378,6 +428,7 @@ public partial class SelectableSubtitleText : UserControl
 
                 WordClickedEventArgs args = new(WordClickedEvent)
                 {
+                    Sender = this,
                     Mouse = MouseClick.Left,
                     Words = word.Text,
                     IsWord = true,
@@ -459,6 +510,7 @@ public partial class SelectableSubtitleText : UserControl
 
                 WordClickedEventArgs args = new(WordClickedEvent)
                 {
+                    Sender = this,
                     Mouse = MouseClick.Left,
                     Words = selectedText,
                     IsWord = false,
@@ -485,6 +537,7 @@ public partial class SelectableSubtitleText : UserControl
 
             WordClickedEventArgs args = new(WordClickedEvent)
             {
+                Sender = this,
                 Mouse = MouseClick.Right,
                 Words = word.Text,
                 IsWord = true,
@@ -506,6 +559,7 @@ public partial class SelectableSubtitleText : UserControl
         {
             WordClickedEventArgs args = new(WordClickedEvent)
             {
+                Sender = this,
                 Mouse = MouseClick.Middle,
                 Words = _textFix,
                 IsWord = false,

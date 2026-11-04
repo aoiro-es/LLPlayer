@@ -201,7 +201,7 @@ public class SubManager : INotifyPropertyChanged
             CurrentIndex = -1;
             SelectedSub = null;
             Subs.Clear();
-            Subs.AddRange(items);
+            Subs.AddRange(items.Select(PrepareCaption));
         }
     }
 
@@ -209,7 +209,7 @@ public class SubManager : INotifyPropertyChanged
     {
         lock (_subsLocker)
         {
-            sub.Index = Subs.Count;
+            sub = PrepareCaption(sub);
             Subs.Add(sub);
         }
     }
@@ -218,11 +218,18 @@ public class SubManager : INotifyPropertyChanged
     {
         lock (_subsLocker)
         {
-            Subs.AddRange(items);
+            Subs.AddRange(items.Select(PrepareCaption));
         }
     }
 
-    internal SubtitleData[] GetSnapshot()
+    private SubtitleData PrepareCaption(SubtitleData sub)
+    {
+        sub.Index = Subs.Count;
+        sub.EnabledTranslated = _config.Subtitles[_subIndex].EnabledTranslated;
+        return sub;
+    }
+
+    public SubtitleData[] GetSnapshot()
     {
         lock (_subsLocker)
             return Subs.ToArray();
@@ -990,7 +997,10 @@ public class SubtitleData : IDisposable, INotifyPropertyChanged
 
     public bool EnabledTranslated = true;
 
-    public string? DisplayText => UseTranslated ? TranslatedText : Text;
+    // Keep the original for lookup/export, but never flash it while a translation is pending.
+    public string? DisplayText => EnabledTranslated ? TranslatedText : Text;
+
+    public string? Explanation { get; set => Set(ref field, value); }
 
     public List<SubStyle>? SubStyles;
     public TimeSpan StartTime { get; set; }

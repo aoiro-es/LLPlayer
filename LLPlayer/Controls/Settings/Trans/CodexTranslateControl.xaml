@@ -29,6 +29,11 @@
             <TextBlock Width="180" Text="{loc:Text Key=Text_3B453BC8BD286BE4}" />
             <TextBox Width="100" Text="{Binding Settings.TimeoutMs}" helpers:TextBoxHelper.OnlyNumeric="Uint" />
         </StackPanel>
+        <TextBlock Text="{loc:Text Key=Text_10D3AFCACD008FC9}" TextWrapping="Wrap" Margin="0 12" />
+        <StackPanel Orientation="Horizontal"><TextBlock Width="180" Text="{loc:Text Key=Text_2B7C02D674D13D84}"/><TextBox Width="100" Text="{Binding Settings.BatchSize}" helpers:TextBoxHelper.OnlyNumeric="Uint"/></StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 8"><TextBlock Width="180" Text="{loc:Text Key=Text_DC0DFE8999607203}"/><TextBox Width="100" Text="{Binding Settings.ContextCues}" helpers:TextBoxHelper.OnlyNumeric="Uint"/></StackPanel>
+        <CheckBox Content="{loc:Text Key=Text_1228CCB005415C82}" IsChecked="{Binding Settings.PreGenerateExplanations}" Margin="0 8"/>
+        <TextBlock Text="{loc:Text Key=Text_029D680D7F7CFF2A}" TextWrapping="Wrap"/>
         <TextBlock Text="{loc:Text Key=Text_98C06F3B0AB36EFD}" TextWrapping="Wrap" Margin="0 10 0 0" />
     </StackPanel>
 </UserControl>

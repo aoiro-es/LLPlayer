@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:loc="clr-namespace:FlyleafLib.Localization;assembly=FlyleafLib"
              xmlns:conv="clr-namespace:LLPlayer.Converters"
              xmlns:local="clr-namespace:LLPlayer.Controls"
              mc:Ignorable="d"
@@ -30,6 +31,23 @@
                 x:Name="WordPopupControl"
                 IsSidebar="False"
                 MaxWidth="400" />
+        </local:NonTopmostPopup>
+
+        <local:NonTopmostPopup x:Name="ExplanationHost" Placement="Custom" AllowsTransparency="True"
+            PopupAnimation="None" StaysOpen="True" IsTopmost="{Binding FL.Config.AlwaysOnTop}">
+            <Border x:Name="ExplanationCard" Background="#333333" BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
+                BorderThickness="1" CornerRadius="8" Padding="14" Width="440" MaxHeight="420">
+                <Grid>
+                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                    <DockPanel Margin="0 0 0 8">
+                        <Button DockPanel.Dock="Right" Content="×" Width="28" Height="28" Padding="0" Click="CloseExplanation" ToolTip="{loc:Text Key=Text_7D9EB7ACB13E2462}"/>
+                        <TextBlock Text="{loc:Text Key=Text_A5BA0D307D8151A6}" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <TextBox x:Name="ExplanationText" IsReadOnly="True" TextWrapping="Wrap" Foreground="White" Background="Transparent" BorderThickness="0" FontSize="16"/>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
         </local:NonTopmostPopup>
 
         <!-- Absolute bitmap -->
@@ -111,6 +129,8 @@
                     TextLanguage="{Binding FL.Player.Subtitles[0].Data.Language}"
                     SubIndex="0"
                     WordClickedDown="SelectableSubtitleText_OnWordClickedDown"
+                    SentenceHovered="OnSentenceHovered"
+                    SentenceChanged="OnSentenceChanged"
                     WordClicked="SelectableSubtitleText_OnWordClicked" />
 
                 <Border
@@ -171,6 +191,8 @@
                     TextLanguage="{Binding FL.Player.Subtitles[1].Data.Language}"
                     SubIndex="1"
                     WordClickedDown="SelectableSubtitleText_OnWordClickedDown"
+                    SentenceHovered="OnSentenceHovered"
+                    SentenceChanged="OnSentenceChanged"
                     WordClicked="SelectableSubtitleText_OnWordClicked" />
 
                 <Border

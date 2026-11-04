@@ -169,7 +169,7 @@ public static class TranslateServiceHelper
     /// <param name="target"></param>
     /// <returns></returns>
     /// <exception cref="TranslationConfigException"></exception>
-    public static (TranslateLanguage srcLang, TranslateLanguage targetLang) TryGetLanguage(this ITranslateService service, Language src, TargetLanguage target)
+    public static (TranslateLanguage srcLang, TranslateLanguage targetLang) TryGetLanguage(this ITranslateService service, Language src, TargetLanguage target, bool allowSameLanguage = false)
     {
         string iso6391 = src.ISO6391;
 
@@ -179,7 +179,7 @@ public static class TranslateServiceHelper
             throw new TranslationConfigException(FlyleafLib.Localization.UiText.Get("source language are unknown"));
         }
 
-        if (src.ISO6391 == target.ToISO6391())
+        if (!allowSameLanguage && src.ISO6391 == target.ToISO6391())
         {
             // Only chinese allow translation between regions (Simplified <-> Traditional)
             // Portuguese, French, and English are not permitted.

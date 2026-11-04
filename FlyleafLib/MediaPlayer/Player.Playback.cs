@@ -457,7 +457,7 @@ partial class Player
                 ? Config.Subtitles.TranslateLanguage
                 : SubtitlesManager[subIndex].Language;
 
-            Subtitles[subIndex].Data.Text = text;
+            Subtitles[subIndex].Data.Text = Config.Subtitles[subIndex].EnabledTranslated && !isTranslated ? string.Empty : text;
             Subtitles[subIndex].Data.Bitmap = null;
         });
     }
@@ -502,7 +502,7 @@ partial class Player
 
         UI(() =>
         {
-            Subtitles[subIndex].Data.Bitmap = subsBitmap;
+            Subtitles[subIndex].Data.Bitmap = Config.Subtitles[subIndex].EnabledTranslated ? null : subsBitmap;
             Subtitles[subIndex].Data.Text = "";
         });
     }

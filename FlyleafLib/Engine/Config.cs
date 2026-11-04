@@ -1000,6 +1000,10 @@ public class Config : NotifyPropertyChanged
 
                     // Update text in sidebar
                     player.SubtitlesManager[SubIndex].Refresh();
+                    // The cache may already be prepared while the original was displayed.
+                    // Publish after SubtitleClear, including while playback is paused.
+                    if (player.SubtitlesManager[SubIndex].GetCurrent() is { } current)
+                        player.SubtitlesManager[SubIndex].RefreshTranslatedSubtitle(current);
                 }
             }
         } = false;

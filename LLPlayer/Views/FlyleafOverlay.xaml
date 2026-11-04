@@ -23,7 +23,7 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <controls:SubtitlesControl />
+        <controls:SubtitlesControl PlaybackBarHeight="{Binding ActualHeight, ElementName=PlaybackBar}" />
 
         <Grid Margin="6 4 6 4">
             <!-- Debug Info -->
@@ -126,7 +126,7 @@
             </TextBox>
 
             <!--Flyleaf Bar-->
-            <controls:FlyleafBar />
+            <controls:FlyleafBar x:Name="PlaybackBar" VerticalAlignment="Bottom" />
         </Grid>
     </Grid>
 </UserControl>

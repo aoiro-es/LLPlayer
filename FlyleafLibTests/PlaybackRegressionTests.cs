@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -63,6 +63,23 @@ public class PlaybackRegressionTests
                 Assert.Equal(expectedFirst, firstY, 2);
                 Assert.Equal(expectedSecond, secondY, 2);
             }
+    });
+
+    [Fact]
+    public void BottomTracksReservePlaybackBarHeightAndGap() => OnSta(() =>
+    {
+        var root = new Grid();
+        var legacy = new StackPanel();
+        var top = new StackPanel { VerticalAlignment = VerticalAlignment.Top };
+        var bottom = new StackPanel { VerticalAlignment = VerticalAlignment.Bottom };
+        root.Children.Add(legacy); root.Children.Add(top); root.Children.Add(bottom);
+        var first = new Border { Height = 40 };
+        var second = new Border { Height = 30 };
+        SubtitleTrackLayout.Apply(legacy, top, bottom, first, second, new Border { Height = 5 },
+            SubtitleTrackPlacement.Bottom, SubtitleTrackPlacement.Bottom, 24, 80);
+        root.Measure(new Size(1280, 720)); root.Arrange(new Rect(0, 0, 1280, 720));
+        Assert.Equal(720 - 80 - 24, second.TranslatePoint(new Point(0, 30), root).Y);
+        Assert.True(first.TranslatePoint(new Point(0, 40), root).Y < second.TranslatePoint(default, root).Y);
     });
 
     [Fact]
