@@ -19,6 +19,8 @@
 4. モデルと推論の強さを選択します。選択肢は[Codex App Server](https://developers.openai.com/codex/app-server/)から取得します。「Codexの既定値」は取得した既定モデルを利用します。モデル名・利用可能な推論強度はコードに固定していません。
 5. 翻訳先の言語を選び、画面上部「訳文の表示」の「第1字幕を翻訳して表示」または「第2字幕を翻訳して表示」を有効にして保存します。表示のオン・オフは次回起動時も保持します。翻訳中、元言語が不明、エラーなどの状態を各チェック欄の下で確認できます。既存の内蔵・外部テキスト字幕を利用でき、Whisperモデルは不要です。画像字幕の翻訳にはOCRが必要です。
 
+Codexでは「動画を開いたら字幕全体を先行翻訳する」が既定で有効です。訳文表示をオンにした字幕を読み込み次第、再生・シークを待たず先頭から全体をバックグラウンドで翻訳します。進捗は翻訳設定画面で確認できます。シークしても先行翻訳は継続し、動画の切り替えや翻訳表示のオフで中止します。オプションをオフにすると、従来どおり再生位置の前後に指定した範囲だけを翻訳します。画像字幕はOCRで文章を取得できた部分から翻訳します。
+
 翻訳にはChatGPTのCodex利用枠を使用し、字幕の文章と設定した件数の過去の字幕をCodexへ送ります。APIキーは不要です。認証情報はCodexが管理し、LLPlayerはトークン・メールアドレスを設定に保存しません。翻訳用の会話は一時的に作成し、ファイル編集・シェル・既存のMCPやプラグイン連携を無効にします。シークや翻訳の無効化で処理をキャンセルします。
 
 モデルが利用できなくなった場合は一覧を更新して選び直してください。待ち時間が長い場合は推論強度を下げるか、タイムアウトを延ばせます。
@@ -35,3 +37,5 @@ Double-click the video, F5, or Alt+Enter toggles fullscreen; Esc returns to wind
 For Codex translation, install a Codex CLI version supporting app-server (tested with 0.162.1), select **Codex (ChatGPT account)** in subtitle translation settings, and refresh the connection/model list. Use **Sign in with ChatGPT** if needed and complete authentication in your browser. An API-key login is not accepted by this provider. Models and reasoning options come from Codex; **Codex default** follows its advertised default model and reasoning setting. Enable **Translate and display first/second subtitle** at the top of translation settings and save. These choices survive restart, and progress or errors are shown beneath each switch.
 
 Translation uses your Codex allowance. Codex manages credentials; LLPlayer does not store account tokens or email addresses. Only subtitle text and the configured recent subtitle context are sent for translation. Temporary translation threads disable shell, integrations and file writes. Embedded and external text subtitles work without Whisper; bitmap translation requires OCR. Refresh model selection if a model becomes unavailable, or adjust reasoning/timeout if translation is slow.
+
+Codex whole-track pretranslation is enabled by default. Once an enabled subtitle track is loaded, translation starts from the beginning in the background, without waiting for playback or seeking. Progress appears in translation settings. Seeking preserves ongoing pretranslation; switching videos or disabling translation cancels it. Turn off **Pretranslate the entire subtitle track on video open (Codex)** to use the configured playback window instead. Bitmap subtitles become available for translation as OCR extracts their text.

@@ -3826,4 +3826,20 @@ Right Click: Open Context Menu</comment>
     <value>下の従来の位置・揃え設定は「既存の位置設定」を選んだ字幕に適用します。</value>
     <comment>Legacy position and alignment settings below apply only to tracks using Existing position settings.</comment>
   </data>
+  <data name="Text_C37E8BC42B456D31" xml:space="preserve">
+    <value>動画を開いたら字幕全体を先行翻訳する（Codex）</value>
+    <comment>Pretranslate the entire subtitle track on video open (Codex)</comment>
+  </data>
+  <data name="Text_00EA4AAD1DB8210D" xml:space="preserve">
+    <value>既定で有効です。字幕が読み込まれると、再生やシークを待たず先頭から全体を翻訳します。オフの場合は、再生位置の前後に指定した範囲だけを翻訳します。</value>
+    <comment>Enabled by default. Translation starts as subtitles are loaded and proceeds from the beginning without waiting for playback or seeking. Turn off to translate only the configured range around playback.</comment>
+  </data>
+  <data name="Text_EF7E969B4FC8FAF6" xml:space="preserve">
+    <value>字幕全体を先行翻訳しています（{0}/{1}）</value>
+    <comment>Pretranslating all subtitles ({0}/{1})</comment>
+  </data>
+  <data name="Text_8BDDCEBBF96A4D95" xml:space="preserve">
+    <value>字幕全体の先行翻訳が完了しました（{0}/{1}）</value>
+    <comment>Subtitle pretranslation complete ({0}/{1})</comment>
+  </data>
 </root>

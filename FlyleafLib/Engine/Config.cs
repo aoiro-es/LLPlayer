@@ -1338,6 +1338,9 @@ public class Config : NotifyPropertyChanged
         /// </summary>
         public Dictionary<TranslateServiceType, ITranslateSettings> TranslateServiceSettings { get; set => Set(ref field, value); } = new();
 
+        /// <summary>Start translating every loaded subtitle immediately when using Codex.</summary>
+        public bool CodexTranslateAllOnLoad { get; set => Set(ref field, value); } = true;
+
         /// <summary>
         /// Maximum count backward
         /// </summary>

@@ -323,6 +323,142 @@ public class SubtitleTranslationTests
         config.Subtitles[0].EnabledTranslated = false;
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    public async Task CodexPretranslatesEntireTrackBeforePlaybackByDefault(int track)
+    {
+        var (config, manager, service) = Create(track);
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        config.Subtitles.TranslateCountBackward = 0;
+        config.Subtitles.TranslateCountForward = 0;
+        Assert.True(config.Subtitles.CodexTranslateAllOnLoad);
+        config.Subtitles[track].EnabledTranslated = true;
+        manager.LanguageSource = Language.Get("en");
+        var cues = new[] { Caption("Opening", 0), Caption("Middle", 300), Caption("Ending", 3600) };
+        manager.Load(cues);
+
+        await WaitFor(() => cues.All(c => c.IsTranslated) && !manager.IsTranslating);
+
+        Assert.Equal(-1, manager.CurrentIndex);
+        Assert.Equal(new[] { "Opening", "Middle", "Ending" }, service.Requests.ToArray());
+        Assert.Equal(Localization.UiText.Format($"Subtitle pretranslation complete ({3}/{3})"), manager.TranslationStatus);
+        config.Subtitles[track].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task CodexWindowedModeStillHonorsThePlaybackRange()
+    {
+        var (config, manager, service) = Create();
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        config.Subtitles.CodexTranslateAllOnLoad = false;
+        config.Subtitles.TranslateCountBackward = 0;
+        config.Subtitles.TranslateCountForward = 0;
+        manager.LanguageSource = Language.Get("en");
+        var cues = new[] { Caption("Opening", 0), Caption("Ending", 3600) };
+        manager.Load(cues);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => cues[0].IsTranslated && !manager.IsTranslating);
+        Assert.False(cues[1].IsTranslated);
+        Assert.Single(service.Requests);
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task EnablingWholeTrackTranslationKeepsCompletedResults()
+    {
+        var (config, manager, service) = Create();
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        config.Subtitles.CodexTranslateAllOnLoad = false;
+        config.Subtitles.TranslateCountBackward = 0;
+        config.Subtitles.TranslateCountForward = 0;
+        manager.LanguageSource = Language.Get("en");
+        var cues = new[] { Caption("Opening", 0), Caption("Middle", 300), Caption("Ending", 3600) };
+        manager.Load(cues);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => cues[0].IsTranslated && !manager.IsTranslating);
+        config.Subtitles.CodexTranslateAllOnLoad = true;
+        await WaitFor(() => cues.All(c => c.IsTranslated));
+        Assert.Equal(1, service.Requests.Count(t => t == "Opening"));
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task SeekingDoesNotCancelWholeTrackPretranslation()
+    {
+        var (config, manager, service) = Create();
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        config.Subtitles.TranslateCountBackward = 0;
+        config.Subtitles.TranslateCountForward = 0;
+        var response = new TaskCompletionSource<string>(TaskCreationOptions.RunContinuationsAsynchronously);
+        service.Translate = (_, _) => response.Task;
+        manager.LanguageSource = Language.Get("en");
+        var cues = new[] { Caption("Opening", 0), Caption("Ending", 3600) };
+        manager.Load(cues);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => !service.Requests.IsEmpty);
+        manager.SetCurrentTime(TimeSpan.FromSeconds(3601));
+        service.Translate = null;
+        response.SetResult("Prefetched opening");
+        await WaitFor(() => cues.All(c => c.IsTranslated));
+        Assert.Equal("Prefetched opening", cues[0].TranslatedText);
+        Assert.Equal(new[] { "Opening", "Ending" }, service.Requests.ToArray());
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task ReplacingTheVideoCancelsItsWholeTrackTranslation()
+    {
+        var (config, manager, service) = Create();
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        var response = new TaskCompletionSource<string>(TaskCreationOptions.RunContinuationsAsynchronously);
+        service.Translate = (_, _) => response.Task;
+        manager.LanguageSource = Language.Get("en");
+        var oldCue = Caption("Old video");
+        manager.Load([oldCue, Caption("Old ending", 3600)]);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => !service.Requests.IsEmpty);
+        manager.Clear();
+        var newCues = new[] { Caption("New opening", 0), Caption("New ending", 3600) };
+        manager.LanguageSource = Language.Get("en");
+        manager.Load(newCues);
+        service.Translate = null;
+        response.SetResult("Stale old video response");
+        await WaitFor(() => newCues.All(c => c.IsTranslated));
+        Assert.Null(oldCue.TranslatedText);
+        Assert.DoesNotContain("Old ending", service.Requests);
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task WholeTrackPretranslationProcessesOcrTextAsItBecomesAvailable()
+    {
+        var (config, manager, _) = Create();
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        manager.LanguageSource = Language.Get("en");
+        var cue = Caption("", 3600);
+        cue.IsBitmap = true;
+        manager.Load([cue]);
+        config.Subtitles[0].EnabledTranslated = true;
+        cue.Text = "Text extracted by OCR";
+        await WaitFor(() => cue.IsTranslated);
+        Assert.Equal(-1, manager.CurrentIndex);
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public void WholeTrackOptionIsDefaultedForOldSettingsAndSavedWhenDisabled()
+    {
+        var options = LLPlayer.Services.AppConfig.GetJsonSerializerOptions();
+        var defaults = System.Text.Json.JsonSerializer.Deserialize<Config.SubtitlesConfig>("{}", options)!;
+        Assert.True(defaults.CodexTranslateAllOnLoad);
+        var saved = System.Text.Json.JsonSerializer.Deserialize<Config.SubtitlesConfig>("{\"CodexTranslateAllOnLoad\":false}", options)!;
+        Assert.False(saved.CodexTranslateAllOnLoad);
+        saved.Languages = [Language.Get("en")];
+        var json = System.Text.Json.JsonSerializer.Serialize(saved, options);
+        Assert.False(System.Text.Json.JsonSerializer.Deserialize<Config.SubtitlesConfig>(json, options)!.CodexTranslateAllOnLoad);
+    }
+
     private sealed class FakeTranslator : ITranslateService
     {
         public TranslateServiceType ServiceType => TranslateServiceType.GoogleV1;

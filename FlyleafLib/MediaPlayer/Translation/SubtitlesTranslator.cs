@@ -20,6 +20,7 @@ public class SubTranslator
     private readonly object _scheduleLock = new();
     private ITranslateService? _translateService;
     private ITranslateSettings? _observedSettings;
+    private readonly HashSet<SubtitleData> _observedCaptions = [];
     private Task? _worker;
     private CancellationTokenSource? _activeCancellation;
     private bool _pending;
@@ -29,6 +30,7 @@ public class SubTranslator
     private int _activeIndex = -1;
 
     private bool IsEnabled => _config[_subIndex].EnabledTranslated;
+    private bool PretranslateAll => _config.TranslateServiceType == TranslateServiceType.Codex && _config.CodexTranslateAllOnLoad;
 
     public SubTranslator(SubManager subManager, Config.SubtitlesConfig config, int subIndex)
         : this(subManager, config, subIndex, () => new TranslateServiceFactory(config).GetService(config.TranslateServiceType, false))
@@ -55,7 +57,7 @@ public class SubTranslator
     {
         switch (e.PropertyName)
         {
-            case nameof(SubManager.CurrentIndex):
+            case nameof(SubManager.CurrentIndex) when !PretranslateAll:
                 QueueTranslation();
                 break;
             case nameof(SubManager.Language):
@@ -69,8 +71,22 @@ public class SubTranslator
 
     private void Subtitles_OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
+        // OCR can fill in text after bitmap cues have already been loaded.
+        var captions = _subManager.GetSnapshot().ToHashSet();
+        foreach (var removed in _observedCaptions.Where(c => !captions.Contains(c)).ToArray())
+        {
+            removed.PropertyChanged -= Caption_OnPropertyChanged;
+            _observedCaptions.Remove(removed);
+        }
+        foreach (var added in captions)
+            if (_observedCaptions.Add(added)) added.PropertyChanged += Caption_OnPropertyChanged;
         // AddRange uses Reset too. Only an empty collection means the old stream was cleared.
-        QueueTranslation(resetService: _subManager.Subs.Count == 0);
+        QueueTranslation(resetService: captions.Count == 0);
+    }
+
+    private void Caption_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (PretranslateAll && IsEnabled && e.PropertyName == nameof(SubtitleData.Text)) QueueTranslation();
     }
 
     private void SubtitlesConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -83,6 +99,12 @@ public class SubTranslator
 
         if (e.PropertyName is nameof(Config.SubtitlesConfig.TranslateServiceType) or nameof(Config.SubtitlesConfig.TranslateServiceSettings))
             ObserveServiceSettings();
+        if (e.PropertyName == nameof(Config.SubtitlesConfig.CodexTranslateAllOnLoad))
+        {
+            // Change the work range immediately, retaining translations that already finished.
+            QueueTranslation(resetService: true);
+            return;
+        }
         if (fallbackChanged || e.PropertyName is nameof(Config.SubtitlesConfig.TranslateServiceType)
                 or nameof(Config.SubtitlesConfig.TranslateTargetLanguage) or nameof(Config.SubtitlesConfig.TranslateServiceSettings))
             QueueTranslation(resetService: true, clearTranslations: true);
@@ -127,7 +149,7 @@ public class SubTranslator
         lock (_scheduleLock)
         {
             int index = Math.Max(0, _subManager.CurrentIndex);
-            bool largeSeek = _activeIndex >= 0 && (index - _activeIndex > _config.TranslateCountForward
+            bool largeSeek = !PretranslateAll && _activeIndex >= 0 && (index - _activeIndex > _config.TranslateCountForward
                 || _activeIndex - index > _config.TranslateCountBackward);
 
             if (resetService || largeSeek)
@@ -220,19 +242,26 @@ public class SubTranslator
                     if (generation != _generation) continue;
                     _activeIndex = index;
                 }
-                int start = Math.Max(0, index - Math.Max(0, _config.TranslateCountBackward));
-                int end = (int)Math.Min((long)index + Math.Max(0, _config.TranslateCountForward), subtitles.Length - 1);
-                // Translate the currently visible cue before older look-behind cues.
+                bool pretranslateAll = PretranslateAll;
+                int start = pretranslateAll ? 0 : Math.Max(0, index - Math.Max(0, _config.TranslateCountBackward));
+                int end = pretranslateAll ? subtitles.Length - 1
+                    : (int)Math.Min((long)index + Math.Max(0, _config.TranslateCountForward), subtitles.Length - 1);
+                // Whole-track pretranslation runs in chronological order, independent of playback.
+                // Windowed translation prioritizes the current cue over look-behind cues.
                 var pending = Enumerable.Range(start, end - start + 1)
                     .Where(i => !subtitles[i].IsTranslated && !string.IsNullOrWhiteSpace(subtitles[i].Text))
-                    .OrderBy(i => i < index ? 1 : 0).ThenBy(i => i).Select(i => subtitles[i]).ToArray();
+                    .OrderBy(i => !pretranslateAll && i < index ? 1 : 0).ThenBy(i => i).Select(i => subtitles[i]).ToArray();
+                int total = subtitles.Count(s => !string.IsNullOrWhiteSpace(s.Text));
+                int completed = subtitles.Count(s => !string.IsNullOrWhiteSpace(s.Text) && s.IsTranslated);
                 if (pending.Length == 0)
                 {
-                    _subManager.SetTranslationStatus(UiText.Get("Translation ready"));
+                    _subManager.SetTranslationStatus(pretranslateAll
+                        ? UiText.Format($"Subtitle pretranslation complete ({completed}/{total})") : UiText.Get("Translation ready"));
                     continue;
                 }
                 _subManager.TranslationError = null;
-                _subManager.SetTranslationStatus(UiText.Get("Translating subtitles..."), true);
+                _subManager.SetTranslationStatus(pretranslateAll
+                    ? UiText.Format($"Pretranslating all subtitles ({completed}/{total})") : UiText.Get("Translating subtitles..."), true);
                 ObserveServiceSettings();
 
                 if (_translateService == null)
@@ -243,14 +272,18 @@ public class SubTranslator
                     _translateService = service;
                 }
 
-                int concurrency = _config.TranslateMaxConcurrency;
+                int concurrency = pretranslateAll ? 1 : _config.TranslateMaxConcurrency;
                 if (_config.TranslateServiceType.IsLLM() && _config.TranslateChatConfig.TranslateMethod == ChatTranslateMethod.KeepContext)
                     concurrency = 1;
 
                 if (concurrency <= 1)
                 {
                     foreach (var sub in pending)
+                    {
                         await TranslateSubAsync(sub, generation, token).ConfigureAwait(false);
+                        if (pretranslateAll && !token.IsCancellationRequested)
+                            _subManager.SetTranslationStatus(UiText.Format($"Pretranslating all subtitles ({++completed}/{total})"), true);
+                    }
                 }
                 else
                 {
@@ -260,6 +293,9 @@ public class SubTranslator
                         MaxDegreeOfParallelism = concurrency
                     }, async (sub, ct) => await TranslateSubAsync(sub, generation, ct).ConfigureAwait(false)).ConfigureAwait(false);
                 }
+                token.ThrowIfCancellationRequested();
+                if (pretranslateAll)
+                    _subManager.SetTranslationStatus(UiText.Format($"Subtitle pretranslation complete ({completed}/{total})"));
             }
             catch (OperationCanceledException) when (token.IsCancellationRequested)
             {

@@ -483,7 +483,24 @@
 
             <GroupBox Header="{loc:Text Key=Text_C64B1D7C4C7C7E28}">
                 <StackPanel>
+                    <StackPanel Visibility="{Binding SelectedTranslateServiceType, Converter={StaticResource EnumToVisibilityConv}, ConverterParameter={x:Static flyleafServices:TranslateServiceType.Codex}}" Margin="0 0 0 12">
+                        <CheckBox Content="{loc:Text Key=Text_C37E8BC42B456D31}" IsChecked="{Binding FL.PlayerConfig.Subtitles.CodexTranslateAllOnLoad, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="{loc:Text Key=Text_00EA4AAD1DB8210D}" TextWrapping="Wrap" Margin="0 8 0 0" />
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding SelectedTranslateServiceType}" Value="{x:Static flyleafServices:TranslateServiceType.Codex}" />
+                                            <Condition Binding="{Binding FL.PlayerConfig.Subtitles.CodexTranslateAllOnLoad}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
                         <TextBlock
                             Width="180"
                             Text="{loc:Text Key=Text_25C976AAD3DF89B3}" />
@@ -494,6 +511,19 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding SelectedTranslateServiceType}" Value="{x:Static flyleafServices:TranslateServiceType.Codex}" />
+                                            <Condition Binding="{Binding FL.PlayerConfig.Subtitles.CodexTranslateAllOnLoad}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
                         <TextBlock
                             Width="180"
                             Text="{loc:Text Key=Text_DF1EFA0B60D0F92B}" />
