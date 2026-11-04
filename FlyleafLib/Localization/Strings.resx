@@ -3768,4 +3768,64 @@ Right Click: Open Context Menu</comment>
     <value>ultra</value>
     <comment>ultra</comment>
   </data>
+  <data name="Text_2B8BD0FA3E2C54EC" xml:space="preserve">
+    <value>Top of screen</value>
+    <comment>Top of screen</comment>
+  </data>
+  <data name="Text_63E1C9A6A298E92C" xml:space="preserve">
+    <value>Bottom of screen</value>
+    <comment>Bottom of screen</comment>
+  </data>
+  <data name="Text_A1265FB0E4FEF2E7" xml:space="preserve">
+    <value>Translation display</value>
+    <comment>Translation display</comment>
+  </data>
+  <data name="Text_C87139466A105E8F" xml:space="preserve">
+    <value>Translate and display first subtitle</value>
+    <comment>Translate and display first subtitle</comment>
+  </data>
+  <data name="Text_FFF5A480D7AA7E2C" xml:space="preserve">
+    <value>Translate and display second subtitle</value>
+    <comment>Translate and display second subtitle</comment>
+  </data>
+  <data name="Text_FDCA4A79BE537874" xml:space="preserve">
+    <value>Translation off</value>
+    <comment>Translation off</comment>
+  </data>
+  <data name="Text_72A1D54325822D32" xml:space="preserve">
+    <value>Waiting for translation...</value>
+    <comment>Waiting for translation...</comment>
+  </data>
+  <data name="Text_FD65D039DB77FBE0" xml:space="preserve">
+    <value>Waiting for subtitles...</value>
+    <comment>Waiting for subtitles...</comment>
+  </data>
+  <data name="Text_5AD2C3416C539003" xml:space="preserve">
+    <value>Select the source subtitle language in subtitle settings.</value>
+    <comment>Select the source subtitle language in subtitle settings.</comment>
+  </data>
+  <data name="Text_7A53FCE4CED45A87" xml:space="preserve">
+    <value>Translating subtitles...</value>
+    <comment>Translating subtitles...</comment>
+  </data>
+  <data name="Text_D30D5FCD0683688E" xml:space="preserve">
+    <value>Translation ready</value>
+    <comment>Translation ready</comment>
+  </data>
+  <data name="Text_01EA1E188869EF4C" xml:space="preserve">
+    <value>Choose a translation engine below, then enable translation for each subtitle here. These choices are saved.</value>
+    <comment>Choose a translation engine below, then enable translation for each subtitle here. These choices are saved.</comment>
+  </data>
+  <data name="Text_FA3FEFEE83E23013" xml:space="preserve">
+    <value>Both at bottom</value>
+    <comment>Both at bottom</comment>
+  </data>
+  <data name="Text_B3B6A6BB455E388F" xml:space="preserve">
+    <value>First bottom / second top</value>
+    <comment>First bottom / second top</comment>
+  </data>
+  <data name="Text_D1DAA2CD401E1FE5" xml:space="preserve">
+    <value>Legacy position and alignment settings below apply only to tracks using Existing position settings.</value>
+    <comment>Legacy position and alignment settings below apply only to tracks using Existing position settings.</comment>
+  </data>
 </root>

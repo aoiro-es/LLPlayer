@@ -79,6 +79,16 @@ public class SubManager : INotifyPropertyChanged
 
     public bool IsDisplaying => State == PositionState.Showing;
 
+    public string TranslationStatus { get; internal set => Set(ref field, value); } = FlyleafLib.Localization.UiText.Get("Translation off");
+    public string? TranslationError { get; internal set => Set(ref field, value); }
+    public bool IsTranslating { get; internal set => Set(ref field, value); }
+
+    internal void SetTranslationStatus(string status, bool busy = false)
+    {
+        TranslationStatus = status;
+        IsTranslating = busy;
+    }
+
     /// <summary>
     /// List of subtitles that can be bound to ItemsControl
     /// Must be sorted with timestamp to perform binary search.

@@ -224,9 +224,9 @@ public enum SubtitleTrackPlacement
 {
     [Description("Existing position settings")]
     Legacy,
-    [Description("Top")]
+    [Description("Top of screen")]
     Top,
-    [Description("Bottom")]
+    [Description("Bottom of screen")]
     Bottom
 }
 

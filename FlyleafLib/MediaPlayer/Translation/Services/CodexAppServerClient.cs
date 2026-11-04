@@ -98,7 +98,7 @@ internal sealed class CodexRpc : IDisposable
     }
 }
 
-public sealed record CodexModel(string Id, string DisplayName, bool IsDefault, string[] ReasoningEfforts)
+public sealed record CodexModel(string Id, string DisplayName, bool IsDefault, string[] ReasoningEfforts, string? DefaultReasoningEffort = null)
 {
     public override string ToString() => DisplayName;
 }
@@ -238,7 +238,8 @@ public sealed class CodexAppServerClient : IDisposable
                 var id = item.GetProperty("model").GetString()!;
                 models.Add(new(id, item.GetProperty("displayName").GetString() ?? id,
                     item.TryGetProperty("isDefault", out var isDefault) && isDefault.GetBoolean(),
-                    item.GetProperty("supportedReasoningEfforts").EnumerateArray().Select(e => e.GetProperty("reasoningEffort").GetString()!).ToArray()));
+                    item.GetProperty("supportedReasoningEfforts").EnumerateArray().Select(e => e.GetProperty("reasoningEffort").GetString()!).ToArray(),
+                    item.TryGetProperty("defaultReasoningEffort", out var defaultEffort) ? defaultEffort.GetString() : null));
             }
             cursor = response.TryGetProperty("nextCursor", out var next) ? next.GetString() : null;
         } while (!string.IsNullOrEmpty(cursor));

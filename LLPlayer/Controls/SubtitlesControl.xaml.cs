@@ -44,31 +44,23 @@ public partial class SubtitlesControl : UserControl
     {
         if (e.PropertyName is nameof(AppConfigSubs.PrimaryPlacement) or nameof(AppConfigSubs.SecondaryPlacement)
             or nameof(AppConfigSubs.PrimaryOnlyOnEdgeHover) or nameof(AppConfigSubs.SecondaryOnlyOnEdgeHover)
-            or nameof(AppConfigSubs.EdgeMargin) or nameof(AppConfigSubs.HoverRegionHeight)) UpdateLayoutPanels();
+            or nameof(AppConfigSubs.EdgeMargin) or nameof(AppConfigSubs.HoverRegionHeight))
+        {
+            if (Dispatcher.CheckAccess()) UpdateLayoutPanels();
+            else Dispatcher.BeginInvoke(UpdateLayoutPanels);
+        }
     }
 
     private void UpdateLayoutPanels()
     {
         var config = FL.Config.Subs;
-        foreach (var panel in new[] { SubtitlePanel, TopSubtitlePanel, BottomSubtitlePanel }) panel.Children.Clear();
-        var primaryPanel = PanelFor(config.PrimaryPlacement);
-        var secondaryPanel = PanelFor(config.SecondaryPlacement);
-        primaryPanel.Children.Add(PrimarySubtitleContent);
-        if (primaryPanel == secondaryPanel) primaryPanel.Children.Add(SubtitleSeparator);
-        secondaryPanel.Children.Add(SecondarySubtitleContent);
-        TopSubtitlePanel.Margin = new Thickness(0, config.EdgeMargin, 0, 0);
-        BottomSubtitlePanel.Margin = new Thickness(0, 0, 0, config.EdgeMargin);
+        SubtitleTrackLayout.Apply(SubtitlePanel, TopSubtitlePanel, BottomSubtitlePanel,
+            PrimarySubtitleContent, SecondarySubtitleContent, SubtitleSeparator,
+            config.PrimaryPlacement, config.SecondaryPlacement, config.EdgeMargin);
         if (config.PrimaryOnlyOnEdgeHover || config.SecondaryOnlyOnEdgeHover) _hoverTimer.Start();
         else _hoverTimer.Stop();
         UpdateHover();
     }
-
-    private StackPanel PanelFor(SubtitleTrackPlacement placement) => placement switch
-    {
-        SubtitleTrackPlacement.Top => TopSubtitlePanel,
-        SubtitleTrackPlacement.Bottom => BottomSubtitlePanel,
-        _ => SubtitlePanel
-    };
 
     private void UpdateHover()
     {

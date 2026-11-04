@@ -135,6 +135,18 @@ public class CodexTranslationTests
         Assert.Empty(settings.ReasoningEffort);
     }
 
+    [Fact]
+    public void TranslationDisplayChoicesSurviveRestart()
+    {
+        var config = new Config(true);
+        config.Subtitles[0].EnabledTranslated = true;
+        config.Subtitles[1].EnabledTranslated = false;
+        var options = AppConfig.GetJsonSerializerOptions();
+        var restored = JsonSerializer.Deserialize<Config.SubConfig[]>(JsonSerializer.Serialize(config.Subtitles.SubConfigs, options), options)!;
+        Assert.True(restored[0].EnabledTranslated);
+        Assert.False(restored[1].EnabledTranslated);
+    }
+
     private sealed class Lines : TextReader
     {
         private readonly Channel<string> _lines = Channel.CreateUnbounded<string>();

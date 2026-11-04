@@ -976,7 +976,6 @@ public class Config : NotifyPropertyChanged
         [JsonIgnore]
         public int SubIndex { get; set => Set(ref field, value); }
 
-        [JsonIgnore]
         public bool EnabledTranslated
         {
             get;

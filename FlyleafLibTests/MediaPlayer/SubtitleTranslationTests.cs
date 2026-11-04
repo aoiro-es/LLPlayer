@@ -278,6 +278,51 @@ public class SubtitleTranslationTests
         Assert.Equal(code, language.ISO6391);
     }
 
+    [Fact]
+    public async Task EditingProviderSettingsRetranslatesWhilePaused()
+    {
+        var (config, manager, service) = Create();
+        var settings = new CodexTranslateSettings { Model = "first-model" };
+        config.Subtitles.TranslateServiceSettings = new() { [TranslateServiceType.Codex] = settings };
+        config.Subtitles.TranslateServiceType = TranslateServiceType.Codex;
+        service.Translate = (text, _) => Task.FromResult(settings.Model + ":" + text);
+        manager.LanguageSource = Language.Get("en");
+        var caption = Caption("Already loaded.");
+        manager.Load([caption]);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => caption.TranslatedText == "first-model:Already loaded.");
+        settings.Model = "replacement-model";
+        await WaitFor(() => caption.TranslatedText == "replacement-model:Already loaded.");
+        Assert.True(service.DisposeCount > 0);
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task CurrentSubtitleIsTranslatedBeforeLookBehind()
+    {
+        var (config, manager, service) = Create();
+        manager.LanguageSource = Language.Get("en");
+        manager.Load([Caption("Older", 0), Caption("Current", 10), Caption("Future", 20)]);
+        manager.SetCurrentTime(TimeSpan.FromSeconds(12));
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => service.Requests.Count == 3);
+        Assert.Equal("Current", service.Requests.First());
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
+    [Fact]
+    public async Task MissingSourceLanguageIsExplainedInsteadOfSilentlyKeepingOriginal()
+    {
+        var (config, manager, _) = Create();
+        config.Subtitles.Languages = [];
+        manager.LanguageSource = Language.Unknown;
+        manager.Load([Caption("Unknown source.")]);
+        config.Subtitles[0].EnabledTranslated = true;
+        await WaitFor(() => manager.TranslationStatus == Localization.UiText.Get("Select the source subtitle language in subtitle settings."));
+        Assert.False(manager.IsTranslating);
+        config.Subtitles[0].EnabledTranslated = false;
+    }
+
     private sealed class FakeTranslator : ITranslateService
     {
         public TranslateServiceType ServiceType => TranslateServiceType.GoogleV1;

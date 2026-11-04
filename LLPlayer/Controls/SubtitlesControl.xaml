@@ -11,6 +11,7 @@
              d:Background="Black"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <conv:SubtitleBitmapContentConverter x:Key="BitmapContent" />
         <conv:SubtitleBitmapVisibilityConverter x:Key="InlineBitmapVisibility" />
         <conv:SubtitleBitmapVisibilityConverter x:Key="AbsoluteBitmapVisibility" Absolute="True" />
     </UserControl.Resources>
@@ -123,8 +124,13 @@
                     </Border.Visibility>
                     <Image
                         RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="{Binding FL.Player.Subtitles[0].Data.Bitmap.Source, FallbackValue={x:Null}}"
                         Stretch="None">
+                        <Image.Source>
+                            <MultiBinding Converter="{StaticResource BitmapContent}">
+                                <Binding Path="FL.Player.Subtitles[0].Data.Bitmap.Source" />
+                                <Binding Path="FL.Config.Subs.PrimaryPlacement" />
+                            </MultiBinding>
+                        </Image.Source>
                         <Image.LayoutTransform>
                             <ScaleTransform
                                 ScaleX="{Binding FL.Player.Subtitles[0].Data.BitmapPosition.ScaleX}"
@@ -178,8 +184,13 @@
                     </Border.Visibility>
                     <Image
                         RenderOptions.BitmapScalingMode="HighQuality"
-                        Source="{Binding FL.Player.Subtitles[1].Data.Bitmap.Source, FallbackValue={x:Null}}"
                         Stretch="None">
+                        <Image.Source>
+                            <MultiBinding Converter="{StaticResource BitmapContent}">
+                                <Binding Path="FL.Player.Subtitles[1].Data.Bitmap.Source" />
+                                <Binding Path="FL.Config.Subs.SecondaryPlacement" />
+                            </MultiBinding>
+                        </Image.Source>
                         <Image.LayoutTransform>
                             <ScaleTransform
                                 ScaleX="{Binding FL.Player.Subtitles[1].Data.BitmapPosition.ScaleX}"

@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 using System.Runtime.InteropServices;
 using FlyleafLib;
 using FlyleafLib.MediaPlayer;
@@ -20,6 +19,7 @@ public class FlyleafOverlayVM : Bindable
     public FlyleafOverlayVM(FlyleafManager fl)
     {
         FL = fl;
+        _clickPlayback = new VideoClickPlaybackController(() => FL.Player.IsPlaying, FL.Player.Play, FL.Player.Pause);
     }
 
     public DelegateCommand CmdOnLoaded => field ??= new(() =>
@@ -105,8 +105,8 @@ public class FlyleafOverlayVM : Bindable
         {
             FL.Player.ToggleFullScreen();
 
-            _singleClickTimer?.Stop();
-            _suppressClickUntil = Environment.TickCount64 + GetDoubleClickTime();
+            _clickPlayback.DoubleClick(Environment.TickCount64, GetDoubleClickTime());
+            _ignoreDoubleClickMouseUp = true;
             _isLeftDragging = false;
 
             e.Handled = true;
@@ -120,6 +120,8 @@ public class FlyleafOverlayVM : Bindable
 
     private void SurfaceOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+        if (e.ClickCount == 1) _ignoreDoubleClickMouseUp = false;
+        if (e.ClickCount == 2 && FL.Config.MouseDoubleClickToFullScreen) return;
         // Support window dragging & play / pause toggle
         if (Keyboard.Modifiers != ModifierKeys.None)
             return;
@@ -192,6 +194,11 @@ public class FlyleafOverlayVM : Bindable
 
     private void SurfaceOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
+        if (_ignoreDoubleClickMouseUp)
+        {
+            _ignoreDoubleClickMouseUp = false;
+            return;
+        }
         if (!_isLeftDragging)
             return;
 
@@ -215,36 +222,19 @@ public class FlyleafOverlayVM : Bindable
             &&                   // if click within 200ms and not so much moved
             Math.Abs(upPoint.X - downPoint.X) < 60 && Math.Abs(upPoint.Y - downPoint.Y) < 60)
         {
-            if (Environment.TickCount64 < _suppressClickUntil) return;
-            if (!FL.Config.MouseDoubleClickToFullScreen) SingleClickAction();
-            else
-            {
-                _singleClickTimer ??= new DispatcherTimer();
-                _singleClickTimer.Stop();
-                _singleClickTimer.Interval = TimeSpan.FromMilliseconds(GetDoubleClickTime());
-                _singleClickTimer.Tick -= OnSingleClick;
-                _singleClickTimer.Tick += OnSingleClick;
-                _singleClickTimer.Start();
-            }
+            SingleClickAction();
         }
     }
 
-    private DispatcherTimer? _singleClickTimer;
-    private long _suppressClickUntil;
+    private readonly VideoClickPlaybackController _clickPlayback;
+    private bool _ignoreDoubleClickMouseUp;
     [DllImport("user32.dll")]
     private static extern uint GetDoubleClickTime();
 
-    private void OnSingleClick(object? sender, EventArgs e)
-    {
-        _singleClickTimer!.Stop();
-        SingleClickAction();
-    }
-
     private void SingleClickAction()
     {
-        // Toggle play/pause on left click
         if (FL.Config.MouseSingleClickToPlay && FL.Player.CanPlay)
-            FL.Player.TogglePlayPause();
+            _clickPlayback.SingleClick(Environment.TickCount64);
     }
 
     private void FlyleafOnMouseWheel(object sender, MouseWheelEventArgs e)

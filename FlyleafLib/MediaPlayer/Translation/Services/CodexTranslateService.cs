@@ -13,6 +13,7 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
     private CodexAppServerClient? _client;
     private string? _instructions;
     private string _model = "";
+    private string _effort = "";
     private bool _disposed;
     public TranslateServiceType ServiceType => TranslateServiceType.Codex;
 
@@ -48,6 +49,7 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
                     ? models.FirstOrDefault(m => m.IsDefault) : models.FirstOrDefault(m => m.Id == settings.Model);
                 if (selected == null) throw new TranslationConfigException(UiText.Get("The selected Codex model is unavailable. Refresh the model list in translation settings."));
                 _model = selected.Id;
+                _effort = string.IsNullOrWhiteSpace(settings.ReasoningEffort) ? selected.DefaultReasoningEffort ?? "" : settings.ReasoningEffort;
                 if (!string.IsNullOrWhiteSpace(settings.ReasoningEffort) && !selected.ReasoningEfforts.Contains(settings.ReasoningEffort))
                     throw new TranslationConfigException(UiText.Get("The selected reasoning effort is unavailable for this Codex model. Refresh translation settings."));
             }
@@ -63,7 +65,7 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
                 previousSubtitles = keepContext ? _context.Select(c => new { subtitle = c.Text, translation = c.Translation }).ToArray() : [],
                 subtitle = text
             });
-            var translated = await _client.TranslateAsync(_instructions, input, _model, settings.ReasoningEffort, linked.Token).ConfigureAwait(false);
+            var translated = await _client.TranslateAsync(_instructions, input, _model, _effort, linked.Token).ConfigureAwait(false);
             if (keepContext && count > 0) _context.Enqueue((text, translated));
             return translated;
         }

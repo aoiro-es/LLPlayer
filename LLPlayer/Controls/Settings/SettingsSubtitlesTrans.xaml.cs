@@ -37,8 +37,6 @@ public class SettingsSubtitlesTransVM : Bindable
         {
             Set(ref field, value);
 
-            FL.PlayerConfig.Subtitles.TranslateServiceType = value;
-
             if (FL.PlayerConfig.Subtitles.TranslateServiceSettings.TryGetValue(value, out var settings))
             {
                 // It points to an instance of the same class, so change this will be reflected in the config.
@@ -51,6 +49,8 @@ public class SettingsSubtitlesTransVM : Bindable
 
                 SelectedServiceSettings = defaultSettings;
             }
+            // Publish the provider after its settings exist so translation observes edits immediately.
+            FL.PlayerConfig.Subtitles.TranslateServiceType = value;
         }
     }
 

@@ -3766,4 +3766,64 @@ Right Click: Open Context Menu</comment>
     <value>最上位</value>
     <comment>ultra</comment>
   </data>
+  <data name="Text_2B8BD0FA3E2C54EC" xml:space="preserve">
+    <value>画面上部</value>
+    <comment>Top of screen</comment>
+  </data>
+  <data name="Text_63E1C9A6A298E92C" xml:space="preserve">
+    <value>画面下部</value>
+    <comment>Bottom of screen</comment>
+  </data>
+  <data name="Text_A1265FB0E4FEF2E7" xml:space="preserve">
+    <value>訳文の表示</value>
+    <comment>Translation display</comment>
+  </data>
+  <data name="Text_C87139466A105E8F" xml:space="preserve">
+    <value>第1字幕を翻訳して表示</value>
+    <comment>Translate and display first subtitle</comment>
+  </data>
+  <data name="Text_FFF5A480D7AA7E2C" xml:space="preserve">
+    <value>第2字幕を翻訳して表示</value>
+    <comment>Translate and display second subtitle</comment>
+  </data>
+  <data name="Text_FDCA4A79BE537874" xml:space="preserve">
+    <value>翻訳表示はオフです</value>
+    <comment>Translation off</comment>
+  </data>
+  <data name="Text_72A1D54325822D32" xml:space="preserve">
+    <value>翻訳を待っています…</value>
+    <comment>Waiting for translation...</comment>
+  </data>
+  <data name="Text_FD65D039DB77FBE0" xml:space="preserve">
+    <value>字幕の読み込みを待っています…</value>
+    <comment>Waiting for subtitles...</comment>
+  </data>
+  <data name="Text_5AD2C3416C539003" xml:space="preserve">
+    <value>字幕設定で元の字幕の言語を指定してください。</value>
+    <comment>Select the source subtitle language in subtitle settings.</comment>
+  </data>
+  <data name="Text_7A53FCE4CED45A87" xml:space="preserve">
+    <value>字幕を翻訳しています…</value>
+    <comment>Translating subtitles...</comment>
+  </data>
+  <data name="Text_D30D5FCD0683688E" xml:space="preserve">
+    <value>翻訳済みの字幕を表示できます</value>
+    <comment>Translation ready</comment>
+  </data>
+  <data name="Text_01EA1E188869EF4C" xml:space="preserve">
+    <value>下で翻訳エンジンを選び、ここで字幕ごとの訳文表示を有効にしてください。この設定は保存されます。</value>
+    <comment>Choose a translation engine below, then enable translation for each subtitle here. These choices are saved.</comment>
+  </data>
+  <data name="Text_FA3FEFEE83E23013" xml:space="preserve">
+    <value>両方を下部に表示</value>
+    <comment>Both at bottom</comment>
+  </data>
+  <data name="Text_B3B6A6BB455E388F" xml:space="preserve">
+    <value>第1字幕は下部・第2字幕は上部</value>
+    <comment>First bottom / second top</comment>
+  </data>
+  <data name="Text_D1DAA2CD401E1FE5" xml:space="preserve">
+    <value>下の従来の位置・揃え設定は「既存の位置設定」を選んだ字幕に適用します。</value>
+    <comment>Legacy position and alignment settings below apply only to tracks using Existing position settings.</comment>
+  </data>
 </root>

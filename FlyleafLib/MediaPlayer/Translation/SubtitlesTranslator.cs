@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using FlyleafLib.Localization;
 using FlyleafLib.MediaPlayer.Translation.Services;
 
 namespace FlyleafLib.MediaPlayer.Translation;
@@ -18,6 +19,7 @@ public class SubTranslator
 
     private readonly object _scheduleLock = new();
     private ITranslateService? _translateService;
+    private ITranslateSettings? _observedSettings;
     private Task? _worker;
     private CancellationTokenSource? _activeCancellation;
     private bool _pending;
@@ -46,6 +48,7 @@ public class SubTranslator
         _config.PropertyChanged += SubtitlesConfig_OnPropertyChanged;
         _config.SubConfigs[subIndex].PropertyChanged += SubConfig_OnPropertyChanged;
         _config.TranslateChatConfig.PropertyChanged += TranslateChatConfig_OnPropertyChanged;
+        ObserveServiceSettings();
     }
 
     private void SubManager_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -78,8 +81,10 @@ public class SubTranslator
                 || e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackSecondarySame)
                 || (_config.LanguageFallbackSecondarySame && e.PropertyName == nameof(Config.SubtitlesConfig.LanguageFallbackPrimary));
 
+        if (e.PropertyName is nameof(Config.SubtitlesConfig.TranslateServiceType) or nameof(Config.SubtitlesConfig.TranslateServiceSettings))
+            ObserveServiceSettings();
         if (fallbackChanged || e.PropertyName is nameof(Config.SubtitlesConfig.TranslateServiceType)
-                or nameof(Config.SubtitlesConfig.TranslateTargetLanguage))
+                or nameof(Config.SubtitlesConfig.TranslateTargetLanguage) or nameof(Config.SubtitlesConfig.TranslateServiceSettings))
             QueueTranslation(resetService: true, clearTranslations: true);
     }
 
@@ -92,8 +97,25 @@ public class SubTranslator
         if (_subManager.GetCurrent() is { } current)
             _subManager.RefreshTranslatedSubtitle(current);
 
+        if (IsEnabled) _subManager.TranslationError = null;
+        _subManager.SetTranslationStatus(UiText.Get(IsEnabled ? "Waiting for translation..." : "Translation off"));
         // Enabling translation must work at a fixed playback position as well.
         QueueTranslation(resetService: !IsEnabled);
+    }
+
+    private void ObserveServiceSettings()
+    {
+        var settings = _config.TranslateServiceSettings.GetValueOrDefault(_config.TranslateServiceType);
+        if (ReferenceEquals(settings, _observedSettings)) return;
+        if (_observedSettings != null) _observedSettings.PropertyChanged -= ServiceSettings_OnPropertyChanged;
+        _observedSettings = settings;
+        if (_observedSettings != null) _observedSettings.PropertyChanged += ServiceSettings_OnPropertyChanged;
+    }
+
+    private void ServiceSettings_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        _subManager.TranslationError = null;
+        QueueTranslation(resetService: true, clearTranslations: true);
     }
 
     private void TranslateChatConfig_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -170,9 +192,21 @@ public class SubTranslator
                 if (clearTranslations && _subManager.GetCurrent() is { } current)
                     _subManager.RefreshTranslatedSubtitle(current);
 
-                if (!IsEnabled || subtitles.Length == 0 || _subManager.Language is not { } sourceLanguage
-                    || sourceLanguage == Language.Unknown)
+                if (!IsEnabled)
+                {
+                    _subManager.SetTranslationStatus(UiText.Get("Translation off"));
                     continue;
+                }
+                if (subtitles.Length == 0)
+                {
+                    _subManager.SetTranslationStatus(UiText.Get("Waiting for subtitles..."));
+                    continue;
+                }
+                if (_subManager.Language is not { } sourceLanguage || sourceLanguage == Language.Unknown)
+                {
+                    _subManager.SetTranslationStatus(UiText.Get("Select the source subtitle language in subtitle settings."));
+                    continue;
+                }
 
                 // Coalesce subtitle loading and rapid seeks, including while playback is paused.
                 await Task.Delay(300, token).ConfigureAwait(false);
@@ -188,8 +222,18 @@ public class SubTranslator
                 }
                 int start = Math.Max(0, index - Math.Max(0, _config.TranslateCountBackward));
                 int end = (int)Math.Min((long)index + Math.Max(0, _config.TranslateCountForward), subtitles.Length - 1);
-                var pending = subtitles[start..(end + 1)].Where(s => !s.IsTranslated && !string.IsNullOrWhiteSpace(s.Text)).ToArray();
-                if (pending.Length == 0) continue;
+                // Translate the currently visible cue before older look-behind cues.
+                var pending = Enumerable.Range(start, end - start + 1)
+                    .Where(i => !subtitles[i].IsTranslated && !string.IsNullOrWhiteSpace(subtitles[i].Text))
+                    .OrderBy(i => i < index ? 1 : 0).ThenBy(i => i).Select(i => subtitles[i]).ToArray();
+                if (pending.Length == 0)
+                {
+                    _subManager.SetTranslationStatus(UiText.Get("Translation ready"));
+                    continue;
+                }
+                _subManager.TranslationError = null;
+                _subManager.SetTranslationStatus(UiText.Get("Translating subtitles..."), true);
+                ObserveServiceSettings();
 
                 if (_translateService == null)
                 {
@@ -229,6 +273,7 @@ public class SubTranslator
                 if (isCurrent)
                 {
                     if (Engine.Config != null) Log.Error($"Translation failed: {ex.Message}");
+                    _subManager.TranslationError = ex.Message;
                     _config[_subIndex].EnabledTranslated = false;
                     if (ex is TranslationConfigException)
                         _config.player?.RaiseKnownErrorOccurred($"Translation Failed: {ex.Message}", KnownErrorType.Configuration);
@@ -238,6 +283,9 @@ public class SubTranslator
             }
             finally
             {
+                _subManager.IsTranslating = false;
+                if (!token.IsCancellationRequested && IsEnabled && _subManager.TranslationError == null && _subManager.TranslationStatus == UiText.Get("Translating subtitles..."))
+                    _subManager.TranslationStatus = UiText.Get("Translation ready");
                 lock (_scheduleLock)
                 {
                     if (ReferenceEquals(_activeCancellation, cancellation))
