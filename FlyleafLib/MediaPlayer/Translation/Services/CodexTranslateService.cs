@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Text.Json;
+using System.Security.Cryptography;
+using System.Text;
 using FlyleafLib.Localization;
 
 #nullable enable
@@ -7,6 +9,7 @@ namespace FlyleafLib.MediaPlayer.Translation.Services;
 
 public sealed class CodexTranslateService(CodexTranslateSettings settings, TranslateChatConfig chatConfig, bool wordMode) : ITranslateService, ISubtitleBatchTranslator
 {
+    internal SharedTranslationRequests<CodexBatchResponse> SharedRequests { get; init; } = new();
     private readonly SemaphoreSlim _gate = new(1);
     private readonly CancellationTokenSource _lifetime = new();
     private readonly Queue<(string Text, string Translation)> _context = new();
@@ -110,8 +113,6 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
         await _gate.WaitAsync(linked.Token).ConfigureAwait(false);
         try
         {
-            linked.CancelAfter(settings.TimeoutMs);
-            await EnsureClientAsync(linked.Token).ConfigureAwait(false);
             var instructions = _batchInstructions + "\n" + $"""
                 Translate the requested subtitle cues from {_sourceLanguage} into {_targetLanguage} as one coherent conversation.
                 Use contextBefore, contextAfter and continuity only to disambiguate pronouns, speakers, tone, idioms and terminology.
@@ -129,10 +130,20 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
                 continuity = _continuity, contextBefore = before.Select(Cue).ToArray(),
                 cues = captions.Select(Cue).ToArray(), contextAfter = after.Select(Cue).ToArray()
             });
-            var json = await _client!.GenerateAsync(instructions, input, _model, _effort, BatchSchema, linked.Token).ConfigureAwait(false);
-            var result = ParseBatch(json, captions.Select(c => c.Index).ToArray(), explain, out var continuity);
-            _continuity = continuity.Length > 1000 ? continuity[..1000] : continuity;
-            return result;
+            // Freeze settings and the serialized payload before joining shared work. The producer
+            // owns its own transport; disposing either subtitle track cannot interrupt the other.
+            var options = new CodexTranslateSettings { ExecutablePath = settings.ExecutablePath, Model = settings.Model,
+                ReasoningEffort = settings.ReasoningEffort, TimeoutMs = settings.TimeoutMs };
+            int[] ids = captions.Select(c => c.Index).ToArray();
+            string key = RequestKey(instructions, input, options);
+            var response = await SharedRequests.GetAsync(key, async sharedToken =>
+            {
+                using var producer = new CodexTranslateService(options, new TranslateChatConfig(), false);
+                return await producer.ExecuteBatchAsync(instructions, input, ids, explain, sharedToken).ConfigureAwait(false);
+            }, linked.Token).ConfigureAwait(false);
+            // Both consumers must carry the same memo into their next request, including cache hits.
+            _continuity = response.Continuity;
+            return response.Items;
         }
         catch (OperationCanceledException) when (!token.IsCancellationRequested && !_lifetime.IsCancellationRequested)
         {
@@ -142,6 +153,27 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
         catch { ResetClient(); throw; }
         finally { _gate.Release(); }
     }
+
+    private async Task<CodexBatchResponse> ExecuteBatchAsync(string instructions, string input, int[] ids, bool explain, CancellationToken token)
+    {
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(token);
+        timeout.CancelAfter(settings.TimeoutMs);
+        try
+        {
+            await EnsureClientAsync(timeout.Token).ConfigureAwait(false);
+            var json = await _client!.GenerateAsync(instructions, input, _model, _effort, BatchSchema, timeout.Token).ConfigureAwait(false);
+            var items = ParseBatch(json, ids, explain, out var continuity);
+            return new(items, continuity.Length > 1000 ? continuity[..1000] : continuity);
+        }
+        catch (OperationCanceledException) when (!token.IsCancellationRequested)
+        {
+            throw new TranslationException(UiText.Get("Codex translation timed out. Increase the timeout or select a faster model or reasoning effort."));
+        }
+    }
+
+    internal static string RequestKey(string instructions, string input, CodexTranslateSettings options)
+        => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(new {
+            instructions, input, options.ExecutablePath, options.Model, options.ReasoningEffort, options.TimeoutMs }))));
 
     // Capture UI language, not the worker thread's culture. English and Japanese stay independent.
     public string ExplanationLanguage { get; set; } = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ja" ? "Japanese" : "English";
@@ -185,3 +217,5 @@ public sealed class CodexTranslateService(CodexTranslateSettings settings, Trans
         ResetClient();
     }
 }
+
+internal sealed record CodexBatchResponse(IReadOnlyList<SubtitleBatchResult> Items, string Continuity);

@@ -138,7 +138,7 @@ public class SubTranslator
         if (IsEnabled) _subManager.TranslationError = null;
         _subManager.SetTranslationStatus(UiText.Get(IsEnabled ? "Waiting for translation..." : "Translation off"));
         // Enabling translation must work at a fixed playback position as well.
-        QueueTranslation(resetService: !IsEnabled);
+        QueueTranslation(resetService: !IsActive);
     }
 
     private void ObserveServiceSettings()

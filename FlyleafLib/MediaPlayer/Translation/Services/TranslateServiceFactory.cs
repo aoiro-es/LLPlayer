@@ -1,8 +1,11 @@
-﻿namespace FlyleafLib.MediaPlayer.Translation.Services;
+﻿using System.Runtime.CompilerServices;
+
+namespace FlyleafLib.MediaPlayer.Translation.Services;
 
 public class TranslateServiceFactory
 {
     private readonly Config.SubtitlesConfig _config;
+    private static readonly ConditionalWeakTable<Config.SubtitlesConfig, SharedTranslationRequests<CodexBatchResponse>> CodexRequests = new();
 
     public TranslateServiceFactory(Config.SubtitlesConfig config)
     {
@@ -22,7 +25,8 @@ public class TranslateServiceFactory
         switch (serviceType)
         {
             case TranslateServiceType.Codex:
-                return new CodexTranslateService((CodexTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new CodexTranslateSettings()), _config.TranslateChatConfig, wordMode);
+                return new CodexTranslateService((CodexTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new CodexTranslateSettings()), _config.TranslateChatConfig, wordMode)
+                { SharedRequests = CodexRequests.GetValue(_config, _ => new()) };
 
             case TranslateServiceType.GoogleV1:
                 return new GoogleV1TranslateService((GoogleV1TranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new GoogleV1TranslateSettings()));

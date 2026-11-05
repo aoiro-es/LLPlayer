@@ -127,7 +127,7 @@
 
             <!--Flyleaf Bar-->
             <StackPanel x:Name="PlaybackDock" VerticalAlignment="Bottom">
-                <StackPanel HorizontalAlignment="Right">
+                <StackPanel x:Name="PreparationReveal" HorizontalAlignment="Right" Opacity="0" IsHitTestVisible="False">
                     <controls:SubtitlePreparationStatus DataContext="{Binding FL.SubtitlesManager[0].PreparationProgress}" />
                     <controls:SubtitlePreparationStatus DataContext="{Binding FL.SubtitlesManager[1].PreparationProgress}" />
                 </StackPanel>

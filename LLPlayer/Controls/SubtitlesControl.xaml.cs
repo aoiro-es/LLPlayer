@@ -156,7 +156,7 @@ public partial class SubtitlesControl : UserControl
                 await Task.Delay(100, token);
             token.ThrowIfCancellationRequested();
             if (caption.Explanation != null) { ExplanationText.Text = caption.Text + "\n\n" + caption.Explanation; return; }
-            using var service = new CodexTranslateService(settings, config.TranslateChatConfig, false);
+            using var service = (CodexTranslateService)new TranslateServiceFactory(config).GetService(TranslateServiceType.Codex, false);
             service.Initialize(manager.Language ?? FlyleafLib.Language.Unknown, config.TranslateTargetLanguage);
             var all = manager.GetSnapshot();
             int index = System.Array.IndexOf(all, caption);

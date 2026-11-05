@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
+using FlyleafLib;
+using LLPlayer.Services;
 using LLPlayer.ViewModels;
 
 namespace LLPlayer.Views;
@@ -13,6 +16,22 @@ public partial class FlyleafOverlay : UserControl
         InitializeComponent();
 
         DataContext = ((App)Application.Current).Container.Resolve<FlyleafOverlayVM>();
+        _preparationHover = new DispatcherTimer(TimeSpan.FromMilliseconds(80), DispatcherPriority.Input,
+            (_, _) => UpdatePreparationHover(), Dispatcher);
+        _preparationHover.Stop();
+        Loaded += (_, _) => { _preparationHover.Start(); UpdatePreparationHover(); };
+        Unloaded += (_, _) => { _preparationHover.Stop(); PreparationReveal.Opacity = 0; };
+    }
+
+    private readonly DispatcherTimer _preparationHover;
+
+    private void UpdatePreparationHover()
+    {
+        Utils.NativeMethods.GetCursorPos(out var cursor);
+        var point = PointFromScreen(new Point(cursor.X, cursor.Y));
+        // Opacity keeps the reserved subtitle area stable when the progress panel is hidden.
+        PreparationReveal.Opacity = PreparationHoverPolicy.Reveal(point, new Size(ActualWidth, ActualHeight),
+            new Size(PreparationReveal.ActualWidth, PreparationReveal.ActualHeight), PlaybackBar.ActualHeight) ? 1 : 0;
     }
 
     private void FlyleafOverlay_OnSizeChanged(object sender, SizeChangedEventArgs e)
